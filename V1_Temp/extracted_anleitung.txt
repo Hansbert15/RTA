@@ -1,0 +1,355 @@
+--- PAGE 1 ---
+PRTA_V1 Temperaturregelung.doc C. Brüdigam Seite 1 / 8 
+Praktikum PRTA 
+Prof. Dr. Brüdigam 
+Versuch V1: Temperaturregelung 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Inhalt 
+1 Grundlagen ........................................................................................................................ 2 
+1.1 Ziel des Versuchs.................................................................................................................. 2 
+1.2 Benötigte Vorkenntnisse ...................................................................................................... 2 
+2 Gerätebeschreibung Regler TROVIS 6493 ...................................................................... 2 
+2.1 Display und Tasten des Reglers TROVIS 6493 ................................................................. 2 
+2.2 Die Betriebsebene des Reglers TROVIS 6493 ................................................................... 3 
+2.3 Die Bedienebene des Reglers TROVIS 6493 ...................................................................... 4 
+2.3.1 Hauptgruppe CNTR - Reglerstruktur .............................................................................................. 4 
+2.3.2 Hauptgruppe PAR – Parameterbearbeitung KP, TV, TN................................................................... 5 
+3 Versuchsbeschreibung ...................................................................................................... 5 
+3.1 Versuchsaufbau .................................................................................................................... 5 
+4 Versuchsdurchführung ..................................................................................................... 6 
+4.1 Tastenbelegung Regler zur Konfiguration und Parametrierung .................................... 6 
+4.2 Aufgabenstellung.................................................................................................................. 6 
+4.2.1 Ungeregeltes System ....................................................................................................................... 6 
+4.2.2 Manueller Betrieb ............................................................................................................................ 7 
+4.2.3 Reglereinstellung nach Ziegler/Nichols .......................................................................................... 7 
+4.2.4 Geregelter Betrieb ........................................................................................................................... 8 
+5 Versuchsauswertung ......................................................................................................... 8 
+6 Testfragen .......................................................................................................................... 8 
+ 
+ 
+Studiengang:    Versuchsdatum:    
+ 
+Gruppen-Nr.:      
+ 
+Teilnehmer:      
+ 
+      
+ 
+      
+      
+ 
+      
+ 
+      
+ 
+
+--- PAGE 2 ---
+PRTA_V1 Temperaturregelung.doc C. Brüdigam Seite 2 / 8 
+1 Grundlagen 
+1.1 Ziel des Versuchs 
+Es ist eine Regelung zu entwerfen, um die Temperatur am Ende eines Rohres 
+(Strecke) auf gewünschte Werte einzustellen. Die Strecke selbst weist eine thermi -
+sche Zeitkonstante sowie eine Totzeit auf. Stellglied ist ein (modifizierter) Fön. Als 
+Regler findet ein industrieüblicher Kompaktregler Verwendung. (Siehe auch 4.1) 
+Die Regelung ist so auszulegen, dass gewünschte Werte schnell und genau einge -
+nommen werden. 
+1.2 Benötigte Vorkenntnisse 
+Grundkenntnisse der Regelungstechnik 
+ 
+2 Gerätebeschreibung Regler TROVIS 6493 
+Der Kompaktregler TROVIS 6493 ist ein mikroprozessorgesteuerter Regler zur 
+Automatisierung industrieller und verfahrenstechnischer Anlagen mit P, PI, PD, PID 
+Regelverhalten. Die flexible Softwarekonzeption gestattet es, Regelschaltungen ohne 
+Änderung der Hardware zu konfigurieren. 
+2.1 Display und Tasten des Reglers TROVIS 6493 
+Hinweis: Die Tasten des Kompaktreglers sind empfindlich. Betätigen Sie diese bitte 
+sanft! 
+Front des Kompaktreglers TROVIS 6493  
+--- PAGE 3 ---
+PRTA_V1 Temperaturregelung.doc C. Brüdigam Seite 3 / 8 
+ 
+1 Regelgröße X  
+2 Sollwert W oder W2; Stellgröße 
+Y oder Regelabweichung Xd  
+3 Grenzwertrelais L2 aktiv  
+4 Dreipunktausgang - 
+5 Grenzwertrelais L1 aktiv 
+6 Dreipunktausgang + 
+7 Störmeldung 
+8 Handbetrieb 
+9 Nach Drücken der Auswahlliste 
+erscheint W, W2, Y oder Xd mit 
+dem dazugehörigen Wert in 2 
+10 Balkenanzeige Xd in %  
+11 Programmiertaste 
+12 Auswahltaste W, W2, Y oder Xd 
+13 Hand- / Automatiktaste  
+14 Cursortaste (vergrößern, vor-
+wärts)  
+15 Cursortaste (verkleinern, zu-
+rück) 
+16 Rückstelltaste  
+17 auswechselbares Schild 
+ 
+2.2 Die Betriebsebene des Reglers TROVIS 6493 
+Die Betriebsebene dient zum Aufrufen und Anzeigen der Betriebsgrößen: 
+ 
+ 
+  
+  
+sich verschiedene Größen anzeigen 
+lassen: W, W2, Y, Xd 
+ 
+W2 wird nur angezeigt, wenn es in SETP 
+aktiviert wurde (Kap. 3.2.1) 
+ 
+ 
+die Auswahltaste so 
+oft, bis die gewünschte 
+Führungsgröße (W 
+oder W2) im Display 
+angezeigt wird. 
+Drücken Sie dann die 
+Programmiertaste. 
+Bei nicht aktiver Führungsgröße blinkt im 
+Display W oder W2, bei aktiver dagegen 
+nicht. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+  
+ 
+ 
+Nicht bei blinkender Anzeige von W oder 
+W2, da Sie dann die neue Führungsgröße 
+aktivieren! 
+ 
+--- PAGE 4 ---
+PRTA_V1 Temperaturregelung.doc C. Brüdigam Seite 4 / 8 
+ 
+2.3 Die Bedienebene des Reglers TROVIS 6493 
+ 
+In dieser Ebene wird der Kompaktregler konfiguriert und parametriert. Aus der Be -
+triebsebene erreicht man die Bedienebene, wenn die gelbe Programmiertaste ein-
+mal gedrückt wird. Man kann hier vorgegebene Funktionen den Bedürfnissen anpas -
+sen (konfigurieren) und Parameter verändern. Die Funktionen sind neun sogenann -
+ten Hauptgruppen zugeordnet: 
+IN Eingangsfunktionen 
+SETP Führungsgröße 
+CNTR Regelstruktur und -funktionen 
+OUT Ausgangsfunktionen 
+ALRM Meldefunktionen 
+AUX Zusatzfunktionen 
+TUNE Inbetriebnahmeadaption 
+I-O Anzeige von Prozeßdaten 
+PAR Parametereinstellung 
+Die Parameter sind stets an die Funktionen geknüpft, zu der sie gehören. Wenn also 
+z. B. die Auswahltaste gedrückt wird, erreicht man nur die Parameter, die für diese 
+Funktion relevant sind. Die Funktionen sind im Display des Reglers mit – CO – 
+(„Configuration“) und die Parameter mit – PA – („Parameter“) gekennzeichnet. Eine 
+Umschaltung von der jeweiligen Funktion in den zugehörigen Parameterbereich er -
+folgt durch die Auswahltaste und umgekehrt durch die Rückstelltaste. 
+ 
+Hinweis: Um sicherzustellen, dass keine unbefugten Änderungen an den Einstellun -
+gen vorgenommen werden können, kann der Regler mit einer Schlüsselzahl belegt 
+werden. Werkseinstellung ist der Betrieb ohne Schlüsselzahl.  
+ 
+Jedesmal, wenn in der Bedienebene erstmals eine Funktion oder ein Parameter ge -
+ändert werden sollen, wird die Schlüsselzahl abgefragt. Im Praktikumsversuch geben 
+Sie bitte keine Schlüsselzahl  ein und übergehen die Aufforderung zur Eingabe 
+durch erneutes Drücken der Programmiertaste. 
+2.3.1 Hauptgruppe CNTR - Reglerstruktur 
+In dieser Hauptgruppe kann man den Regelalgorithmus festlegen und die verschie -
+denen Zeitverhalten (P, PI, PD, PID, PPI) bestimmen. 
+2.3.1.1 Funktion C.PID – Reglerstruktur, Zeitverhalten 
+Mit diesen Einstellmöglichkeiten können dem Kompaktregler unterschiedliche Zeit -
+verhalten bezüglich der Regelalgorithmen zugeordnet werden. 
+--- PAGE 5 ---
+PRTA_V1 Temperaturregelung.doc C. Brüdigam Seite 5 / 8 
+Auswahl Regelstruktur: 
+P P-Regler 
+K  
+PI 
+PI-Regler 
+11
+N
+K Ts +  
+PID 
+PID-Regler 
+11 V
+N
+K T s Ts ++  
+Parametereinstellung Zeitverhalten: 
+K(p) Proportionalbeiwert (Verstärkung) 
+TN Nachstellzeit (I-Anteil) 
+TV Vorhaltezeit (D-Anteil) 
+2.3.2 Hauptgruppe PAR – Parameterbearbeitung KP, TV, TN 
+In dieser Hauptgruppe kann auf die Parameter KP; TV; TN zugegriffen werden. 
+ 
+3 Versuchsbeschreibung 
+3.1 Versuchsaufbau 
+Temp T (PTC)
+U          = 12 V (const.)
+U Heizung
+Gebläse
+Netzteil
+max. 25 V, 15 A
+U
+PWM
+x
+W, W2
+y
+PID
+FET
+Kompaktregler
+RohrFön
+ 
+Mit Hilfe eines umgebauten Haartrockners (max.  25 V / 15 A  Heizung, 12 V Gebläse; 
+Heizung und Gebläse können unabhängig voneinander betrieben werden) wird 
+warme Luft in den Schlauch eingeblasen. Am Ende des Schlauchs befin det sich ein 
+Pt100-Temperatursensor T, der die Austrittstemperatur erfasst und dem Kom pakt-
+regler zuführt. Abhängig von Führungsgröße ( W bzw. W2) und Regelgröße x ergibt 
+sich ein Reglerausgangssignal (0 ... 10 V), das mit Hilfe eines Umsetzers in ein PWM-
+Signal (0 ... 100% Einschaltdaue r) gewandelt wird. Mit diesem Signal wird ein Feld -
+--- PAGE 6 ---
+PRTA_V1 Temperaturregelung.doc C. Brüdigam Seite 6 / 8 
+effekt-Transistor (FET) getaktet und so die Heizleistung zwischen 0 ... 100% einge -
+stellt (100%  ca. 25 V  15 A = 375 W). 
+Das Hauptproblem der Regelung besteht darin, dass sich die Heizleistung wegen der 
+Laufzeit im Rohr und dessen Wärmekapazität nur stark verzögert auf die Austritts -
+temperatur T am Rohrende auswirkt. 
+ 
+4 Versuchsdurchführung 
+4.1 Tastenbelegung Regler zur Konfiguration und Parametrierung 
+Gelbe Programmiertaste Umschalten von der Betriebsebene in die Hauptgruppen 
+der Bedienebene 
+Umschalten von der Hauptgruppe in die Funktion 
+Aktivieren der Auswahl/Parameter 
+Bestätigen der Auswahl/Parameter 
+Bestätigen oder Übergehen der Schlüsselzahl 
+Gelbe Auswahltaste Umschalten von der Auswahlebene in die Parameter-
+ebene 
+Rückstelltaste Umschalten von Parameterebene in Auswahlebene, 
+Funktion, Hauptgruppe, Betriebsebene 
+Cursortasten Treffen der Auswahl 
+Einstellen der Parameter 
+4.2 Aufgabenstellung 
+Hinweis: Das Netzteil ist mit Strombegrenzung (immer 15 A) zu betreiben. 
+4.2.1 Ungeregeltes System 
+• Netzteil auf U = 20 V einstellen, Heizung zunächst ausgeschaltet. 
+• Lesen Sie die Umgebungstemperatur T0V am Display des Kompaktreglers ab und 
+notieren Sie diese. 
+• Uhr mit Sekundenanzeige und Tabelle zum Notieren der Messwerte vorbereiten. 
+• Heizung einschalten. 
+• Temperatur nach 2, 4, 6, 8, 10, 20, 30 Sekunden und dann alle 30 Sekunden 
+ablesen und notieren. 
+• Nach 10 Minuten, Endtemperatur T20V notieren und dann Störung aufschal ten: 
+Spannung mit Drehknopf um 10% reduzieren (→ 18 V). 
+• Nach dem Einschwin gen des Systems (ca. 3 Minuten) kann die Tempera tur T18V 
+notiert und die Heizung abgeschaltet werden. 
+Vorbereitungsfrage: Wie lautet die Formel zur Berechnung des relativen Tempe -
+raturfehlers sinnvollerweise? 
+• Bestimmen Sie die den absoluten und relativen Temperaturfehler. 
+• Skizzieren Sie die Sprungantwort 
+--- PAGE 7 ---
+PRTA_V1 Temperaturregelung.doc C. Brüdigam Seite 7 / 8 
+Vorbereitungsfrage: Welche zwei Verfahren kennen Sie zur Bestimmung der 
+Zeitkonstanten eines PT1 Systems? 
+• Bestimmen Sie die Zeitkonstante des Einschwin gvorgangs unter der Annahme, 
+dass es sich um ein PT1 System handelt. 
+• Bestimmen Sie die Zeit bis 90% der Temperaturänderung (Ausgangswert bei 0 s 
+bis erreichter Endwert) erreicht sind  
+4.2.2 Manueller Betrieb 
+Spielen Sie selbst den Regler und versuchen Sie mit Hilfe des Spannungseinstellers 
+am Netzteil eine Temperatur von T = 45°C zu erreichen und für 2 Minuten mit ein er 
+maximalen Abweichung von 0,2°C zu halten. (Strombegrenzung bleibt auf 15 A). 
+Wie lange benötigen Sie, bis Sie diese Temperatur zum ersten Mal dauerhaft erreicht 
+haben?  
+4.2.3 Reglereinstellung nach Ziegler/Nichols 
+• Schließen Sie die Heizung (blaue Stecker) am Ausgang „Heizung“ der Umsetzer -
+Box an und verbin den Sie den Eingang „ 0 - 30V“ der Umsetzer -Box mit dem 
+Netzteil (25V). Betreiben Sie das System nun mit einem P -Regler. Achtung: nach 
+jeder Änderung des Reglertyps befindet sich der Regler im Handbetrieb (Anzeige 
+8). Vergessen Sie nicht, ihn mit Taste 13 wieder auf Automatikbetrieb 
+umzuschalten. 
+• Finden Sie die kritische Reglerverstärkung KP, krit. 
+Tip: Stellen Sie dazu einen Sollwert (Führungsgröße W) von 45 °C ein. Beginnen 
+Sie mit KP = 1,0 . Erhöhen Sie dann die Reglerverstärkung jeweils um einen 
+Faktor 2, so lange, bis das System instabil wird . Instabiles Schwingen ist an 
+einem deutlichen, nicht abklingenden  Zu- und Abnehmen der Reg lerausgangs-
+spannung (oder einer anderen Signalgröße) zu erkennen (Oszilloskop), das bis 
+zum Erreichen der mini malen bzw. maximalen  Reglerausgangsspannung führt. 
+Reduzieren Sie dann die Verstärkung in Schritten von ca. 10 - 30%, bis das 
+System wieder stabil wird. Klei nere Schritte als ca. 5 - 10% sind nicht mehr 
+sinnvoll. Warten Sie nach jeder Verstär kungsänderung eine Weile (mind. 40 s), 
+wie sich das System verhält. 
+KP,krit liegt zwischen dem größten KP für stabiles Verhalten und dem kleinsten KP 
+für instabiles Verhalten. 
+• Bestimmen Sie KP,krit sowie die Periodendauer Tkrit und notieren Sie diese. 
+• Bestimmen Sie die Parameter für einen P -, PI - und PID -Regler nach Zieg -
+ler/Nichols. 
+ 
+Reglertyp KP TN TV 
+P 0,5  KP,krit - - 
+PI 0,45  KP,krit 0,85  Tkrit - 
+PID 0,6  KP,krit 0,5  Tkrit 0,12  Tkrit 
+ 
+--- PAGE 8 ---
+PRTA_V1 Temperaturregelung.doc C. Brüdigam Seite 8 / 8 
+4.2.4 Geregelter Betrieb 
+• Führen Sie den folgenden Ablauf für jeden Reglertyp (P, PI, PID) durch. Stellen 
+Sie die Parame ter jeweils der Tabelle entsprechend ein.  Achtung: nach jeder 
+Änderung des Reglertyps befindet sich der Regler im Handbetrieb (Anzeige 8). 
+Vergessen Sie nicht, ihn mit Taste 13 wieder auf Automatikbetrieb umzuschalten. 
+• Stellen Sie das Netzteil für die Heizung auf 25 V. 
+• Wählen Sie die Sollwerte W und W2 vor: W = WH = 45 °C und W2 = WL = 35°C. 
+• Aktivieren Sie WL, schalten Sie die Heizung ein und warten Sie, bis das System 
+eingeschwungen ist. 
+• Aktivieren Sie WH und notieren Sie die erreichte Endtempera tur TH/25 sowie die 
+Zeit, bei der die Temperatur dauerhaft in ein Band von  0,2°C um den Endwert 
+einschwingt und gegebenenfalls das maximale Überschwingen. 
+Anm.: Beim P-Regler ist dazu zweimaliges Messen nötig. 
+• Wenn das System eingeschwungen ist, schalten Sie eine Störung auf: 
+Heizspannung mit Drehknopf um 10% reduzieren ( → 22,5 V ). Nach dem Ein -
+schwingen des Systems kann die Temperatur TH/22,5 notiert werden.  
+• Bestimmen Sie den stationären Temperatur fehler (in %), der durch das Reduzie -
+ren der Heizspannung verursacht wird. Interpretieren Sie das Ergebnis. 
+ 
+5 Versuchsauswertung 
+Erstellen Sie pro Gruppe ein Protokoll (Versuchsname und -datum, Gruppennummer 
+und Teilnehmer). Fügen Sie die Sprungantwort (ungeregeltes System) bei und geben 
+Sie die Einschwingzeiten (  0,2°C), stationären Regelabweichungen und relativen 
+Fehler aufgrund des 10% -Spannungsabfalls für alle Mes sungen (ungeregelt, P, PI, 
+PID) an. Vergleichen Sie die Ergebnisse von ungeregel tem und geregeltem Betrieb. 
+Erklären Sie Auffälligkeiten. 
+Bitte formulieren Sie in 1 bis 3 Sätzen: Welche Erkenntnisse haben Sie gewonnen? 
+Abgabe an den Betreuer spätestens vor dem nächsten Versuch bzw. innerhalb von 
+max. 2 Wochen! 
+ 
+6 Testfragen 
+• Siehe Vorbereitungsfragen 
+• Skizzieren Sie das Blockschaltbild eines Regelkreises mit den wesentlichen 
+Komponenten. 
+• Welchen Grund gibt es, einen Regler mit I-Anteil zu verwenden? 
+• Welchen Grund gibt es, einen Regler mit D-Anteil zu verwenden? 
+• Wie gehen Sie vor, wenn Sie einen PI-Regler nach Ziegler/Nichols auslegen? 
+• Erläutern Sie das Prinzip der Pulsweitenmodulation zur Einstellung der (Heiz-) 
+Leistung. Was ist der Vorteil gegenüber einer linearen Spannungseinstellung? 
+ 
