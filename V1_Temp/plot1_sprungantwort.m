@@ -1,17 +1,18 @@
 %% Plot 1: Sprungantwort des ungeregelten Systems mit Auswertung
-% Laborversuch PRTA V1 - OTH Regensburg
+% Laborversuch V1: Temperaturregelung
+% Fach: Regelungstechnik Anwendungen
 % Autoren: Johannes Wutz, Oliver Grundmann, Eduardo Llama
 % Gruppe: 5 | Datum: 26.10.2026
 
 clear; close all; clc;
 
-% Erzwinge sauberes helles Design (auch wenn MATLAB im Dark Mode läuft)
+% Erzwinge sauberes helles Design (auch im MATLAB Dark Mode)
 set(groot, 'defaultTextColor', [0 0 0]);
 set(groot, 'defaultAxesXColor', [0 0 0]);
 set(groot, 'defaultAxesYColor', [0 0 0]);
 set(groot, 'defaultLegendTextColor', [0 0 0]);
 
-%% 1. Messdaten (Messprotokoll PRTA_V1)
+%% 1. Messdaten (Messprotokoll V1)
 % Phase 1: Aufheizen bei U = 20 V
 t_aufheizen = [0, 2, 4, 6, 8, 10, 20, 30, 60, 90, 120, 150, 180, 210, ...
                240, 270, 300, 330, 360, 390, 420, 450, 480, 510, 540, 570, 600];
@@ -32,71 +33,72 @@ T_UV = 21.9;               % Umgebungstemperatur [°C]
 T_end = 41.9;              % Endtemperatur nach 10 min [°C]
 delta_T_ges = T_end - T_UV;% Gesamter Temperatursprung = 20.0 K
 
+% 63.2% Wert
 T_63 = T_UV + 0.632 * delta_T_ges; % 34.54 °C
 t_63 = 30;                         % Gemessen: bei t = 30 s ist T = 34.5 °C
 T_stoer_end = 38.8;        % Endtemperatur bei 18 V [°C]
 
-%% 3. Grafik erstellen (Weißes wissenschaftliches Design)
-fig = figure('Name', 'Sprungantwort PRTA V1', 'Units', 'pixels', ...
-             'Position', [100, 100, 1050, 560], 'Color', 'w');
+%% 3. Grafik erstellen (Großformat)
+fig = figure('Name', 'Sprungantwort V1', 'Units', 'pixels', ...
+             'Position', [100, 100, 1200, 650], 'Color', 'w');
 
 ax = axes('Parent', fig);
 hold(ax, 'on');
 
-% Shading für den Störungsbereich
-h_patch = patch([600 780 780 600], [20 20 46 46], [0.93 0.93 0.95], ...
-                'EdgeColor', 'none', 'FaceAlpha', 0.85);
+% Shading für den Störungsbereich (ab t = 600 s)
+patch([600 785 785 600], [20 20 45 45], [0.95 0.94 0.95], ...
+      'EdgeColor', 'none', 'FaceAlpha', 0.85);
 
-% Horizontale Referenzlinien
-h_end = yline(T_end, '--', 'Color', [0.85, 0.15, 0.15], 'LineWidth', 1.5);
-h_uv  = yline(T_UV, ':', 'Color', [0.35, 0.35, 0.35], 'LineWidth', 1.3);
-h_stoer = yline(T_stoer_end, '-.', 'Color', [0.75, 0.35, 0.1], 'LineWidth', 1.4);
+% Horizontale Referenzlinien für Endwerte
+yline(T_end, '--', 'Color', [0.75, 0.75, 0.75], 'LineWidth', 1.2);
+yline(T_UV, ':', 'Color', [0.75, 0.75, 0.75], 'LineWidth', 1.2);
+yline(T_stoer_end, '-.', 'Color', [0.85, 0.85, 0.85], 'LineWidth', 1.2);
 
-% 63.2% Konstruktionslinien
-plot([0, t_63], [T_63, T_63], 'Color', [0.1, 0.6, 0.25], 'LineStyle', ':', 'LineWidth', 1.3);
-plot([t_63, t_63], [20, T_63], 'Color', [0.1, 0.6, 0.25], 'LineStyle', ':', 'LineWidth', 1.3);
-h_63 = plot(t_63, T_63, 's', 'MarkerSize', 8.5, 'MarkerFaceColor', [0.1, 0.6, 0.25], ...
-            'MarkerEdgeColor', 'k');
+%% 63.2% Konstruktion in EINER FARBE (Lila/Magenta)
+col_63 = [0.65, 0.15, 0.65];
+plot([0, t_63], [T_63, T_63], 'LineStyle', '--', 'Color', col_63, 'LineWidth', 1.6);
+plot([t_63, t_63], [20, T_63], 'LineStyle', '--', 'Color', col_63, 'LineWidth', 1.6);
+plot(t_63, T_63, 's', 'MarkerSize', 8, 'MarkerFaceColor', col_63, 'MarkerEdgeColor', col_63);
 
-% Wendetangente zur Demonstration von Verzugszeit Tu / Ausgleichszeit Tg
-t_tan = 0:50;
-T_tan = 21.9 + 0.85 * (t_tan - 1.2);
-idx_tan = T_tan <= 41.9 & T_tan >= 21.9;
-h_tan = plot(t_tan(idx_tan), T_tan(idx_tan), 'Color', [0.85, 0.55, 0.0], 'LineWidth', 1.4, ...
-             'LineStyle', '--');
+%% Tangente in EINER FARBE (Grün)
+% Gelegt zwischen 2. und 3. Messpunkt: t=2s / 22.3°C und t=4s / 24.3°C
+% Steigung m = 1.0 K/s, Schnitt mit T_end (41.9) bei t = 21.6 s
+col_tan = [0.12, 0.62, 0.22];
+t_tan = 1.6:0.5:22;
+T_tan = 22.3 + 1.0 * (t_tan - 2);
+plot(t_tan, T_tan, '--', 'Color', col_tan, 'LineWidth', 2.2);
+plot([21.6, 21.6], [20, 41.9], ':', 'Color', col_tan, 'LineWidth', 1.5);
+plot([2, 4], [22.3, 24.3], 'o', 'MarkerSize', 6, 'MarkerFaceColor', col_tan, 'MarkerEdgeColor', col_tan);
+plot(21.6, 41.9, 'o', 'MarkerSize', 8, 'MarkerFaceColor', col_tan, 'MarkerEdgeColor', col_tan);
 
-% Messkurve
-h_mess = plot(t_ges, T_ges, '-o', 'Color', [0.0, 0.30, 0.65], 'LineWidth', 1.8, ...
-              'MarkerSize', 4.5, 'MarkerFaceColor', [0.0, 0.45, 0.85], ...
-              'MarkerEdgeColor', [0.0, 0.20, 0.45]);
+%% Messkurve (Blau)
+plot(t_ges, T_ges, '-o', 'Color', [0.0, 0.30, 0.65], 'LineWidth', 2.0, ...
+     'MarkerSize', 4.5, 'MarkerFaceColor', [0.0, 0.45, 0.85], ...
+     'MarkerEdgeColor', [0.0, 0.20, 0.45]);
 
-% Störungssprung Trennlinie
-h_xline = xline(600, '-', 'Color', [0.5, 0.1, 0.1], 'LineWidth', 1.6);
+%% Störungssprung (Rote Linie bei t = 600 s)
+xline(600, '-', 'Color', [0.85, 0.15, 0.15], 'LineWidth', 2.0);
 
-% Textannotationen
-text(120, 42.6, 'T_{\infty} = 41,9 °C', 'FontSize', 10.5, 'FontWeight', 'bold', 'Color', [0.75, 0.1, 0.1]);
-text(42, 34.1, '63,2 %-Wert: \tau \approx 30 s (34,5 °C)', 'FontSize', 9.5, 'FontWeight', 'bold', 'Color', [0.1, 0.5, 0.2]);
-text(615, 33.5, {'{\bf Störsprung (-10 % Spannung)}', '\Delta T = 3,1 K  \rightarrow  F_{rel} = 15,5 %'}, ...
-     'FontSize', 9.5, 'Color', [0.5, 0.1, 0.1], 'BackgroundColor', 'w', 'Margin', 3);
+%% Das EINZIGE Textfeld im gesamten Diagramm (beim roten Strich: "Störung")
+text(608, 43.5, 'Störung', 'FontSize', 12, 'FontWeight', 'bold', ...
+     'Color', [0.85, 0.15, 0.15], 'BackgroundColor', 'w', ...
+     'EdgeColor', [0.85, 0.15, 0.15], 'Margin', 4);
 
-% Formatierung Achsen & Titel
-xlabel('Zeit t [s]', 'FontSize', 11, 'FontWeight', 'bold', 'Color', 'k');
-ylabel('Temperatur T [°C]', 'FontSize', 11, 'FontWeight', 'bold', 'Color', 'k');
+%% Achsenskalierung mit T_End und T_Raum links in der Y-Skalierung
+y_ticks = [20, 21.9, 25, 30, 34.54, 38.8, 41.9, 45];
+y_labels = {'20', 'T_{Raum} = 21,9', '25', '30', '34,5 (63,2 %)', '38,8', 'T_{End} = 41,9', '45'};
+
+set(ax, 'YTick', y_ticks, 'YTickLabel', y_labels);
+xlabel('Zeit t [s]', 'FontSize', 12, 'FontWeight', 'bold', 'Color', 'k');
+ylabel('Temperatur T [°C]', 'FontSize', 12, 'FontWeight', 'bold', 'Color', 'k');
 title('Sprungantwort des ungeregelten Systems mit Störungssprung (Kapitel 4.2.1)', ...
-      'FontSize', 12, 'FontWeight', 'bold', 'Color', 'k');
+      'FontSize', 13, 'FontWeight', 'bold', 'Color', 'k');
 
 xlim([0, 785]);
 ylim([20, 45]);
 grid on;
 set(ax, 'Box', 'on', 'Color', 'w', 'XColor', 'k', 'YColor', 'k', ...
-        'GridColor', [0.82, 0.82, 0.82], 'GridAlpha', 0.8, 'FontSize', 10);
-
-legend([h_mess, h_end, h_stoer, h_uv, h_63, h_tan, h_xline, h_patch], ...
-       {'Messkurve Temperatur', 'Endwert T_{\infty} = 41,9 °C', ...
-        'Endwert nach Störung T_{18V} = 38,8 °C', 'Umgebungstemperatur T_{UV} = 21,9 °C', ...
-        '63,2 %-Punkt (\tau \approx 30 s)', 'Wendetangente (S-Kurve / Totzeit)', ...
-        'Störungsaufschaltung (U = 20 V \rightarrow 18 V)', 'Störbereich (18 V)'}, ...
-       'Location', 'southeast', 'FontSize', 8.8, 'Box', 'on', 'Color', [1 1 1 0.95], 'TextColor', 'k');
+        'GridColor', [0.82, 0.82, 0.82], 'GridAlpha', 0.8, 'FontSize', 10.5);
 
 %% 4. Exportieren mit weißem Hintergrund
 output_file = 'sprungantwort_auswertung.png';

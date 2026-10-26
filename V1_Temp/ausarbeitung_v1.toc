@@ -1,0 +1,24 @@
+\babel@toc {ngerman}{}\relax 
+\contentsline {section}{\numberline {1}Grundlagen und Versuchsaufbau}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Ziel des Versuchs}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Versuchsaufbau und Blockschaltbild}{2}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Untersuchung des ungeregelten Systems (Steuerung)}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Sprungantwort und Störungsaufschaltung}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Messdaten des ungeregelten Betriebs}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Streckenidentifikation: Tangente vs. Wendetangente}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Berechnung des relativen Temperaturfehlers}{4}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Manuelle Regelung}{4}{section.3}%
+\contentsline {section}{\numberline {4}Reglereinstellung nach Ziegler/Nichols}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Schwingungsversuch und grenzstabiler Bereich}{5}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Berechnete Reglerparameter nach Ziegler/Nichols}{5}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Geregelter Betrieb im experimentellen Vergleich}{5}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Messergebnisse des Führungs- und Störverhaltens}{5}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Vergleichende Analyse der Reglerstrukturen}{5}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Grafischer Reglervergleich}{6}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Kritische Reflexion: Warum ist der PI-Regler hier schneller als der PID-Regler?}{6}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Gegenüberstellung: Steuerung vs. Manuell vs. Regelungsalgorithmus}{6}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Synthese und wissenschaftlicher Erkenntnisgewinn}{7}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Systemtheoretische Pol-Nullstellen-Analyse (PI vs. PID)}{7}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Beantwortung der Test- und Kolloquiumsfragen}{7}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Zusammenfassendes Fazit}{7}{subsection.6.3}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
