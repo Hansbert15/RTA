@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2026.10.19)  26 OCT 2026 21:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2026.10.19)  26 OCT 2026 22:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1388,7 +1388,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 [5
 
 ]
-<reglervergleich.png, id=119, 674.52pt x 345.2097pt>
+<reglervergleich.png, id=118, 674.52pt x 345.2097pt>
 File: reglervergleich.png Graphic file (type png)
 <use reglervergleich.png>
 Package pdftex.def Info: reglervergleich.png  used on input line 403.
@@ -1398,11 +1398,11 @@ Package pdftex.def Info: reglervergleich.png  used on input line 403.
 [6
 
  <./reglervergleich.png (PNG copy)>]
-<wok_analyse.png, id=131, 708.246pt x 336.5373pt>
+<wok_analyse.png, id=131, 681.0243pt x 336.5373pt>
 File: wok_analyse.png Graphic file (type png)
 <use wok_analyse.png>
 Package pdftex.def Info: wok_analyse.png  used on input line 448.
-(pdftex.def)             Requested size: 341.31589pt x 162.18309pt.
+(pdftex.def)             Requested size: 328.1973pt x 162.18309pt.
 
 
 [7
@@ -1447,7 +1447,7 @@ n/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/johan
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/johan/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/johan/A
 ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb>
-Output written on ausarbeitung_v1.pdf (7 pages, 893647 bytes).
+Output written on ausarbeitung_v1.pdf (7 pages, 902463 bytes).
 PDF statistics:
  335 PDF objects out of 1000 (max. 8388607)
  52 named destinations out of 1000 (max. 500000)

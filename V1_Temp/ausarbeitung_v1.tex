@@ -329,8 +329,8 @@ Bei $U = 25\,\text{V}$ und Sollwert $W = 45\,^\circ\text{C}$ wurde das System im
 \toprule
 \textbf{Einstellung $K_P$} & 1 & 2 & 4 & 8 & 16 & 32 & \textbf{40} & 50 & 64 \\
 \midrule
-\textbf{Temperatur [$^\circ$C]} & 28,3 & 31,0 & 34,5 & 38,1 & 41,1 & 43,0 & \textbf{43,0 $\pm$ 0,2} & ROT & ROT \\
-\textbf{Systemverhalten} & stabil & stabil & stabil & stabil & Einschwingen & langes Einschwingen & \textbf{Dauerschwingung} & Instabil & Instabil \\
+\textbf{Temperatur [$^\circ$C]} & 28,3 & 31,0 & 34,5 & 38,1 & 41,1 & 43,0 & - & - & - \\
+\textbf{Systemverhalten} & stabil & stabil & stabil & stabil & Einschwingen & langes Einschwingen & Instabil (Dauerschwingung) & Instabil & Instabil \\
 \bottomrule
 \end{tabular*}
 \end{table}
@@ -365,13 +365,13 @@ Untersucht wurden ein Sollwertsprung von $W_L = 35\,^\circ\text{C}$ auf $W_H = 4
 \small
 \caption{Messwerte des geregelten Betriebs bei Sollwert- und Störgrößensprung.}
 \label{tab:reglervergleich}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccc@{}}
 \toprule
-\textbf{Reglertyp} & \textbf{Endtemp. $T_{H25}$} & \textbf{Einschwingzeit $t_{\text{ein}}$} & \textbf{Überschwingen} & \textbf{Temp. $T_{H22{,}5}$} & \textbf{Störfehler $F_{\text{abs}}$} & \textbf{Störfehler $F_{\text{rel}}$} \\
+\textbf{Reglertyp} & \textbf{Endtemp. $T_{H25}$} & \textbf{Einschwingzeit $t_{\text{ein}}$} & \textbf{Temp. $T_{H22{,}5}$} & \textbf{Störfehler $F_{\text{abs}}$} & \textbf{Störfehler $F_{\text{rel}}$} \\
 \midrule
-\textbf{P-Regler}   & $42{,}3\,^\circ\text{C}$ & $25\,\text{s}$ & keines & $41{,}5\,^\circ\text{C}$ & $0{,}8\,\text{K}$ & \textbf{3,9\,\%} \\
-\textbf{PI-Regler}  & $45{,}0\,^\circ\text{C}$ & $\mathbf{20\,\text{s}}$ & keines & $45{,}0\,^\circ\text{C}$ & $0{,}0\,\text{K}$ & \textbf{0,0\,\%} \\
-\textbf{PID-Regler} & $45{,}0\,^\circ\text{C}$ & $22\,\text{s}$ & vorhanden & $45{,}0\,^\circ\text{C}$ & $0{,}0\,\text{K}$ & \textbf{0,0\,\%} \\
+\textbf{P-Regler}   & $42{,}3\,^\circ\text{C}$ & $25\,\text{s}$ & $41{,}5\,^\circ\text{C}$ & $0{,}8\,\text{K}$ & \textbf{3,9\,\%} \\
+\textbf{PI-Regler}  & $45{,}0\,^\circ\text{C}$ & $\mathbf{20\,\text{s}}$ & $45{,}0\,^\circ\text{C}$ & $0{,}0\,\text{K}$ & \textbf{0,0\,\%} \\
+\textbf{PID-Regler} & $45{,}0\,^\circ\text{C}$ & $22\,\text{s}$ & $45{,}0\,^\circ\text{C}$ & $0{,}0\,\text{K}$ & \textbf{0,0\,\%} \\
 \bottomrule
 \end{tabular*}
 \end{table}
@@ -387,7 +387,7 @@ Untersucht wurden ein Sollwertsprung von $W_L = 35\,^\circ\text{C}$ auf $W_H = 4
     \item \textbf{PI-Regler:}
     Der I-Anteil integriert die Regelabweichung auf, bis diese vollständig verschwindet ($e_{\infty} = 0$). Sowohl Führungsgröße als auch Störung werden \textbf{exakt ($0{,}0\,\text{K}$ Abweichung, $0{,}0\,\%$ Störfehler)} ausgeregelt. Mit $\mathbf{t_{\text{ein}} = 20\,\text{s}}$ ist der PI-Regler der dynamisch schnellste und robusteste Regler.
     \item \textbf{PID-Regler:}
-    Erzielt ebenfalls stationäre Genauigkeit ($e_{\infty} = 0$). Allerdings tritt beim Sollwertsprung ein merkliches Überschwingen auf, weshalb das finale Einregeln in das schmale Toleranzband von $\pm 0{,}2\,^\circ\text{C}$ mit $\mathbf{t_{\text{ein}} = 22\,\text{s}}$ etwas länger dauert.
+    Erzielt ebenfalls stationäre Genauigkeit ($e_{\infty} = 0$). Allerdings tritt beim Sollwertsprung ein größeres Überschwingen auf, weshalb das finale Einregeln in das schmale Toleranzband von $\pm 0{,}2\,^\circ\text{C}$ mit $\mathbf{t_{\text{ein}} = 22\,\text{s}}$ etwas länger dauert. Bei besserer Einstellung, sollte der D-Anteil jedoch zu schnellerem Einschwingen führen.
 \end{itemize}
 
 \clearpage
