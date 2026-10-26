@@ -1,0 +1,1980 @@
+          Hilfsblätter
+Regelungstechnik Anwendungen
+          Claus Brüdigam
+Inhalt
+DIGITALE REGELUNGSTECHNIK......................................................................................... 4
+1     EINFÜHRUNG .................................................................................................................. 5
+2     ARBEITSWEISE DIGITALER REGELSYSTEME ............................................................ 6
+     2.1 Prinzipieller Aufbau eines Abtastsystems: Digitale Regelung ........................................................................ 6
+         2.1.1 Abtastglied (Sample) und Halteglied (Hold)............................................................................................ 7
+         2.1.2 Analog-Digital-Wandler (ADW, ADC)................................................................................................... 7
+         2.1.3 Anti-Aliasing Filter ................................................................................................................................ 7
+         2.1.4 Digitalrechner ........................................................................................................................................ 8
+         2.1.5 Digital-Analog-Wandler (DAW, DAC)................................................................................................... 8
+         2.1.6 Mikrocontroller (MC, µC) ...................................................................................................................... 8
+3     Z-TRANSFORMATION UND DARSTELLUNG ZEITDISKRETER SYSTEME ................ 9
+     3.1  Korrespondenzen der z-Transformation ...................................................................................................... 10
+     3.2  Rechenregeln der z-Transformation............................................................................................................. 11
+     3.3  z-Übertragungsfunktion................................................................................................................................ 12
+     3.4  Berechnung der Systemantwort im Zeitbereich ........................................................................................... 12
+     3.5  Zusammenhang zwischen s- und z-Transformation..................................................................................... 13
+     3.6  Stabilität ........................................................................................................................................................ 13
+     3.7  Bestimmung der z-Übertragungsfunktion aus der s-Übertragungsfunktion ............................................... 15
+          3.7.1 Rückwärtsdifferenzenquotient .............................................................................................................. 15
+          3.7.2 Vorwärtsdifferenzenquotient................................................................................................................. 16
+          3.7.3 Tustinsche Formel (Bilineartransformation) .......................................................................................... 16
+     3.8 Bestimmung eines Rechenalgorithmus aus der z-Übertragungsfunktion .................................................... 17
+     3.9 Kausalität ...................................................................................................................................................... 17
+     3.10 Einbettung des Rechenalgorithmus in ein Programm.................................................................................. 17
+     3.11 Erstellung eines Blockschaltbilds aus der z-Übertragungsfunktion............................................................. 18
+4     DIGITALE REGELUNG .................................................................................................. 19
+     4.1 Zeitdiskrete Realisierung analoger Regelkonzepte....................................................................................... 19
+     4.2 Zeitdiskrete Realisierung anhand des zeitdiskreten Streckenmodells ......................................................... 19
+         4.2.1 Zeitdiskrete Beschreibung des Streckenmodells .................................................................................... 20
+     4.3 WOK im Zeitdiskreten.................................................................................................................................. 23
+         4.3.1 Übungsaufgaben................................................................................................................................... 25
+     4.4 Regler mit endlicher Einstellzeit (Dead-Beat Regler) ................................................................................... 28
+         4.4.1 Kompensationsregler ............................................................................................................................ 28
+         4.4.2 Deadbeat-Regler................................................................................................................................... 28
+         4.4.3 Erzwingen eines Reglers mit I-Anteil .................................................................................................... 30
+         4.4.4 Vermeidung von Oszillationen der Regelgröße zwischen den Abtastpunkten ......................................... 31
+         4.4.5 Vorgehen bei Stellgrößenbeschränkungen ............................................................................................. 32
+5     HINWEISE UND BEISPIELE ZUR MODELLIERUNG UND REGLERAUSWAHL ........ 33
+     5.1    Ziel der Modellierung bestimmen ................................................................................................................. 33
+     5.2    Bestimmung der Modellstruktur .................................................................................................................. 33
+     5.3    Bestimmung der Modellparameter (Bsp. Drosselklappe) ............................................................................ 33
+     5.4    Überprüfung des Modells.............................................................................................................................. 33
+     5.5    Beispiele ......................................................................................................................................................... 34
+6     PRAKTISCHE ASPEKTE BEI DER REALISIERUNG VON DIGITALEN REGLERN .... 35
+     6.1    Pulsweitenmodulation ................................................................................................................................... 35
+     6.2    Integer-Rechnung: Quantisierung, numerische Probleme ........................................................................... 37
+     6.3    Wind-Up Problematik und Anti Wind-Up-Algorithmus.............................................................................. 38
+     6.4    Task-Scheduling ............................................................................................................................................ 40
+
+
+
+RTA_Hilfsblätter 2025-26.docx                                C. Brüdigam                                      30.09.2025                                       Seite 2 von 43
+Inhalt Praktikumsteil (5 Versuchstermine, davon 80% (= 4) bzw. 2/3 (= 4) verpflichtend)
+Versuch 1 – Temperaturregelung (Regelkreis, PID-Regler, Ziegler-Nichols)
+Versuch 2 – Modellbildung Drosselklappe (Systemstruktur, Parameterbestimmung)
+Versuch 3 – Reglerentwurf Drosselklappe (Matlab, Simulink, WOK)
+Versuch 4 – Regler Realisierung auf Mikrocontroller (Zeitdiskrete Beschreibung, Regel-
+Programm, numerische Probleme, Anti-Windup)
+Versuch 5 – Nachholtermin bzw. freies Arbeiten
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx   C. Brüdigam            30.09.2025              Seite 3 von 43
+Literatur
+
+Digitale Regelungstechnik
+G. Schulz: Regelungstechnik 2. Oldenbourg Verlag München, 2008. (Mehrgrößenregelung,
+Digitale Regelungstechnik, Fuzzy-Regelung)
+Mann, Schiffelgen, Froriep, Webers: Einführung in die Regelungstechnik. Hanser Verlag,
+München, 2019
+J. Lunze: Regelungstechnik 2 - Mehrgrößensysteme, Digitale Regelung: Springer Verlag,
+Berlin, 2016
+H. Unbehauen: Regelungstechnik II - Zustandsregelungen, digitale und nichtlineare
+Regelsysteme. Vieweg Verlag, Braunschweig, 2007
+O. Föllinger: Lineare Abtastsysteme. Oldenbourg Verlag, München, 1993
+J. Ackermann: Abtastregelung. Springer Verlag, Berlin, 1988
+Anton Braun: Digitale Regelungstechnik. Oldenbourg Verlag
+
+
+Rechnerunterstützung
+Angermann, Beuschel, Rau, Wohlfarth: Matlab - Simulink - Stateflow. Oldenbourg Verlag
+München, 2011
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx   C. Brüdigam              30.09.2025                 Seite 4 von 43
+Einführung
+
+
+
+1 Einführung
+Unter einem Abtastsystem (oder zeitdiskreten System) versteht man ein System, in dem
+Abtastvorgänge auftreten. D.h. zu diskreten Abtastzeitpunkten werden aus kontinuierlichen
+Zeitverläufen Funktionswerte entnommen und weiterverarbeitet.
+Ansonsten kontinuierliche Systeme, die ein digital arbeitendes Gerät (z.B. Mikrocontroller)
+enthalten, sind also (auch) Abtastsysteme.
+Seit 1960 Einsatz von digitalen Systemen zur Prozessautomatisierung (Prozessrechner).
+Wegen hoher Kosten wurde damals eine Zentralisierung angestrebt.
+1971 erschienen die ersten Mikroprozessoren: kleine, billige, aber vielseitige Systeme. Damit
+ergab sich der Trend zu hierarchisch gegliederten, dezentralisierten Automatisierungs-
+systemen: schrittweise Inbetriebnahme, Redundanzen.
+Seit 1975 sind digitale Regler und frei programmierbare Steuerungen auf der Basis von
+Mikroprozessoren auf dem Markt. Anwendung jetzt auch in einzelnen Geräten der
+Automatisierungstechnik.
+Digitale Regler ersetzen oft mehrere analoge Regler. Da die Peripherie (Messfühler,
+Stellglieder) häufig analog ausgeführt ist, besitzen die digitalen Regler am Eingang meist
+Analog-/Digital-Wandler und am Ausgang oft Digital/Analog-Wandler (auch als PWM-Modul
+realisiert). Teilweise liefern und verarbeiten Messfühler und Stellglieder auch schon digitale
+Signale.
+Neben dem Ersatz von analogen Reglern sind weitere Zusatzfunktionen möglich:
+Automatische Umschaltung von Sollwerten, Grenzwertüberwachungen, Korrektur von
+Nichtlinearitäten, Dokumentation, Kommunikation mit anderen Systemen, Fehlererkennung
+und -diagnose, adaptive Regelalgorithmen. Änderungen und Erweiterungen sind durch
+Software-Änderungen leicht möglich (sofern die Hardware genügend Reserven hat: Ein-
+/Ausgänge, Speicher, Zykluszeit, ...).
+Kennzeichnend für digitale Regelungen ist:
+• Regel- und Steueralgorithmen sind als Software realisiert.
+• Es entstehen zeitquantisierte (abgetastete) Signale
+• Die Signale sind durch endliche Wortlängen im Rechner amplitudenquantisiert
+Wegen der großen Flexibilität (Software) ist man nicht mehr auf standardisierte Bausteine mit
+P-, I- und D-Verhalten beschränkt, sondern kann auch aufwendigere Algorithmen, z.B. mit
+mathematischen Modellen einsetzen.
+Liegen die Abtastzeitpunkte dicht beisammen, so approximiert die Verarbeitung das
+kontinuierliche Verhalten. Eine derartige digitale Regelung bzw. Steuerung arbeitet „quasi-
+kontinuierlich“. Die bekannten, konventionellen Reglertypen (z.B. PID) können dann in
+entsprechende Algorithmen umgesetzt werden.
+Wird die Distanz der Abtastzeitpunkte größer, geht das quasi-kontinuierliche Verhalten
+verloren. Die Analyse erfordert dann neue Betrachtungsweisen.
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx    C. Brüdigam               30.09.2025               Seite 5 von 43
+Arbeitsweise digitaler Regelsysteme
+
+2 Arbeitsweise digitaler Regelsysteme
+In kontinuierlichen Systemen ist einem Signal zu                            f(t)
+jedem beliebigen Zeitpunkt ein eindeutiger Wert
+                                                                                                                                 f(t 4 )
+zugeordnet. Wird ein solches Signal f(t) nur zu
+bestimmten diskreten Zeitpunkten t1, t2, ...
+gemessen oder „abgetastet“, so entsteht ein zeit-                                                               f(t 3 )
+                                                                                                                                              f(t 5 )
+
+diskretes Signal (Abtastsignal), das durch die                                                        f(t 2 )
+Zahlenfolge                                                                              f(t 1 )
+{f(ti)} = {f(t1), f(t2), f(t3), ...}
+definiert wird. Tritt in einem dynamischen System
+(mindestens) ein solches Signal auf, so spricht                                           t1            t2         t3             t4         t5
+                                                                                                                                                        t
+
+man von einem (zeit-) diskreten System (Abtast-
+system).
+Beispiele für Abtastsysteme:
+• Messung nur zu bestimmten Zeitpunkten möglich (Flugsicherungsradar)
+• Stellgrößenausgabe nur zu bestimmten Zeitpunkten möglich (Phasenanschnittsteuerung)
+• Serielle Messung/Verarbeitung durch ein einziges Gerät (Prozessrechner)
+Häufiger Sonderfall: Abtastung zu äquidistanten Zeitpunkten
+Abtastzeit TA bzw. Abtastfrequenz A = 2/TA
+Ein solches Abtastsignal wird beschrieben durch die Zahlenfolge
+{f(kTA)} = {f(0), f(TA), f(2TA), ...} mit k  0
+f(kTA) = 0 für k < 0
+Anm.: oft statt {f(kTA)} nur kurz {f(k)} oder auch nur {fk}; wenn klar ist, dass es sich um eine
+Folge handelt, kann die geschweifte Klammer auch weggelassen werden.
+
+2.1    Prinzipieller Aufbau eines Abtastsystems: Digitale Regelung
+
+
+                 Abtaster    Halteglied   ADW                                      DAW
+w(t)      e(t)                                    e(kT A)   Digital-   u(kTA )                 u(t)                       y(t)
+                                                            rechner                                      Strecke
+          -
+
+                                                        Abtaststeuerung
+                 MC                                          (TA )
+
+
+
+
+Die Regeldifferenz e(t) wird periodisch mit der (konstanten) Abtastzeit TA abgetastet und
+gehalten und über einen Analog/Digital-Wandler in den digitalen Wert e(kTA) umgewandelt.
+Neben der Zeitquantisierung erfolgen hierbei auch eine Amplitudenquantisierung
+und -begrenzung. Diese können bei ungünstiger Skalierung der Größen zu falschen
+Berechnungen führen (Auslöschen von Werten oder Überlauf).
+Der Regler (Prozessrechner bzw. Mikrocontroller) berechnet aus der Folge e(kTA) nach einem
+Regelalgorithmus die Folge der Stellsignalwerte u(kTA). Die Stellgröße u(kTA) wird vom
+Digital/Analog-Wandler in ein analoges Signal u(t) umgewandelt und jeweils über eine
+Abtastperiode konstant gehalten (Halteglied). u(t) stellt also ein treppenförmiges Signal dar.
+u(t) wirkt auf die Strecke und erzeugt dort die Ausgangsgröße y(t). Alternativ zum DA-Wandler
+wird oft eine PWM-Einheit verwendet (Kap. 6.1).
+
+RTA_Hilfsblätter 2025-26.docx                   C. Brüdigam                                30.09.2025                                      Seite 6 von 43
+Arbeitsweise digitaler Regelsysteme
+
+Wenn die Abtastzeit kurz genug ist, ergibt sich näherungsweise das Verhalten eines konti-
+nuierlichen Systems. So kann eine zeitdiskrete Version eines kontinuierlichen Reglers erzeugt
+werden.
+
+Dazu muss TA entsprechend gewählt werden. Typische Werte: TA  1                 ... 1         TSystem, dom
+                                                                            10           20
+( TSystem , dom ist die dominierende (oft größte) Zeitkonstante des Systems)
+
+
+
+2.1.1 Abtastglied (Sample) und Halteglied (Hold)
+Die Abtast- und Halteschaltung übernimmt zum Abtastzeitpunkt den Eingangswert
+(Spannung) und hält ihn am Ausgang so lange konstant, bis die AD-Wandlung
+abgeschlossen ist.
+                                                  +
+                                                                      +
+                                                  -
+                                        Ue(t)                         -
+                                                                                         Ua(t)
+Ue(t)                           Ua(t)
+
+
+
+Abtast- und Halteglied: Prinzip und technische Realisierung
+Anm.: Das Auftreten von Abtastvorgängen in ansonsten linearen kontinuierlichen Systemen
+ändert nichts an deren Linearität.
+
+
+2.1.2 Analog-Digital-Wandler (ADW, ADC)
+      Der AD-Wandler wandelt eine Spannung an seinem Eingang in einen Zahlenwert an
+      seinem Ausgang. Dabei wird das i.a. amplituden- und zeitkontinuierliche
+Eingangssignal in ein amplituden- und zeitdiskretes Ausgangssignal gewandelt.
+Wandler-Typen:
+    •    Parallel-Wandler (sehr schnell, Wandlung in einem Takt)
+    •    Sukzessive Approximation (n Takte für n Bit)
+    •    Delta-Sigma Wandler (2n Takte für n Bit)
+    •    Dual-Slope Wandler (ca. 22n Takte für n Bit)
+
+
+2.1.3 Anti-Aliasing Filter
+Das Anti-Aliasing Filter ist ein kontinuierlicher (oft RC-) Tiefpass, der Frequenzen, die über
+der halben Abtastfrequenz liegen, blockiert. Durch Anordnung vor dem Abtast-/Halteglied
+wird sichergestellt, dass es nicht zu Aliasing Effekten bei der AD-Wandlung kommen kann.
+Anm.: Shannon Abtasttheorem: Die Abtastung eines sinusförmigen Signals muss mindestens
+mit der doppelten Signalfrequenz erfolgen, damit es fehlerfrei rekonstruiert werden kann:
+                        1                     
+ f Abtast  2  f max     2   max   TA       
+                       TA        2         max 
+
+
+RTA_Hilfsblätter 2025-26.docx                   C. Brüdigam    30.09.2025                              Seite 7 von 43
+Arbeitsweise digitaler Regelsysteme
+  1
+
+0.8
+
+0.6
+
+0.4
+
+0.2
+
+  0
+
+-0.2
+
+-0.4
+
+-0.6
+
+-0.8
+
+ -1
+   0      1      2      3       4     5   6       7     8   9   10   t/s
+Aliasing Effekt
+
+
+
+2.1.4 Digitalrechner
+Ein Digitalrechner berechnet über eine Rekursionsgleichung aus dem Eingangssignal das
+Stellsignal.
+Häufig werden von einem Rechner mehrere (Regel-) Tasks ausgeführt. Oft auch in
+unterschiedlichem Zeitraster.
+
+
+2.1.5 Digital-Analog-Wandler (DAW, DAC)
+          Der DA-Wandler wandelt einen Zahlenwert an seinem Eingang in eine Spannung an
+          seinem Ausgang.
+
+
+
+
+2.1.6 Mikrocontroller (MC, µC)
+Ein Mikrocontroller beinhaltet typischerweise die Baugruppen Abtaster-/Halteglied, ADW und
+DAW sowie den Digitalrechner in einem Gehäuse. Häufig wird der DAW durch ein PWM-
+Modul realisiert (siehe Kapitel 6.1).
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                 C. Brüdigam                  30.09.2025   Seite 8 von 43
+z-Transformation und Darstellung zeitdiskreter Systeme
+
+3 z-Transformation und Darstellung zeitdiskreter Systeme
+So, wie die Laplace-Transformation die Behandlung linearer zeitkontinuierlicher Systeme und
+Differentialgleichungen vereinfacht, vereinfacht die z-Transformation die Behandlung linearer
+zeitdiskreter Systeme und Differenzengleichungen.
+Für die Zahlenfolge
+
+ f ( k  T ) =  f  =  f (0); f (T ); f (2  T ); ...
+          A          k                     A            A
+
+
+wird die z-Transformierte von  f k  folgendermaßen definiert:
+                                                                          
+F ( z ) = Z  f ( k  TA ) = f 0  z 0 + f1  z −1 + ... + f n  z − n =  f ( k  TA )  z − k
+                                                                         k =0
+
+
+Die Folgeglieder der Folge  f k  sind also die Koeffizienten der Potenzreihe.
+
+Dabei gilt: t = k  TA und f ( k  TA ) = f k = 0 für k < 0 (bzw. t < 0)
+
+Üblicherweise wird die Transformation aber nicht mit der obenstehenden Formel, sondern –
+wie auch bei der Laplace-Transformation – über Korrespondenztabellen und mit Hilfe von
+Rechenregeln bestimmt.
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                      C. Brüdigam                             30.09.2025   Seite 9 von 43
+z-Transformation und Darstellung zeitdiskreter Systeme
+
+3.1        Korrespondenzen der z-Transformation
+                                                  t
+Hinweis: Es gilt: t = k  TA bzw. k =
+                                                 TA
+                           k, t-Bereich:                                                     z-Bereich:
+                                                          Z  fk 
+         fk = 0 für k < 0
+        f(t) = 0 für t < 0          fk                                                   F(z)                 z = eTA s
+
+                                                         Z −1  F(z)
+         fk = f(kTA) = f(k) =ˆ f(t)                                                                F(z)
+k = (kTA) zeitdiskrete Impulsfolge
+                                                                 1
+((t) zeitkontinuierliche Impulsfunktion)
+k = (kTA) zeitdiskrete Sprungfolge                               z
+((t) zeitkontinuierliche Sprungfunktion)                         z −1
+                                                                    TA z                                         z
+kTA (Rampe)                                                                                     bzw. k =ˆ
+                                                                  ( z − 1) 2                                 ( z − 1) 2
+                                                                              z +1                                 z +1
+k²TA²                                                           TA2 z                           bzw. k 2 =ˆ z
+                                                                            ( z − 1)3                            ( z − 1)3
+                                                                            z2 + 4z +1                           z2 + 4z +1
+k³TA³                                                           TA3 z                           bzw. k 3 =ˆ z
+                                                                             ( z − 1)4                            ( z − 1) 4
+                                                                      z
+ e−akTA
+                                                                  z − e − aTA
+                                                                            1 − e − aTA
+ 1− e    − ak TA                                                z
+                                                                                (
+                                                                      ( z − 1) z − e − aTA   )
+                                                                           sin(TA )
+ sin (  kTA )                                                   z
+                                                                      z − 2 z cos(TA ) + 1
+                                                                        2
+
+
+                                                                         z − cos(TA )
+ cos (  kTA )                                                   z
+                                                                      z − 2 z cos(TA ) + 1
+                                                                        2
+
+
+                                                                      z sin  + sin(TA −  )
+ sin (  kTA +  )                                               z
+                                                                       z 2 − 2 z cos(TA ) + 1
+                                                                           e − aTA sin(TA )
+ e   − akTA
+                sin (  kTA )                                   z 2
+                                                                   z − 2 ze − aTA cos(TA ) + e −2 aTA
+                                                                        z − e − aTA cos(TA )
+ e   − akTA
+                cos (  kTA )                                   z 2
+                                                                   z − 2 ze − aTA cos(TA ) + e −2 aTA
+                                                                   z
+ ck
+                                                                  z−c
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                   C. Brüdigam                              30.09.2025                            Seite 10 von 43
+z-Transformation und Darstellung zeitdiskreter Systeme
+
+3.2    Rechenregeln der z-Transformation
+          Operation                     Zeitfunktion                       Zahlenfolge                    z-Transformierte
+ Überlagerung
+                                    af1(t) + bf2(t)                 af1k + bf2k           aF1(z) + bF2(z)
+ (Linearität)
+
+                                                                                               F ( az )
+                                        t
+ Ähnlichkeit                         a  f (t )
+                                       TA                             akfk
+
+ Rechtsverschiebung                 f(t - nTA)                        fk-n                     z −n  F ( z)
+                                                                                                              n −1
+                                                                                                                         
+ Linksverschiebung                  f(t + nTA)                        fk+n                     z n  F ( z ) −  fi z −i 
+                                                                                                              i =0      
+
+ Rückwärts-                                                                                    z −1
+                                    f(t) - f(t - TA)                  fk - fk-1                     F ( z ) − f −1
+                    differenz                                                                    z
+                                    f(t + TA) - f(t)                  fk+1 - fk
+ Vorwärts-                                                                                    ( z − 1) F ( z ) − f0 z
+                                      
+ Summation                                                             k
+                                                                                                 z
+ (f = 0 für t < 0!)
+                                      f (t − T )
+                                     =0
+                                                          A            f
+                                                                      =0                      z −1
+                                                                                                    F ( z)
+
+                                                                     k −1
+                                                                                                 1
+                                      f (t − TA )
+                                      =1
+                                                                       f
+                                                                      =0                      z −1
+                                                                                                    F ( z)
+
+ Dämpfung                             f (t )  e− at                  f k  e − ak TA          (
+                                                                                               F z  e aTA      )
+ Differentiation der Bild- t f (t )                                                                   dF ( z )
+                                                                      k fk                    −z 
+ funktion                  TA                                                                          dz
+                                      f * (t )  g * (t )              k
+ Faltung
+                                     bzw. f (t )  g * (t )
+                                                                       f g 
+                                                                       =0
+                                                                                  k−          F(z)  G(z)
+
+ Grenzwertsätze
+
+ Anfangswertsatz: f ( 0 ) = limF ( z)
+                                       z →
+
+
+ Endwertsatz:                lim f ( k  TA ) = f ( t →  ) = lim ( ( z − 1)  F ( z ) ) , wenn f ( t →  ) endlich ist
+                            k →+                                       z →1+ 0
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                           C. Brüdigam                        30.09.2025                        Seite 11 von 43
+z-Transformation und Darstellung zeitdiskreter Systeme
+
+3.3     z-Übertragungsfunktion
+Aus der Differenzengleichung eines Übertragungsglieds erhält man durch Anwendung der z-
+Transformation eine algebraische Gleichung:
+an  xa ,k + n + an −1  xa ,k + n −1 + ... + a1  xa ,k +1 + a0  xa ,k = bm  xe ,k + m + bm −1  xe ,k + m −1 + ... + b1  xe ,k +1 + b0  xe ,k
+
+
+an  z n  X a + an −1  z n −1  X a + ... + a1  z  X a + a0  X a = bm  z m  X e + bm −1  z m −1  X e + ... + b1  z  X e + b0  X e
+Durch Umformung erhält man:
+           X a ( z ) bm z m + bm −1 z m−1 + ... + b1 z + b0
+F ( z) =            =
+           X e ( z ) an z n + an −1 z n −1 + ... + a1 z + a0
+                                   X a ( z)
+Der Quotient F ( z ) =                      wird als z-Übertragungsfunktion bezeichnet.
+                                   X e ( z)
+Für kausale – also realisierbare – Systeme muss gelten: n  m
+
+
+Hinweise:
+• Die stationäre Verstärkung K einer stabilen z-Übertragungsfunktion bestimmt sich zu:
+
+   K=
+        bi = F ( z ) = F ( z = 1) = F (1)
+       aj           z =1
+
+
+
+• Bei der Verknüpfung von zeitdiskreten Systemen gelten für die Berechnung der
+  Gesamtübertragungsfunktion die gleichen Regeln wie bei der zeitkontinuierlichen s-
+  Übertragungsfunktion:
+      Reihenschaltung: FReihe ( z ) = F1 ( z )  F2 ( z )
+
+      Parallelschaltung: FParallel ( z ) = F1 ( z ) + F2 ( z )
+                                                    Fv ( z )
+   Kreisstruktur: FKreis ( z ) =                                       „+“ bei neg. Rückführung, „-“ bei pos.
+                                             1 + (−) Fv ( z ) Fr ( z )
+   Rückführung
+
+
+3.4     Berechnung der Systemantwort im Zeitbereich
+Beispiel:
+
+                                        3
+         xe(k) = (k)                z - 0,5        xa(k) = ?
+                                                                            TA = 0,2 s
+                                                                              z
+xe (k ) =  (k ) (Einheitssprung)                              X e ( z) =
+                                                                            z −1
+           X a ( z)                                                            3z                 3z
+F ( z) =                          X a ( z) = X e ( z)  F ( z) =                        =                                                  xa(k)
+           X e ( z)                                                    ( z − 1)( z − 0.5) z ² − 1,5 z + 0,5
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                           C. Brüdigam                                  30.09.2025                                Seite 12 von 43
+z-Transformation und Darstellung zeitdiskreter Systeme
+
+3.5    Zusammenhang zwischen s- und z-Transformation
+ Die zeitdiskrete Beschreibung eines                          f
+                                                                                    f(k .TA)
+ kontinuierlichen Systems kann nicht                          3            f(t)                            f H (t)
+ eindeutig sein, da durch die                                 2
+ Zeitdiskretisierung Stufen entstehen,
+ die im Kontinuierlichen nicht                                1                               TA
+ vorhanden sind.  Verschiedene                               0
+ Verfahren sind möglich.
+                                                          -1           1        2   3     4        5   6       7     8   9   10 k, t
+ Ist aber die Abtastzeit TA klein (Faktor
+                                          -2
+  1/10) im Vergleich zur dominanten
+ Zeitkonstante bzw. Totzeit des -3
+ Systems, spricht man von „quasi-
+ kontinuierlichem Verhalten“.
+
+
+Wir betrachten folgendes System:
+Zum Zeitpunkt k  TA wird der Wert ausgegeben, der zum Zeitpunkt (k-1)  TA eingelesen
+wurde (Verzögerung um einen Abtastschritt, ansonsten keine weitere Verarbeitung). Das
+Verhalten kann so im BSB beschrieben werden:
+      Xe               Verzögerung           Xa
+
+                              TA
+
+
+                       Kontinuierlich                         Zeitdiskret
+ Zeitbereich           xa(t) = xe(t-TA)                       xa, k = xe, k-1
+ Bildbereich           Xa(s) = e-sTA  Xe(s)                 Xa(z) = z -1  Xe(z)
+                       (Laplace-Transformation)               (z-Transformation)
+ dem Ausdruck e-sTA der Laplace-Transformation entspricht der Ausdruck z -1 bei der z-
+Transformation. Bzw. z =ˆ esTA.
+z-n entspricht der Verzögerung um n Abtastperioden TA.
+
+
+3.6    Stabilität
+Ein lineares, zeitinvariantes diskretes System wird beschrieben durch die z-Über-
+tragungsfunktion:
+             bm z m + ... + b1 z + b0
+Fz ( z ) =
+             an z n + ... + a1 z + a0
+Auch auf ein solches System lässt sich der Stabilitätsbegriff übertragen, der bei den linearen
+kontinuierlichen Systemen eingeführt wurde.
+Für zeitdiskrete Systeme lautet die Stabilitätsdefinition:
+   Ein zeitdiskretes System heißt stabil, wenn zu jeder beschränkten Eingangsfolge xe(k)
+   auch die Ausgangsfolge xa(k) beschränkt ist.
+Notwendige und hinreichende Stabilitätsbedingung in der z-Ebene:
+RTA_Hilfsblätter 2025-26.docx                   C. Brüdigam                             30.09.2025                           Seite 13 von 43
+z-Transformation und Darstellung zeitdiskreter Systeme
+
+   Das durch die gebrochen rationale Funktion F(z) bestimmte Abtastsystem ist genau dann
+   stabil, wenn alle Pole zP, i von F(z) innerhalb des Einheitskreises der z-Ebene liegen, d.h.
+   wenn gilt |zP, i| < 1 für i = 1, 2, ..., n.
+Stabilitätsbereich:
+ Diese Stabilitätsbedingung folgt aus der                                     Im z
+ Analogie zwischen der s-Ebene und der                                                        z-Ebene
+ z-Ebene: Die linke s-Halbebene (stabiler
+ Bereich,  = Re{s} < 0) wird mit Hilfe der
+ Substitution
+  z = esTA mit s =  + j (TA: Abtastzeit)                                            1
+
+ in das Innere des Einheitskreises der z-                                                                   Re z
+ Ebene abgebildet.                                                            stabil
+
+
+
+Begründung:
+
+z = e sTA = e( + j )TA = e TA  e j TA ( = e TA  e j ) (Betrag und Richtung!)
+
+ej = cos  + j sin  (Eulersche Formel)  | ej| = 1
+(Es gilt: z = e TA und  = z =   TA )
+
+Für  < 0 (linke Halbebene, stabil)  e TA  1 und damit z  1 für alle TA > 0
+
+
+Transformation der Pollagen von der s- in die z-Ebene:
+Mit z = e TA  e jTA = e TA  ( cos (  TA ) + j  sin (  TA ) ) 
+
+Rez = e TA  cos (  TA )
+
+Imz = e TA  sin (  TA )
+
+
+Hinweis: Während sich beim Übergang zwischen s- und z-Ebene die Polstellen nach dem
+Zusammenhang z = esTA entsprechen, gilt das für die Nullstellen nicht uneingeschränkt:
+Durch die Diskretisierung können weitere sogenannte Diskretisierungsnullstellen entstehen.
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                   C. Brüdigam                      30.09.2025             Seite 14 von 43
+z-Transformation und Darstellung zeitdiskreter Systeme
+
+3.7       Bestimmung der z-Übertragungsfunktion aus der s-Übertragungsfunktion
+
+Der Zusammenhang z =ˆ esTA ist „unhandlich“ wg. der e-Funktion bzw. des Logarithmus und
+wird durch „angenehmere“ Zusammenhänge ersetzt.
+
+3.7.1 Rückwärtsdifferenzenquotient
+
+
+
+
+  f(t)                                                        f(k .T A)
+
+
+
+
+                                  t                                       (k-2)T   (k-1)T   k .T   (k+1)T
+                                                                               A        A      A        A
+
+Zeitbereich:
+df (t )
+              =
+ dt
+
+
+Bildbereich:
+sF(s) =ˆ
+
+
+
+                                         1 − z −1 z − 1
+                             bzw. s =ˆ           =
+                                           TA      TA z
+                                                                                                        z −1
+Damit kann in der s-Übertragungsfunktion die Variable s durch den Ausdruck                                   ersetzt
+                                                                                                        TA z
+werden, um zur z-Übertragungsfunktion zu gelangen.
+D.h.: Die zeitdiskrete Beschreibung kann damit aus der zeitkontinuierlichen Beschreibung
+nach folgender Formel berechnet werden:
+F ( z ) = F (s) s = z −1
+                    TA  z
+
+Nachteil: Ein instabiles s-System kann auf ein stabiles z-System abgebildet werden.
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                   C. Brüdigam                    30.09.2025                    Seite 15 von 43
+z-Transformation und Darstellung zeitdiskreter Systeme
+
+3.7.2 Vorwärtsdifferenzenquotient
+
+
+
+
+                                                     f(k .T A)
+
+
+
+
+                                                                 (k-2)T   (k-1)T   k .T   (k+1)T
+                                                                      A        A      A         A
+Zeitbereich:
+df (t )
+        =
+ dt
+
+
+Bildbereich:
+sF(s) =ˆ
+
+
+                                                z −1
+                                  bzw. s =ˆ
+                                                 TA
+                                                                                                    z −1
+Damit kann in der s-Übertragungsfunktion die Variable s durch den Ausdruck                               ersetzt
+                                                                                                     TA
+werden, um zur z-Übertragungsfunktion zu gelangen.
+D.h.: Die zeitdiskrete Beschreibung kann damit aus der zeitkontinuierlichen Beschreibung
+nach folgender Formel berechnet werden:
+F ( z ) = F (s) s = z −1
+                     TA
+
+Nachteil: Ein stabiles s-System kann auf ein instabiles z-System abgebildet werden.
+
+3.7.3 Tustinsche Formel (Bilineartransformation)
+
+z =ˆ esTA  s =ˆ 1/TA  ln z
+            z − 1 ( z − 1)3      (  z − 1)
+                                            5
+                                                     
+ln z = 2        +             +              + ... 
+            z + 1 3  ( z + 1)3 5  ( z + 1)5       
+                                                    
+ln z kann in eine Potenzreihe zerlegt werden, die nach dem ersten Glied abgebrochen wird.
+Man erhält die sogenannte Tustinsche Formel:
+        2 z −1
+s =ˆ                         (Matlab: ‚tustin’)
+       TA z + 1
+D.h.: Die zeitdiskrete Beschreibung kann damit aus der zeitkontinuierlichen Beschreibung
+nach folgender Formel berechnet werden:
+F ( z) = F (s) s = 2  z −1
+                    TA z +1
+
+Vorteil Tustin: (In-)stabile s-Systeme werden auf (in-)stabile z-Systeme abgebildet. Guter Match
+kontinuierlich/diskret
+
+RTA_Hilfsblätter 2025-26.docx                   C. Brüdigam                        30.09.2025            Seite 16 von 43
+z-Transformation und Darstellung zeitdiskreter Systeme
+
+3.8     Bestimmung eines Rechenalgorithmus aus der z-Übertragungsfunktion
+• Ausgehen von der z-Übertragungsfunktion
+• Zähler und Nenner durch die höchste Potenz von z (im Nenner) dividieren. (Es darf nur z0,
+  z-1, z-2, ... geben; nicht z+...)
+• Zähler gibt die Eingangsgrößen an (z-2 bedeutet xe, k-2); Nenner die Ausgangsgrößen
+Z.B.:
+           2z + 4
+F ( z) =
+           8z − 5
+           X a ( z ) 2 + 4 z −1
+F ( z) =            =
+           X e ( z) 8 − 5z  −1                 (         )           (          )
+                                 X a ( z )  8 − 5 z −1 = X e ( z )  2 + 4 z −1  8 xa,k - 5 xa,k-1 = 2 xe,k + 4 xe,k-1
+
+Umsortieren nach aktueller Ausgangsgröße
+ xa,k = 0,25 xe,k + 0,5 xe,k-1 + 0,625 xa,k-1
+
+
+3.9     Kausalität
+Kausales System: Zur Berechnung des aktuellen Ausgangssignals dürfen nur das aktuelle
+Eingangssignal und alte Ein- bzw. Ausgangssignale verwendet werden. Ansonsten ist das
+System nicht als Rechenalgorithmus realisierbar.
+
+
+Beispiele
+
+Grad Z < Grad N  realisierbar
+             1     z −1
+F ( z) =        =          xa, k + xa, k-1 = xe, k-1 bzw. xa, k = xe, k-1 - xa, k-1
+           z + 1 1 + z −1
+
+Grad Z = Grad N  realisierbar
+           z − 1 1 − z −1
+F ( z) =        =          xa, k + xa, k-1 = xe, k - xe, k-1 bzw. xa, k = xe, k - xe, k-1 - xa, k-1
+           z + 1 1 + z −1
+
+Grad Z > Grad N  nicht realisierbar
+         z +1
+F ( z) =       xa, k = xe, k+1 + xe, k
+           1
+
+
+3.10 Einbettung des Rechenalgorithmus in ein Programm
+Programm
+   while(1)                // Endlosschleife
+   {
+     wait_timerinterrupt(0.1) // Einhaltung eines festen Zeitrasters (Ta)
+     xaalt1 = xa              // vor dem Überschreiben: alte Werte sichern
+     xealt1 = xe
+     input(xe)                // Aktuellen Eingangswert lesen
+     xa = 0.25*xe + 0.5*xealt1 + 0.625 * xaalt1 // Ausgangswert berechnen
+     output(xa)               // Wert ausgeben
+   }
+
+
+RTA_Hilfsblätter 2025-26.docx                   C. Brüdigam                     30.09.2025                   Seite 17 von 43
+z-Transformation und Darstellung zeitdiskreter Systeme
+
+
+
+
+3.11 Erstellung eines Blockschaltbilds aus der z-Übertragungsfunktion
+
+                                                                      bm z m + ... + b1 z + b0
+Aus der z-Übertragungsfunktion in der Form Fz ( z ) =                                          lässt sich der
+                                                                      an z n + ... + a1 z + a0
+Signalflussplan folgendermaßen zeichnen:
+xe
+                                                ...
+
+        b0                         b1                         b n-2             b n-1                   bn
+        an                         an                          an                an                     an
+
+                                                                                                                      xa
+                      z-1                       ...                   z-1                   z-1
+           -                         -                            -                 -
+
+        a0                         a1                         a n-2             a n-1
+        an                         an                          an                an
+
+
+
+                                                ...
+Ev. nicht existente bi sind dabei durch „0“ zu ersetzen.
+Hinweis: Bei einer z-Übertragungsfunktion gibt der Polüberschuss an, wie stark die Reaktion
+des Übertragungsglied (in Vielfachen von TA) verzögert ist.
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                   C. Brüdigam                   30.09.2025                        Seite 18 von 43
+Digitale Regelung
+
+4 Digitale Regelung
+Beim Reglerentwurf wurde bisher davon ausgegangen, dass das Ausgangssignal der
+Strecke kontinuierlich zur Verfügung steht und dafür ein zeitkontinuierlicher Regler entworfen
+wird.
+Wenn die Realisierung dieses Reglers aber in der Realität dann oft mit zeitdiskreten
+Systemen (z.B. Mikrocontroller) erfolgt, muss man neue Wege gehen.
+Eine häufig gewählte Vorgehensweise ist die zeitdiskrete Realisierung analoger Standard-
+Regelkonzepte. Alternativ dazu kann man den Regler auch zeitdiskret anhand des
+zeitdiskreten Streckenmodells entwerfen. Diese beiden Verfahren werden im Folgenden
+vorgestellt.
+Andere Varianten, die auch für komplexere Aufgaben geeignet sind (zeitdiskrete
+Zustandsregler und -Beobachter) werden in der Lehrveranstaltung AKR behandelt.
+
+4.1       Zeitdiskrete Realisierung analoger Regelkonzepte
+Hier wird mit den bekannten Methoden für ein zeitkontinuierliches System ein
+zeitkontinuierlicher Regler entworfen. Dieser Regler wird dann auf einem zeitdiskreten
+System (Mikrocontroller) realisiert. Dabei versucht man, das Verhalten des
+zeitkontinuierlichen Reglers möglichst exakt beizubehalten. Geeignete Verfahren dazu
+wurden in Kap. 3.7 vorgestellt. Eine Voraussetzung dafür ist, dass die Abtastzeit kurz
+verglichen mit der dominanten Zeitkonstante des Systems ist (z.B. 1/10). Der Regler wird
+dann als „quasi-kontinuierlich“ bezeichnet. Für die Diskretisierung ist das Verfahren „Tustin“
+(im Bild rot) oft eine gute Wahl.
+                             Step Response
+10                                                                                                   Step Response
+                                                                        10
+9
+                                                                        9
+8
+                                                                        8
+7
+                                                                        7
+
+6
+                                                                        6
+
+5                                                                       5
+
+4                                                                       4
+
+3                                                                       3
+
+
+2                                                                       2
+
+
+1                                                                       1
+
+                                                                        0
+0                                                                            0   0.1   0.2   0.3   0.4    0.5    0.6   0.7   0.8   0.9      1
+     0   0.1   0.2   0.3   0.4    0.5    0.6   0.7   0.8   0.9      1                                                                    t/s
+                                                                 t/s
+
+
+Tdom = 0,1 s; TA = 0,1 s                                                Tdom = 0,1 s; TA = 0,01 s
+Sprungantwort eines mit verschiedenen Verfahren und Abtgastraten diskretisierten PT1-Glieds
+schwarz: kont – rot: Tustin – grün: RDQ – blau: VDQ
+
+4.2       Zeitdiskrete Realisierung anhand des zeitdiskreten Streckenmodells
+Für echt digitale Regelkonzepte wird die Abtastung des kontinuierlichen Systems über die
+Methode „ZOH“ (= Zero Order Hold bzw. Abtast-/Halteglied 0. Ordnung) dargestellt. Man
+erhält damit eine zeitdiskrete Übertragungsfunktion, die an den Abtastzeitpunkten exakt dem
+abgetasteten kontinuierlichen System entspricht. Für dieses zeitdiskrete System kann dann
+ein zeitdiskreter Regler entworfen werden, der dann z.B. auf einem Mikrocontroller realisiert
+wird. Das funktioniert auch, wenn die Abtastzeit nicht mehr klein im Vergleich mit der
+dominanten Zeitkonstanten des Systems ist.
+
+RTA_Hilfsblätter 2025-26.docx                        C. Brüdigam                             30.09.2025                            Seite 19 von 43
+Digitale Regelung
+
+Zur Reglerauslegung gibt es verschiedene Möglichkeiten, wie etwa:
+• Anwendung des Wurzelortskurvenverfahrens auf das zeitdiskrete System: Die Regeln zur
+  Konstruktion der WOK gelten im Diskreten unverändert, allerdings ist die Interpretation
+  des Ergebnisses natürlich anders (z.B. ist jetzt das Innere des Einheitskreises der stabile
+  Bereich). Da z.B. die Zuordnung von Zeitkonstanten abhängig von der Abtastzeit ist, ist
+  das Verfahren etwas umständlicher als im Kontinuierlichen. Vorteil ist die problemlose
+  Berücksichtigung von Totzeiten.
+• „Deadbeat Regler“: Damit kann ein gewünschtes Verhalten des Regelkreises direkt
+  vorgegeben werden. Mit zeitdiskreten Reglern ist dabei auch ein Einschwingen in
+  endlicher Zeit möglich (im Ggs. zu einem asymptotischen Einschwingen). Die dazu
+  nötigen Regler sind allerdings meist von hoher Ordnung und reagieren empfindlich auf
+  Modellfehler.
+• Einstellregeln
+
+
+4.2.1 Zeitdiskrete Beschreibung des Streckenmodells
+Das Ausgangssignal x(t) der kontinuierlichen Regelstrecke F(s) wird abgetastet und die
+entstehende Impulsfolge xk mit der Sollwertfolge wk verglichen. Die entstehende
+Regeldifferenz wirkt auf den zeitdiskreten Regler R(z), der die Ausgangsfolge yk erzeugt. Ein
+Halteglied (ZOH) erzeugt daraus eine zeitkontinuierliche Treppenfunktion y(t) die auf die
+Regelstrecke F(s) wirkt.
+
+W(z)                       Y(z)          Y(s)               X(s)
+                    R(z)           ZOH               F(s)
+ wk       -                 yk           y(t)               x(t)
+
+
+                           X(z)
+                            xk
+                                                              F(z)
+
+Abtastregelkreis mit Halteglied 0-ter Ordnung (ZOH)
+Zur Reglerauslegung wird das Verhalten der kontinuierlichen Regelstrecke F(s) zusammen
+mit dem Abtaster und dem Halteglied mit der zeitdiskreten Übertragungsfunktion F(z)
+beschrieben. Für dieses zeitdiskrete System wird dann direkt (mit geeigneten Verfahren) ein
+zeitdiskreter Regler entworfen.
+Die wesentliche Aufgabe besteht also darin, zum einen die zeitdiskrete Beschreibung von
+F(s) zu bestimmen und zum anderen einen passenden zeitdiskreten Regler zu entwerfen.
+Wir wählen für unsere Betrachtung exemplarisch die Eingangsfolge
+                          z                                          yk , y(t)  (k) (t)
+yk =  k       Y ( z) =      . Das Halteglied 0-ter Ordnung erzeugt
+                        z −1                                                 1
+das zeitkontinuierliche Signal
+                                                 1
+y(t ) =  (t )             L  y(t ) = Y (s) = .                                          t, k
+                                                 s
+Für die Laplace-Transformierte X(s) des zeitkontinuierlichen Ausgangssignals x(t) ergibt sich
+                                          1
+damit: X ( s) = F ( s)  Y ( s) = F ( s)  und es gilt die Rücktransformation X(s) x(t).
+                                          s
+Durch Abtasten erhält man aus x(t) die zeitdiskrete Folge xk und deren z-Transformierte ist
+X(z). xk     X(z)
+
+RTA_Hilfsblätter 2025-26.docx                   C. Brüdigam          30.09.2025     Seite 20 von 43
+Digitale Regelung
+
+Wir erhalten damit:
+
+F ( z) =        =
+                        
+         X ( z ) Z L  X ( s)
+                     −1
+
+                               =
+                                z −1        1          z − 1
+                                      Z L −1  F ( s)  =
+                                                                          1         
+                                                                   Z L −1  F ( s)  .
+         Y ( z)       z            z         s            z           s         
+                    z −1
+                      X a ( z)
+Die Beziehung F ( z ) =        gilt für beliebige Ein- / Ausgangssignale. Damit ist die obige
+                      X e ( z)
+Formel allgemeingültig. Mit ihr lässt sich die z-Übertragungsfunktion des zeitdiskreten Ein-/
+Ausgangsverhaltens der Regelstrecke mit Hilfe der Korrespondenztabellen bestimmen.
+(Voraussetzung: Eingangssignal wird über Halteglied 0-ter Ordnung zugeführt und der
+Ausgang wird abgetastet. = zoh)
+
+
+Anmerkung zur Verwendung der verschiedenen Transformationsmethoden
+Tustin: Ergibt ein zum kontinuierlichen System sehr ähnliches zeitdiskretes System. Standard
+in der Regelungstechnik: zeitdiskrete Realisierung eines kontinuierlichen Reglers für ein
+kontinuierliches System. Der Reglerentwurf findet also im Zeitkontinuierlichen statt.
+ZOH: Exakte Beschreibung eines abgetasteten kontinuierlichen Systems (Kapitel 4.2). In der
+Regelungstechnik: zeitdiskreter Entwurf eines Reglers für ein abgetastetes kontinuierliches
+System. Der Reglerentwurf findet also im Zeitdiskreten statt.
+Vorwärtsdifferenzenquotient: Einfach von Hand zu berechnen. Ergibt oft einfache z-
+Übertragungsfunktion. Stabilität unproblematisch, wenn z.B. die Gesamtstabilität des
+Regelkreises mit einem nachfolgenden Verfahren sichergestellt wird.
+
+
+Beispiel 1 Transformation von s nach z mit ZOH
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx       C. Brüdigam                30.09.2025                Seite 21 von 43
+Digitale Regelung
+
+Tabelle der Laplace und z-Transformierten
+                                                                                                           Z {f(k)}
+                                    L {f(t)}
+                                                                        f(t)                                                                     F(z)
+             F(s)                                                       f(k)
+                                                                                                           -1
+                                    -1
+                                         {F(s)}                                                        Z        {F(z)}
+                                L
+                             t = kTA; z = eTA s f(t) = 0 für t < 0 f(k) = 0 für k < 0
+           F(s)                         f(t)
+                                                             f(kTA) =ˆ fk                 F(z)
+         Laplace-              zeitkontinuierliches
+                                                       zeitdiskretes Signal          z-Transformierte
+      Transformierte                  Signal
+            1                           (t)            k = (1; 0; 0; 0; …)                 1
+            1                                                                                z
+                                      (t) = 1         k = 1k= (1; 1; 1; …)
+            s                                                                              z −1
+            1                                                                                                                               TA z
+                                                    t                                    kTA
+            s2                                                                                                                            ( z − 1) 2
+            1                                                                                                                                 z
+                                                  e− at                                 e−akTA
+           s+a                                                                                                                            z − e − aTA
+               a                                                                                                                        1 − e − aTA
+                                             1− e       − at
+                                                                                   1− e    − ak TA                          z
+           s (s + a)                                                                                                                         (
+                                                                                                                                  ( z − 1) z − e − aTA        )
+                 1                                                                                                                        TA  e − aTA
+                                                 t  e−at                        k  TA  e   − ak TA                               z
+           (s + a)                                                                                                                        (z −e )
+                     2                                                                                                                                    2
+                                                                                                                                                 − aTA
+
+
+
+                                                                                                                       z       z        z aTA  e− aTA
+                 1              1                                       1                                                 −           −
+                                  2 (
+                                     1 − (1 + at )  e− at )               (1 − (1 + akTA ) e− akTA             )    z − 1 z − e− aTA                (            )
+                                                                                                                                                     2
+                                                                                                                                         z − e− aTA
+           s (s + a)
+                         2                                                2
+                                a                                       a
+                                                                                                                                                 2
+                                                                                                                                    a
+                                                                                                                               sin(TA )
+                                            sin (t )                           sin (  kTA )                            z 2
+            s + 2
+             2
+                                                                                                                           z − 2 z cos(TA ) + 1
+             s                                                                                                                   z − cos(TA )
+                                            cos (t )                           cos (  kTA )                            z
+          s + 2
+             2
+                                                                                                                              z − 2 z cos(TA ) + 1
+                                                                                                                                  2
+
+
+             
+       (s + a)2 +  2                                                                                                             e − aTA sin(TA )
+                                         e− at  sin (t )                e− akTA  sin (kTA )                    z
+                                                                                                                       z 2 − 2 ze − aTA cos(TA ) + e −2 aTA
+  =
+      s + 2as + a 2 +  2
+       2
+
+           s+a
+       (s + a)2 +  2                                                                                                     z − e − aTA cos(TA )
+                                      e   − at
+                                                  cos (t )              e   − akTA
+                                                                                         cos (kTA )               z 2
+         s+a                                                                                                         z − 2 ze − aTA cos(TA ) + e −2 aTA
+  = 2
+   s + 2as + a 2 +  2
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                             C. Brüdigam                                  30.09.2025                                        Seite 22 von 43
+Digitale Regelung
+
+4.3         WOK im Zeitdiskreten
+Stabilität, Dämpfung und Kennkreisfrequenz können, wie im Kontinuierlichen, aus der WOK
+abgelesen werden.
+Pole können mit dem Zusammenhang z = esTA = e( + je )TA = e TA  e je TA umgerechnet werden.
+D.h. Pole liegen auf einem Radius r = e TA um den Ursprung der z-Ebene und sie haben
+einen Winkel von  = e  TA zur reellen Achse.
+
+Pole mit D = 1 sind nur auf der positiven reellen Achse zwischen 0  z < 1 zu finden ( = 0).
+                                                                     WOK
+ Im 1
+
+
+    0.8                                                                                       0.1
+                                                                                            0.2
+    0.6                                                                                    0.3
+                                                                                           0.4
+                                                                                          0.5
+    0.4                                                                                   0.6
+                                                                                          0.7
+                                                                                          0.8
+    0.2                                                                                                                                  Für die Konstruktion der WOK
+                                                                                          0.9
+                                                                                                                                         gelten die gleichen Regeln wie im
+        0      /T                                                                                                                       Zeitkontinuierlichen.
+
+
+   -0.2
+       0.9  /T                                                                                                         0.1  /T
+   -0.4
+                                                                                                                                         Das „T“ im WOK-Plot ist
+                                                                                                                  0.2  /T               die Abtastzeit TA.
+   -0.6          0.8  /T
+
+
+   -0.8                       0.7  /T                                                                0.3  /T                           „x / T“ entspricht 0.
+                                                                                                                                         (Matlab-Plot: „Frequency“)
+                                                 0.6  /T                           0.4  /T
+                                                                     0.5  /T
+       -1
+         -1          -0.8         -0.6         -0.4         -0.2         0         0.2         0.4         0.6         0.8          1
+                                                                                                                                   Re
+
+Heute basteln wir uns ein praktisches "z-WOK-Lineal"
+Auf Karton aufkleben, schön bunt anmalen und an der gestrichelten Linie ausschneiden.
+
+  2,0          1,8          1,6          1,4          1,2          1,0       0,8         0,6         0,4         0,2         0
+
+
+   0           0,2          0,4          0,6          0,8          1,0       1,2         1,4         1,6         1,8         2,0
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                                                C. Brüdigam                                           30.09.2025                  Seite 23 von 43
+Digitale Regelung
+
+Wiederholung zeitkontinuierliche Beschreibung
+                     j
+                    e       s-Ebene                                                           −
+               0                                 02 =  2 + e2 ; D = cos D =                       = −0  D
+                                                                                               0
+ Mit                D                    gilt:
+                                   
+                                                   e = 0 −  = 0 − ( −0  D ) = 0  1 − D
+                                                                                                        2
+                                                         2    2   2                            2
+                             D = cos D
+
+0: Kennkreisfrequenz (Eigenfrequenz der ungedämpften Schwingung, halbe
+Phasenänderung, Knick in der Amplitudenkennlinie…)
+e: Eigenfrequenz der gedämpften Schwingung
+     1
+ =−    mit T: Zeitkonstante für Einschwingvorgang (bei reellem Pol, sonst Zeitkonstante für
+     T
+Einhüllende der auftretenden Schwingung)
+
+
+Zeitdiskrete Beschreibung
+               Im
+                                                      e sTA = e(
+                         r                                           + je )TA
+         z-Ebene                                  z                                = e TA  e je TA = r 
+                         
+                               Re
+
+
+
+Zusammenhang mit zeitkontinuierlicher Beschreibung
+                                                           ln ( r ) 
+                                                  r = e TA   =  
+                                                             TA 
+                                                                     0 , D
+                                je TA                          
+Einheitsvektor in Richtung : e           = e  TA bzw e =
+                                                                 TA 
+                                                                    
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx               C. Brüdigam                                 30.09.2025                   Seite 24 von 43
+Digitale Regelung
+
+4.3.1 Übungsaufgaben
+                                                                                                                  0.7251
+Regelkreis mit P-Regler und Einheitsrückführung. Strecke: FS ( z ) =                                                       ; TA = 0,1.
+                                                                                                                z − 0.8187
+Welche KP resultieren in stabilem Verhalten?
+
+
+                                                                       WOK
+                    Im 1
+
+
+                     0.8                                                                   0.1
+                                                                                         0.2
+                     0.6                                                                0.3
+                                                                                        0.4
+                                                                                       0.5
+                     0.4                                                               0.6
+                                                                                       0.7
+                                                                                       0.8
+                     0.2
+                                                                                       0.9
+
+                       0       /T
+
+                     -0.2
+                         0.9  /T                                                                              0.1  /T
+                     -0.4
+
+                                                                                                          0.2  /T
+                     -0.6        0.8  /T
+
+
+                     -0.8                   0.7  /T                                             0.3  /T
+
+                                                         0.6  /T                 0.4  /T
+                                                                      0.5  /T
+                       -1
+                         -1          -0.8   -0.6       -0.4    -0.2      0       0.2      0.4       0.6      0.8      1
+                                                                                                                     Re
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                            C. Brüdigam                               30.09.2025                      Seite 25 von 43
+Digitale Regelung
+
+                                                                                                                    5
+Regelkreis mit P-Regler und Einheitsrückführung. Strecke: FS ( z ) =                                                   ; TA = 0,1.
+                                                                                                                   z−2
+Welche KP resultieren in stabilem Verhalten?
+                                                  WOK
+Im 1
+
+
+  0.8                                                                  0.1
+                                                                     0.2
+  0.6                                                               0.3
+                                                                    0.4
+                                                                   0.5
+  0.4                                                              0.6
+                                                                   0.7
+                                                                   0.8
+  0.2
+                                                                   0.9
+
+    0      /T
+
+ -0.2
+     0.9  /T                                                                              0.1  /T
+ -0.4
+
+                                                                                      0.2  /T
+ -0.6        0.8  /T
+
+
+ -0.8                   0.7  /T                                             0.3  /T
+
+                                     0.6  /T                 0.4  /T
+                                                  0.5  /T
+   -1
+     -1          -0.8   -0.6       -0.4    -0.2      0       0.2      0.4       0.6      0.8      1
+                                                                                                 Re
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                            C. Brüdigam                                  30.09.2025                     Seite 26 von 43
+Digitale Regelung
+
+                                                                                                  2 z + 1,8
+Regelkreis mit P-Regler und Einheitsrückführung. Strecke: FS ( z ) =                                              ; TA = 0,02.
+                                                                                               3z − 3, 6 z + 1, 2
+                                                                                                 2
+
+
+Welche KP resultieren in stabilem Verhalten?
+Welches KP resultiert in einer Dämpfung von D = 0,3?
+Welche Frequenz haben die auftretenden Schwingungen?
+                                                                                      WOK
+                                 Im 1
+
+
+                                   0.8                                                                      0.1
+                                                                                                          0.2
+                                   0.6                                                                   0.3
+                                                                                                         0.4
+                                                                                                        0.5
+                                   0.4                                                                  0.6
+                                                                                                        0.7
+                                                                                                        0.8
+                                   0.2
+                                                                                                        0.9
+
+                                     0       /T
+
+                                   -0.2
+                                       0.9  /T                                                                                  0.1  /T
+                                   -0.4
+
+                                                                                                                           0.2  /T
+                                   -0.6        0.8  /T
+
+
+                                   -0.8                   0.7  /T                                                0.3  /T
+
+                                                                       0.6  /T                      0.4  /T
+                                                                                      0.5  /T
+                                     -1
+                                       -1          -0.8   -0.6       -0.4    -0.2        0       0.2       0.4       0.6        0.8     1
+                                                                                                                                       Re
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx     C. Brüdigam                                     30.09.2025                                 Seite 27 von 43
+Digitale Regelung
+
+4.4     Regler mit endlicher Einstellzeit (Dead-Beat Regler)
+
+4.4.1 Kompensationsregler
+                                                                       w        e            u               x
+Für einen Standardregelkreis (siehe Bild) ergibt sich die                                F
+                                                                                         R
+                                                                                                 F
+                                                                                                  S
+Führungsübertragungsfunktion des Regelkreises zu:                               -
+            FR  FS
+FRK =                    .                                                           r       F
+        1 + FR  FS  FM                                                                     M
+
+
+Wenn man nun eine gewünschte Führungsübertragungsfunktion Fw vorgibt, kann man den
+Regler FR so auslegen, dass sich genau diese Führungsübertragungsfunktion einstellt.
+            FR  FS      !         !         Fw
+FRK =                    = Fw  FR =
+        1 + FR  FS  FM             FS  (1 − Fw  FM )
+Voraussetzung: Die Strecke hat keine Pole und Nullstellen im grenzstabilen und instabilen
+Bereich. Dabei muss ein realistisches Wunschverhalten vorgegeben werden: Polüberschuss
+Fw  Polüberschuss FS.
+Beispiel:
+                                                             1
+FS = 3 (stabil, keine NSt. rechts); FM = 2 ; Fw =
+                                                           2s + 1
+                              1
+                            2s + 1            1
+Daraus folgt: FR = …                   = …=
+                               1          6s − 3
+                     3  1 −      2
+                          2s + 1 
+
+4.4.2 Deadbeat-Regler
+Nur zeitdiskret realisierbare Variante eines Kompensationsreglers. Mit einer gewählten
+                                                           ...
+Führungsübertragungsfunktion der Art Fw ( z ) =                erreicht man ein Einschwingen der
+                                                           zk
+(diskretisierten) Strecke in endlicher Zeit.
+                                                1
+Z.B. mit Wunschverhalten Fw ( z ) =                  hätte ein System die Sprungantwort
+                                                z2
+                                   1   z            z
+X a ( z ) = Fw ( z )  X e ( z ) = 2    = z −2        also im Zeitbereich die Folge f k = 0, 0,1,1,1, ...
+                                  z z −1          z −1
+Man kann ein Einschwingen in (minimal) n + d Schritten erreichen (inkl. Vermeidung von
+Oszillationen – s.u.). Dabei sei n die Ordnung der Regelstrecke (Zahl der Pole) mit ev.
+zusätzlich vorhandener Totzeit TT = d  TA. D.h. FW(z) hat mindestens Ordnung n + d.
+
+
+Beispiel
+
+
+
+
+• Beschreibung zeitdiskrete Strecke für TA = 0,1?
+
+RTA_Hilfsblätter 2025-26.docx            C. Brüdigam                    30.09.2025                    Seite 28 von 43
+Digitale Regelung
+
+   Beschreibung zeitdiskrete Strecke für TA = 0,1?
+   Wunschübertragungsfunktion FW?
+   Entwurf Deadbeat-Regler FR?
+   Regler mit I-Anteil?
+   Erzwingen eines Reglers mit I-Anteil?
+   Vermeiden von Oszillationen zwischen den Abtastpunkten?
+Beschreibung zeitdiskrete Strecke für TA = 0,1
+
+
+…
+
+
+Matlab-Code
+FSs = tf([2 26.34],[1 1.054])     % s-Strecke
+FSz = c2d(FSs, TA, 'zoh')         % z-Strecke
+             2 z  0,5
+FS ( z ) 
+              z  0.9
+Wunschübertragungsfunktion FW„Man kann ein Einschwingen in (minimal) n + d Schritten
+                                                                              X ( z) 1
+erreichen.“ Systemordnung n = 1; keine zusätzliche Totzeit (d = 0). Fw ( z )  a      
+                                                                              X e ( z) z
+
+
+Entwurf Deadbeat-Regler FR
+    !           Fw
+FR 
+        FS  1  Fw  FM 
+
+
+…
+
+
+Matlab-Code
+KM = 2
+FW = tf([1],[1 0], TA)         % Wunschübertragungsfunktion
+FR = feedback(FW, KM, +1)/FSz; % Berechnung Regler
+FR = minreal(FR, 0.0001)       % Kürzung von P/N (Rechenungenauigkeiten)
+
+          0,5 z  0, 45
+FR 
+        z  1,75 z  0,5
+         2
+
+
+
+
+Regler mit I-Anteil?
+„Die stationäre Verstärkung K einer z-Übertragungsfunktion bestimmt sich zu:
+
+ K
+      bi  F  z   F  z  1  F 1 “ hier: K R  0,5  0, 45  0.05  
+      aj          z 1
+                                                      1  1,75  0,5 1, 25
+
+ Der Regler hat kein integrales Verhalten. (Kann man auch an der Sprungantwort sehen.)
+
+
+
+
+RTA_Skript.docx                  C. Brüdigam              26.03.2026            Seite 29 von 45
+Digitale Regelung
+
+4.4.3 Erzwingen eines Reglers mit I-Anteil
+Plausibilisierung:
+     Ohne KM im Führungszweig besitzt der Regler keinen I-Anteil, um das gewünschte
+     Verhalten K w  1 zu erreichen.  Beispiel:
+      c=w           e              u       KS =0,625           x
+               -                           TS . s + 1
+                        Regler
+
+
+
+                        r        KM = 0,2
+                                TM . s + 1
+
+
+     Mit KF = KM im Führungszweig benötigt der Regler einen I-Anteil, um das gewünschte
+     Verhalten zu erreichen, da die Regeldifferenz dann 0 ist:
+        c                   w          e                   u       0,625   x
+               KF                                                    ...
+                                   -
+                                              Regler
+
+
+
+                                                r        0,2
+                                                          ...
+
+     D.h. durch Einfügen eines Faktors KF = KM (statische Verstärkung des Messzweigs) in
+     den Führungsgrößenzweig kann man einen Regler mit I-Verhalten erzwingen und damit
+     ein deutlich besseres Regelverhalten bei Störungen und Modellungenauigkeiten
+     erreichen.
+     Die gewünschte statische Verstärkung der Führungsübertragungsfunktion
+                FR  FS                       1
+       Fw                    ist damit Kw  K .
+            1  FR  FS  FM                   M
+
+     Anm: Bei Regelkreisen mit Einheitsrückführung (ev. extra im MC-Programm erzeugt)
+     wird daher automatisch ein Regler mit I-Anteil erzeugt.
+
+
+Hier:
+Messzweig hat Verstärkung KM = 2. Diese Verstärkung muss dann auch in den
+Führungsgrößenzweig eingebaut werden. Damit gilt jetzt: Fw ( z )  0.5
+                                                                                            z
+FR  ...
+
+
+
+Matlab-Code für Regler mit I-Anteil
+KM = 2
+FW = tf([0.5],[1 0], TA)                             % Wunschübertragungsfunktion
+FRi = feedback(FW, KM, +1)/FSz;                      % Berechnung Regler
+FRi = minreal(FRi, 0.0001)                           % Kürzung von P/N (Rechenungenauigkeiten)
+
+         0, 25 z  0, 225       0, 025
+FR                         K           integrales Verhalten
+        z  0,75 z  0, 25
+         2
+                                   0
+RTA_Skript.docx                                     C. Brüdigam                26.03.2026        Seite 30 von 45
+Digitale Regelung
+
+
+
+
+4.4.4 Vermeidung von Oszillationen der Regelgröße zwischen den Abtastpunkten
+Bei der Simulation stellt man fest, dass sich der Regelkreis mit der zeitdiskreten Strecke
+erwartungsgemäß verhält. Betreibt man den Regelkreis aber mit der realen,
+zeitkontinuierlichen Strecke, stellt man fest, dass es zwischen den Abtastpunkten noch lang
+anhaltende „Bewegungen“ (ev. Schwingungen) an der realen Strecke gibt.
+ Simulink Simulation
+Vermutete Ursache: Die Regelgröße x wird durch die Reglerausgangsgröße u angeregt.
+Wenn diese nicht oszilliert, dann wird die Regelgröße  w         e   FR   u
+auch nicht oszillieren.                                      -
+Die Übertragungsfunktion Fwu von w nach u müsste also
+auch eine endliche Einschwingzeit haben, also einen                          r   F     x      F
+                                                                                  M           S
+Nenner, der nur aus einem Term zk besteht. Es gilt:
+                                                Fw                          Fw
+                      FR               FS  1  Fw  FM                   FS           F
+Fw  u  Fwu                                                                          w
+               1  FR  FM  FS 1           Fw
+                                                         FM  FS 1  Fw  FM  Fw  FM  FS
+                                    FS  1  Fw  FM 
+
+Falls der Nenner von Fwu auch Pole  0 besitzt, müssen diese eliminiert (gekürzt) werden,
+indem man Fw entsprechend modifiziert.
+Die Hilfsfunktion FH, mit der man Fw dazu erweitert (multipliziert), muss die Pole  0 von Fwu,
+kompensieren und zusätzlich die Verstärkung = 1 aufweisen. Außerdem soll sie den
+Polüberschuss nicht ändern (Realisierbarkeit: PÜ(Fw)  PÜ(FS) PÜ(FH) = 0).
+Fortsetzung Beispiel (ohne Oszillationen zwischen den Abtastpunkten)
+         Fw
+Fwu        
+         FS
+
+FH =
+
+Fw,no _ Osci 
+
+
+FR ,no _ Osci 
+
+
+
+Matlab-Code für Regler mit I-Anteil und Vermeidung von Oszill. zw. den Abtastpunkten
+KM = 2
+FW = tf([0.5],[1 0], TA)               % Wunschübertragungsfunktion
+Fwu = FW/FSz;                          % Überprüfung auf Oszillationen
+Fwu = minreal(Fwu, 0.0001)             % Kürzung von P/N (Rechenungenauigkeiten)
+FH = tf([4 1],[5 0], TA)               % Hilfsfunktion zur Vermeidung v. Osill.
+FW = FW * FH                           % neue Wunschübertragungsfunktion
+FR = feedback(FW, KM, +1)/FSz;         % Berechnung Regler
+FR = minreal(FR, 0.0001)               % Kürzung von P/N (Rechenungenauigkeiten)
+ Simulink Simulation
+RTA_Skript.docx                       C. Brüdigam                   26.03.2026                    Seite 31 von 45
+Digitale Regelung
+
+
+
+Ergänzung: Sollwert in mehreren Schritten erreichen (Alternative Wunschfunktionen)
+Mit dem bisher gewählten Wunschverhalten (nur kurze Verzögerung einer sprungförmigen
+Anregung) reagiert der Regelkreis hart auf Führungsgrößenänderungen. D.h. er versucht mit
+hohen Stellgrößen möglichst schnell auf Führungsgrößenänderungen zu reagieren. Wenn
+diese harte Reaktion unerwünscht ist (entweder weil die hohen Stellgrößen aufgrund von
+Begrenzungen der Anlage nicht realisierbar sind oder auch aus Komfortgründen, wie beim
+Tempomaten), kann man diese Reaktion entschärfen, indem man die Abtastzeit verlängert
+(der Einschwingvorgang hat dann mehr Zeit) oder indem man eine gewünschte
+Sprungantwort so vorgibt, dass in mehreren Stufen auf den Sprung reagiert wird:
+
+
+                                                                z
+Eingangssignal: z.B. Sprung xe (k )   k  X e ( z )             Gewünschte Sprungantwort (muss
+                                                              z 1
+realisierbar sein): z.B. xa (k )  0; 0,5; 0,8; 1; 1; 1; ... (Statische Verstärkung von 1,
+Verzögerung um einen Zeitschritt, springt in Stufen von 50%, 30% und 20% auf den Endwert.
+Darstellbar z.B. durch 3 versetzte Sprünge oder 2 versetzte Impulse und 1 versetzter
+Sprung…)
+Darstellung der gewünschte Sprungantwort durch 3 versetzte Sprünge:
+
+
+
+
+Oder Darstellung der gewünschte Sprungantwort durch zwei versetzte Impulse und einen
+versetzten Sprung:
+
+
+
+
+               X a ( z)
+ FW ( z )             
+               X e ( z)
+
+
+
+4.4.5 Vorgehen bei Stellgrößenbeschränkungen
+Wird durch die Führungs- oder Störgröße eine Stellgröße erzeugt, die eine vorhandene
+Begrenzung für eine begrenzte Zeit überschreitet, ergibt sich ein deutlich verlängerter
+Einschwingvorgang, da sich das System anders verhält als für die Berechnung des Reglers
+angenommen.
+Um das zu verhindern, wird diese (zu große) Führungsgröße nicht verwendet. Stattdessen
+wird mit Hilfe des Regelalgorithmus zurückgerechnet, welche maximale Führungsgröße
+zusammen mit der aktuellen Messgröße eine Stellgröße erzeugt, die die Begrenzung gerade
+nicht überschreitet. Diese Führungsgröße wird dann für den aktuellen Zyklus verwendet. Im
+nächsten Zyklus wird dann wieder mit der „originalen“ Führungsgröße geregelt und (nur) im
+Fall einer Überschreitung der Stellgrößen erneut die o.g. Reduzierung durchgeführt:
+Regelung_Dusche_SG_Begrenzung_1.slx. Statt der Modifikation der Führungsgröße kann
+auch die Regeldifferenz modifiziert werden: Regelung_Dusche_SG_Begrenzung_2.slx
+RTA_Skript.docx                     C. Brüdigam                26.03.2026                Seite 32 von 45
+Hinweise und Beispiele zur Modellierung und Reglerauswahl
+
+5 Hinweise und Beispiele zur Modellierung und Reglerauswahl
+
+5.1       Ziel der Modellierung bestimmen
+      •    Für Entwicklung/Optimierung einer Komponente? Zur Auslegung eines Reglers?
+      •    Bestimmung der Bewegung, der Temperatur, des max. Stroms, des Verhaltens an den
+           Anschlägen, Betrieb bei konstanten oder wechselnden (wie) Eingangsgrößen
+      •    Statisch ausreichend oder dynamisch nötig?
+      •    Geforderte Genauigkeit?
+      •    Zur Verfügung stehende Tools? (z.B. statisch → Excel; dynamisch → Simulink)
+
+5.2       Bestimmung der Modellstruktur
+      •    Eingang / Ausgang bestimmen
+      •    Skizze
+      •    Teilsysteme / Baugruppen einzeln bestimmen: elektrisch, mechanisch, thermisch etc.
+      •    Methoden
+           - Differentialgleichung aufstellen (El. Kreis mit U, UR, UL, UEMK, I) → BSB, Ü-Fkt.
+           - Sprungantwort bestimmen → …
+           - Frequenzgang (Bodediagramm)
+           - bekanntes Verhalten (Integrator, Faktor, etc.)
+           - Blöcke im BSB kombinieren
+      •    Blockschaltbild, um Nichtlinearitäten zu berücksichtigen und für Kombination von
+           Teilblöcken (mit Rückwirkungen etc.)
+      •    Häufig Dynamik wichtig: Kraft oder Moment (abzgl. Gegengrößen) zusammen mit
+           Trägheit (m, J) → Beschleunigung → Geschwindigkeit → ev. Position
+      •    Überprüfung der Plausibilität (z.B. Einheitencheck)
+      •    Struktur kann auch nachträglich noch erweitert oder vereinfacht werden:
+           Bsp. Drosselklappe
+           - Reglerentwurf: Reibung und Feder vernachlässigen
+           - Ev. Ankerinduktivität vernachlässigen
+           - Zusätzlich: Sättigung B bzw. M; Wirbelstromeffekte; Haftreibung; RA = f(T);
+              Getriebespiel; Anschlag genauer modellieren
+
+5.3       Bestimmung der Modellparameter (Bsp. Drosselklappe)
+      •    Bestimmung über Ein-/Ausgangsverhalten (R, L, kM, kG, k EMK, Feder, Reibung) oder
+           über innere Struktur (J, kG)
+      •    Bestimmung mit Signalgrößen im Betriebspunkt
+      •    Bestimmung mit unterschiedlichen Methoden, Messgeräten, Gruppen; mehrfach
+           (Statistik, Mittelwert)
+      •    Überprüfung der Plausibilität (z.B. Vorzeichen der Reibkennlinie; MFeder > MReib; IkM 
+           MFeder + MReib)
+
+5.4       Überprüfung des Modells
+      •    Vergleich mit realem System (in für das Modell gültigen Betriebspunkten), wenn
+           möglich
+
+
+RTA_Hilfsblätter 2025-26.docx                 C. Brüdigam        30.09.2025               Seite 33 von 43
+Hinweise und Beispiele zur Modellierung und Reglerauswahl
+
+5.5    Beispiele
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                 C. Brüdigam   30.09.2025   Seite 34 von 43
+Praktische Aspekte bei der Realisierung von digitalen Reglern
+
+6 Praktische Aspekte bei der Realisierung von digitalen Reglern
+
+6.1       Pulsweitenmodulation
+Wiederholung Feldeffekttransistor (z.B. MOSFET)
+                   Source (-) Gate Drain (+)
+      Metall
+Oxid (Isolator)
+                          n           p       n
+
+                              Substrat (Bulk)
+                                                              n-Kanal MOSFET
+
+
+               Anreicherungs- (Enhancement-) Typ                            Verarmungs- (Depletion-) Typ
+                              selbstsperrend                                          selbstleitend
+                  n-Kanal                         p-Kanal                   n-Kanal                   p-Kanal
+                          +     D                         -      D                +    D                       -     D
+
+
+
+           +                              -
+
+           G                              G                             G                     G
+
+
+                          -     S                         +      S                -    S                       +     S
+
+      ID                                                         -I D       ID                          -I D
+
+
+
+
+                                                                U GS                                                U GS
+                                UGS                                                   UGS
+
+
+Tipp für den Schaltungsentwurf (Schaltbetrieb)
+Der Schaltzustand des FET hängt von der Spannung UGS ab. Um eindeutige Zustände zu
+erhalten, sollte deshalb Source auf festes Potential gelegt werden (Masse, U+, U- etc.) und
+das Gate-Potential wird variiert.
+                                12 V
+
+
+                               RL
+                               3
+
+                      D
+
+
+
+      G
+                      S
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                      C. Brüdigam                   30.09.2025                        Seite 35 von 43
+Praktische Aspekte bei der Realisierung von digitalen Reglern
+
+Idee PWM zur variablen Einstellung der Leistung
+• Die Versorgungsspannung des Verbrauchers wird im Wechsel ein- und ausgeschaltet
+• Bei üblicherweise fester Frequenz wird die Dauer des Einschaltpulses zwischen 0 % und
+  100 % variiert. Damit ergibt sich eine entsprechende Variation der mittleren Leistung im
+  Verbraucher.
+• Ist die Trägheit des Verbrauchers (oft thermisch, induktiv oder kapazitiv) groß, verglichen
+  mit der PWM-Frequenz, kann das Schalten der Versorgungsspannung im Ausgangssignal
+  nicht mehr erkannt werden.
+Auswirkung PWM
+• Bei getakteter Spannung mit der Einschaltdauer v [%] ergibt sich auch bei induktiven
+  Verbrauchern der Mittelwert des Stroms zu: i = I 0  v (linear, auch für P = U 0  i = U 0  I 0  v )
+
+• Da sich bei Elektromotoren das Moment (im linearen Bereich) proportional zum Strom
+  verhält gilt auch die Beziehung: M = M 0  v (linear)
+
+• Vorteil: Deutlich geringere Verlustleistung im Stellglied (i.W. nur beim Umschalten);
+  lineares Verhalten
+
+
+Anwendung mit H-Brücke
+Möglichkeit, der bidirektionalen Ansteuerung (Rechts- / Linkslauf)
+                           12 V
+
+
+
+
+           T1                 T2
+
+                                                                       PWM                    VCC
+                    M
+                                                                       DIR                    GND
+
+           T3                 T4                                       STA                    OUT1
+
+                                                                       ENA                    OUT2
+
+
+            Prinzipschaltung                              Anschlüsse eines Integrierten Schaltkreises (MC33186)
+
+
+                        Zustand                                 DIR     PWM             ENA          OUT1      OUT2
+      Antrieb positive Richtung (Puls)                           L           H            H           L           H
+     Antrieb negative Richtung (Puls)                           H            H            H           H           L
+      Kurzschluss „low side“ (Pause)                             L           L            H           L           L
+      Kurzschluss „high side“ (Pause)                           H            L            H           H           H
+        Z.B. Sicherheitsabschaltung                             X            X            L           Z           Z
+                                                            H: high   L: low         X: any     Z: high impedance
+Schalttabelle
+
+
+
+RTA_Hilfsblätter 2025-26.docx                    C. Brüdigam                     30.09.2025                 Seite 36 von 43
+Praktische Aspekte bei der Realisierung von digitalen Reglern
+
+6.2     Integer-Rechnung: Quantisierung, numerische Probleme
+Preisgünstige Mikrocontroller verwenden Integer-Arithmetik (Gleitkommazahlen vermeiden,
+da diese die Einbindung von Bibliotheksroutinen benötigen → Speicherbedarf, Rechenzeit
+steigen)
+
+
+Typische Probleme
+• Überschreiten des zulässigen Wertebereichs:
+
+
+
+
+• Rechnung mit Überlauf (8 Bit):
+
+
+
+
+Division mit Ergebnis < 1 (8 Bit):
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                    C. Brüdigam    30.09.2025     Seite 37 von 43
+Praktische Aspekte bei der Realisierung von digitalen Reglern
+
+6.3     Wind-Up Problematik und Anti Wind-Up-Algorithmus
+Die Auslegung eines Reglers erfolgt unter Annahme linearer Systeme.
+Eine häufige Nichtlinearität im System ist aber die Begrenzung der Stellgröße. Zusammen
+mit der Verwendung von I-Reglern bzw. I-Anteilen kommt es dabei häufig zu einem
+unangenehmen Effekt, dem sogenannten Integrator-Windup:
+Bei schnellen Sollwertänderungen (oder auch Problemen wie dem kurzzeitigen Blockieren
+des Stellglieds etc.) geht die Stellgröße in die Begrenzung. Dies ist ein Effekt, der bei der
+linearen Reglerauslegung nicht berücksichtigt werden kann. Wegen der begrenzten
+Stellgröße dauert der Stellvorgang länger, als zu erwarten war. Deshalb lädt sich in dieser
+Zeit der I-Anteil höher auf als nötig. Wird der Sollwert dann erreicht, ist der I-Anteil
+„überladen“ und fährt (gegen den P- und den D-Anteil) das System über den Sollwert hinaus.
+Erst dann wird der I-Anteil abgebaut und der Sollwert kann eingenommen werden.
+Um diesem Effekt entgegenzuwirken, benötigt man eine sogenannte Anti-Windup-
+Maßnahme. Im einfachsten Fall wird der I-Anteil einfach auf die maximal mögliche Stellgröße
+begrenzt. Andere Verfahren begrenzen den I-Anteil so, dass die Summe von P-, I- und D-
+Anteil die Begrenzung nicht erreicht.
+
+
+
+
+Simulink-Anti-Windup-Variante (Back-Calculation)
+
+
+
+Vergleich verschiedener Anti-Windup-Maßnahmen
+System: Antriebssystem mit begrenzter Stellgröße (z.B. 0.5)
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                    C. Brüdigam    30.09.2025         Seite 38 von 43
+Praktische Aspekte bei der Realisierung von digitalen Reglern
+
+Ohne Begrenzung
+
+
+
+
+Soll: gelb      -    Soll_filt: braun       -    P: grün        -   I: blau   -   P+I: magenta   -   Ist: rot
+
+
+Mit Stellgrößenbegrenzung ohne AW-Maßnahme
+
+
+
+
+Soll: gelb      -    Soll_filt: braun       -    P: grün        -   I: blau   -   P+I: magenta   -   Ist: rot
+
+
+Mit Stellgrößenbegrenzung und AW-Maßnahme
+
+
+
+
+Soll: gelb      -    Soll_filt: braun       -    P: grün        -   I: blau   -   P+I: magenta   -   Ist: rot
+
+RTA_Hilfsblätter 2025-26.docx                    C. Brüdigam                       30.09.2025                   Seite 39 von 43
+Praktische Aspekte bei der Realisierung von digitalen Reglern
+
+6.4     Task-Scheduling
+
+
+
+
+Zustände und Übergänge von Tasks
+
+
+Scheduler
+Der Scheduler teilt in einem Multitasking-System den einzelnen Prozessen/Tasks die
+benötigten Betriebsmittel (z.B. Rechenzeit) entsprechend einer Zuteilungsstrategie zu.
+
+
+Zuteilungsstrategien
+Das größte Problem des Schedulers ist die Tatsache, dass die benötigten Betriebsmittel für
+die einzelnen Prozesse nicht im Vorfeld bekannt sind. Es lässt sich also im Allgemeinen
+keine optimale Planung erstellen, sondern der Scheduler muss dynamisch auf geänderte
+Anforderungen reagieren. Dabei können (abhängig vom Scheduler) verschiedene
+Zuteilungsstrategien zum Einsatz kommen. Unter anderem:
+• First In – First Out (FIFO), First-Come First-Served (FCFS): Hierbei werden alle Prozesse
+  in der Reihenfolge ihres Eingangs bearbeitet. Diese Strategie erzielt eine gute Auslastung
+  bezüglich der CPU, allerdings nicht bezüglich Ressourcen, die längere Zeit für eine
+  Anforderung benötigen können, wie z. B. Ein-/Ausgabe oder Massenspeicher. Für
+  Mehrbenutzersysteme ist die Strategie darüber hinaus wenig geeignet, da einzelne
+  Benutzer so ggf. für längere Zeit (nämlich bei aufwendigen Prozessen anderer Benutzer)
+  ausgeschlossen werden.
+• Round Robin, Zeitscheibenverfahren: Einem Prozess wird die CPU für eine bestimmte
+  (kurze) Zeitspanne zugeteilt. Danach wird der Prozess wieder hinten in die Warteschlange
+  eingereiht. Sind die einzelnen Zeitspannen unterschiedlich groß, so spricht man von
+  Weighted Round Robin (WRR)
+• Weitere Verfahren …
+• Prioritätsscheduling: Bei dieser Strategie wird jedem Prozess eine Priorität zugeordnet.
+  Die Abarbeitung erfolgt dann in der Reihenfolge der Prioritäten.
+
+
+
+RTA_Hilfsblätter 2025-26.docx                    C. Brüdigam    30.09.2025         Seite 40 von 43
+Praktische Aspekte bei der Realisierung von digitalen Reglern
+
+• Man kann auch mehreren Prozessen die gleiche Priorität geben, sie werden dann in
+  Eingangsreihenfolge ausgeführt oder mit einem untergeordneten Zeitscheibenverfahren
+  (s.o.) innerhalb der gleichen Priorität abgewechselt.
+• Die Prioritäten können auch dynamisch sein, wobei sich die Priorität eines Prozesses mit
+  der Zeit erhöht, damit auch niedrig priorisierte Prozesse irgendwann bearbeitet werden
+  und nicht ständig von höher priorisierten Prozessen verdrängt werden.
+
+
+Präemptive und kooperative Verfahren
+Man unterscheidet präemptive (von engl. preemptive, ‚vorwegnehmende‘) Verfahren von
+kooperativen:
+• Ein präemptives Verfahren kann dem Prozess Ressourcen bereits vor der Fertigstellung
+  wieder entziehen, um sie zwischenzeitlich anderen Prozessen mit höherer Priorität
+  zuzuteilen. Der Prozess wird dabei in seiner Ausführung unterbrochen (er geht in den
+  Zustand ‚bereit bzw. ready‘ über) und verharrt dort, bis ihm durch den Scheduler erneut
+  Ressourcen zugeteilt werden.
+• Ein kooperatives (nicht präemptives) Scheduling-Verfahren übergibt einem Prozess die
+  benötigten Ressourcen und wartet, bis der Prozess diese Ressourcen wieder freigibt (z.B.
+  beim Übergang auf „waiting“) bzw. bis er vollständig abgearbeitet ist und dadurch die
+  Ressourcen wieder freigibt.
+• Auch Mischformen möglich (manche Tasks können unterbrochen werden, andere nicht
+  oder an bestimmten Stellen kann unterbrochen werden)
+
+
+
+
+Aufruf der Tasks
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                    C. Brüdigam    30.09.2025       Seite 41 von 43
+Praktische Aspekte bei der Realisierung von digitalen Reglern
+
+Beispiel Motorsteuerung
+
+
+                                         Betriebssystem
+
+         1 ms                    3 ms                    10ms            eventgetriggert
+
+                      3          -Sonden- 1                        1          Ein-      3
+         DK-Reg.                                         T_KW
+                                 heizung                                       spritzung
+        A                       C                        F                 H
+
+                       2         PWG-     2              Saugrohr- 2                     3
+         AGR-Reg.                                                              Zündung
+                                 Erfassung               Modell
+        B                       D                                          I
+                                                        G
+                                 Momenten-1              TExec = 1,2ms
+                                 Koord.                                        Prio 3 > Prio 2 > Prio 1
+                                E                                              Kooperatives Scheduling
+                                 TExec = 0,5ms                                 Tasks gleicher Priorität werden in
+                                                                               alphabetischer Reihenfolge aufge-
+                                                                               rufen (A vor B …)
+Rechenzeit für alle Tasks ohne Angabe: TExec = 0,2ms
+Es finden pro Umdrehung je zwei Einspritzungen und Zündungen statt. (Max. 6000 U/min)
+Eventuell:
+Annahme: Die Ressourcen für das Betriebssystem etc. seien vernachlässigbar
+Kann eine Task (aufgrund niedriger Priorität) nicht rechtzeitig gestartet werden, kann die
+gleiche Task auf mehrfach in der Menge der bereiten Tasks vorhanden sein.
+Die Folgeausführung einer Task wird durch das verspätete vorherige Ausführen nicht
+verzögert…
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                    C. Brüdigam                      30.09.2025              Seite 42 von 43
+Praktische Aspekte bei der Realisierung von digitalen Reglern
+
+Zeitlicher Ablauf der Taskaufrufe
+    Zeit           Task                            Zeit         Task            Zeit   Task
+     1,0              A
+     1,2
+
+
+
+
+RTA_Hilfsblätter 2025-26.docx                    C. Brüdigam           30.09.2025             Seite 43 von 43
+

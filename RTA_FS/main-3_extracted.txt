@@ -1,0 +1,546 @@
+     Formelsammlung
+  Regelungstechnik (RT)
+
+                   nach Vorlesungsunterlagen von
+                    Prof. Dr.-Ing. C. Brüdigam
+
+
+
+
+Originalversion:                         Maximilian Binninger
+Überarbeitet:                            Bastian Nagler
+Letzter Stand:                           SoSe 26
+Lizenz:                                  GPLv3
+Inhaltsverzeichnis
+1 Grundlagen                                                                                                                       1
+  1.1 Gleichungen zur Modellbildung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        1
+  1.2 Mathematische Grundlagen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         1
+  1.3 Linearisierung um Arbeitspunkt . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       1
+  1.4 Eigenschaften von LTI-Systemen . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         1
+  1.5 Systemantwort . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      1
+  1.6 Abtasttheorem . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      1
+
+2 Systemtechnik                                                                                                                    1
+  2.1 Modellbildung . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    1
+  2.2 Signalflussplan/Blockschaltbild . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      1
+  2.3 Übertragungsfunktion F(s) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        2
+      2.3.1 F(s) aus DGL . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       2
+      2.3.2 F(s) in Pol- und Nullstellenform . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         2
+  2.4 Signalflussplan Algebra . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      2
+
+3 Zusammenwirken mehrerer Systeme                                                                                                  2
+  3.1 Regelkreis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   2
+  3.2 Wurzelortskurven (WOK)-Verfahren . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           3
+  3.3 Nyquist Kriterium . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      4
+  3.4 Reglerauslegung im Bode Diagramm . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           5
+  3.5 Einstellregeln . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   5
+      3.5.1 Zeigler/Nichols . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      5
+      3.5.2 Betragsoptimum . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         5
+      3.5.3 Symmetrisches Optimum . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .            5
+  3.6 Maßnahmen zur Verbesserung des Regelverhaltens . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .             5
+
+4 Digitale Regler                                                                                                                  6
+  4.1 z-Transformation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     6
+      4.1.1 Stabilität von digitalen Reglern . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       6
+  4.2 Algorithmus aus der Übertragungsfunktion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           6
+
+5 Systembeschreibung im Zustandsraum                                                                                               6
+  5.1 Allgemein (Mehrgrößensystem MIMO) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .              6
+      5.1.1 Polfestlegung durch vollständige Zustandsrückführung . . . . . . . . . . . . . . . . . . . . . . . . . . .             7
+Bastian Nagler                                                                                                                  2   Systemtechnik
+
+1      Grundlagen                                                                Impulsantwort (x = δ)
+                                                                                                   Z ∞
+1.1      Gleichungen zur Modellbildung
+                                                                                            h(t) =     x(τ )δ(t − τ ) dτ
+Kräftegleichungen:                                                                                        −∞
+                                                                                                h(t) = L−1 {F (s)}
+    Federkraft: FF = kF · x
+    Dampfkraft: FD = kD · v = kD · ẋ                                                                  d
+                                                                                                h(t) = g(t)
+    Trägheitskraft: FT r = m · a = m · ẍ                                                              dt
+    Erdanziehungskraft: FG = m · g
+                                                                             1.6     Abtasttheorem
+Moment Gleichungen:
+                                                                             Durch die Abtastung wird das Spektrum von f (t) unendlich
+    Widerstandsmoment: Mw = kD · ω
+                                                                             oft um die Frequenzen n · ωa reproduziert.
+    Trägheitsmoment: MT R = J · ω̇
+                                                                                                              ∞
+Spannungsgleichung:                                                                                       1 X
+                                                                                              FA (ω) =           F (ω − nωA )               (1)
+                                                                                                         TA n=−∞
+                                       1
+                                                        Z
+                               di
+                    U =L·         +i·R+ ·                   i
+                               dt      C                                                         2ωg ≤ ωA                                   (2)
+
+Rotation in Flüssigkeit:
+                                                                             2      Systemtechnik
+          M = MTräg + MBrems = J · ω̇ + kFlüssigkeit · ω
+                                                                             2.1     Modellbildung
+1.2      Mathematische Grundlagen                                            Hinweise zum aufstellen der Differentialgleichung eines Sys-
+Für kleine Winkel α gilt: sin(α) = α                                         tems:
+    Anfangswertsatz: x(t → +0) = lims→∞ s · X(s)                                  1. Bestimmung der Ein- und Ausgangsgrößen
+    Endwertsatz: x(t → ∞) = lims→0 s · X(s)                                        2. Suche nach dem beschreibenden Gleichgewicht
+    Endwertsatz gilt nur, wenn max. 1 Pol von X(s) im Ursprung liegt
+    und alle anderen Pole in der linken Halbebene.                                 3. In der Gleichung dürfen nur Konstanten, sowie die
+                                                                                      Ein- und Ausgangsgrößen in beliebiger Ableitung
+                                                                                      vorkommen
+1.3      Linearisierung um Arbeitspunkt
+                                                                                   4. Andere Variablen müssen durch erlaubte Größen
+                                                                                      ersetzt werden
+    xa (t) = xa,AP + ∆xa (t)                                                          (Dazu können i.a. physikalische Gleichungen benutzt wer-
+                                                n                                     den)
+                                                X    ∂f
+          ≈ f (xe1,AP , ..., xen,AP ) +                     · ∆xem (t)
+                                                m=1
+                                                    ∂xem AP
+                                                                             2.2     Signalflussplan/Blockschaltbild
+1.4      Eigenschaften von LTI-Systemen                                      Erzeugung des Signalflussplans aus der Zugehörigen
+                                                                             DGL.
+       1. BIBO-Stabilität (Bounded Input / Bounded Output)
+          |y(t)| < ∞    für |x(t)| < ∞                                           1. für technische Realisierung gilt: m ≤ n;
+
+       2. Linearität                                                               2. DGL. nach höchster Ableitung der Ausgangsgröße
+                                                                                      auflösen
+            nP              o P
+               N               N
+          f    k=1 an xn (t) = n=1 f {an xn (t)}
+                                                                                   3. höchste Ableitung der Ausgangsgröße geht auf den
+       3. Zeitinvarianz                                                               Eingang des ersten Integrators
+          f {x(t − t0 )} = y(t − t0 )                                                 (Laplace-Trans ersetzt Integrieren mit 1s )
+
+       4. Kausalität
+          x(t) = 0 , y(t) = 0             für     t<0
+
+
+1.5      Systemantwort
+    Sprungantwort (x = σ)
+
+                                                        F (s)
+                                                               
+                g(t) = L−1 {G(s)} = L−1
+                                                          s
+                         Z t
+                g(t) =         h(τ ) dτ
+                          0
+
+
+
+
+                                                                         1 von 7
+Bastian Nagler                                                                                3   Zusammenwirken mehrerer Systeme
+
+  Erzeugung des Signalflussplans eines Systems mit der                      Kreisstruktur:
+  DGL.:
+                    (n)
+                  an x a + . . . + a2 ẍa + a1 ẋa + a0 xa
+                     (m)
+                =bm x e + . . . + b2 ẍe + b1 ẋe + b0 xe
+                                                                            Verschieben einer Additionsstelle:
+
+
+
+
+                                                                            Verschieben einer Verzweigung:
+
+
+        Falls m < n, sind alle höheren bµ = 0 zu wählen.
+
+
+2.3      Übertragungsfunktion F(s)
+
+                                      Xa (s)
+                            F (s) =
+                                      Xe (s)                          3       Zusammenwirken mehrerer Syste-
+2.3.1       F(s) aus DGL                                                      me
+                                                                      3.1       Regelkreis
+      (n)                                 (m)
+  an x a + . . . + a1 ẋa + a0 xa = bm x e + . . . + b1 ẋe + b0 xe       Wichtige Begriffe
+                 bm s + . . . + b2 s + b1 s + b0
+                      m               2
+  ⇒ F (s) =                                                               • Führungsgröße: w(t)
+                 an sn + . . . + a2 s2 + a1 s + a0
+                                                                          • Störgröße: z(t)
+2.3.2       F(s) in Pol- und Nullstellenform                              • Regelgröße: x(t)
+                       Qm
+                         µ=1 (s − sN µ )         bm                       • Regeldifferenz: e(t) = w(t) - x(t)
+            F (s) = Q · n                mit Q =
+                             (s        )
+                       Q
+                                − s PV           an
+                        v=1
+                                                                          • Maximale Überschwingweite: maximale Regelabwei-
+  Pole in der rechten Halbebene führen zu einem instabilen                  chung nach dem erstmaligen Erreichen des Sollwertes
+  System. Diese können nicht durch Nullstellen kompen-
+                                                                          • Anregelzeit: Zeit zum erstmaligen Erreichen des Soll-
+  siert werden.
+                                                                            wertes
+  Pole bewirken ein zeitverzögertes Verhalten. Je weiter
+  links sie sich befinden, desto schneller ist der Einschwing-            • Ausregelzeit: Zeit zum dauerhaften Erreichen des Soll-
+  vorgang.                                                                  wertes im Toleranzband
+  ⇒ Wenn Pole deutlich weiter links liegen als andere an-
+  dere, kann man sie ohne großen Fehler vernachlässigen.
+                                                                          Anforderungen:
+
+  Nullstellen bewirken ein differenzierendes Verhalten (Be-               • Stabilität: Regelkreis muss stabiles Verhalten zeigen
+  schleunigung des Systems) Einfluss weit links in der s-                   (gilt auch für instabile Systeme)
+  Ebene kann häufig vernachlässigt werden.
+                                                                          • Gutes Führungsverhalten: Die Differenz zw. Sollwert
+                                                                            w(t) und Istwert x(t) muss schnell klein werden.
+2.4      Signalflussplan Algebra                                          • Gutes Störverhalten: Einfluss von Störgrößen soll ver-
+  Kettenstruktur:                                                           mindert werden.
+
+                                                                      Grundstruktur des einschleifigen Regelkreises:
+
+
+  Parallelstruktur:
+
+
+
+
+                                                                  2 von 7
+Bastian Nagler                                                                             3     Zusammenwirken mehrerer Systeme
+
+                                                                 Diese Gleichung kann in Betrag und Phase aufgeteilt werden:
+                                                                                  Qn
+                                                                                    ϑ=1 |s − sP 0ϑ |
+                                                                                  Qm                 = |K · Q|
+                                                                                    µ=1 |s − sN 0µ |
+
+                                                                 Falls keine Nullstellen vorliegen, ist der Nenner zu 1 zu wäh-
+                                                                 len.
+                                                                 n
+                                                                 X                        m
+                                                                                          X
+                                                                       ∠ (s − sP 0ϑ ) −         ∠ (s − sN 0µ ) = ∠ (−K · Q) = ±r · 180◦
+                                                                 ϑ=1                      µ=1
+
+                                                                       r = 1, 3, 5, . . . für K · Q > 0
+                                                                       r = 0, 2, 4, . . . für K · Q < 0
+
+                                                                 Aus der Phasenbeziehung lässt sich der Verlauf der WOK
+                                                                 bestimmen.
+Grundsätzliche Eigenschaften der Kreisstruktur:                  Wenn Betragsbedingung erfüllt →Punkt ist Teil der WOK
+
+                                                                 Die Betragsbeziehung gestattet es, jedem Punkt der WOK
+                                                                 den entsprechenden K-Wert zuzuordnen.
+                                                                 entsprechenden s-Wert einsetzen
+                                                                 KKrit durch einsetzen von sKrit (Punkt an dem WOK durch Imaginär-
+                                                                 Achse geht)
+                                                                 Stabilität für K > KKrit oder K < KKrit aus der WOK ablesen.
+
+                                                                   Konstruktion der WOK
+                                                                   1. Alle n Äste der WOK beginnen mit K=0 in den n
+                                                                      Polen sP ov des offenen Regelkreises.
+          FV                  1               −FV · Fr
+ X=                ·W +               · Z1 +              · Z2     2. m Äste der WOK enden für K → ±∞ in den m end-
+      1 + F V · Fr       1 + F V · Fr        1 + F V · Fr
+          FV                                                          lichen Nullstellen sN ov des offenen Regelkreises
+Fw =               (Führungsübertragungsfunktion)
+      1 + F V · Fr                                                 3. n − m Äste der WOK enden für K → ±∞ im Unend-
+           1                                                          lichen. n − m ist der Polüberschuss.
+Fz1 =              (Störübertragungsfunktion 1)
+      1 + F V · Fr
+       −FV · Fr                                                    4. Die n-m ins Unendliche strebende Äste der WOK ha-
+Fz2 =              (Störübertragungsfunktion 2)                       ben Asymptoten, die
+      1 + F V · Fr
+                                                                      a) im Wurzelschwerpunkt
+3.2   Wurzelortskurven (WOK)-Verfahren                                                Pn            Pm
+                                                                                         v=1 spov −  u=1 sN op
+                                                                                 sw =
+  Reglerfunktion FR in Reglerverstärkung und Reglerdy-                                          n−m
+  namik aufspalten: FR = K · FR′                                        beginnen und die dabei
+                                                                        b) mit der reellen Achse die Winkel
+
+                                                                                          (2k − 1) · 180◦
+                                                                                        φk =                   für KQ > 0
+                                                                                                n−m
+                                                                                          (2k − 2) · 180◦
+                                                                                bzw. φk =                      für KQ < 0
+                                                                                                n−m
+                                                                                  mit k = 1, 2, 3, . . . , n − m
+                 FR · FS         FR · F S                               einschließen.
+⇒ Fw (s) =                     =
+             1 + F R · FS · Fr   1 + Fo
+                                                                   5. Die Punkte der WOk liegen entweder auf der reelen
+               Fo (s) = FR (s) · FS (s) · Fr (s)                      Achse, oder symmetrisch zur reelen Achse
+                     = K · FR′ (s) · FS (s) · Fr (s)               6. Ein Punkt s auf der reellen Achse ist dann ein Punkt
+                                                                      der WOK, wenn sich bei KQ > 0 (KQ<0) rechts von
+                                Qm
+                                  µ=1 (s − sN 0µ )
+                     = K · Q · Qn                                     ihm eine ungerade (gerade) Anzahl von Polen sP ov
+                                  ϑ=1 (s − sP 0ϑ )                    und (+) Nullstellen sN ov befindet.
+Für eine Polstelle muss der Nenner von Fw (s) Null werden:         Achtung: WOK ist nicht anwendbar, wenn es sich um
+                                                                   nicht rationale Übertragungsfunktionen handelt.
+                 FR (s) · FS (s)              !
+                                 ⇒ 1 + Fo (s) = 0                  (z.B. Regelkreis mit Totzeitverhalten!)
+                  1 + Fo (s)
+                    Qn
+                       ϑ=1 (s − sP 0ϑ )
+                 ⇒ Qm                   = −K · Q
+                      µ=1 (s − sN 0µ )
+
+
+
+                                                           3 von 7
+Bastian Nagler                                                                     3   Zusammenwirken mehrerer Systeme
+
+3.3   Nyquist Kriterium
+
+
+
+
+Frequenzgangfunktion des offenen Regelkreises:
+
+             Fo (jω) = Fr (jω) · FR (jω) · FS (jω)
+
+Ausgangssignal:
+
+                   xa (t) = −Fo (jω) · xe (t)
+
+Regler und seine Parameter werden so gewählt,
+dass ω = ωkrit gilt:
+
+          Fo (jωkrit ) = −1 (Schwingbedingung)
+
+  Die Schwingbedingung ist erfüllt, wenn die Ortskurve
+  von Fo (jω) durch den kritischen Punkt (Pkrit = −1+j0)
+  der komplexen Fo -Ebene geht.
+  An diesem Punkt kann man ωkrit ablesen (damit kann
+  der Regelkreis Dauerschwingungen ausführen).
+  Für größere Verstärkung ist das System instabil, für klei-
+  nere stabil.
+
+
+                                                                          Stabilität für: ω|A=1 < ω|φ=−180◦
+
+                                                               Falls die vereinfachte Bedingung nicht funktioniert,
+                                                               wird die allgemeine Formulierung verwendet:
+                                                                 Allgemeines Nyquist-Kriterium:
+
+
+
+
+                                                                 Der geschlossene Regelkreis ist stabil, wenn der Fahr-
+                                                                 strahl von Pkrit = -1 +j0 zu F0 (jw) für wachsendes ω
+  vereinfachtes Nyquist-Kriterium:                               von +0 bis +∞ eine Winkeländerung
+  Falls F(s) des offenen Kreises keine Pole in der rechten
+                                                                           ω=+0 ∆ϕsoll = nr · 180 + na · 90
+                                                                           ω=+∞                  ◦          ◦
+  Halbebene hat und nur max. 2 im Ursprung der s-Ebene,
+  ist der Regelkreis stabil, wenn:
+                                                                 erfährt.
+  Beim Durchlaufen der Ortskurve von Fo (jω) für ω von 0
+                                                                 nr : Anzahl der Pole rechts der imaginären Achse
+  bis ∞ der kritische Punkt Fo (jωkrit = −1 + 0j) auf der
+                                                                 na : Anzahl der Pole auf der imaginären Achse
+  linken Seite der Ortskurve liegt.
+
+Zur Auswertung des Nyquist-Kriteriums im Bode Diagramm,
+spaltet man die Ortskurve nach Betrag A = |F0 (jw)| und
+Phase φ = arg(F0 (jw))
+
+
+
+
+                                                           4 von 7
+Bastian Nagler                                                                                            3    Zusammenwirken mehrerer Systeme
+
+3.4      Reglerauslegung im Bode Diagramm                                        Berechnung inklusive des Rückführteils
+
+Folgende Anforderungen für einen Regler:                                                         X
+                                                                                          TΣ =       T1 , T2 , . . . , Tn
+  • kleine bleibende Regeldifferenz: A(ω) ≫ 1 bei
+    ω ≪ ω|A=1                                                                             Streckenverstärkung: KS = K1 · K2 · . . . · Kn
+                                                                                          ⇒ PI-Regler(φR ≈ 40◦ ) :
+  • Stabilität: φ|A=1 > −180           ◦
+                                                                                                            1
+                                                                                                                
+                                                                                          FP I = KR · 1 +
+  • Phasenrand: φR = φ|A=1 + 180◦                                                                         TN · s
+    befriedigendes Störverhalten: φR ≥ 30◦                                                                                       1
+                                                                                          mit TN = 4 · TΣ         KR =
+    gutes Führungsverhalten (überschwindungsarm):                                                                           2 · K S · TΣ
+    φR ≈ 60◦
+    gutes Führungsverhalten (überschwingungsfrei):                               3.6     Maßnahmen zur Verbesserung des Re-
+    φR ≥ 80◦                                                                             gelverhaltens
+  • Unterdrückung von Störgrößen: A(ω) ≪ 1 bei
+                                                                                   Störgrößenaufschaltung:
+    ω ≫ ω|A=1
+                                                                                   Falls Angriffsort einer Störgröße bekannt und Störgröße
+                                                                                   messbar,kann man wie im Bild kompensieren.
+3.5      Einstellregeln                                                            Vorteil: einfacher Regler Entwurf, deutlich schnellere
+3.5.1     Zeigler/Nichols                                                          Ausregelung.
+
+Zur Bestimmung der Reglerparameter wird der Regelkreis
+zunächst mit einem reinen P-Regler betrieben. Dabei wird
+die Reglerverstärkung KP so lange erhöht, bis der Regel-
+kreis Dauerschwingungen ausführt. Diese kritische Verstär-
+kung KP,krit und die Periodendauer Tkrit der Schwingung
+werden notiert.
+
+
+                                                                                   Vorsteuerung:
+                                                                                   Geeignet, falls kein Kompromiss für gutes Stör und Fol-
+                                                                                   geverhalten.
+                                                                                   Regler ist auf gutes Störverhalten ausgelegt. Mit FRv
+                                                                                   wird ein schnelles Folgen auf Führungssignale w(t) er-
+                                                                                   reicht.
+
+Ein Nachteil dieses Verfahrens ist, dass das System bis zum
+Schwingen gebracht werden muss (Stabilitätsgrenze), was
+nicht bei allen Regelstrecken zulässig ist (Zerstörung).
+
+3.5.2     Betragsoptimum
+Anwendbar für Systeme mit Streckenverhalten P Tn mit einer
+„dominierenden“ (großen) und mehreren kleinen Zeitkonstan-
+ten (möglichst reelle Pole):                                                       Kaskadenregelung:
+Berechnung inklusive des Rückführteils
+                                                                                   Ineinander geschachtelte Regelkreise (innere Regelkrei-
+                                                  X                                se „schneller“). „Innere“ Störungen können bereits innen
+      T1 = Td ≫ T2 , T3 , . . . , Tn       TΣ =       T2 , T3 , . . . , Tn
+                                                                                   ausgeregelt werden. Können von Innen nach Außen in
+      Streckenverstärkung: KS = K1 · K2 · . . . · Kn                               Betrieb genommen werden.
+                               
+                                         1
+                                                                                  In WOK: K für innere Kreise muss festgelegt werden.
+       ⇒ PI-Regler: FP I = KR · 1 +                                                Dann Integration des „fertigen“ inneren Reglers in grö-
+                                       TN · s
+                                                                                   ßere Reglerstruktur.
+                                  Td
+      mit TN = Td ; KR =
+                             2 · K S · TΣ
+
+3.5.3     Symmetrisches Optimum
+Anwendbar für Systeme mit Streckenverhalten ITn (reelle Po-
+le notwendig):
+
+
+
+
+                                                                             5 von 7
+Bastian Nagler                                                                               5   Systembeschreibung im Zustandsraum
+
+    Führungsgrößenfilter:                                             4.2      Algorithmus aus der
+                                                                               Übertragungsfunktion
+    Falls eine Nullstelle den Regelkreis dominiert (nächster
+    zur Imaginärachse) kommt es zu einem einzelnen Über-                  • Übertragungsfunktion in z-Form umwandeln
+    schwinger.
+                                                                          • Zähler und Nenner durch die höchste Potenz von z
+    Zur Vermeidung wird in den Zweig der Führungsgrö-
+                                                                            teilen (Es darf nur z 0 , z −1 , z −2 . . . geben, kein z +... )
+    ße ein P T1 -Filter eingefügt, welches die Nullstelle genau
+    kompensiert.                                                          • Zähler gibt Eingangsgrößen an, Nenner gibt
+                                                                            Ausgangsgrößen an, z.B.
+                                                                            2+4z −1
+    Anti-Windup:                                                            8−5z −1 ⇒ 8xa,k − 5xa,k−1 = 2xe,k + 4xe,k−1
+
+    Wenn ein Regler mit I-Anteil und eine Begrenzung der                  • Umsortierung nach aktueller Ausgangsgröße xa,k (hier:
+    Stellgröße vorliegt, kann es zum „Windup“ kommen: I-                    xa,k = 28 xe,k + 48 xe,k−1 + 58 xa,k−1 )
+    Anteil wird immer größer, da die Stellgröße begrenzt ist.
+    Dies führt zu Überschwingen.                                  1       while (1)
+    Anti-Windup: Begrenzung des I-Anteils, damit er nicht         2       {
+                                                                             w a i t _ t i m e r i n t e r r u p t ( TA ) // Abtastzeit warten
+    über die Stellgrößenbegrenzung hinauswächst.
+                                                                  3
+                                                                  4
+                                                                  5            xaalt1 = xa
+                                                                  6            xealt1 = xe
+                                                                  7            input ( xe )
+4       Digitale Regler                                           8            xa = 0.25 * xe + 0.5 * xealt1 + 0.625 * xaalt1
+                                                                  9            output ( xa )
+Betrachtung quasi-kontinuierlicher Regler, d.h.              10           }
+       1       1
+TA ≤ 10  . . . 20 · TSystem,dom                              11
+
+
+(TSystem,dom ist die dominierende (größte) Zeitkonstante des
+Systems)
+                                                                      5       Systembeschreibung im
+4.1      z-Transformation                                                     Zustandsraum
+Wert der bei t = k ·TA ausgegeben wird, wird bei t = (k-1)
+·TA eingelesen. (Verzögerung um einen Abtastschritt):
+                                                                      5.1      Allgemein (Mehrgrößensystem MIMO)
+
+                                                                                       ⃗x˙ (t) = A⃗x(t) + B⃗u(t)       x(0) = x0
+                                                                                       ⃗y (t) = C⃗x(t) + D⃗u(t)
+
+
+
+
+                         ⇒z = ˆ es·TA                                                     Abbildung 1: Signalflussplan
+                                 1
+                              ˆ
+                       bzw. s =     · ln(z)
+                                TA
+Um die Übertragungsfunktion eines digitalen Reglers zu                         ẋ1 = 0 · x1 + 0 · x2 + 0 · x3 + 1 · u1 + 0 · u2
+erhalten, wird für s ein entsprechender Ausdruck in                            ẋ2 = K · x1 + 0 · x2 + 0 · x3 + 0 · u1 + 0 · u2
+Abhängigkeit von z und der Abtastzeit TA eingesetzt.                           ẋ3 = 0 · x1 + 0 · x2 + 0 · x3 + H · J · u1 + J · u2
+Zur Vereinfachung der Berechnung von digitalen Reglern                         ẏ1 = 0 · x1 + 1 + x2 + 0 · x3 + 0 · u1 + 0 · u2
+können folgende Näherungsformeln verwendet werden:
+                                                                               ẏ2 = 0 · x1 + 0 · x2 + l · x3 + 0 · u1 + 0 · u2
+                                        ˆ Tz−1
+    • Rückwärts-Differenzen-Quotient: s =   A ·z
+
+
+                                       ˆ z−1
+    • Vorwärts-Differenzen-Quotient: s = TA
+                                                                                           0 0 0          1    0
+                                                                                                              
+    •                        ˆ T2A · z−1
+        Tustinsche Formel: s =       z+1                                              A = K 0 0 B =  0      0
+                                                                                           0 0 0        H ·J J
+4.1.1     Stabilität von digitalen Reglern
+                                                                                             0 1 0       0 0
+                                                                                                          
+Ein digitaler Regler ist stabil, wenn alle Pole innerhalb des                           C=           D=
+                                                                                             0 0 l       0 0
+Einheitskreises liegen, d.h. |z| < 1.
+Beispiel: G(z) = z−0.5
+                     z
+                          hat einen Pol bei z = 0.5 und ist
+                                                                      Eigenwerte der A-Matrix liefern Pole:
+damit stabil, da |0.5| < 1.
+Beispiel: G(z) = z−1.5
+                     z
+                          hat einen Pol bei z = 1.5 und ist
+damit instabil, da |1.5| > 1.                                                                    det(A − sI) = 0
+                                                                                                                   !
+
+
+
+                                                              6 von 7
+Bastian Nagler                                                   5   Systembeschreibung im Zustandsraum
+
+5.1.1   Polfestlegung durch vollständige
+        Zustandsrückführung
+
+
+
+
+Durch die freie Wahl von K können alle n Pole des Systems
+beliebig platziert werden.
+Von jeder Zwischengröße xi eine Rückführung auf jede
+Eingangsgröße uj mit einem Verstärkungsfaktor Kij
+möglich.
+Die Rückführung führt zu einem neuen System, bei dem die
+Eingangsgröße uj durch die Rückführung von xi beeinflusst
+wird.
+Zur Bestimmung der neuen Systemmatrix ARK nach der
+Rückführung wird die Rückführungsmatrix K in die
+ursprüngliche Systemmatrix A integriert.
+Die neue Systemmatrix ARK muss die gewünschten Pole
+erhalten.
+                         !
+          det(ARK − sI) = 0
+                         !
+        ⇒ det(ARK − sI) = Nenner von F (s)gewünscht
+
+
+
+
+                                                       7 von 7
+

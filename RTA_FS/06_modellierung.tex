@@ -1,0 +1,71 @@
+\section{Modellierung mechatronischer Systeme}
+
+\subsection{Systematik der Modellbildung}
+\begin{tcolorbox}
+\boxtitle{Vier Phasen der Modellierung}
+\begin{enumerate}
+  \item \textbf{Ziel bestimmen:} Reglerentwurf, Simulation, Belastungsanalyse? Statisch oder dynamisch? Geforderte Modellgenauigkeit?
+  \item \textbf{Modellstruktur festlegen:} Ein- und Ausgangsgrößen definieren, Systemgrenzen ziehen, Zerlegung in Teilsysteme (elektrisch, mechanisch, thermisch).
+  \item \textbf{Parameter bestimmen:} Aus Datenblättern, Messungen im Arbeitspunkt oder Identifikationsverfahren.
+  \item \textbf{Modellvalidierung:} Plausibilitätsprüfungen (Einheiten, Vorzeichen) und Vergleich der Simulation mit realen Messdaten.
+\end{enumerate}
+\end{tcolorbox}
+
+\subsection{Modellierung am Beispiel Drosselklappe}
+
+\begin{tcolorbox}
+\boxtitle{1. Elektrisches Teilsystem (Gleichstrommotor)}
+Maschengleichung des Ankerkreises:
+\[
+u_A(t) = R_A \cdot i_A(t) + L_A \cdot \frac{di_A(t)}{dt} + u_{\text{EMK}}(t)
+\]
+Elektromotorische Gegenkraft (EMK):
+\[
+u_{\text{EMK}}(t) = k_{\text{EMK}} \cdot \omega_M(t) = k_{\text{EMK}} \cdot k_G \cdot \dot{\varphi}(t)
+\]
+Elektromagnetisches Motormoment:
+\[
+M_{\text{Mot}}(t) = k_M \cdot i_A(t)
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{2. Mechanisches Teilsystem (Klappenmechanik)}
+Drallsatz um die Drehachse der Drosselklappe:
+\[
+J \cdot \ddot{\varphi}(t) + d \cdot \dot{\varphi}(t) + M_F(\varphi) + M_{\text{Reib}}(\dot{\varphi}) = M_{\text{Klappe}}(t)
+\]
+mit dem Antriebsmoment $M_{\text{Klappe}} = k_G \cdot M_{\text{Mot}}$:
+\begin{itemize}
+  \item $J$: Gesamt-Massenträgheitsmoment auf Klappenachse bezogen.
+  \item $d$: Viskoser Dämpfungsbeiwert.
+  \item $M_F(\varphi) = c_F \cdot (\varphi(t) - \varphi_0)$: Rückstellmoment der Rückholfeder (Fail-Safe Ruhelage $\varphi_0$).
+  \item $M_{\text{Reib}}$: Reibung (Coulomb-Gleitreibung und Haftreibung).
+  \item $k_G$: Übersetzungsverhältnis des Getriebes ($k_G = \omega_M / \dot{\varphi}$).
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{3. Modellvereinfachungen für den Reglerentwurf}
+\begin{itemize}
+  \item \textbf{Elektrische Zeitkonstante:} Da $T_{\text{el}} = \frac{L_A}{R_A} \ll T_{\text{mech}}$, wird die Ankerinduktivität für den linearen Reglerentwurf meist vernachlässigt ($L_A \approx 0$):
+  \[
+  i_A(t) \approx \frac{u_A(t) - k_{\text{EMK}} \cdot k_G \cdot \dot{\varphi}(t)}{R_A}
+  \]
+  \item \textbf{Vernachlässigung von Feder und Reibung:}
+  Für schnelle Lageänderungen dominiert das Trägheitsmoment $J \ddot{\varphi}$. Das System nähert sich einem idealen $IT_1$-Verhalten von Eingangsspannung $u_A$ zu Klappenwinkel $\varphi$:
+  \[
+  F_S(s) = \frac{\Phi(s)}{U_A(s)} \approx \frac{K}{s (1 + s T_{\text{mech}})}
+  \]
+  mit $T_{\text{mech}} = \frac{J \cdot R_A}{d \cdot R_A + k_M \cdot k_{\text{EMK}} \cdot k_G^2}$.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{Plausibilitätsprüfungen}
+\begin{itemize}
+  \item Vorzeichen der Kennlinien prüfen (z.\,B. Reibmoment wirkt immer der Bewegungsrichtung entgegen: $\text{sign}(\dot{\varphi})$).
+  \item Federmoment muss im stromlosen Zustand größer sein als die Reibung ($M_F > M_{\text{Reib}}$), damit Fail-Safe gesichert ist.
+  \item Maximales Motormoment muss Feder- und Reibmoment sicher überwinden: $k_M \cdot I_{\max} \cdot k_G > M_F + M_{\text{Reib}}$.
+\end{itemize}
+\end{tcolorbox}

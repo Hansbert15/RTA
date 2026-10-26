@@ -1,0 +1,114 @@
+\section{Grundlagen}
+
+\subsection{Gleichungen zur Modellbildung}
+
+\begin{tcolorbox}
+\boxtitle{Kräftegleichungen (Translation)}
+Federkraft: $F_F = k_F \cdot x$\\[2pt]
+Dämpferkraft: $F_D = k_D \cdot v = k_D \cdot \dot{x}$\\[2pt]
+Trägheitskraft: $F_{Tr} = m \cdot a = m \cdot \ddot{x}$\\[2pt]
+Erdanziehungskraft: $F_G = m \cdot g$
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{Momentengleichungen (Rotation)}
+Widerstandsmoment: $M_W = k_D \cdot \omega$\\[2pt]
+Trägheitsmoment: $M_{Tr} = J \cdot \dot{\omega} = J \cdot \ddot{\varphi}$
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{Elektrischer Grundkreis (RLC)}
+\[
+u(t) = L \cdot \frac{di}{dt} + R \cdot i + \frac{1}{C} \int i \, dt
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{Rotation in Flüssigkeit}
+\[
+M = M_{\text{Träg}} + M_{\text{Brems}} = J \cdot \dot{\omega} + k_{\text{Flüssigkeit}} \cdot \omega
+\]
+\end{tcolorbox}
+
+\subsection{Mathematische Grundlagen}
+\begin{tcolorbox}
+\boxtitle{Kleine Winkel}
+Für kleine Winkel $\alpha$ (im Bogenmaß) gilt:\\[2pt]
+$\sin(\alpha) \approx \alpha, \quad \tan(\alpha) \approx \alpha, \quad \cos(\alpha) \approx 1 - \frac{\alpha^2}{2} \approx 1$
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{Grenzwertsätze der Laplace-Transformation}
+\textbf{Anfangswertsatz:}\\[2pt]
+\[
+x(t \to +0) = \lim_{s \to \infty} s \cdot X(s)
+\]
+\textbf{Endwertsatz:}\\[2pt]
+\[
+x(t \to \infty) = \lim_{s \to 0} s \cdot X(s)
+\]
+\textbf{Gültigkeitsbedingung:} Der Endwertsatz gilt \textbf{nur}, wenn höchstens ein Pol von $s \cdot X(s)$ im Ursprung liegt und alle anderen Pole in der offenen linken $s$-Halbebene liegen ($\text{Re}\{s_P\} < 0$).
+\end{tcolorbox}
+
+\subsection{Linearisierung um den Arbeitspunkt}
+\begin{tcolorbox}
+Nichtlineare Kennlinie $x_a = f(x_{e1}, \dots, x_{en})$ um den stationären Arbeitspunkt $AP = (x_{e1,AP}, \dots, x_{en,AP})$:
+\begin{align*}
+x_a(t) &= x_{a,AP} + \Delta x_a(t) \\
+&\approx f(x_{e1,AP}, \dots, x_{en,AP}) + \sum_{m=1}^n \left. \frac{\partial f}{\partial x_{em}} \right|_{AP} \cdot \Delta x_{em}(t)
+\end{align*}
+Lineare Kleinsignalbeziehung für die Abweichungen:
+\[
+\Delta x_a(t) \approx \sum_{m=1}^n K_m \cdot \Delta x_{em}(t) \quad \text{mit } K_m = \left. \frac{\partial f}{\partial x_{em}} \right|_{AP}
+\]
+\end{tcolorbox}
+
+\subsection{Eigenschaften von LTI-Systemen}
+\begin{tcolorbox}
+\begin{enumerate}
+  \item \textbf{BIBO-Stabilität} (Bounded Input / Bounded Output):
+  \[
+  |y(t)| < \infty \quad \text{für } |x(t)| < \infty
+  \]
+  \item \textbf{Linearität} (Superposition und Homogenität):
+  \[
+  f\left\{ \sum_{n=1}^N a_n x_n(t) \right\} = \sum_{n=1}^N a_n f\{x_n(t)\}
+  \]
+  \item \textbf{Zeitinvarianz}:
+  \[
+  f\{x(t - t_0)\} = y(t - t_0)
+  \]
+  \item \textbf{Kausalität}: Das System reagiert nicht vor Eintreffen des Eingangssignals:
+  \[
+  x(t) = 0 \text{ für } t < 0 \implies y(t) = 0 \text{ für } t < 0
+  \]
+\end{enumerate}
+\end{tcolorbox}
+
+\subsection{Systemantworten}
+\begin{tcolorbox}
+\boxtitle{Sprungantwort ($x(t) = \sigma(t)$)}
+\[
+g(t) = \mathcal{L}^{-1}\{G(s)\} = \mathcal{L}^{-1}\left\{ \frac{F(s)}{s} \right\} = \int_0^t h(\tau) \, d\tau
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{Impulsantwort ($x(t) = \delta(t)$)}
+\[
+h(t) = \int_{-\infty}^\infty x(\tau) \delta(t - \tau) \, d\tau = \mathcal{L}^{-1}\{F(s)\} = \frac{d}{dt} g(t)
+\]
+\end{tcolorbox}
+
+\subsection{Abtasttheorem}
+\begin{tcolorbox}
+Durch die periodische Abtastung eines Signals $f(t)$ mit der Periode $T_A$ (bzw. $\omega_A = 2\pi/T_A$) wird das kontinuierliche Spektrum $F(\omega)$ unendlich oft um die Vielfachen der Abtastkreisfrequenz reproduziert:
+\[
+F_A(\omega) = \frac{1}{T_A} \sum_{n=-\infty}^\infty F(\omega - n \omega_A)
+\]
+\textbf{Shannon/Nyquist-Bedingung:}\\[2pt]
+Zur fehlerfreien (aliasingfreien) Rekonstruktion muss die Abtastfrequenz mindestens doppelt so groß wie die höchste Grenzfrequenz $\omega_g$ des abzutastenden Signals sein:
+\[
+\omega_A \ge 2 \omega_g \quad \text{bzw.} \quad f_A \ge 2 f_g
+\]
+\end{tcolorbox}

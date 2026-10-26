@@ -1,0 +1,2986 @@
+Regelungstechnik
+     Hilfsblätter
+
+    Claus Brüdigam
+  Sommersemester 2025
+Einführung                                                                                                         Beispiel Dampfmaschine / Fliehkraftregler
+
+Inhalt
+
+1      EINFÜHRUNG .................................................................................................................. 5
+1.1    Beispiel Dampfmaschine / Fliehkraftregler ................................................................................................................ 5
+1.2    Elemente der Signalflussplandarstellung .................................................................................................................... 6
+1.3    Vergleich Regelung und Steuerung ............................................................................................................................. 6
+
+2      SYSTEMTECHNIK ........................................................................................................... 9
+2.1    Modellbildung, Beschreibung technischer Systeme ................................................................................................... 9
+2.2    Signalflussplan / Blockschaltbild (BSB) .................................................................................................................... 10
+2.3    Einteilung von Systemen ............................................................................................................................................. 11
+2.4    Linearisierung um einen Arbeitspunkt ..................................................................................................................... 12
+2.5    Normierung der Systembeschreibung ....................................................................................................................... 12
+2.6    Systemantwort ............................................................................................................................................................. 13
+2.7    Stabilität ....................................................................................................................................................................... 14
+2.8    Frequenzgangfunktion F(j)...................................................................................................................................... 15
+2.9    Ortskurven und Frequenzkennlinien ........................................................................................................................ 16
+2.10            Übertragungsfunktion F(s) linearer Übertragungsglieder............................................................................. 18
+2.11            Systemantwort ................................................................................................................................................... 21
+2.12            Übertragungsfunktion in faktorisierter Form (Pole und Nullstellen) ........................................................... 22
+2.13            Signalflussplanalgebra ...................................................................................................................................... 23
+2.14            Übertragungsglieder .......................................................................................................................................... 24
+2.15            Bode-Diagramm verketteter Übertragungsfunktionen (Reihenschaltung) .................................................. 32
+2.16            Bedeutung der Pol- und Nullstellenverteilung ................................................................................................ 34
+
+3      ZUSAMMENWIRKEN MEHRERER SYSTEME ............................................................. 36
+3.1    Regelkreis ..................................................................................................................................................................... 36
+3.2    Reglerauswahl für einschleifige Regelkreise (mit Einheitsrückführung) ............................................................... 38
+3.3    Wurzelortskurven (WOK)-Verfahren....................................................................................................................... 39
+3.4    Frequenzgangverfahren zur Stabilitätsbestimmung (Nyquist-Kriterium) ............................................................ 41
+3.5    Einstellregeln ............................................................................................................................................................... 45
+3.6    Erweiterungen der Regelkreisstruktur und Maßnahmen zur Verbesserung des Regelkreisverhaltens ............. 46
+3.7    Beispiele Modellierung und Reglerauswahl .............................................................................................................. 47
+
+4      DIGITALE REGLER ....................................................................................................... 48
+4.1    Arbeitsweise digitaler Regelsysteme .......................................................................................................................... 49
+4.2    z-Transformation ........................................................................................................................................................ 50
+4.3    Digitale Realisierung von analogen Regelkonzepten ................................................................................................ 50
+4.4    Bestimmung eines Rechenalgorithmus aus der z-Übertragungsfunktion: ............................................................. 53
+
+5      SYSTEMBESCHREIBUNG IM ZUSTANDSRAUM ........................................................ 54
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                                   C. Brüdigam                         16.03.2025                              Seite 2 von 56
+Einführung                                                 Beispiel Dampfmaschine / Fliehkraftregler
+Literatur
+G. Schulz: Regelungstechnik 1. Oldenbourg Verlag München, 2007. (Lineare und
+Nichtlineare Regelung, Rechnergestützter Reglerentwurf)
+J. Lunze: Regelungstechnik 1 - Systemtheoretische Grundlagen, Analyse und Entwurf
+einschleifiger Regelungen: Springer Verlag, Berlin, 2016
+Mann, Schiffelgen, Froriep, Webers: Einführung in die Regelungstechnik. Hanser Verlag,
+München, 2019
+H. Unbehauen: Regelungstechnik I. Vieweg Verlag, Braunschweig, 2007
+Samal, Becker: Grundriß der praktischen Regelungstechnik. Oldenbourg Verlag München,
+2000
+O. Föllinger: Regelungstechnik. Hüthig Verlag, Heidelberg, 1994
+Anton Braun: Grundlagen der Regelungstechnik. Fachbuchverlag Leipzig
+
+
+Digitale Regelungstechnik
+G. Schulz: Regelungstechnik 2. Oldenbourg Verlag München, 2008. (Mehrgrößenregelung,
+Digitale Regelungstechnik, Fuzzy-Regelung)
+J. Lunze: Regelungstechnik 2 - Mehrgrößensysteme, Digitale Regelung: Springer Verlag,
+Berlin, 2016
+H. Unbehauen: Regelungstechnik II - Zustandsregelungen, digitale und nichtlineare
+Regelsysteme. Vieweg Verlag, Braunschweig, 2000
+O. Föllinger: Lineare Abtastsysteme. Oldenbourg Verlag, München, 1993, ISBN 3-486-
+22725-4
+J. Ackermann: Abtastregelung. Springer Verlag, Berlin, 1988, ISBN 3-540-50112-6
+
+
+Rechnerunterstützung
+Angermann, Beuschel, Rau, Wohlfarth: Matlab - Simulink - Stateflow. Oldenbourg Verlag
+München, 2011
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc   C. Brüdigam   16.03.2025                 Seite 3 von 56
+Einführung                                                 Beispiel Dampfmaschine / Fliehkraftregler
+
+Englischsprachige Literatur
+Richard C. Dorf, Robert H. Bishop: Modern Control Systems, Pearson, 2022
+W. Bolton: Control Engineering. Prentice Hall, Harlow, England, 1998, ISBN 0 582 32773-3
+W. Bolton: Mechatronics. Prentice Hall, Harlow, England, 1999, ISBN 0 582 35705-5
+R. S. Burns: Advanced Control Engineering. Butterworth-Heinemann, Oxford, 2001, ISBN 0
+7506 5100 8
+
+
+Zeitschriften
+AT: Automatisierungstechnik. Oldenbourg Verlag, München
+ATP: Automatisierungstechnische Praxis. Oldenbourg Verlag, München
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc   C. Brüdigam   16.03.2025                 Seite 4 von 56
+Einführung                                                       Beispiel Dampfmaschine / Fliehkraftregler
+
+
+1 Einführung
+Regelung:
+• verbessert die Leistungsfähigkeit vieler technischer Systeme (z.B. Heizung).
+• ermöglicht oft erst die Funktion technischer Systeme (z.B. Magnetschwebebahn)
+• viele Anwendungen in der Automatisierungs- und der Automobiltechnik
+• biologische Regelkreise: Haltung der Körpertemperatur über Schwitzen und Zittern
+
+
+In der Regelungstechnik werden eine Vielzahl unterschiedlicher technischer Systeme
+(elektrisch, mechanisch, thermodynamisch, ...) mit den immer gleichen Methoden behandelt.
+
+
+1.1    Beispiel Dampfmaschine / Fliehkraftregler
+
+
+
+
+                                Dampf-
+ Dampf
+                                maschine
+                                                          Sägeblatt
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc   C. Brüdigam        16.03.2025                  Seite 5 von 56
+Einführung                                                                        Elemente der Signalflussplandarstellung
+
+
+1.2    Elemente der Signalflussplandarstellung
+                          Wirkungslinie mit Wirkungsrichtung
+
+       dynam.
+      Verhalten           lineares Übertragungsglied mit Ein- und Ausgang: z.B.:
+
+
+        k                           Signal wird mit k multipliziert bzw. integriert
+
+
+                          Signalverzweigung
+
+
+
+                          Additionsstelle (+ bzw. - ; ohne Vorzeichen: +)
+      +      -
+
+
+
+
+Die Blöcke enthalten die konstanten Eigenschaften des Systems (z.B. Ankerwiderstand,
+Wärmekapazität, Integration von der Beschleunigung zur Geschwindigkeit etc.)
+Die Wirkungslinien (Signalleitungen) geben die zeitlich veränderlichen Größen/Signale des
+Systems an (Strom, Temperatur, Druck, Geschwindigkeit etc.)
+
+
+1.3    Vergleich Regelung und Steuerung
+Steuerung (open loop control, feed forward control)
+                                                       Störgröße z
+
+
+
+Führungs-                             Stell-
+größe w                               größe y                           Aufgabengröße x
+             Steuereinrichtung                        Steuerstrecke
+
+
+
+
+Beispiel
+                                                                                      TSoll
+      Außentemperatur
+                                                                                   Taußen
+
+Außentemperaturfühler          Temp-Einsteller
+                                                           Heizkörper
+
+
+
+
+                                    TC
+                              Heizungs-
+                              steuerung
+                                            Brenner
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc               C. Brüdigam            16.03.2025                  Seite 6 von 56
+Einführung                                                                           Vergleich Regelung und Steuerung
+Regelung (closed loop control, feedback control)
+
+                                                                                      Störgröße z
+
+Führungs-       Regel-                                   Reglerausgangsgröße u
+größe w         differenz e                                                                                 Regelgröße x
+                                       Regler            (ev. Stellgröße y)
+                                 (ev. mit Stellglied)                                 Regelstrecke
+                -
+
+
+
+                              Rückführgröße r
+                                                        Messeinrichtung
+
+
+Beispiel
+
+      Außentemperatur
+
+
+                           Raumtemperaturfühler
+
+                                                           Heizkörper
+
+
+
+
+                                     TC
+                              Heizungs-
+                              regelung
+                                            Brenner
+
+
+
+
+Steuerung und Regelung
+Ziel jeder Steuerung und Regelung ist es, über die Stellgrößen so in den Prozess ein-
+zuwirken, dass Stabilität und gutes Führungs- und Störverhalten gewährleistet sind. Das
+heißt im Einzelnen, dass die Reaktion auf Sollwertänderungen genügend schnell erfolgt und
+die stationäre Abweichung zwischen Sollwert und Ausgangsgröße genügend klein wird. Der
+Einfluss von Störgrößen wird unterdrückt oder zumindest ausreichend verringert.
+Steuerung (Feed Forward Control)
+     Ein Vorgang, bei dem eine oder mehrere Eingangsgrößen die Ausgangsgrößen des
+     Systems in gewünschter Weise beeinflussen. Offene Wirkungskette, also keine
+     Überprüfung, ob die Stellgrößen sich in gewünschter Weise auf die Ausgangsgrößen
+     auswirken. Das funktioniert nur, wenn alle Störgrößen gemessen werden können, das
+     mathematische Prozessmodell hinreichend genau ist und der ungesteuerte Prozess
+     bereits stabil ist
+     Vorteile:
+     • schnelle Reaktion
+     • keine Stabilitätsprobleme
+     Nachteile:
+     • keine Korrektur von zusätzlichen Störgrößen (z.B. neben der Außentemperatur)
+     • benötigt exaktes mathematisches Modell (hier: exakte Tabelle)
+     • System muss stabil sein
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc               C. Brüdigam           16.03.2025               Seite 7 von 56
+Einführung                                                            Vergleich Regelung und Steuerung
+Regelung (Feedback Control)
+     Ein Vorgang, bei dem die zu regelnde Größe fortlaufend erfasst, mit der Führungsgröße
+     verglichen und im Sinne einer Angleichung an die Führungsgröße beeinflusst wird.
+     Geschlossener Wirkungsablauf, rückgekoppelte Struktur, ermöglicht oft noch gutes
+     Führungs- und Störverhalten, wenn o.g. Bedingungen nicht erfüllt sind.
+     Vorteile:
+     • die Auswirkungen aller Störeinflüsse werden verringert.
+     • Durch die Regelung kann auch eine instabile Strecke stabilisiert werden: Bsp.:
+         balancierter Zeigestock.
+     Nachteile:
+     • wegen der Rückwirkung der Regelgröße auf den Eingang des Regelkreises besteht
+        die Gefahr von Instabilitäten z.B. bei zu großer Verstärkung (=> Überkompensation)
+        oder großen Totzeiten in der Strecke (Korrektur kommt zum falschen Zeitpunkt). Bei
+        zu kleiner Verstärkung ist die Wirkung der Regelung nur sehr gering.
+     • Reaktion auf Störungen erst möglich, wenn diese die Ausgangsgröße bereits beein-
+        flusst haben
+     • Einschleppen zusätzlicher Messfehler
+
+
+Steuerung (Feed Forward Control)                   Regelung (Feedback Control)
+offene Wirkungskette                               geschlossene Wirkungskette
+genaues Prozessmodell nötig                        geringere Anforderungen an
+                                                   Prozessmodell
+alle relevanten Störgrößen sind zu                 Störgrößenerfassung nicht (unbedingt)
+erfassen                                           nötig
+Störungskompensation kann schnell                  Störungskompensation benötigt Zeit
+erfolgen
+Prozess muss stabil sein                           kann instabile Prozesse stabilisieren
+stabiler Prozess kann nicht instabil               stabile Prozesse können instabil werden
+werden
+Kombination von Regelungs- und Steuerungskonzepten wird oft eingesetzt, um o.g.
+Nachteile zu umgehen (z.B. Regelung mit Störgrößenaufschaltung)
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc   C. Brüdigam        16.03.2025               Seite 8 von 56
+Systemtechnik                                              Modellbildung, Beschreibung technischer Systeme
+
+
+2 Systemtechnik
+
+2.1    Modellbildung, Beschreibung technischer Systeme
+Regelungstechnische Systembeschreibung
+Die Herstellung technischer Systeme erfordert u.a. Konstruktionszeichnungen, Modelle, Bau-
+oder Schaltpläne. Die regelungstechnisch wichtigen funktionalen Zusammenhänge sind oft
+nur schlecht zu erkennen.
+Besser geeignet sind dazu mathematische Beschreibungen (mathematische Modelle). Diese
+Gleichungen erhält man über die physikalischen Gesetze; sie beschreiben den
+Zusammenhang der zeitveränderlichen Größen des Systems. Eine anschauliche Darstellung
+davon gibt der Signalflussplan (Blockschaltbild).
+Beispiel:
+        M
+
+
+                                                                                   I
+                                                                     2 S
+                      "Massenträgheitsmoment"
+             J        => M Träg
+                                                                        1
+                                                                                        L       UL
+
+                                                       U
+                      "Wasserquirl-Bremse"
+                                                                                        R        UR
+                      => M Brems
+
+
+
+Bauplan                                                Schaltplan
+
+
+Mathematische Beschreibung: Differentialgleichung
+
+
+
+
+allgemein: T  xa + xa = K  xe (Verzögerungsglied 1. Ordnung, PT1-Glied)
+xe: Eingangsgröße, treibende Kraft; xa: resultierende Ausgangsgröße
+T: Zeitkonstante; K: statische Verstärkung)
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc    C. Brüdigam         16.03.2025                 Seite 9 von 56
+Systemtechnik                                                                 Signalflussplan / Blockschaltbild (BSB)
+Hinweise zum Aufstellen der Differentialgleichung eines Systems
+• Bestimmung der Ein- und Ausgangsgrößen
+• Suche nach dem beschreibenden Gleichgewicht (Kräfte- bzw. Momentengleichgewicht,
+                                       dW
+    Maschenregel, Pzu = Pab +              , ...).
+                                        dt
+• In der Gleichung dürfen nur Konstanten sowie die Ein- und Ausgangsvariablen in der
+  Grundform und beliebiger Ableitung (bzw. auch deren Integrale) enthalten sein.
+• Alle anderen Variablen müssen (ev. sukzessive) durch erlaubte Größen ersetzt werden.
+  Dazu werden i.a. physikalische Gleichungen herangezogen. Ev. vorhandene Integrale
+  werden durch Ableiten (d/dt) auf beiden Seiten eliminiert.
+Damit erhält man die gesuchte Differentialgleichung.
+
+
+2.2    Signalflussplan / Blockschaltbild (BSB)
+Falls in der Dgl. keine Ableitungen der Eingangsgröße xe vorkommen, lässt sich der
+Signalflussplan einfach zeichnen, indem man die Dgl. nach der höchsten Ableitung der
+Ausgangsgröße auflöst (s.o.). Man setzt dann je nach Ordnung der Dgl. eine entsprechende
+Anzahl von Integratoren hintereinander. Die höchste Ableitung der Ausgangsgröße geht auf
+den Eingang des ersten Integrators. Wie sie sich zusammen setzt, ist aus der Dgl. ersichtlich.
+Am Ende der Integratorkette erhält man die Ausgangsgröße.
+
+
+M               1                          
+                J                 
+          -
+
+
+                        k
+
+
+M               1                1         
+          -     J                 s
+
+
+
+
+                        k
+
+
+
+
+Hinweis: Die Laplace-Transformation ersetzt das Integrieren durch eine Division mit „s“.
+Umfangreichere Systeme lassen sich oft einfach darstellen, indem die BSB der Teilsysteme
+zusammengesetzt werden.
+
+Erzeugung des Signalflussplans eines Systems aus der zugehörigen Differentialgleichung
+                            (n)                                    ( m)
+Gegeben sei Dgl.: an x a + ... + a2 xa + a1 xa + a0 xa = bm x e + ... + b2 xe + b1 xe + b0 xe
+
+(für technisch realisierbare Systeme gilt: m  n).
+Der Signalflussplan lässt sich allgemein folgendermaßen zeichnen:
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc            C. Brüdigam          16.03.2025                 Seite 10 von 56
+Systemtechnik                                                                    Einteilung von Systemen
+xe
+                                            ...
+
+        b0                       b1                   b n-2              b n-1                 bn
+        an                       an                    an                 an                   an
+
+                                                                                                           xa
+
+                                           ...                                   
+          -                         -                     -                  -
+
+        a0                       a1                   a n-2              a n-1
+        an                       an                    an                 an
+
+
+
+                                            ...
+Hinweis: Falls m < n ist, sind alle höheren, nichtexistenten bµ = 0 zu wählen.
+Signalflusspläne enthalten (üblicherweise) keine Differenzierer (u.a. wg. Rechenaufwand)
+
+
+2.3    Einteilung von Systemen
+Kontinuierliche / diskrete Systeme
+• Amplitudenkontinuierliche Systeme: die Amplituden der Signalvariablen können jeden
+  beliebigen Wert annehmen. (RLC, Quirl)
+• Amplitudendiskrete Systeme: die Amplituden der Signalvariablen können nur endlich viele
+  diskrete Wert annehmen. (dig. Fieberthermometer)
+•     Zeitkontinuierliche Systeme: Die Änderungen erfolgen laufend bzw. können zu beliebigen
+     Zeitpunkten erfolgen. (RL, Quirl)
+• Zeitdiskrete Systeme: Die Änderungen vollziehen sich zu bestimmten Zeitpunkten. (typ.
+  bei Digital-Rechnern) .
+
+Statische / dynamische Systeme
+• statisch, nur von den Augenblickswerten abhängig (z.B. Multiplikator, Getriebe) werden
+  durch algebraische Beziehungen beschrieben.
+• dynamisch, auch von der Vorgeschichte abhängig (z.B. Integrator) werden durch
+  Differentialgleichungen beschrieben.
+
+Zeitinvariante Systeme
+• f{xe(t - t0)} = xa(t - t0) (Die Reaktion auf ein Eingangssignal ist unabhängig von dessen
+  zeitlicher Lage)
+
+Lineare Systeme
+• f{xe1(t) + xe2(t)} = f{xe1(t)} + f{xe2(t)} Überlagerungs- (Superpositions-) Eigenschaft (Additivi-
+   tät)
+• f{cxe(t)} = cf{xe(t)} Verstärkungseigenschaft (Homogenität)
+
+
+Hauptinteresse: (ev. kontinuierliche,) zeitinvariante, lineare Übertragungsglieder
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc         C. Brüdigam       16.03.2025           Seite 11 von 56
+Systemtechnik                                                                                 Linearisierung um einen Arbeitspunkt
+2.4      Linearisierung um einen Arbeitspunkt
+Häufig kann ein nichtlineares System in der Nähe des Arbeitspunktes durch ein lineares
+System angenähert werden. Dies ermöglicht den Einsatz der regelungstechnischen
+Standardmethoden.
+                                                                                                                                     
+Ein Signalzusammenhang der Form xa(t) = f(xe1(t), xe2(t), ...) kann im Arbeitspunkt (AP, xe ,0 ) in
+eine Taylorreihe entwickelt werden:
+                                                            f                    f
+xa (t ) = xa ,0 + xa (t ) = f ( xe1,0 , xe 2,0 , ...) +            xe1 (t ) +           xe 2 (t ) + ... + R
+                                                           xe1 x               xe 2 x
+                                                                 e,0                    e,0
+
+
+mit xe,0 = xe1,0 , xe 2,0 ,...T und x ei (t ) = x ei (t ) − x ei ,0 .
+    
+
+D.h.: für den Arbeitspunkt gilt:
+x a ,0 = f ( x e1,0 , x e 2,0 , ...) .
+Um den Arbeitspunkt gilt unter Vernachlässigung der (nichtlinearen) Terme höherer
+Ordnung:
+                                        f                      
+xa (t ) = xa ,0 + xa (t )  xa ,0 +                xei (t ) 
+                                        xei                   
+                                     i
+                                             xe , 0             
+Anmerkung: Eine Linearisierung um Knick- und Sprungstellen ist nicht möglich.
+
+
+Alternativen zur Linearisierung um einen Arbeitspunkt:
+• Linearisierung mittels inverser Nichtlinearität (ermöglicht ganzen Bereich)
+• Linearisierung durch Ergänzung zum Regelkreis mit hoher Verstärkung im Vorwärtszweig
+  und linearer Rückführung (Kaskadenregelung)
+• Vernachlässigung des nichtlinearen Systemteils (falls nur geringer Einfluss)
+• Spezielle Lösungen
+
+
+2.5      Normierung der Systembeschreibung
+Für eine einheitliche regelungstechnische Behandlung von Systemen empfiehlt es sich, die
+dimensionsbehaftete Systembeschreibung zu normieren, d.h. sie in eine allgemeinere,
+dimensionslose Form umzuwandeln.
+Die Größen wie U(t), I(t) oder die unabhängige Zeitvariable t werden dabei zu konstanten
+Bezugsgrößen (U0, I0, t0) ins Verhältnis gesetzt. Damit ergeben sich dimensionslose,
+bezogene Variablen. Als Bezugsgrößen werden üblicherweise SI-Einheiten, daraus
+zusammengesetzte Größen bzw. sinnvolle Vielfache davon gewählt (z.B.: 1 A, 1 V oder 1
+mm).
+Durch Umkehren des Normierungsvorgangs gelangt man jederzeit wieder von der normierten
+zur physikalischen Systembeschreibung zurück.
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                     C. Brüdigam              16.03.2025                  Seite 12 von 56
+Systemtechnik                                                                                Systemantwort
+
+
+2.6     Systemantwort
+Zur Beschreibung des dynamischen Übertragungsverhaltens eines linearen zeitinvarianten
+Systems kann dessen Reaktion auf bestimme Eingangssignale herangezogen werden.
+Testsignale und Systemantworten für das Übertragungsglied:
+T  xa + xa = K  xe (PT1-Glied)
+Eingangssignal                                          Systemantwort
+Impulsfunktion: (t)                                    Gewichtsfunktion bzw. Impulsantwort
+xe                                                       xa
+                                                         K
+                                                         T
+        Einheitsimpuls (Dirac-Impuls):
+          Impulshöhe ->  ; Breite -> 0
+          Fläche = 1
+
+
+                                            t                                        t
+
+Sprungfunktion: (t)                                    Übergangsfunktion bzw. Sprungantwort
+xe
+
+ 1
+        Einheitssprung:
+          Sprunghöhe = 1
+
+
+
+                                            t
+
+Rampenfunktion: t  (t)                                Rampenantwort
+x                                                       xa
+ e
+
+ 1
+
+
+
+
+                                            t                                       t
+                             1
+
+Sinusfunktion: sin (t)  (t)                          Sinusantwort
+x                                                       x
+    e                                                       a
+    1                                                       1
+
+
+
+                                                t                                        t
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc           C. Brüdigam        16.03.2025            Seite 13 von 56
+Systemtechnik                                                                                    Stabilität
+
+Systemantwort als Lösung der zugehörigen Differentialgleichung
+Die Systemantwort kann auch rechnerisch als Lösung der zum Übertragungsglied
+gehörenden Dgl. bestimmt werden.
+b3xa + b2 xa + b1xa + b0 xa = a1xe + a0 xe
+Die Lösung (Systemantwort) setzt sich aus zwei Anteilen zusammen: homogene Lösung
+(transient, free response) und partikuläre Lösung (forced response).
+x a (t ) = x ah (t ) + x ap (t )
+xah(t) beschreibt das Eigenverhalten (Einschwingvorgang nach Anregung)
+xap(t) beschreibt die erzwungene Bewegung (bzw. den eingeschwungenen Zustand).
+Das Eigenverhalten wird aus der Lösung der homogenen Dgl.
+    (n)
+an x a + ... + a1 xa + a0 xa = 0
+ermittelt und kann als Summe von Exponentialfunktionen beschrieben werden:
+              n
+xah (t ) =  k i e it ;               i = i + ji
+             i =1
+
+Bsp.:
+•     Dgl. 1. Ordnung, wie RL oder allg. PT1 hat e-Fkt. zur Lösung (: reell);
+•     Dgl. 2. Ordnung, wie Masse/Feder-Schwinger, hat sin/cos zur Lösung (: imaginär) vgl.
+      Eulersche Formel: ej = cos  + j sin 
+
+
+Die partikuläre Lösung (erzwungene Bewegung) kann je nach Anregung beliebige Verläufe
+(z.B. dreieckförmig) aufweisen.
+
+
+2.7       Stabilität
+Es existieren verschiedene Stabilitätskriterien. Z.B.:
+• BIBO-Stabilität (Bounded Input / Bounded Output → bounded (engl.): begrenzt):
+    Ein dynamisches System wird (in diesem Sinn) als stabil bezeichnet, wenn es auf
+    Eingangssignale, die für alle Zeiten begrenzte Amplituden aufweisen, mit einem für alle
+    Zeiten begrenzten Ausgangssignal antwortet:
+      xe (t )  M ( ) für alle t                 xa (t )  N ( ) für alle t
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                C. Brüdigam          16.03.2025   Seite 14 von 56
+Systemtechnik                                                                       Frequenzgangfunktion F(j)
+
+
+2.8     Frequenzgangfunktion F(j)
+
+Bsp.: T  xa + xa = K  xe (PT1-Glied)
+Das periodische Testsignal
+xe (t ) = sin( t )
+ergibt die Systemantwort
+x a (t ) = x ah (t ) + x ap (t )
+xah(t) klingt bei stabilem System mit wachsender Zeit ab; übrig bleibt xap(t)
+Für t →   xa (t ) = xap (t )
+
+Lösungsansatz: xa (t ) = A sin( t +  )
+Mit diesem Ansatz kann die Dgl. gelöst werden...
+
+Ebenso kann die Lösung bei komplexer Darstellung gefunden werden:
+x e (t ) = cos(t ) + j sin( t ) = e jt
+
+ Lösungsansatz: x a (t ) = A e j (t + )
+x a (t ) = j A e j (t + )
+
+ T j A e j (t + ) + A e j (t + ) = K e jt
+Division durch ejt liefert
+T j A e j + A e j = K
+bzw. nach Umformung die sogenannte Frequenzgangfunktion F(j)
+                                      K
+F ( j ) = A( ) e j ( ) =                  (Betrag und Richtung als Funktion von )
+                                   T j + 1
+
+Aus x a (t ) = A e j (t + ) erhält man durch Umformung:
+
+x a (t ) = A e j  e jt .
+
+Mit F ( j ) = A e j und x e (t ) = e jt ergibt sich:
+x a (t ) = F ( j )  x e (t ) .
+Damit ist (nur für harmonische Signale!) ein expliziter Zusammenhang zwischen Ein- und
+Ausgangssignal gegeben. Aus dem Real- bzw. Imaginärteil von x ap (t ) erhält man die (reelle)
+Kosinus- bzw. Sinus-Antwort.
+F ( j ) ist eine komplexe Funktion der reellen Variablen , die in eine Betrags- und Pha-
+senfunktionen aufgespaltet werden kann:
+
+A( ) = F ( j ) =            (ReF ( j ))2 + (ImF ( j ))2
+                               ImF ( j )
+         ( ) = arctan
+                               ReF ( j )
+
+RT Hilfsblätter - Sommerseemster 2025.doc              C. Brüdigam     16.03.2025             Seite 15 von 56
+Systemtechnik                                                                                         Ortskurven und Frequenzkennlinien
+
+Bestimmung der Frequenzgangfunktion aus der Differentialgleichung:
+Die Frequenzgangfunktion eines beliebigen linearen Übertragungsglieds lässt sich
+folgendermaßen aus der Dgl. ermitteln:
+           (n)                                       ( m)
+Dgl.: an x a + ... + a2 xa + a1 xa + a0 xa = bm x e + ... + b2 xe + b1 xe + b0 xe
+
+
+                                 bm  ( j ) m + ... + b1  ( j ) + b0
+ F ( j ) = A( ) e j ( ) =
+                                 an  ( j ) n + ... + a1  ( j ) + a0
+Die Entwicklung der Frequenzgangfunktion aus einer gegebenen Dgl. ist damit kein
+Rechenproblem mehr, sondern ein reines Zuordnungsproblem. (Gilt ebenso umgekehrt.)
+
+
+2.9    Ortskurven und Frequenzkennlinien
+Aus der Frequenzgangfunktion können die Ortskurven- und die Bode-Diagramm-
+(Frequenzkennlinien-) Darstellung von F(j) abgeleitet werden.
+•     Ortskurvendarstellung:
+Für    wachsendes        werden   die                              Im
+                                                                   → 
+                                                                       0
+                                                                                                                                               =0
+komplexen Werte F(j) in die komplexe                                 -0.5
+F-Ebene eingetragen und zur Ortskurve
+verbunden. Jeder Ortskurvenpunkt kann                                 -1,0
+
+jetzt als Zeiger (Betrag und Richtung)                                -1,5
+gedeutet werden. Damit lässt sich das
+Übertragungsverhalten des Systems                                     -2,0
+
+einfach beurteilen.                                                   -2.5
+                                                                             0          1               2               3       4             5 Re
+
+•     Bodediagrammdarstellung:
+                                                                               1
+                                                                     A 10
+Der Amplitudengang A() wird in doppelt-
+logarithmischer Darstellung aufgetragen,
+der Phasengang () halb-logarithmisch.
+                                                                               0
+                                                                          10
+
+Gemeinsame Abszisse ist .
+                                                                               -1
+                                                                          10
+
+Bei diesem Beispiel (PT1-Glied)                                ist   -150
+deutlich  der Tiefpass-Charakter                               zu       -30
+erkennen.                                                                 -45
+                                                                          -60
+                                                                          -75
+                                                                          -90
+                                                                                                                                                         
+                                                                               -1                 0                 1                2               3
+                                                                            10               10                10               10              10
+
+
+
+Die Systemparameter des Übertragungsglieds lassen sich auf einfache Weise aus dem
+Verlauf der Frequenzgangfunktion auslesen:
+                                                                             1              1
+Z.B. hier: K = F ( j )  →0 = A( )  →0 =                         T=                  =         =
+                                                                               =−45       E
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                   C. Brüdigam                 16.03.2025                          Seite 16 von 56
+Systemtechnik                                                        Ortskurven und Frequenzkennlinien
+Experimentelle Frequenzgangbestimmung
+Durch Aufzeichnung und Auswertung der sinusförmigen Ein- und Ausgangssignale (z.B. mit
+2-Kanal-Oszilloskop), lassen sich für die jeweilige Frequenz A() und () auch
+experimentell bestimmen.
+
+
+x
+    a
+    1
+
+
+
+                                            t
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc       C. Brüdigam   16.03.2025               Seite 17 von 56
+Systemtechnik                                                Übertragungsfunktion F(s) linearer Übertragungsglieder
+
+
+2.10 Übertragungsfunktion F(s) linearer Übertragungsglieder
+Einschränkung Frequenzgangfunktion
+Nur bei Sinusanregung ist die Frequenzgangfunktion                                 F(j) zur Bestimmung der
+Systemantwort geeignet.
+Durch Laplace-Transformation der jeweiligen Dgl. erhält man eine universellere Form der
+Systembeschreibung, die sogenannte Übertragungsfunktion F(s).
+Mit dieser können auch nicht-sinusförmige Signale behandelt werden.
+
+
+Korrespondenzen der Laplace-Transformation
+                                                                                               + j
+
+                   L x(t ) =  e x(t ) dt                                L X ( s ) =
+                                                                                          1
+                                                                                             
+                                    − st                                      −1
+t-Bereich:                                           s-Bereich:                                e st X ( s ) ds
+                                0
+                                                                                         2j    − j
+
+
+
+                                               L x(t )
+
+                                  x(t)                                        X(s)
+
+                t < 0: x(t) = 0               L −1 X (s)                             s =  + j
+x(t)                                                 X(s)
+(t) Impulsfunktion                                  1
+                                                     1
+1, (t) Sprungfunktion
+                                                      s
+                                                       n!
+tn
+                                                     s n +1
+                                                          
+sin t
+                                                     s +2
+                                                       2
+
+                                                          s
+cos t
+                                                     s +2
+                                                       2
+
+                                                        1
+e-at                                                        (reelle Pole)
+                                                     s+a
+1-e-at                                                    a
+                                                      s (s + a )
+                                                           n!
+tn  e-at
+                                                      ( s + a) n +1
+                                                                                      
+e-at  sin t                                                             =                         (kompl. Pole)
+                                                      ( s + a) + 
+                                                               2
+                                                                      s + 2as + a 2 +  2
+                                                                      2        2
+
+
+                                                            s+a             s+a
+e-at  cos t                                                        = 2
+                                                      ( s + a) + 
+                                                              2    2
+                                                                      s + 2as + a 2 +  2
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc      C. Brüdigam                16.03.2025                Seite 18 von 56
+Systemtechnik                                                    Übertragungsfunktion F(s) linearer Übertragungsglieder
+
+Rechenregeln der Laplace-Transformation
+x(t)                                                     X(s)
+x1(t) + x2(t)                                            X1(s) + X2(s)
+K  x(t)                                                 K  X(s)
+dx(t )                                                   sX(s) – x(-0)
+       = x (t )
+ dt                                                      (x(-0) = 0, da x(t) = 0 für t < 0 und reale Systeme
+                                                         nicht sprungfähig sind)
+t                                                        1
+ x( ) d
+0
+                                                         s
+                                                           X ( s)
+
+
+x(t − Tt )   (t − Tt )    (Totzeit)                    e − sTt  X (s )
+
+e-at  x(t)                                              X(s+a)
+t  x(t)                                                     dX ( s )
+                                                         −
+                                                              ds
+t
+                                                         X1(s)  X2(s)
+ x (t −  )  x ( )d = x (t )  x (t )
+0
+    1              2        1       2
+
+
+(Faltungsprodukt)
+Grenzwertsätze
+Anfangswertsatz: x(t → +0) = lim sX ( s)
+                                            s →
+
+Endwertsatz:               x(t → ) = lim sX ( s ) , wenn max. ein Pol von X(s) im Ursprung der
+                                      s→ 0
+                                                     s-Ebene liegt und alle anderen Pole in der
+                                                     linken s-Halbebene liegen.
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc          C. Brüdigam              16.03.2025                 Seite 19 von 56
+Systemtechnik                                                        Übertragungsfunktion F(s) linearer Übertragungsglieder
+
+Übertragungsfunktion F(s)
+Aus der Dgl. (linear, zeitinvariant (→ konst. Koeffizienten)) eines Übertragungsglieds erhält
+man durch Anwendung der Laplace-Transformation eine algebraische Gleichung:
+   (n)                                ( m)
+an x a + ... + a1 xa + a0 xa = bm x e + ... + b1 xe + b0 xe
+
+
+
+
+Durch Umformung erhält man:
+         X a (s) L  xa (t ) bm s m + ... + b1s + b0
+F ( s) =        =            =
+         X e (s) L  xe (t ) an s n + ... + a1s + a0
+                                X a (s)
+Der Quotient F ( s ) =                   wird als Übertragungsfunktion bezeichnet.
+                                X e ( s)
+
+Beispiel: Txa (t ) + xa (t ) = K ( xe (t ) + TV xe (t ) )
+
+ F ( s) =
+
+
+Anm: Die stationäre Verstärkung K einer Übertragungsfunktion F(s) bestimmt sich zu:
+         b0
+K=          = F ( s ) s =0 = F ( s = 0 ) = F ( 0 )
+         a0
+
+
+Für rein imaginäre Werte von s gilt:
+F ( s ) s = j = F ( j )
+
+D.h. Die Übertragungsfunktion ist eine universelle Eingangs-/Ausgangsbeschreibung eines
+Übertragungsglieds.
+Äquivalente Beschreibung eines Übertragungsglieds:
+                xe (t)                       xa (t)                       X e(s)                    X a(s)
+                              Dgl.                                                       F(s)
+
+                         Zeitbereich                                           Frequenzbereich
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc              C. Brüdigam              16.03.2025                 Seite 20 von 56
+Systemtechnik                                                                         Systemantwort
+
+
+2.11 Systemantwort
+Im Bildbereich gilt (s.o.):
+X a ( s) = F ( s)  X e ( s) (auch für nicht-harmonische Signale)
+
+Bsp.: Berechnung der Systemantwort
+Gegeben:
+Dgl.: 3  x a + x a = 10  xe
+
+Anregungsfunktion: xe(t) = 2  (t)
+Lösung:
+
+Übertragungsfunktion: F (s) =
+
+Transformation von xe(t) in den Frequenzbereich:
+
+X e ( s) =         X a ( s) =
+
+
+
+Rücktransformation mittels Tabelle                                              Matlab Code:
+(oder über Partialbruchzerlegung → s. Übung):                                   F = tf([10],[3 1])
+                                                                                step(2*F), grid
+ xa(t) =
+
+
+Grenzwertsätze der Laplace-Transformation
+Mit Hilfe dieser Grenzwertsätze lassen sich die Anfangs- und Endwerte der Systemantwort
+xa(t) eines Übertragungsglieds F(s) einfach ermitteln:
+xa (t → +0) = lim s  F (s)  X e (s)
+                 s →
+
+
+xa (t → ) = lim s  F (s)  X e (s) , wenn die Pole von F(s)Xe(s) nur in der linken Halbebene
+                 s →0
+
+                                            liegen und max. ein Pol von F(s)Xe(s) im Ursprung der s-
+                                            Ebene.
+Aufgabe: Berechne Endwert der obigen Systemantwort
+
+xa (t → ) =
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc          C. Brüdigam     16.03.2025         Seite 21 von 56
+Systemtechnik                                           Übertragungsfunktion in faktorisierter Form (Pole und Nullstellen)
+
+
+2.12 Übertragungsfunktion in faktorisierter Form (Pole und Nullstellen)
+Zähler- und Nennerpolynom von F(s) besitzen Nullstellen, die von den Koeffizienten av und bµ
+abhängen.
+Die Nullstellen sNµ des Zählers sind auch Nullstellen der Übertragungsfunktion F(s).
+Es gilt: F (s) s = s        =0
+                       N
+
+
+
+Die Nullstellen sP des Nenners sind die Polstellen oder Pole der Übertragungsfunktion F(s).
+Es gilt: F ( s) s = s → 
+                       P
+
+
+
+Bei Kenntnis der Pole sP und Nullstellen sNµ lässt sich die Übertragungsfunktion auch in
+faktorisierter Form darstellen (s.a. Fundamentalsatz der Algebra: jedes Polynom hat
+Nullstellen entsprechend seiner Ordnung):
+                 m
+                 ( s − s N )                 bm
+                 =1
+F (s) = Q  n                        mit Q =
+             ( s − s P )                     an
+                 =1
+
+Damit kann eine Übertragungsfunktion auch durch ihre Pole und Nullstellen sowie den Faktor
+Q beschrieben werden.
+
+
+Beispiel:                                                                      Matlab Code:
+Die Übertragungsfunktion                                                       Fp = tf([2 -4],[1 4 5])
+                                                                               Ff = zpk(Fp) % Fakt. Form
+              2s − 4
+F ( s) =              hat eine Nullstelle bei sN1 =                            % Matlab liefert keine
+           s + 4s + 5
+            2
+                                                                               komplexen Terme, sondern fasst
+und 2 konjugiert komplexe Pole bei sP12 =                                      sie zu quadratischen Polynomen
+                                                                               zusammen
+Q=                                                                             % Alternative:
+                                                                               [P,Z] = pzmap(Fp)
+Die Übertragungsfunktion kann damit geschrieben
+werden:
+
+F (s) =
+
+
+
+In der komplexen s-Ebene lässt sich diese                                                   j
+Übertragungsfunktion folgendermaßen darstellen:                                              4
+                                                                              Q=2                         s-Ebene
+Matlab Code: pzmap(Fp), grid                                                                    3
+                                                                                                2
+                                                                                     x          1
+Die Stabilität des Übertragungsglieds kann
+anhand der Lage der Pole sP in der s-Ebene                                                                 o
+beurteilt werden:                                                        -4    -3   -2     -1         1     2     3     4 
+                                                                                     x          -1
+Das Übertragungsglied ist stabil, wenn sich                                                                     x: Pole
+                                                                                                -2
+alle Pole sP in der linken (negativen) s-                                                                      o: Nullstellen
+Halbebene befinden.                                                                             -3
+                                                                                                -4
+RT Hilfsblätter - Sommerseemster 2025.doc           C. Brüdigam               16.03.2025                  Seite 22 von 56
+Systemtechnik                                                                                                                Signalflussplanalgebra
+
+
+2.13 Signalflussplanalgebra
+Kompliziertere Signalflusspläne lassen sich mit Hilfe der Signalflussplanalgebra gezielt
+modifizieren (vereinfachen).
+
+Kettenstruktur (Reihen bzw. Serienstruktur):
+  X e (s)                    X a1 (s) = X e2 (s)                 X a (s)
+              F1 (s)                                   F2 (s)
+                                                                                  X a ( s) = F2 ( s)  F1 ( s)  X e ( s)
+                                                                                     FReihe ( s) = F1 ( s)  F2 ( s)
+Parallelstruktur:
+                                           X a1 (s)
+                              F1 (s)
+                                                                                    X a ( s) = F1 ( s)  X e ( s) + F2 ( s)  X e ( s)
+ X e (s)                                                   X a (s)                       FParallel( s) = F1 ( s) + F2 ( s)
+
+
+                                           X a2 (s)                                Matlab Code:
+                              F2 (s)                                               F1 = tf([2],[1 4]), F2 = tf([3],[5 1])
+                                                                                   FR = F1*F2, FP = F1+F2
+
+
+Kreisstruktur:
+                                                  X a ( s ) = Fv ( s )  ( X e ( s ) − Fr ( s ) X a ( s ) )  FKreis ( s) =
+X e (s)                                X a (s)                                                                                         Fv ( s)
+                    Fv (s)                                                                                                      1 + (−) Fv ( s ) Fr ( s)
+             -
+            (+)
+                                                  -: Gegenkopplung, regelungstechnisch interessanter
+                    Fr (s)                        (+): Mitkopplung
+                                                  Matlab Code: FK = feedback(F1,F2) % neg. Rückführung!
+
+Verschieben einer Additionsstelle
+X e1(s)                                X a(s)                   X e1(s)                                 X a(s)
+             F(s)                                     =                                   F(s)
+
+                                       X e2(s)
+                                                                           1
+                                                                          F(s)
+
+                                                                             X     (s)
+                                                                                 e2
+
+Verschieben einer Verzweigung
+X (s)                                  X a2 (s)                 X (s)                               X a2 (s)
+ e                                                               e
+                        F(s)                          =                     F(s)
+             X a1 (s)
+
+                                                                                                  1
+                                                                                                 F(s)
+
+                                                                                                    X a1 (s)
+
+
+Auseinanderziehen und Zusammenfassen von Additionsstellen und Verzweigungen
+
+
+                             =                                                                                   =
+
+RT Hilfsblätter - Sommerseemster 2025.doc                            C. Brüdigam                         16.03.2025                Seite 23 von 56
+Systemtechnik                                                                             Übertragungsglieder
+
+
+2.14 Übertragungsglieder
+Eigenschaften elementarer Übertragungsglieder
+P- (Proportional), I- (Integrier), D- (Differenzier) Glied
+          0
+A 10                                                                                  D
+                                               (-)1:1                                              KI
+                    P
+          -1
+                                                                                                KP
+     10
+                                                                                                   KD
+                                            (+)1:1                                    I
+          -2
+     10
+      90
+                                                                                  D             D
+
+          0
+                                                                                  P             P
+
+     -90                                                                          I           I
+                                                                                            10 
+          -2                         -1                       0           1                   2
+       10                       10                       10          10
+P-Glied:
+keine Frequenzabhängigkeit bei Verstärkung und Phase (P = 0°)
+Übertragungsfunktion: KP Hier: KP =
+
+D-Glied:
+
+ über alle Frequenzen: Verstärkung: (+)1:1 (Bei Frequenzerhöhung um eine Dekade erhöht
+sich die Verstärkung um Faktor 10 bzw. +20 dB)
+KD kann bei  = 1 abgelesen werden; Phase D = +90°
+Übertragungsfunktion: K D s Hier: KD =
+
+I-Glied:
+über alle Frequenzen: Verstärkung: (-)1:1 (Bei Frequenzerhöhung um eine Dekade verringert
+sich die Verstärkung um Faktor 1/10 bzw. -20 dB)
+KI kann bei  = 1 abgelesen werden; Phase I = -90°
+                                KI
+Übertragungsfunktion:                     Hier: KI =
+                                s
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc              C. Brüdigam   16.03.2025               Seite 24 von 56
+Systemtechnik                                                                  Übertragungsglieder
+
+PT1-Glied (Verzögerungsglied 1. Ordnung)
+
+A
+            1
+       10
+  K= 4
+
+            0                                                         (-)1:1
+       10
+
+
+            -1
+       10
+        0
+       -15
+       -30
+       -45
+       -60
+       -75
+       -90
+                                                                                           
+            0                         1            2              3                    4
+         10                      10            10            10                   10
+                                                E = 1/T
+
+
+Bei hohen Frequenzen: Verstärkung: (-)1:1 (Bei Frequenzerhöhung um eine Dekade
+verringert sich die Verstärkung mit Faktor 1/10 bzw. -20 dB)
+Maximale Phasenverschiebung: -90° (bei hohen Frequenzen)
+Verstärkung K ablesbar bei niedrigen Frequenzen. Hier: K =
+Eckfrequenz E: A(E) = 0,7K, (E) = -45°. Hier: E =
+E = 1/T (T: Zeitkonstante, nicht Periodendauer!)
+                                  K
+Übertragungsfunktion:
+                                1+ T s
+
+
+Matlab Code:
+F = tf([4],[0.01 1])
+pzmap(F)
+bode(F)
+grid
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc   C. Brüdigam    16.03.2025              Seite 25 von 56
+Systemtechnik                                                                             Übertragungsglieder
+
+PT2-Glied (Verzögerungsglied 2. Ordnung)
+            2
+A 10
+
+
+            1                                                     D = 0,2 - 0,5 - 0,7 - 1 - 2
+ K = 10
+
+
+
+
+            0
+       10
+                                                                                      (-)2:1
+
+
+
+            -1
+       10
+
+           0
+                                                            D = 0,2 - 0,5 - 0,7 - 1 - 2
+
+
+       -90
+
+
+
+     -180
+            10
+                 2
+                                                        10
+                                                           3
+                                                                                               10
+                                                                                                    4
+                                                                                                        
+                                                         0
+
+
+Bei hohen Frequenzen Verstärkung: (-)2:1: Bei Frequenzerhöhung um eine Dekade
+verringert sich die Verstärkung um 2 Dekaden (Faktor 1/100 bzw. -40 dB)
+Maximale Phasenverschiebung: -180° (bei hohen Frequenzen)
+Verstärkung K ablesbar bei niedrigen Frequenzen. Hier K =
+                                             K
+Kennkreisfrequenz 0 : A(0 ) =                ; (0) = -90°. Hier 0 =
+                                            2D
+
+Eigenkreisfrequenz (der gedämpften Schwingung):  e =  0 1 − D 2 ; (D  1)
+
+                                       K  02
+Übertragungsfunktion:
+                                s 2 + 2 D 0 s +  02
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc           C. Brüdigam          16.03.2025            Seite 26 von 56
+Systemtechnik                                                                      Übertragungsglieder
+Ein PT2-Glied mit Dämpfung D = 0,7 reagiert auf eine Sprunganregung mit ca. 4 … 5 %
+Überschwingen. Falls das zulässig ist, ist das oft ein gewünschtes Verhalten für Regelkreise,
+um schnell in die Nähe des Sollwerts zu kommen.
+16
+
+14
+
+12
+
+10
+
+8
+
+6
+                        D = 0,2 - 0,5 - 0,7 - 1 - 2
+
+4
+
+2
+
+0
+     0          0,005        0,01           0,015       0,02      0,025
+                                                                    t/s
+Sprungantwort PT2-Glied (K = 10, 0 = 1000)
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc           C. Brüdigam       16.03.2025       Seite 27 von 56
+Systemtechnik                                                                          Übertragungsglieder
+
+PI-Glied (typischer Regler)
+            2
+A 10
+
+                                            1:1
+            1
+       10
+
+
+K (= 3)
+
+            0
+       10
+
+
+
+
+            -1
+       10
+
+   
+       0°
+
+
+
+    -90°
+
+
+                 10
+                      -1
+                                                     10
+                                                          0
+                                                                 1/TN                 10
+                                                                                           1
+                                                                                               
+                                                                (TN = 0,5)
+Verstärkungsänderung (-)1:1 bei tiefen Frequenzen
+ Verstärkung sinkt um 1 Dekade (1/10, -20 dB) pro 1 Dekade Frequenzerhöhung
+Phasenverschiebung: -90° (bei niedrigen Frequenzen) ... 0° (bei hohen Frequenzen)
+Verstärkung K ablesbar bei hohen Frequenzen (hier K = 3  100 = 3)
+Nachstellzeit TN : Knick in der Amplitudenkennlinie bei  = 1/TN; (1/TN) = -45°
+                            1 
+Übertragungsfunktion: K 1 +   
+                         TN s 
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc         C. Brüdigam            16.03.2025            Seite 28 von 56
+Systemtechnik                                                                                Übertragungsglieder
+
+Eigenschaften einfacher linearer Übertragungsglieder
+                 Differentialgleichung            Übertragungsfunktion F(s)                            Übergangs Funktion          Ortskurve                    Bode-                                 x: Pole
+System
+                 xa = xa(t), xe = xe(t)                                                                (Sprungantwort)             F(j)                        Diagramm                              o: Nullstellen
+
+                  xa = K xe
+                                                                                                                                                                                                             j
+P                                                 K                                                    xa                             Im
+                                                                                                                                                                  K                                                  s-Ebene
+                                                                                                       K
+                                                                                                                                                                  1                                  keine Pole
+                                                                                                                                                                                                      keine Nullstellen
+                                                                                                                                                      K   Re
+                                                                                                                                                                                                                          
+                                                                                                                                                                +90°
+                                                                                                                                                                  0°                           
+                                                                                                                                                                -90°
+                                                                                                                           t
+
+
+                  Tx a + xa = K xe
+                                                                                                                                                                                                             j
+PT1                                                 K                                                  xa
+                                                                                                                                      Im                          K
+                                                                                                                                                                                         1:1
+                                                                                                                                                                                                                     s-Ebene
+                                                                                                                                           →        = 0
+                                                  1+ T s
+                                                                                                       K                                                          1
+                                                                                                                                                      K Re                                     
+                                                                                                                                                                                                          -1               
+                                                                                                                                                                                E
+                                                                                                                                                                                                          T
+                                                                                                                                                  1
+                                                                                                                                             E =
+                                                                                                                                                  T                0°
+                                                                                                                                                                 -90°                          
+                                                                                                                       t                                        -180°
+                                                                                                            T
+
+
+                  xa + 2 D 0 xa +  02 xa =          K  02
+                                                                                                                                                                                                             j
+PT2                                                                                                    xa                             Im
+                                                                                                                                                      K               K
+                                                                                                                                                                                                                     s-Ebene
+
+                                                                        bzw.
+(D  1)                                           s 2 + 2 D 0 s +  02
+                                                                                                       K                                                  Re
+                  = K 02 xe
+                                                                                                                                                                      1                           
+                                                                                                                                                                                    0      2:1                            
+                                                                                                                                                                                                      −1 −1
+                                                                                                                                     -K                                      1/T1    1/T2
+                                                                                                                                                                                                       T2 T1
+                                                    K1      K2         K1 K 2 /(T1T2 )                                               2D
+                                                                 = 2
+                                                  1 + T1s 1 + T2 s s + ( 1T1 + 1T2 )s + 1T1T2
+                                                                                                                                                                   0°                          
+                                                                                                                                                                 -90°
+
+
+
+                                                  (K K → K;                                        )
+                                                                                                                       t                                        -180°
+
+
+                                                      1   2
+                                                                  1
+                                                                   T1T2   →  02 ; 2T1 +TTT2 → D
+                                                                                      1 2
+
+                                                                                                                                                                                                               j
+                  xa + 2 D 0 xa +  02 xa =          K  02
+                                                                                                                                                                          (D<0.7)
+PT2                                                                                                    xa                             Im
+                                                                                                                                                      K           K                                            e s-Ebene
+                                                                                                                                                                                         2:1              0
+
+(0  D < 1)                                       s 2 + 2 D 0 s +  02
+                                                                                                       K                                                  Re                                                   
+                  = K x
+                                                                                                                                                                  1                            
+                         2                                                                                                                                                                                                 
+                                                                                                                                                                                                        e
+                         0 e                                                                                                         -K               (D<0.7)                   0                                   D = cos 
+                                                                                                                                     2D
+                                                                                                                                                                   0°                          
+                                                                                                                                                                 -90°
+                                                                                                                       t                                        -180°
+
+
+                  x a = K I  xe dt
+                                                                                                                                                                                                             j
+I                                                 KI       1                     K                   xa                             Im                                                                             s-Ebene
+                                                     =K                    KI =                                                                                1
+                                                                                                                                                                                               
+                                                         TN  s                                        KI                                                 Re
+                                                  s                              TN                                                                             KI                 1:1
+                                                                                                                                            = -90°                                                                        
+                                                                                                                                                                          1/Tn 1
+                                                                                                                                                                   0°
+                                                                                                                                                                 -90°                          
+                                                                                                                   1           t                                -180°
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                                                   C. Brüdigam                            16.03.2025                                                                      Seite 29 von 56
+Systemtechnik                                                                          Übertragungsglieder
+
+                  Tx a + x a = K I  xe dt
+                                                                                                                                                                                                                           j
+IT1                                                     KI                                     xa                                                 -T K I Im                          1:1                                        s-Ebene
+                                                                                               KI
+                                                     s(1 + Ts)
+                                                                                                                                                                      Re       KI
+                                                                                                                                                                                           2:1
+                                                                                                                                                                               1                                                     
+                                                                                                                                                                                            1                    -1
+                                                                                                                                                                                            T 1                   T
+                                                                                                                                                                                0°                           
+                                                                                                                                                                              -90°
+                                                                                                                                     t                                       -180°
+                                                                                                                           T     1
+
+
+D                 xa = K D xe                       K D s = K  TV  s   ( KD = K  TV )      xa
+                                                                                                             Fläche: K D
+                                                                                                                                                Im
+                                                                                                                                                                               KD
+                                                                                                                                                                                            1:1
+                                                                                                                                                                                                                           j   s-Ebene
+
+                                                                                                                                                                                1
+                                                                                                                                                      = +90°                                                
+                                                                                                                                                                                                                                     
+                                                                                                                                                                                              1
+                                                                                                                                                                      Re     +180°
+                                                                                                                                                                              +90°
+                                                                                                                                                                                0°                           
+                                                                                                                                     t
+
+
+DT1               Txa + xa = K D xe                 KDs                                       xa                                              Im
+                                                                                                                                                       E =
+                                                                                                                                                              1
+                                                                                                                                                              T
+                                                                                                                                                                              KD
+                                                                                                                                                                              T
+                                                                                                                                                                                                                           j   s-Ebene
+                                                                                               KD                                                                                     1:1
+                                                     1 + Ts                                    T                                                                                1
+                                                                                                                                                                                                             
+                                                                                                                                                                                              1                   -1                 
+                                                                                                                                                                    K D Re                    T                   T
+                                                                                                                                                                    T        +180°
+                                                                                                                                                                              +90°
+                                                                                                                                     t                                          0°
+                                                                                                                  T                                                                                          
+
+
+                                                                                                                                                                                            1:1                            j
+PI                             1              K          1                                          xa                                      Im                                                                              s-Ebene
+                  xa = K  xe +  xe dt  K I =
+                                                                                                                                                                K
+                                                     K 1 +                                                                                                          Re
+                                                                                                                                                                               K
+
+                              TN              TN      TN s                                                                                                                                1
+                                                                                                                                                                                                             
+                                                                                                                                                                                                                  -1                 
+                                                                                                                                                                                              TN                  TN
+                                                                                                    K
+
+                                                                                                                                     t                                          0°                           
+                                                                                               -TN                                                                            -90°
+                                                                                                                                                                             -180°
+
+                                                                                                                                                               T                                                         j
+PIT1                                 1                   1                                                     xa                                       K1 −                    1:1                                       s-Ebene
+                  Txa + xa = K  xe +  xe dt         1+                                                                                       Im           TN
+                                                                                                                                                                               K                       1:1
+
+                                    TN                  TN s                                                                                                        Re                                     
+                                                                                                                                                                                                                                     
+                                                     K                                                                                                                                                           -1    -1
+                                                       1 + Ts
+                                                                                                             K                                                                        1            1
+                                                                                                                                                                                      TN           T             T     TN        T  TN
+                                                                                                                                                                                0°
+                                                                                                                                                                              -90°                           
+                                                                                               -TN                     T                 t                                   -180°
+
+
+PD                xa = K ( xe + TV xe )              K (1 + TV s )                             xa                                               Im                                                                         j   s-Ebene
+                                                                                                                 Fläche: K T V
+                                                                                                                                                                                1
+                                                                                                                                                                                                             
+                  K D = K TV                                                                   K
+                                                                                                                                                                                K
+                                                                                                                                                                                              1
+                                                                                                                                                                                                   1:1
+                                                                                                                                                                                                                      -1             
+                                                                                                                                                                K     Re                      TV                      TV
+                                                                                                                                                                             +180°
+                                                                                                                                                                              +90°
+                                                                                                                                                                                0°                           
+                                                                                                                                     t
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                                             C. Brüdigam                                            16.03.2025                                                                     Seite 30 von 56
+Systemtechnik                                                                           Übertragungsglieder
+
+                  Txa + xa = K ( xe + TV xe )                    1 + TV s                                                                                            1                                                             j
+PDT1                                                                                               xa                                          Im             E =                                                                          s-Ebene
+                                                             K                                    TV
+                                                                                                                                                                     T                                  1:1
+
+Lead-Glied                                                       1 + Ts                         K
+                                                                                                  T
+                                                                                                                         T  TV                                               T  TV      1
+                                                                                                                                                                                          K                          
+                                                                                                                                                                                                                             -1   -1              
+                                                                                                                                                                                                     1/TV 1/T
+(T<TV)                                                                                               K
+                                                                                                                                                     K                     TV
+                                                                                                                                                                         K T Re                                              T    TV        T  TV
+                                                                                                                                                                                       +180°
+                                                                                                                                                                                       <+90°
+                                                                                                                                                                                          0°                         
+                                                                                                                T                         t
+
+
+
+                  Txa + xa = K ( xe + TV xe )                    1 + TV s                                                                                                                                                          j
+PDT1                                                                                                 xa                                        Im      TV
+                                                                                                                                                                              T>TV                                                          s-Ebene
+                                                             K                                                      T>T V                            K T                  K               K             1:1
+
+Lag-Glied                                                        1 + Ts                              K                                                                         Re
+                                                                                                                                                                                          1                          
+                                                                                                                                                                                                                             -1 -1                
+                                                                                                                                                                      1                                                                     T  TV
+(T>TV)                                                                                          K
+                                                                                                  TV                                                             E =
+                                                                                                                                                                      T
+                                                                                                                                                                                                     1/T 1/T V               TV T
+                                                                                                  T                                                                                       0°
+                                                                                                                                                                                       >-90°                         
+                                                                                                                                                                                       -180°
+                                                                                                                T                         t
+
+                                                                                                                                                                                                                                   j
+PID                             1                                1                                    xa                                        Im                                                                                      s-Ebene
+                  xa = K  xe +
+                               TN  xe dt + TV xe 
+                                                   
+                                                             K 1 +
+                                                                TN s
+                                                                      + TV s  bzw.
+                                                                             
+                                                                                                                Fläche: K T V
+                                                                                                                                                                      K
+                                                                                                                                                                                         1
+                                                                                                                                                                                         K
+                                                                                                                                                                                                1:1            1:1
+
+                                                                                                                                                                                                                     
+                                                                                                                                                                                Re                                                                
+                                                                                                                                                                                                     1/TN 1/TV                              4TV  TN
+                                                                            1                                                                                                          +90°
+                                                             KP + KI          + KD s                      K
+                                                                                                                                                                                         0°
+                                                                                                                                                                                       -90°                                 4TV > TN  kompl. Nst.
+                                                                            s                   -TN                               t
+
+
+                                                                                                                                                                                                                                       j
+PIDT1                                 1                              1                                   xa                                                                                  1:1       1:1                                 s-Ebene
+                  Txa + xa = K  xe +
+                                     T   xe dt + TV xe 
+                                                         
+                                                                 1+         + TV s                    K
+                                                                                                          TV
+                                                                                                                                                Im
+                                                                                                                                                                          T
+                                                                                                                                                                                         K
+                                       N
+                                                                      TN s                                T                                                             K V Re           1                           
+                                                                                                                                                                           T                                                                       
+                                                             K                                                                                                              T
+                                                                                                                                                                                                                             -1
+                                                                                                                                                                                                                                              T  TV
+                                                                      1 + Ts
+                                                                                                                                                                                               1/TN 1/TV 1/T
+                                                                                                                                                                     K1 −                                                T
+                                                                                                          K                                                             TN                                                                 4TV  TN
+                                                                                                                                                                                       +90°
+                                                                                                                                                                                         0°
+                                                                                                                                                                                       -90°                          
+                                                                                                -Tn                   T               t
+
+
+Tt                xa = K  xe (t − Tt )                      K  e −Tt s                        xa                                                       Im
+                                                                                                                                                                                         K
+                                                                                                                                                                                                                                   j
+                                                                                                                                                                                                                                            s-Ebene
+                                                                                                K                                                               K        = 2k 
+                                                                                                                                                                             Tt
+                                                                                                                                                                                                                            keine Pole
+                                                                                                                                                                               Re                                            keine Nullstellen
+                                                                                                                                                                      k = 0,1,2,...       0°                                                     
+                                                                                                                                                                                        -90°
+                                                                                                                                                                                       -180°
+                                                                                                                                  t
+                                                                                                                    Tt
+
+
+Anm.: Strecken „ohne Ausgleich“ besitzen integrierendes Verhalten. Strecken „mit Ausgleich“ streben bei konstantem Eingangssignal einem konstanten Ausgangswert zu.
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                                              C. Brüdigam                                            16.03.2025                                                                                Seite 31 von 56
+Systemtechnik                                     Bode-Diagramm verketteter Übertragungsfunktionen (Reihenschaltung)
+
+
+2.15 Bode-Diagramm verketteter Übertragungsfunktionen (Reihenschaltung)
+Bei der Verkettung (Reihenschaltung) von Funktionen im Bode-Diagramm ergibt sich die
+resultierende Übertragungsfunktion als Produkt der Einzelübertragungsfunktionen. Das heißt,
+die Verstärkungen werden multipliziert und die Phasenverschiebungen addiert. Im Bode-
+Diagramm bedeutet das, dass sowohl Phasengang (halb logarithmische Darstellung) als
+auch Amplitudengang (doppelt logarithmische Darstellung!) graphisch addiert werden.
+
+A           2
+       10
+
+
+            1
+       10
+
+
+            0
+       10
+
+
+            -1
+       10
+
+
+            -2
+       10
+   90°
+        60°
+        30°
+         0°
+       -30°
+       -60°
+       -90°
+                                                                                                     
+             -2                         -1        0                      1                       2
+          10                       10        10                     10                      10
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                 C. Brüdigam             16.03.2025         Seite 32 von 56
+Systemtechnik                                                            Bode-Diagramm verketteter Übertragungsfunktionen (Reihenschaltung)
+
+Bodediagramm
+x-Achse: Frequenz (); y-Achse: Amplitude (A) bzw. Phase ()
+        2                            2                            2                               2                                 2
+
+
+        1,5                          1,5                          1,5                             1,5                               1,5
+
+
+
+        1                            1                            1                               1                                 1
+
+
+        7                            7                            7                               7                                 7
+
+
+        5                            5                            5                               5                                 5
+
+
+
+
+        3                            3                            3                               3                                 3
+
+
+
+        2                            2                            2                               2                                 2
+
+
+        1,5                          1,5                          1,5                             1,5                               1,5
+
+
+
+        1                            1                            1                               1                                 1
+
+
+        7                            7                            7                               7                                 7
+
+
+        5                            5                            5                               5                                 5
+
+
+
+
+        3                            3                            3                               3                                 3
+
+
+
+        2                            2                            2                               2                                 2
+
+
+        1,5                          1,5                          1,5                             1,5                               1,5
+
+
+
+        1                            1                            1                               1                                 1
+
+
+        7                            7                            7                               7                                 7
+
+
+        5                            5                            5                               5                                 5
+
+
+
+
+        3                            3                            3                               3                                 3
+
+
+
+        2                            2                            2                               2                                 2
+
+
+        1,5                          1,5                          1,5                             1,5                               1,5
+
+
+
+        1                            1                            1                               1                                 1
+
+
+        7                            7                            7                               7                                 7
+
+
+        5                            5                            5                               5                                 5
+
+
+
+
+        3                            3                            3                               3                                 3
+
+
+
+        2                            2                            2                               2                                 2
+
+
+        1,5                          1,5                          1,5                             1,5                               1,5
+
+
+
+        1                            1                            1                               1                                 1
+
+
+        7                            7                            7                               7                                 7
+
+
+5   7   1      1,5   2   3   5   7   1      1,5   2   3   5   7   1       1,5   2   3     5   7   1      1,5   2     3    5     7   1
+
+
+        180                          180                          180                             180                               180
+
+
+
+        135                          135                          135                             135                               135
+
+
+
+        90                           90                           90                              90                                90
+
+
+
+        45                           45                           45                              45                                45
+
+
+
+        0                            0                            0                               0                                 0
+
+
+
+        -45                          -45                          -45                             -45                               -45
+
+
+
+        -90                          -90                          -90                             -90                               -90
+
+
+
+        -135                         -135                         -135                            -135                              -135
+
+
+
+        -180                         -180                         -180                            -180                              -180
+
+
+
+5   7   1      1,5   2   3   5   7   1      1,5   2   3   5   7   1       1,5   2   3     5   7   1      1,5   2     3    5     7   1
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                                           C. Brüdigam                    16.03.2025              Seite 33 von 56
+Systemtechnik                                                                                               Bedeutung der Pol- und Nullstellenverteilung
+
+
+2.16 Bedeutung der Pol- und Nullstellenverteilung                                                                    Im
+
+Bedeutung der Polstellen                                                                                                         s
+
+Die Lage der Pole (Nullstellen des Nenners) der
+Übertragungsfunktion gibt Auskunft über die Stabilität                                                ...
+und das Einschwingverhalten des Übertragungs-                                                                                                     Re
+glieds.
+                                                                                                                                              instabil
+Das Übertragungsglied ist stabil, wenn sich alle Pole                                        stabil
+                                                                                                                              grenzstabil
+in der linken Halbebene befinden.
+
+
+
+Zusammenhang zwischen Pollage und Systemantwort
+                                                           1
+Z.B.: Wird das System F ( s) =                                mit einem -Impuls angeregt, ergibt sich für das Aus-
+                                                          s+2
+                        1
+gangssignal X a ( s) = 1    xa (t ) = e −2 t :  Eine Pollage in der negativen s-Halbebene
+                       s+2
+ergibt eine abklingende e-Funktion.
+
+
+Systemverhalten
+Die Lösung der homogenen Dgl. a3 xa + a2 xa + a1 xa + a0 xa = 0                                                   kann als Summe von
+Exponentialfunktionen beschrieben werden:
+                  n
+    xah (t ) =  ki ei t ;           mit i = i + ji
+                 i =1
+
+Bei Anregung mit einem Einheitsimpuls ergibt sich als Impulsantwort:
+ (bzw. s) reell ( = 0): Lösung ist e-Funktion (Dgl. 1. Ordnung, wie RL, Wasserquirl oder
+allg. PT1)
+A                                                 A                                 A
+
+
+
+
+                                       t                                t                                                 t
+
+
+        stabil                                        grenzstabil                       instabil
+<0                                                   =0                               >0
+ (bzw. s) konjugiert komplex (  0): et + e*t = e( + j)t + e( - j)t =
+= et  ejt + et  e-jt = et (ejt + e-jt) mit Eulerscher Formel (ej = cos  + j sin )
+ = et (cos t + j sin t + cos t – j sin t) = et (2 cos t)
+klingt ab für  < 0! (Dgl. 2. Ordnung, wie Masse/Feder-Schwinger)
+A                                             A                             A
+
+                                                                                                                      Matlab Code:
+                               t                                    t                                         t
+                                                                                                                      F=tf([1],[1 4 104])
+                                                                                                                      pzmap(F)
+stabil (geringe Dämpfung)                         grenzstabil                   instabil                              impulse(F)
+
+<0                                                     =0                                >0
+    A
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                                          C. Brüdigam                      16.03.2025          Seite 34 von 56
+
+                                   t
+Systemtechnik                                                       Bedeutung der Pol- und Nullstellenverteilung
+
+Allgemein gilt:
+Pole bewirken ein zeitverzögertes Verhalten; je weiter links die Pole liegen, desto geringer ist
+diese Verzögerung bzw. desto schneller ist der Einschwingvorgang.  Wenn Pole deutlich
+weiter links liegen, als andere Pole, ist deren Einfluss (Verzögerung) gering und man kann
+sie oft ohne großen Fehler vernachlässigen.
+
+
+
+Bedeutung der Nullstellen
+Die Nullstellen der Übertragungsfunktion wirken sich auf das dynamische Verhalten des
+Übertragungsglieds aus. Sie bewirken i.a. eine Beschleunigung des Systems (differenzieren-
+des Verhalten), oft auch ein Überschwingen (PDT1 / Lead-Glied).
+Der Einfluss weit links in der komplexen s-Ebene liegender Nullstellen kann häufig vernach-
+lässigt werden.
+
+
+
+Pol- Nullstellenkompensation
+Der Einfluss von Polstellen in der linken Hälfte der s-Ebene kann durch benachbarte Null-
+stellen kompensiert werden. Das geht aber nur bei stabilen Polen (linke Halbebene).
+ instabile Pole in der rechten Hälfte lassen sich nicht durch durch Reihenschaltung mit
+entsprechenden Nullstellen kompensieren.
+                           a  ( s − 1)        a
+Achtung: F ( s ) =                        
+                       ( s + 2)  ( s − 1) ( s + 2)
+                                   
+                           instabil         stabil
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc             C. Brüdigam           16.03.2025          Seite 35 von 56
+Zusammenwirken mehrerer Systeme                                                          Regelkreis
+
+
+3 Zusammenwirken mehrerer Systeme
+
+3.1    Regelkreis
+Die Aufgabe des regelungstechnischen Entwurfs besteht darin, zu dem vorgegebenen
+Verhalten der Strecke FS(s) einen geeigneten Regler FR(s) so zu entwickeln, dass bestimmte
+regelungstechnische Anforderungen erfüllt werden.
+Grundsätzliche Anforderungen:
+•     Stabilität: Auch bei instabilen Teilsystemen muss der Regelkreis insgesamt stabiles
+      Verhalten zeigen.
+•     Gutes Führungsverhalten:      Die Differenz zwischen Führungsgröße (Sollwert) w(t) und
+      Regelgröße (Istwert) x(t) muss schnell möglichst klein werden (Ziel → 0)
+•     Gutes Störverhalten:           Der Einfluss von Störgrößen soll wirksam vermindert bzw.
+      verhindert werden.
+
+
+
+
+(Maximale) Überschwingweite: die maximale Regelabweichung, die nach dem erstmaligen
+Erreichen des Sollwerts auftritt
+Anregelzeit: Zeitpunkt, zu dem der Sollwert erstmals erreicht wird.
+Ausregelzeit: Zeitpunkt, ab dem die Regelabweichung dauerhaft im Toleranzband liegt.
+Stationäre (bleibende) Regeldifferenz: Abweichung zwischen Soll- und Istwert, wenn der
+Regelkreis eingeschwungen ist.
+Oft gewählter Kompromiss: PT2-Verhalten mit D = 0,7 (konjugiert komplexes Polpaar auf den
+Winkelhalbierenden des 2./3. Quadranten) – ergibt schnelles Erreichen des Sollwerts mit ca.
+4 … 5 % Überschwingen.
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                 C. Brüdigam   16.04.2025   Seite 36 von 56
+Zusammenwirken mehrerer Systeme                                                                                 Regelkreis
+Grundstruktur des einschleifigen Regelkreises
+                                     z1                      z2
+
+w                            y                                          x
+                  FR (s)                    FS (s)
+          -
+     x'
+
+                                 Fr (s)                                     z3
+                                                                                 allgemeine Rückführung
+Ein ev. vorhandenes bzw. zu entwerfendes Rückführglied Fr(s) (Messeinrichtung) kann
+gedanklich dem Regelglied zugeschlagen werden. Man erhält dann einen einschleifigen
+Regelkreis mit Einheitsrückführung. Einziger Freiheitsgrad ist FR(s).
+
+
+                                     z1                      z2
+
+w                            y                                          x
+                  FR (s)                    FS (s)
+          -
+     x
+
+                                                                            z3
+                                                                                 Einheitsrückführung
+
+
+Grundsätzliche Eigenschaften der Kreisstruktur
+                                          z1
+
+w             e                                       x
+                    Fv (s)
+          -
+
+                    Fr (s)                                    z2
+
+
+Aus dem Signalflussplan erhält man (im Bildbereich):
+
+
+
+
+              Fv                1              − Fv  Fr
+ X =                 W +              Z1 +              Z2
+          1 + Fv  Fr      1 + Fv  Fr        1 + Fv  Fr
+                                                              Fv
+Führungsübertragungsfunktion: Fw =
+                                                          1 + Fv  Fr
+                                                          1                − Fv  Fr
+Störübertragungsfunktionen: Fz1 =                                ; Fz 2 =
+                                                     1 + Fv  Fr          1 + Fv  Fr
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                                   C. Brüdigam        16.04.2025   Seite 37 von 56
+Zusammenwirken mehrerer Systeme                                    Reglerauswahl für einschleifige Regelkreise (mit Einheitsrückführung)
+Für die Störübertragungsfunktionen gilt, dass Störungen z1 sich auf die Regelgröße x direkt
+auswirken, erfasst werden und durch entsprechende Reglerauslegung korrigiert werden
+können. Störungen z2 dagegen wirken sich nicht direkt auf x aus; werden aber erfasst und
+führen zu einer (Fehl-) Korrektur. Die Rückführzweige müssen deshalb möglichst
+störungsarm realisiert werden (z.B. qualitativ hochwertige Sensoren).
+
+
+
+
+3.2     Reglerauswahl für einschleifige Regelkreise (mit Einheitsrückführung)
+
+
+                                                                  bleibende Regeldifferenz e (oder xd)
+Regler        FR(s)         Regelstrecke FS(s)
+                                                          für xe = a(t) (Sprung) für xe = at (Rampe)
+                                                                    1
+                                                          a
+                                                               1 + KP  KS
+
+P (D)      KP                                                     1                          
+                                                          a                 
+                                                           1 + KP  KS  Kr 
+                          P-Verhalten
+                                                          Rückführverstärkung Kr
+                          (P, PT1, PT2, ...)
+            KI                                                                                        1
+I                                           (1 + ...s )... 0                                   a
+            s              FS ( s ) = K S                                                          KI  KS
+                                             (1 + ...s )...
+                   KI                                                                                 1
+PI (D)     KP +                                           0                                    a
+                   s                                                                               KI  KS
+            KI
+I2                                                        0                                    0
+            s2
+                                                                                                     1
+P (D)      KP             I-Verhalten                     0                                    a
+                                                                                                   KP  KS
+                          (I, PI, IT1, ...)
+            KI
+I                                           (1 + ...s )... 0                                   0
+            s              FS ( s ) = K S
+                                            s(1 + ...s )...
+                   KI
+PI (D)     KP +                                           0                                    0
+                   s
+Häufige Verwendung finden auch Regler mit D-Anteil. Dieser erzeugt schon bei noch kleinen
+aber schnellen Änderungen der Führungs- bzw. Störgrößen ein großes Ausgangssignal und
+kann damit die Ausregelzeit reduzieren. Das stationäre Verhalten wird nicht beeinflusst.
+Achtung: Die Anwendung der Tabelle garantiert nicht, dass der Regelkreis auch stabil
+ist.  Das ist gesondert zu prüfen!
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                                 C. Brüdigam               16.04.2025          Seite 38 von 56
+Zusammenwirken mehrerer Systeme                                                                               Wurzelortskurven (WOK)-Verfahren
+3.3    Wurzelortskurven (WOK)-Verfahren
+Wurzelortskurve: Ein Diagramm, das die Lage der Pole des geschlossenen Regelkreises in
+Abhängigkeit der Verstärkung angibt. D. h. zu jeder Verstärkung kann die Polverteilung des
+Regelkreises abgelesen und damit das Einschwingen beurteilt werden.
+Vorüberlegungen
+       Die Reglerübertragungsfunktion                                                         F (s)
+                                                                                               R
+       FR kann aufgespalten werden in                               w                                                                        x
+                                                                                            K     F' (s)                   F (s)
+                                                                                                    R                       S
+       Reglerverstärkung und                                                   -
+       Reglerdynamik: FR = K  FR'
+                                                                                                      F (s)
+                                                                                                       r
+
+                                                                                         FR  FS
+       Die Gesamtübertragungsfunktion lautet: Fw ( s) =
+                                                                                     1 + FR  FS  Fr
+       Dabei kann Fo = FR  FS  Fr als Übertragungsfunktion des offenen Regelkreises be-
+       zeichnet werden.
+       Diese Übertragungsfunktion des offenen Regelkreises kann in auch faktorisierter Form
+       dargestellt werden:
+                                                                                                m
+                                                                                                 ( s − sNo )
+        Fo ( s) = FR ( s )  FS ( s)  Fr ( s) = K  FR' ( s )  FS ( s )  Fr ( s ) = K  Q   n=1          .
+                                                                                                ( s − sPo )
+                                                                                                =1
+
+Für eine Polstelle des geschlossenen Regelkreises muss der Nenner der Führungs-
+übertragungsfunktion Fw(s) Null werden:
+                                   FR ( s)  FS ( s)           F ( s)  FS ( s)               !
+Fw (s) = FRegelkreis ( s) =                                   = R                1 + Fo ( s) = 0
+                              1 + FR ( s)  FS ( s)  Fr ( s)   1 + Fo ( s)
+Daraus folgt:
+                  m                                  n
+             ( s − sNo ) !                         ( s − sPo ) !
+            =1
+ 1+ K Q  n              =0                       =1
+                                                     m
+                                                                   =− K  Q
+             ( s − sPo )                           ( s − sNo )
+                  =1                                =1
+
+Diese Gleichung kann man in eine Betrags- und eine Phasenbeziehung aufspalten:
+ n                                                          n                         m
+  s − s Po
+ =1
+                = K Q
+                                                           
+                                                           
+                                                             arc( s − s
+                                                            =1
+                                                                          Po ) −  arc( s − s No ) = arc( − K  Q) =  r  180 
+                                                                                      =1
+ m
+ s − s No
+ =1                                                       mit r = 1, 3, 5, ... für K  Q > 0
+                                                                 r = 0, 2, 4, ... für K  Q < 0
+
+Aus der Phasenbeziehung lässt sich der Verlauf der WOK bestimmen; die Betragsbeziehung
+gestattet es, jedem Punkt der WOK den entsprechenden K-Wert zuzuordnen.
+
+                      Imx 
+Anm: arc( x) = arctan        : Winkel zwischen der komplexen Zahl x (Vektor) und der reellen
+                       Rex 
+Achse
+RT Hilfsblätter - Sommerseemster 2025.doc                                          C. Brüdigam                16.04.2025           Seite 39 von 56
+Zusammenwirken mehrerer Systeme                                               Wurzelortskurven (WOK)-Verfahren
+
+Hilfsregeln zur Konstruktion des Verlaufs von Wurzelortskurven
+
+
+1. Alle n Äste der WOK beginnen mit K = 0 in den n Polen s Po des offenen Regelkreises.
+
+2. m Äste der WOK enden für K →   in den m endlichen Nullstellen s No des offenen Regel-
+   kreises.
+3. n - m Äste der WOK enden für K →   im Unendlichen. n - m ist der Polüberschuss PÜ
+4. Die n - m ins Unendliche strebenden Äste der WOK haben Asymptoten, die
+   a) im sogenannten Wurzelschwerpunkt
+               n            m
+
+               sPo −  sNo
+       sw =  =1            =1
+
+                    n−m
+       beginnen und die dabei
+   b) mit der reellen Achse die Winkel
+                         180                                 180
+       k = (2k − 1)         für KQ > 0 bzw. k = (2k − 2)       für KQ < 0
+                         n−m                                  n−m
+       mit k = 1, 2, 3, ..., n - m
+   bilden.
+5. Die Punkte der WOK liegen entweder
+   a) auf der reellen Achse (reelle Pole des geschlossenen Regelkreises) oder
+   b) symmetrisch zur reellen Achse (konjugiert komplexe Pole des geschlossenen Regel-
+      kreises).
+6. Ein Punkt s auf der reellen Achse ist dann Punkt der Wurzelortskurve, wenn sich bei KQ >
+   0 (KQ < 0) rechts von ihm auf der Achse eine ungerade (gerade) Anzahl von Polen s Po
+   und (+) Nullstellen sNo befindet.
+
+7. Die WOK hat die folgenden Aus- bzw. Eintrittswinkel aus r-fachen reellen Polen/Nullstellen
+                         180
+   WOK ,k = ( 2k − 1)        ; k = 1, 2, …, r - 1 bei geradz. PÜ rechts der r-fachen Pol-/Nullstelle
+                           r
+                          180
+   WOK ,k = ( 2k − 2 )        ; k = 1, 2, …, r - 1 bei ungeradz. PÜ rechts der r-fachen Pol-/Nullstelle
+                            r
+   Das Verhalten an Verzweigungs- bzw. Vereinigungstellen der WOK entspricht dem
+   Verhalten an doppelten Pol-bzw. Nullstellen.
+
+
+Achtung
+Das WOK-Verfahren ist nicht anwendbar, wenn es sich um nicht-rationale Übertragungs-
+funktionen handelt, z.B. um Regelkreise mit (relevantem) Totzeitverhalten!
+Die o.g. Hilfsregeln geben nicht (immer) den genauen Verlauf der WOK an. Bei Bedarf kann
+der genaue Verlauf mit Hilfe der Phasenbedingung oder mit Matlab bestimmt werden.
+Matlab Code:
+rlocus(Fo) % Zeichnet die WOK für den offenen Regelkreis Fo
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                 C. Brüdigam         16.04.2025       Seite 40 von 56
+Zusammenwirken mehrerer Systeme                                                    Frequenzgangverfahren zur Stabilitätsbestimmung (Nyquist-Kriterium)
+
+
+3.4    Frequenzgangverfahren zur Stabilitätsbestimmung (Nyquist-Kriterium)
+w=0                                                                        xa
+                      FR (j)                  FS (j)
+          -
+
+                                                                   2        1      x e (t) = x e,0 sin( t)
+                                                            xe
+                                 Fr (j)
+                                                                                        ~
+Frequenzgangfunktion des offenen Regelkreises:
+      F0 ( j ) = Fr ( j )  FR ( j )  FS ( j )
+
+Ausgangssignal:
+         xa ( t ) = − Fr ( j )  FR ( j )  FS ( j )  xe0 sin (t ) = −F0 ( j )  xe (t )
+
+Regler und seine Parameter werden so gewählt, dass für  =  krit gilt:
+       − F0 ( jkrit ) = 1 oder F0 ( jkrit ) = −1 (Schwingbedingung)
+
+
+Graphische Deutung der Schwingbedingung
+Die Schwingbedingung ist dann erfüllt, wenn die Ortskurve der Frequenzgangfunktion
+Fo ( j ) durch den kritischen Punkt ( Pkrit = −1 + j 0 ) der komplexen F0 -Ebene geht.
+
+
+                                           Im
+
+                                           1                       Fo
+
+              Pkrit
+
+                                      →                                    = 0
+                            -1
+                                                         Fo (j)       1                Re
+          = krit
+                                                                           
+                                           -1
+
+
+
+
+Für diesen Schnittpunkt lässt sich an der Ortskurve der Wert für  krit ablesen, mit dem der
+geschlossene Regelkreis Dauerschwingungen ausführt. Für größere Verstärkungen ist das
+System instabil (aufklingende Schwingung), für kleinere Verstärkungen stabil (abklingende
+Schwingung).
+
+
+Vereinfachtes Nyquist-Stabilitätskriterium:
+Falls die Übertragungsfunktion des offenen Kreises keine Pole in der rechten Halbebene
+besitzt und maximal zwei Pole im Ursprung der s-Ebene liegen, ist der Regelkreis stabil,
+wenn beim Durchlaufen der Ortskurve in Richtung zunehmender Winkelgeschwindigkeit 
+der kritische Punkt Fo(jkrit) = -1 + 0j auf der linken Seite der Ortskurve liegt.
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                                                    C. Brüdigam           16.04.2025         Seite 41 von 56
+Zusammenwirken mehrerer Systeme                                                                Frequenzgangverfahren zur Stabilitätsbestimmung (Nyquist-Kriterium)
+(Die Voraussetzung ist meist erfüllt, wenn eine Frequenzgangmessung des offenen Kreises
+möglich ist.)
+
+
+Auswertung des Nyquist-Kriteriums im Bode-Diagramm
+Aufspaltung der Ortskurve in Betrag A = Fo ( j ) und Phase  =Fo ( j )
+             Im
+                                                                                    A 10
+                  1                                                                                                                                        Fo
+                                                                                          1
+                                                Fo
+              = −180                                                                  0,1
+    Pkrit
+                      =                                               = 0            0.01
+     -1               0              1                 2            3                0.001
+                                                                               Re
+                                                                                    0,0001                                
+                                                                                         10 -1                     100       A=1                  101          
+    A=1                                                                                                                           = −180 
+                -1                                                                        0°
+                                                                                                
+
+
+                                                                                    -180°
+                -2
+
+
+                                                                                     -360°
+
+
+                                                                                                          Stabilität: für  A =1    = −180
+
+Anwendung möglich bei vielen typischen Regelkreisen. Voraussetzungen wie für das
+Vereinfachte Nyquist-Kritierium.
+In Zweifelsfällen (mehrere 0 dB- oder -180°-Durchgänge, „komische“ z.B. ansteigende
+Phasenverläufe etc.), verwendet man das Vereinfachte Nyquist-Kritierium oder, wenn die
+Bedingungen dazu nicht erfüllt sind, die
+
+Allgemeine Formulierung des Nyquist-Kriteriums (ohne obige Einschränkungen)
+                                                                                                              Im
+                            Im
+                                                               s
+                                                                                                                                     Fo
+
+                                                                                                      Pkrit
+                                                                                                                    →                    = 
+                                                                                                        -1                                                 Re
+                                                                        Re
+                                                                                                                                                       +
+                                                                    nr                                                                             
+                                                           n 0 = nl + na + nr
+    nl                                   na                                                                                                   -
+
+
+Der geschlossene Regelkreis ist stabil, wenn der vom kritischen Punkt Pkrit = −1 + j 0 zum
+laufenden Ortskurvenpunkt Fo ( j ) weisende Fahrstrahl für wachsendes  von +0 bis +
+                                               = +
+eine Winkeländerung  = +0  soll = nr  180  + na  90  erfährt. (Vorzeichen beachten!)
+nr: Anzahl der Pole rechts der imaginären Achse
+na: Anzahl der Pole auf der imaginären Achse
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                                                             C. Brüdigam                   16.04.2025                  Seite 42 von 56
+Zusammenwirken mehrerer Systeme                     Frequenzgangverfahren zur Stabilitätsbestimmung (Nyquist-Kriterium)
+
+Reglerauslegung: Systematisches Probierverfahren bei Frequenzkennlinien
+Bei einem Regelkreis ergibt sich die Frequenzgangfunktion des offenen Kreises zu
+F0 ( j ) = Fr ( j )  FR ( j )  FS ( j )
+
+dabei ist FS ( j ) im Allgemeinen vorgegeben und FR ( j ) frei wählbar.
+Für einen zunächst beliebig ausgewählten Regler (ev. entsprechend Kap. 3.2) kann damit
+das Bode-Diagramm des offenen Regelkreises skizziert werden.
+Folgende Anforderungen sollten dabei erfüllt werden:
+• kleine bleibende Regeldifferenz: A() >> 1 bei    A=1
+•    Stabilität:  > -180° für  =  A=1 ;
+•    Phasenrand:  R =  A=1 + 180 für  =  A=1
+     Für befriedigendes Verhalten bei Störungen sollte gelten: R  30°
+     Für gutes Führungsverhalten (überschwingungsarm) sollte gelten R  60°
+     Für gutes Führungsverhalten (überschwingungsfrei) sollte gelten R  80°
+•    Unterdrückung von Störungen (Messrauschen) im Rückführzweig: A() << 1 bei
+        A=1
+Falls diese Anforderungen mit dem ausgewählten Regler noch nicht erfüllt werden, kann
+durch gezieltes Ändern (z.B. Reglerverstärkung, andere Reglerparameter, anderer Regler-
+typ) eine Verbesserung erreicht werden.
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                  C. Brüdigam              16.04.2025         Seite 43 von 56
+Zusammenwirken mehrerer Systeme                      Frequenzgangverfahren zur Stabilitätsbestimmung (Nyquist-Kriterium)
+Übungsaufgabe
+Gegeben sind der Frequenzgang einer Regelstrecke und eines Reglers.
+
+A          2
+      10
+
+
+           1
+      10
+
+
+           0
+      10                                                               Regler
+
+
+           -1
+      10
+
+                                                                   Strecke
+           -2
+      10
+ 
+       90°
+       45°
+        0°
+                                                                       Regler
+     -45°
+     -90°
+    -135°
+                                                                   Strecke
+    -180°
+
+                                                                                             
+                -2                  -1           0                 1                     2
+           10                  10           10                10                    10
+
+a) Skizzieren Sie die Ortskurve des Reglers. Um welchen Reglertyp handelt es sich?
+   Welche Werte haben die Reglerparameter?
+b) Skizzieren Sie in das obige Diagramm den Frequenzgang F0(s) des offenen Regelkreises
+   mit Einheitsrückführung.
+c) Wie groß ist der Phasenrand?
+d) Was schließen Sie daraus für das Systemverhalten?
+e) Wie müsste die Verstärkung des Reglers geändert werden, damit sich ein Phasenrand
+   von R = 80° ergibt?
+f) Welchen Parameter müssten Sie wie ändern, um einen Phasenrand von 135° zu
+   erreichen?
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                   C. Brüdigam              16.04.2025         Seite 44 von 56
+Zusammenwirken mehrerer Systeme                                                                    Einstellregeln
+
+
+3.5    Einstellregeln
+
+
+Einstellregeln nach Ziegler/Nichols
+Zur Bestimmung der Reglerparameter wird der Regelkreis zunächst mit einem reinen P-
+Regler betrieben. Dabei wird die Reglerverstärkung KP so lange erhöht, bis der Regelkreis
+Dauerschwingungen ausführt. Diese kritische Verstärkung KP,krit und die Periodendauer Tkrit
+der Schwingung werden notiert. Damit können aus der nachfolgenden Tabelle die Regler-
+parameter für P-, PI-, PD- und PID-Regler abgelesen werden.
+
+Reglertyp         KP                 TN             TV                 Ein Nachteil dieses Verfahrens ist,
+                                                                       dass das System bis zum
+P                 0,50  KP,krit     -              -
+                                                                       Schwingen gebracht werden muss
+PI                0,45  KP,krit     0,85  Tkrit   -                  (Stabilitätsgrenze), was nicht bei
+                                                                       allen Regelstrecken zulässig ist
+PD                0,80  KP,krit     -              0,12  Tkrit       (Zerstörung).
+PID               0,60  KP,krit     0,50  Tkrit   0,12  Tkrit
+
+
+Das Betragsoptimum
+Anwendbar für PTn-Systeme mit einer „dominierenden“ (großen) und mehreren kleinen
+Zeitkonstanten (möglichst reelle Pole):
+T1 = Td  T2 , T3 ,... , Tn ; T = T2 , T3 ,... , Tn
+Streckenverstärkung: KS = K1  K2  …  Kn
+                             1                                                   Td
+ PI-Regler: FPI = K R  1 +      mit TN = Td (Pol-/Nullstellenkomp.); K R =
+                          TN  s                                             2  K S  T
+Ergibt ca. 4% Überschwingen bei Sprungantwort
+
+
+Das Symmetrische Optimum
+Anwendbar für ITn-Systeme mit mehreren Zeitkonstanten (reelle Pole):
+T = T1, T2 ,... , Tn
+Streckenverstärkung: KS = K1  K2  …  Kn
+ PI-Regler (φR ≈ 40°):
+                1                                 1
+FPI = K R  1 +      mit TN = 4  T ; K R =
+             TN  s                          2  K S  T
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                          C. Brüdigam      16.04.2025   Seite 45 von 56
+Zusammenwirken mehrerer Systeme      Erweiterungen der Regelkreisstruktur und Maßnahmen zur Verbesserung des Regelkreisverhaltens
+
+
+3.6    Erweiterungen der Regelkreisstruktur und Maßnahmen zur Verbesserung des
+       Regelkreisverhaltens
+Störgrößenaufschaltung
+Ist der Angriffsort einer Störgröße
+                                                                                                                                   z
+bekannt, und lässt sich diese auch                                                                            1
+                                                                                                            FS1 (s)
+messen, so lässt sich deren Einfluss                              Regeleinrichtung
+wie im Bild gezeigt kompensieren.
+                                                      w                                           -                                                             x
+Vorteil: Oft lässt sich so eine deutlich                          -
+                                                                                FR (s)                         FS1 (s)                      FS2 (s)
+
+schnellere Ausregelung erreichen,                             x
+außerdem gestaltet sich der Regler-
+entwurf u.U. einfacher, da er nicht
+auf Störverhalten ausgelegt werden
+muss.
+
+
+Vorsteuerung
+                                                                                    Regeleinrichtung
+Falls sich für gutes Stör- und Folgeverhal-
+ten kein guter Kompromiss finden lässt,
+                                                                                                      FRv (s)                                             z
+kann folgende Struktur gewählt werden.
+Der Regler ist dabei i.w. auf gutes Störver-                          w
+                                                                                                      FR (s)                           FS (s)
+                                                                                                                                                                x
+
+halten ausgelegt. Mit FRv wird ein schnelles                                               -
+                                                                                       x
+Folgen auf Führungssignale w(t) erreicht.
+
+
+Kaskadenregelung
+Ineinander geschachtelte Regel- w                                         FR2 (s)
+                                                                                     w'
+                                                                                                  FR1 (s)                FS1 (s)
+                                                                                                                                       x'
+                                                                                                                                                FS2 (s)
+                                                                                                                                                                    x
+
+kreise. Üblicherweise sind die                            -                                -
+inneren Regelkreise „schneller“ als
+die äußeren. Die Regelkreise kön-
+nen von innen nach außen in Be-
+trieb genommen werden. „Innere“
+Störungen können schon in den
+inneren Kreisen ausgeregelt werden.
+Z.B. Aufzug: Motorstromregelung →Drehzahlregelung →Positionsregelung
+
+
+Führungsgrößenfilter
+Wenn in einem Regelkreis eine Nullstelle des Reglers oder der Strecke dominiert (also der
+imaginären Achse näher ist als die Polstellen), kommt es bei der Sprungantwort zu einem
+Überschwingen. Im Gegensatz zu Schwingungen, die von konjugiert komplexen Polstellen
+herrühren, handelt es sich hierbei (pro Nullstelle) um einen Überschwinger ohne weitere
+(gedämpfte) Oszillationen. Erklären lässt sich das mit der Sprungantwort (Dirac + Sprung)
+eines PD-Glieds (= Nullstelle), die durch weiter links liegende Polstellen zwar „runder“ wird,
+aber ein Überschwinger bleibt sichtbar.
+Man fügt deshalb in den Zweig der Führungsgröße ein PT1-Filter ein, das die Nullstelle exakt
+kompensiert, ein sogen. „Führungsgrößenfilter“.
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                                           C. Brüdigam                     16.04.2025                    Seite 46 von 56
+Zusammenwirken mehrerer Systeme                                        Beispiele Modellierung und Reglerauswahl
+Anti-Windup-Algorithmus
+Wird in einem Regelkreis ein Regler mit I-Anteil verwendet, kommt es beim (möglichen)
+Erreichen von Begrenzungen der Stellgröße dazu, dass der I-Anteil mehr als nötig
+aufgeladen wird. Dies hat zur Folge, dass es beim Erreichen des Sollwertes zu einem
+Überschwingen der Regelgröße kommt, was zum Abbau des I-Anteils führt.
+Ein solches unerwünschtes Überschwingen kann durch eine Begrenzung des I-Anteils im
+Regler auf sinnvolle Werte (z.B. maximale Stellgröße) verhindert werden („Anti-Windup-
+Algorithmus“). Handelsübliche Regler sind mit einer solchen Funktion ausgestattet.
+
+
+
+
+3.7    Beispiele Modellierung und Reglerauswahl
+
+
+
+
+Thermisches System (z.B. ideale Thermoskanne)
+                                 c = 4,0103 J/(kgK)
+                                 m = 1,0 kg
+          T
+                                 k = 1,25 W/K (Wärmeabgabe an Umgebung → später)
+
+                P
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                C. Brüdigam         16.04.2025         Seite 47 von 56
+Digitale Regler                                                  Beispiele Modellierung und Reglerauswahl
+
+
+4 Digitale Regler
+Allgemeines
+Unter einem Abtastsystem (oder zeitdiskreten System) versteht man ein System, in dem
+Abtastvorgänge auftreten. D.h. zu diskreten Abtastzeitpunkten werden aus kontinuierlichen
+Zeitverläufen Funktionswerte entnommen und weiterverarbeitet.
+Beispiele für Abtastsysteme:
+• Messung nur zu bestimmten Zeitpunkten möglich (Flugsicherungsradar)
+• Stellgrößenausgabe nur zu bestimmten Zeitpunkten möglich (Phasenanschnittsteuerung)
+• Serielle Messung/Verarbeitung durch ein einziges Gerät (Rechner, Mikrocontroller)
+Digitale Regler ersetzen oft mehrere analoge Regler. Da die Peripherie (Messfühler, Stell-
+glieder) häufig analog ausgeführt ist, besitzen die digitalen Regler am Eingang meist
+Analog/Digital-Wandler und am Ausgang oft Digital/Analog-Wandler bzw. PWM-Einheiten
+(gepulstes Signal statt analogem Signal).
+Neben dem Ersatz von analogen Reglern sind weitere Zusatzfunktionen möglich: Automati-
+sche Umschaltung von Sollwerten, Grenzwertüberwachungen, Korrektur von Nichtlinearitä-
+ten, Dokumentation, Kommunikation mit anderen Systemen, Fehlererkennung- und diag-
+nose, adaptive Regelalgorithmen. Änderungen und Erweiterungen sind durch Software-
+Änderungen leicht möglich (sofern die Hardware genügend Reserven hat: Ein-/ Ausgänge,
+Speicher, Zykluszeit, ...).
+Kennzeichnend für digitale Regelungen ist:
+• Regel- und Steueralgorithmen sind als Software realisiert.
+• Es entstehen zeitquantisierte (abgetastete) Signale
+• Die Signale sind durch endliche Wortlängen im Rechner amplitudenquantisiert
+Wegen der großen Flexibilität (Software) ist man nicht mehr auf standardisierte Bausteine mit
+P-, I- und D-Verhalten beschränkt, sondern kann auch aufwendigere Algorithmen, z.B. mit
+mathematischen Modellen einsetzen.
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc          C. Brüdigam         16.04.2025         Seite 48 von 56
+Digitale Regler                                                                                                     Arbeitsweise digitaler Regelsysteme
+
+
+4.1     Arbeitsweise digitaler Regelsysteme
+                                                                             f(t)
+In kontinuierlichen Systemen ist einem Signal zu
+jedem beliebigen Zeitpunkt ein eindeutiger Wert                                                                                    f(t 4 )
+zugeordnet. Wird ein solches Signal f(t) nur zu
+bestimmten diskreten Zeitpunkten t1, t2, ...                                                                                                      f(t 5 )
+                                                                                                               f(t 3 )
+gemessen oder „abgetastet“, so entsteht ein zeit-
+                                                                                                     f(t 2 )
+diskretes Signal (Abtastsignal), das durch die
+Zahlenfolge {f(ti)} = {f(t1), f(t2), f(t3), ...} definiert                              f(t 1 )
+
+wird. Tritt in einem dynamischen System
+(mindestens) ein solches Signal auf, so spricht
+man von einem (zeit-) diskreten System (Abtast-                                                                                                             t
+                                                                                         t1            t2         t3                t4           t5
+system).
+Häufiger Sonderfall: Abtastung zu äquidistanten Zeitpunkten
+Abtastzeit TA bzw. Abtastfrequenz A = 2/TA
+
+Prinzipieller Aufbau einer digitalen Regelung mit Mikrocontroller
+                              Mikrocontroller
+        ADW                                                   DAW/PWM
+w(t)              w(kT A)     e(kT A)      Rechen-      y(kT A)       y(t)                    x(t)
+                                           einheit                            Strecke
+                             -
+                            x(kT A)
+
+
+                  ADW                   Abtaststeuerung (T A)
+
+
+
+
+Die Eingangsgrößen w(t) und x(t) werden periodisch mit der (konstanten) Abtastzeit TA
+abgetastet und über Analog/Digital-Wandler (ADW) in die zeitdiskreten Werte w(kTA) und
+x(kTA) umgewandelt. Neben der Zeitquantisierung erfolgen hierbei auch eine Amplituden-
+quantisierung und -begrenzung. Diese können bei ungünstiger Skalierung der Größen zu
+falschen Berechnungen führen (Auslöschen von Werten oder Überlauf).
+Der Regler (Mikrocontroller) berechnet aus der Regeldiffernz e(kTA) nach einem
+Regelalgorithmus die Folge der Stellsignalwerte y(kTA). Die Stellgröße y(kTA) wird vom
+Digital/Analog-Wandler (DAW) in ein analoges Signal y(t) umgewandelt und jeweils über eine
+Abtastperiode konstant gehalten (Halteglied). y(t) stellt also ein treppenförmiges Signal dar.
+y(t) wirkt auf die Strecke und erzeugt dort die Ausgangsgröße x(t). Der DAW wird häufig in
+Form einer Pulsweitenmodulation (PWM) realisiert.
+Liegen die Abtastzeitpunkte dicht beisammen, so approximiert die Verarbeitung das
+kontinuierliche Verhalten. Eine derartige digitale Regelung bzw. Steuerung arbeitet „quasi-
+kontinuierlich“. Die bekannten, konventionellen Reglertypen (z.B. PID) können dann in
+entsprechende Algorithmen umgesetzt werden. (S. Kap. 4.4)
+Dazu muss TA entsprechend gewählt werden. Typische Werte: TA  1                                                          ... 1         TSystem, dom
+                                                                                                                     10           20
+
+( TSystem, dom ist die dominierende (größte) Zeitkonstante des Systems)
+
+Wird die Distanz der Abtastzeitpunkte größer, geht das quasi-kontinuierliche Verhalten verlo-
+ren. Die Analyse erfordert dann neue Betrachtungsweisen. (→ Vorlesung „Regelungstechnik
+Anwendungen“ – RTA)
+Anmerkung: Das Auftreten von Abtastvorgängen in ansonsten linearen kontinuierlichen
+Systemen ändert nichts an deren Linearität.
+RT Hilfsblätter - Sommerseemster 2025.doc                                    C. Brüdigam                             16.04.2025              Seite 49 von 56
+Digitale Regler                                                                                            z-Transformation
+4.2     z-Transformation
+Idee der z-Transformation
+Beispielsweise wird zum Zeitpunkt t = k  TA der Wert ausgegeben, der zum Zeitpunkt
+t = (k-1)  TA eingelesen wurde (Verzögerung um einen Abtastschritt, ansonsten keine
+weitere Verarbeitung). Das Verhalten kann so beschrieben werden:
+        Xe          Verzögerung              Xa
+
+                          TA
+
+
+                            Kontinuierlich              Zeitdiskret
+Zeitbereich                 xa(t) = xe(t - TA)          xa, k = xe, k-1
+                         Xa(s) = e-sTA  Xe(s)    Xa(z) = z -1  Xe(z)
+Bildbereich
+                    (Laplace-Transformation)      (z-Transformation)
+ dem Ausdruck e-sTA der Laplace-Transformation entspricht der Ausdruck z -1 bei der z-
+Transformation bzw. z =ˆ esTA.
+z-n entspricht der Verzögerung um n Abtastperioden TA.
+
+
+z-Transformation: → Tabellen, Gesetze (ähnlich der Laplace-Transformation)
+
+
+Transformation vom s-Bereich in den z-Bereich (zeitkontinuierlich → zeitdiskret)
+                               1
+Aus z =ˆ esTA folgt: s =ˆ         ln z .
+                               TA
+
+Der Zusammenhang z =ˆ esTA ist „unhandlich“ wg. der e-Funktion bzw. des Logarithmus und
+wird durch „angenehmere“ Zusammenhänge ersetzt.
+
+
+4.3     Digitale Realisierung von analogen Regelkonzepten
+Bestimmung einer z-Übertragungsfunktion aus der s-Übertragungsfunktion
+Rückwärtsdifferenzenquotient
+
+
+
+
+ f(t)                                              f(k .T A)
+
+
+
+
+                               t                                  (k-2)T      (k-1)T   k .T      (k+1)T
+                                                                          A        A      A            A
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                      C. Brüdigam                    16.04.2025    Seite 50 von 56
+Digitale Regler                                                                             Digitale Realisierung von analogen Regelkonzepten
+
+
+
+
+                                       Zeitkontinuierlich                                               Zeitdiskret
+Zeit-             df (t )
+                                =
+bereich            dt
+Bild-
+                  sF(s)
+bereich
+          1 − z −1 z − 1
+bzw. s =ˆ         =
+            TA      TA z
+                                                                                                                       z −1
+Damit kann in der s-Übertragungsfunktion die Variable s durch den Ausdruck                                                  ersetzt
+                                                                                                                       TA z
+werden, um zur z-Übertragungsfunktion zu gelangen.
+D.h.: Der digitale Regler kann damit aus dem kontinuierlichen Regler nach folgender Formel
+berechnet werden:
+F ( z ) = F (s) s = z −1
+                    TA  z
+
+
+
+
+Vorwärtsdifferenzenquotient
+       z −1
+s
+        TA
+                                                                                                                       z −1
+Damit kann in der s-Übertragungsfunktion die Variable s durch den Ausdruck                                                  ersetzt
+                                                                                                                        TA
+werden, um zur z-Übertragungsfunktion zu gelangen.
+D.h.: Der digitale Regler kann damit aus dem kontinuierlichen Regler nach folgender Formel
+berechnet werden:
+F ( z ) = F ( s) s = z −1
+                     TA
+
+
+Tustinsche Formel
+
+s =ˆ
+     1
+         ln z
+                                                    z −1
+                                                   
+                                    mit ln z = 2         +
+                                                               ( z − 1)
+                                                                        3
+                                                                            +
+                                                                                ( z − 1)
+                                                                                         5
+                                                                                             + ...
+                                                                                                   
+                                                                                                   
+                                                       +        (   +   )3
+                                                                                 (   +   )5       
+     TA                                             z   1   3     z   1      5     z   1          
+        2 z −1
+s =ˆ           (Matlab: ‚tustin’)
+       TA z + 1
+Der digitale Regler kann damit aus dem kontinuierlichen Regler nach folgender Formel
+berechnet werden:
+F ( z ) = F ( s) s = 2  z −1
+                     T A z +1
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                                         C. Brüdigam             16.04.2025          Seite 51 von 56
+Digitale Regler                                                     Digitale Realisierung von analogen Regelkonzepten
+Beispiel:
+                     6
+PT1: F (s) =              Überführung in ein zeitdiskretes System (mit TA = 1 s):
+                  1 + 2s
+•     Tustin (oft am besten)
+
+
+
+
+•    Rückwärtsdifferenzenquotient
+
+
+
+
+•    Vorwärtsdifferenzenquotient
+
+
+
+
+•     Mit Hilfe von MATLAB (nach Tustin)
+>> sysc = tf([6], [2 1])         % continuous-time system
+>> sysd = c2d(sysc, 1, ‘tustin‘) % discrete-time system; sample time = 1
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                  C. Brüdigam            16.04.2025          Seite 52 von 56
+Digitale Regler                                                   Bestimmung eines Rechenalgorithmus aus der z-Übertragungsfunktion:
+
+
+4.4     Bestimmung eines Rechenalgorithmus aus der z-Übertragungsfunktion:
+• Ausgehen von der z-Übertragungsfunktion
+• Zähler und Nenner durch die höchste Potenz von z (im Nenner) dividieren. (Es darf nur z0,
+  z-1, z-2, ... geben; nicht z+...)
+• Zähler gibt die Eingangsgrößen an (z-2 bedeutet xe, k-2); Nenner die Ausgangsgrößen
+        Z.B.:
+                   2z + 4
+        F ( z) =          (kausal; stabil, da |zP| = 5/8 = 0,625 < 1)
+                   8z − 5
+
+            2 + 4 z −1
+        =              =ˆ 8 xa,k - 5 xa,k-1 = 2 xe,k + 4 xe,k-1
+            8 − 5 z −1
+• Umsortieren nach aktueller Ausgangsgröße
+     xa,k = 0,25 xe,k + 0,5 xe,k-1 + 0,625 xa,k-1
+
+
+Programm
+    while(1)                // Endlosschleife
+    {
+      wait_timerinterrupt(0.1) // Einhaltung eines festen Zeitrasters (Ta)
+
+        xaalt1 = xa              // vor dem Überschreiben: alte Werte sichern
+        xealt1 = xe
+        input(xe)                // Aktuellen Eingangswert lesen
+        xa = 0.25*xe + 0.5*xealt1 + 0.625 * xaalt1 // Ausgangswert berechnen
+        output(xa)               // Wert ausgeben
+    }
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                                 C. Brüdigam             16.04.2025         Seite 53 von 56
+Systembeschreibung im Zustandsraum                                       Bestimmung eines Rechenalgorithmus aus der z-Übertragungsfunktion:
+
+
+5 Systembeschreibung im Zustandsraum
+Allgemein (Mehrgrößensystem MIMO)
+                                                                                             
+x (t ) = Ax (t ) + Bu (t );    x(0) = x0                                                       x : Zustandsve ktor (n, 1)
+                                                                                             
+ y (t ) = Cx (t ) + Du (t )                                                                     u : Eingangsve ktor (m, 1)
+                                                                                                
+                                                                                                y : Ausgangsve ktor (r, 1)
+                                                                                                A : Systemmatr ix (n, n)
+                                         D
+                               .                                                                B : Steuermatr ix (n, m)
+ u(t)                          x(t)                  x(t)                       y(t)            C : Beobachtun gsmatrix (r, n)
+                                          1
+                B                       I s                     C                              D : Durchgangs matrix (r, m)
+                                                                                               n: Zahl der Zustandsgrößen
+                                         A
+                                                                                               m: Zahl der Eingangsgrößen
+                                                                                               r: Zahl der Ausgangsgrößen
+Beispiel: (SISO)
+FE               1       x              x x              x       y
+                                                    
+                                                                               F ( s ) = C (s I − A ) B + D
+                 m                                                                                      −1
+        - -
+                                                                               F = C*((s*eye(n) - A)^-1)*B + D
+                        kD
+
+
+                        kF
+
+
+
+       kD       k         1                                                    kD  kF         1 
+x1 = −
+        m
+            x1 − F x 2 +  FE
+                 m       m                                           x (t ) = − m − m x (t ) +  mu (t )
+x 2 = 1  x1 + 0  x 2 + 0  FE
+                                                                                1   0          0 
+                                                                                  T
+                                                                             0             
+                                                                     y (t ) =   x (t ) + 0  u (t )
+y=        0  x1 + 1  x 2 + 0  FE                                           1
+
+
+ x             kD                  kF       1  
+                   −               −                                          
+x =  1 ;     A= m                    m ; B =  m; u = F E;               y = y; C = 0 1; D = 0
+     x2         1                   0        0 
+                 
+                                                 !
+Eigenwerte von A: det ( A − sI ) = 0 
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                                        C. Brüdigam                 16.04.2025     Seite 54 von 56
+Systembeschreibung im Zustandsraum                          Bestimmung eines Rechenalgorithmus aus der z-Übertragungsfunktion:
+Zustandsregler mit Polfestlegung durch vollständige Zustandsrückführung
+
+        Regler         System
+                                                      D
+                                              .
+w(t)                 u(t)                     x(t)           x(t)                       y(t)
+                                                       1
+                                    B                I s                 C
+                 -
+                                                      A
+
+
+                                                      K
+
+Durch die freie Wahl von K (m, n) können alle n Pole des geregelten Systems beliebig
+platziert werden.
+
+
+
+
+Vollständiger Zustandsbeobachter
+
+        System (real)        .
+ u(t)                        x(t)            x(t)                          y(t)
+                                       1
+               B                    I s             C
+
+
+                                     A
+
+
+        Modell                       L
+        (Beobachter)         .                                      -
+                             x(t)            x(t)                y(t)
+                                         1
+               B                    I s             C
+
+                                                                           x(t)
+                                     A
+
+x̂ =
+   ˆ Schätzwert des Zustands x
+(→ Vorlesung „Ausgewählte Kapitel der Regelungstechnik“ – AKR)
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                               C. Brüdigam         16.04.2025         Seite 55 von 56
+Systembeschreibung im Zustandsraum                            Bestimmung eines Rechenalgorithmus aus der z-Übertragungsfunktion:
+
+
+
+Zustandsregler mit Beobachter
+       Regler        System (real)          .
+w(t)                u(t)                    x(t)           x(t)                        y(t)
+                                                       1
+                             B                     I s            C
+            -
+                                                   A
+
+                     Modell                        L
+                     (Beobachter)           .                                    -
+                                            x(t)           x(t)                 y(t)
+                                                       1
+                             B                     I s            C
+
+
+                                                   A
+
+
+                                                   K
+
+
+
+Viele Anwendungen für die Beschreibung und Regelung komplexer Systeme, Ersatz von
+Sensoren durch Software, „Sensordatenfusion“ etc.
+
+
+
+
+RT Hilfsblätter - Sommerseemster 2025.doc                              C. Brüdigam            16.04.2025         Seite 56 von 56
+

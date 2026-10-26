@@ -1,0 +1,121 @@
+\section{Praktische Aspekte digitaler Regler}
+
+\subsection{Pulsweitenmodulation (PWM)}
+\begin{tcolorbox}
+\boxtitle{Funktionsprinzip}
+Zur verlustarmen Leistungssteuerung wird die feste Versorgungsspannung $U_0$ mit konstanter Schaltfrequenz $f_{\text{PWM}} = \frac{1}{T_{\text{PWM}}}$ getaktet.\\[2pt]
+\textbf{Tastgrad (Duty Cycle):}
+\[
+v = \frac{T_{\text{ein}}}{T_{\text{PWM}}} \in [0, 1] \quad (\text{bzw. } 0 \dots 100\%)
+\]
+\textbf{Mittelwertbildung} (Trägheit von Motor oder Last $\gg T_{\text{PWM}}$):
+\begin{align*}
+\text{Mittlere Spannung:} \quad &\bar{u} = v \cdot U_0 \\
+\text{Mittlerer Strom:} \quad &\bar{i} = v \cdot I_0 \\
+\text{Mittleres Drehmoment:} \quad &\bar{M} = v \cdot M_0
+\end{align*}
+\textbf{Vorteil:} Schalter (MOSFETs) sind voll durchgeschaltet oder gesperrt $\implies$ minimale Verlustleistung im Stellglied!
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{H-Brücken-Ansteuerung (4-Quadrantenbetrieb)}
+Ermöglicht Drehrichtungsumkehr und aktives Bremsen:
+\begin{center}
+\small
+\begin{tabularx}{\columnwidth}{l c c c c c}
+\toprule
+\textbf{Zustand} & \textbf{DIR} & \textbf{PWM} & \textbf{ENA} & \textbf{OUT1} & \textbf{OUT2} \\
+\midrule
+Antrieb pos. (Puls) & L & H & H & L & H \\
+Antrieb neg. (Puls) & H & H & H & H & L \\
+Bremse low-side (Pause) & L & L & H & L & L \\
+Bremse high-side (Pause) & H & L & H & H & H \\
+Freilauf / Abschaltung & X & X & L & Z & Z \\
+\bottomrule
+\end{tabularx}
+\end{center}
+\scriptsize ($H$: High, $L$: Low, $X$: beliebig, $Z$: hochohmig/gesperrt).
+\end{tcolorbox}
+
+\subsection{Integer- und Festkomma-Arithmetik}
+\begin{tcolorbox}
+\boxtitle{Gründe für Festkomma-Arithmetik}
+Einfache Mikrocontroller besitzen keine Gleitkomma-Hardware (FPU). Software-Gleitkomma erhöht Codeumfang und Rechenzeit drastisch.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{Festkomma-Skalierung (Q-Format)}
+Eine Fließkommazahl $x$ wird durch Multiplikation mit $2^Q$ als Ganzzahl dargestellt:
+\[
+x_{\text{int}} = \text{round}(x \cdot 2^Q)
+\]
+\begin{itemize}
+  \item \textbf{Addition / Subtraktion:} Direkt möglich (gleiches $Q$-Format vorausgesetzt).
+  \item \textbf{Multiplikation:}
+  \[
+  z_{\text{int}} = (x_{\text{int}} \cdot y_{\text{int}}) \gg Q \quad (\text{Rechtsshift um } Q \text{ Bits})
+  \]
+  \item \textbf{Zwischenergebnisse:} Immer in doppelter Bitbreite berechnen (z.\,B. \texttt{int16\_t} $\times$ \texttt{int16\_t} $\to$ \texttt{int32\_t}).
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{Typische numerische Gefahren}
+\begin{enumerate}
+  \item \textbf{Zahlenbereichsüberlauf (Overflow):}
+  Führt bei Zweierkomplement zu Vorzeichenumkehr (z.\,B. $+127 + 1 = -128$ bei \texttt{int8}). $\implies$ \textbf{Sättigungsarithmetik} einsetzen!
+  \item \textbf{Kürzungsfehler bei Division:}
+  Eine Division vor einer Multiplikation kann ganzzahlig zu 0 führen. $\implies$ \textbf{Immer erst multiplizieren, dann dividieren!}
+  \[
+  \text{Falsch: } (a / b) * c \qquad \text{Richtig: } (a * c) / b
+  \]
+  \item \textbf{Quantisierungsfehler:} Bei kleinen Signalen führt Rundung zu Totzonen oder Grenzschwingungen.
+\end{enumerate}
+\end{tcolorbox}
+
+\subsection{Anti-Windup-Algorithmen}
+\begin{tcolorbox}
+\boxtitle{Das Windup-Problem}
+Bei Begrenzung der Stellgröße (z.\,B. Spannung $U_{\max}$, maximaler PWM-Wert) kann das System dem Sollwert nicht sofort folgen. Ein integrierender Regler (I-Anteil) summiert die Regeldifferenz weiter auf (\textit{Windup}). Beim Erreichen des Sollwerts ist der I-Anteil stark überladen und verursacht enormes Überschwingen.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{1. Clamping (Integrator-Verriegelung)}
+Das Aufintegrieren wird blockiert, wenn:
+\begin{itemize}
+  \item die Stellgröße in der Sättigung ist ($|u| \ge u_{\max}$) \textbf{und}
+  \item die Regeldifferenz $e$ das gleiche Vorzeichen wie $u$ hat (was die Sättigung weiter vertiefen würde).
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{2. Back-Calculation (Rückrechnung)}
+Die Differenz zwischen unbegrenzter Stellgröße $u$ und begrenztem Stellwert $u_{\text{sat}}$ wird über eine Nachführkonstante $\frac{1}{T_t}$ auf den Integrator rückgeführt:
+\[
+\dot{x}_I(t) = e(t) - \frac{1}{T_t} \cdot [u(t) - u_{\text{sat}}(t)]
+\]
+Im Zeitdiskreten (mit Abtastzeit $T_A$):
+\[
+x_{I,k} = x_{I,k-1} + T_A \cdot e_k - \frac{T_A}{T_t} \cdot (u_k - u_{\text{sat},k})
+\]
+Typische Wahl: $T_t \approx T_I$ (Nachstellzeit des I-Anteils).
+\end{tcolorbox}
+
+\subsection{Task-Scheduling \& Echtzeitanforderungen}
+\begin{tcolorbox}
+\boxtitle{Zustände eines Tasks}
+\begin{itemize}
+  \item \textbf{Running:} Task wird gerade von der CPU ausgeführt.
+  \item \textbf{Ready:} Task ist ausführbereit und wartet auf CPU-Zuteilung durch den Scheduler.
+  \item \textbf{Blocked / Waiting:} Task wartet auf ein externes Ereignis (Timer-Interrupt, Datenempfang).
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{Echtzeit-Anforderung für Regler}
+\begin{itemize}
+  \item Die Theorie zeitdiskreter Systeme setzt eine \textbf{strikt konstante Abtastzeit $T_A$} voraus.
+  \item Zeitschwankungen (\textit{Jitter}) wirken wie additives Rauschen und Phasenverlust $\implies$ Destabilisierung!
+  \item \textbf{Realisierung:} Der Regler-Task muss über einen \textbf{Hardware-Timer-Interrupt} mit \textbf{höchster Priorität} (preemptive) ausgeführt werden. Längere Hintergrundaufgaben (Display, Logging, Kommunikation) laufen mit niedrigerer Priorität im Hintergrund.
+\end{itemize}
+\end{tcolorbox}

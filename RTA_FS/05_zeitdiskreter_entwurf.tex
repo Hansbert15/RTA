@@ -1,0 +1,139 @@
+\section{Zeitdiskreter Reglerentwurf}
+
+\subsection{Quasi-kontinuierlicher Reglerentwurf}
+\begin{tcolorbox}
+Gültigkeitsbereich: Bei sehr kleinen Abtastzeiten $T_A$ im Vergleich zur dominierenden Systemzeitkonstante $T_{\text{dom}}$:
+\[
+T_A \le \frac{1}{10} \dots \frac{1}{20} \cdot T_{\text{dom}}
+\]
+\textbf{Vorgehen:}
+\begin{enumerate}
+  \item Kontinuierlicher Entwurf des Reglers $F_R(s)$ mit klassischen Methoden (Bode-Verfahren, Betragsoptimum, Ziegler-Nichols).
+  \item Diskretisierung des fertigen Reglers mit der Tustin-Transformation oder dem Rückwärtsdifferenzenquotienten.
+\end{enumerate}
+\end{tcolorbox}
+
+\subsection{Exakte zeitdiskrete Modellbildung der Strecke (ZOH-Transformation)}
+\begin{tcolorbox}
+\boxtitle{Strecke mit Halteglied 0. Ordnung ($G_{h0}$)}
+Wird eine kontinuierliche Strecke $F_S(s)$ über ein Abtast- und Halteglied angesteuert, berechnet sich die exakte zeitdiskrete Übertragungsfunktion $F_{S0}(z)$ zu:
+\begin{align*}
+F_{S0}(z) &= \mathcal{Z}\{ G_{h0}(s) \cdot F_S(s) \} = \mathcal{Z}\left\{ \frac{1 - e^{-s T_A}}{s} \cdot F_S(s) \right\} \\
+&= (1 - z^{-1}) \cdot \mathcal{Z}\left\{ \frac{F_S(s)}{s} \right\} = \frac{z - 1}{z} \cdot \mathcal{Z}\left\{ \frac{F_S(s)}{s} \right\}
+\end{align*}
+\textbf{Standard-Streckentypen:}
+\begin{itemize}
+  \item \textbf{PT$_1$-Strecke} $F_S(s) = \frac{K_S}{1 + s T_1}$:
+  \[
+  F_{S0}(z) = K_S \cdot \frac{1 - e^{-T_A/T_1}}{z - e^{-T_A/T_1}}
+  \]
+  \item \textbf{I-Strecke} $F_S(s) = \frac{K_I}{s}$:
+  \[
+  F_{S0}(z) = \frac{K_I \cdot T_A}{z - 1}
+  \]
+  \item \textbf{IT$_1$-Strecke} $F_S(s) = \frac{K_I}{s (1 + s T_1)}$:
+  \[
+  F_{S0}(z) = K_I \left[ \frac{T_A}{z - 1} - \frac{T_1 (1 - e^{-T_A/T_1})}{z - e^{-T_A/T_1}} \right]
+  \]
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Wurzelortskurven im Zeitdiskreten}
+\begin{tcolorbox}
+\boxtitle{WOK in der $z$-Ebene}
+Für die geometrische Konstruktion der WOK gelten \textbf{exakt dieselben algebraischen Regeln} wie im Kontinuierlichen (Start in offenen Polen bei $K=0$, Ende in Nullstellen für $K \to \infty$, Wurzelschwerpunkt, Asymptoten, reelle Achsenbelegung).\\[3pt]
+\textbf{Wesentliche Unterschiede zum $s$-Bereich:}
+\begin{itemize}
+  \item \textbf{Stabilitätsgrenze:} Ist \textbf{nicht} die Imaginärachse, sondern der \textbf{Einheitskreis $|z| = 1$}.
+  \item Pole mit Dämpfung $D \ge 1$ (kein Schwingen) liegen ausschließlich auf der positiven reellen Achse im Intervall $0 \le z < 1$.
+  \item Pole auf der negativen reellen Achse $(-1 < z < 0)$ oszillieren mit der Nyquist-Frequenz $\omega = \pi / T_A$.
+  \item \textbf{Kritische Verstärkung $K_{\text{krit}}$:} Ergibt sich aus den Schnittpunkten der WOK mit der Einheitskreislinie $|z| = 1$.
+  \item \textbf{Schwingfrequenz an der Stabilitätsgrenze:}
+  \[
+  \omega_{\text{krit}} = \frac{\varphi_{\text{Pol}}}{T_A} \quad \text{mit } z = 1 \cdot e^{j \varphi_{\text{Pol}}}
+  \]
+  \item \textbf{Dämpfung $D$:} Kurven konstanter Dämpfung $D$ sind logarithmische Spiralen im Einheitskreis.
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Dead-Beat Regler (Kompensationsregler)}
+
+\begin{tcolorbox}
+\boxtitle{Grundgleichungen des Kompensationsreglers}
+Führungsübertragungsfunktion des Regelkreises mit Messglied $F_M(z)$:
+\[
+F_{\text{RK}}(z) = \frac{F_R(z) \cdot F_S(z)}{1 + F_R(z) \cdot F_S(z) \cdot F_M(z)} \stackrel{!}{=} F_w(z)
+\]
+Auflösen nach der gesuchten Reglerübertragungsfunktion $F_R(z)$:
+\[
+F_R(z) = \frac{F_w(z)}{F_S(z) \cdot [1 - F_w(z) \cdot F_M(z)]}
+\]
+\textbf{Zulässigkeitsbedingungen:}
+\begin{enumerate}
+  \item Die Strecke $F_S(z)$ darf keine instabilen Pole oder Nullstellen außerhalb des Einheitskreises besitzen (dürfen nicht gekürzt werden!).
+  \item Realisierbarkeit: Der Polüberschuss der Wunschfunktion muss mindestens so groß sein wie der der Strecke:
+  \[
+  PÜ(F_w) \ge PÜ(F_S)
+  \]
+\end{enumerate}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{Klassischer Deadbeat-Entwurf}
+Forderung: Einschwingen auf den Sollwert in minimaler Zeit ($n + d$ Abtastschritte, $n$: Streckenordnung, $d$: Totzeit):
+\[
+F_w(z) = \frac{1}{z^{n+d}} = z^{-(n+d)}
+\]
+\textbf{Stationäre Verstärkung einer $z$-Übertragungsfunktion:}
+\[
+K = F(z = 1) = F(1) = \frac{\sum_{i=0}^m b_i}{\sum_{j=0}^n a_j}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{Erzwingen eines Reglers mit $I$-Anteil}
+Ohne $I$-Anteil führt jede Modellunsicherheit oder Laststörung zu einer bleibenden Regelabweichung ($e_\infty \ne 0$).\\[3pt]
+\textbf{Bedingung für Pol bei $z = 1$ im Regler:}
+Der Nenner von $F_R(z)$ muss für $z = 1$ verschwinden:
+\[
+1 - F_w(1) \cdot F_M(1) = 0 \implies F_w(1) = \frac{1}{F_M(1)} = \frac{1}{K_M}
+\]
+\textbf{Lösung:} Einfügen eines Vorfilters $K_F = K_M$ im Führungszweig. Dadurch gilt für die Gesamtführung $K_w = 1$, die stationäre Regeldifferenz wird exakt $e(\infty) = 0$, und $F_R(z)$ erhält zwingend einen integralen Pol bei $z = 1$.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{Vermeidung von Zwischenabtast-Oszillationen (Ripples)}
+\textbf{Ursache:} Die Übertragungsfunktion vom Sollwert $w$ zur Stellgröße $u$ lautet:
+\[
+F_{wu}(z) = \frac{U(z)}{W(z)} = \frac{F_w(z)}{F_S(z)}
+\]
+Alle Zählernullstellen der Strecke $F_S(z)$ werden zu Polen von $F_{wu}(z)$! Liegen diese bei negativen Werten (z.\,B. nahe $-1$), so schwingt die Stellgröße $u_k$ mit der halben Abtastfrequenz und regt die analoge Strecke zwischen den Abtastpunkten zu Dauerschwingungen an (\textit{Hidden Oscillations}).\\[3pt]
+\textbf{Abhilfe durch Hilfsfunktion $F_H(z)$:}
+Erweiterung der Wunschübertragungsfunktion:
+\[
+F_{w,\text{neu}}(z) = F_w(z) \cdot F_H(z)
+\]
+\textbf{Bedingungen an $F_H(z)$:}
+\begin{enumerate}
+  \item $F_H(z)$ enthält im Zähler exakt die kritischen Nullstellen von $F_S(z)$, um die Pole in $F_{wu}$ zu kürzen.
+  \item Statische Verstärkung $F_H(1) = 1$ (keine Verfälschung des Endwerts).
+  \item Polüberschuss $PÜ(F_H) = 0$ (gleicher Zähler- und Nennergrad).
+\end{enumerate}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{Alternative gestufte Wunschfunktionen}
+Zur Schonung von Stellgliedern und Vermeidung extremer Stellgrößenspitzen kann der Sollwertsprung in $N$ Teilschritten angefahren werden (z.\,B. $0\% \to 50\% \to 80\% \to 100\%$):
+\[
+x_{a,k} = \{0, a_1, a_2, 1, 1, \dots\}
+\]
+\[
+F_w(z) = a_1 z^{-1} + (a_2 - a_1) z^{-2} + (1 - a_2) z^{-3}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\boxtitle{Stellgrößenbeschränkungen beim Deadbeat-Regler}
+Geht die Stellgröße $u_k$ in die Sättigung ($u_{\max}$), ist die Linearitätsannahme verletzt $\implies$ stark verlängertes Einschwingen.\\[2pt]
+\textbf{Gegenmaßnahme:} Rückrechnung der maximal zulässigen Führungsgröße $w_{\text{korr},k}$ aus dem Regelalgorithmus für den aktuellen Schritt, sodass $u_k = u_{\max}$ exakt eingehalten wird.
+\end{tcolorbox}
