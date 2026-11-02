@@ -189,7 +189,7 @@ Teilnehmer:\,\underline{\makebox[5.6cm][l]{\strut\hspace{1.5mm}\textbf{Johannes 
 Ziel des Versuchs ist die regelungstechnische Untersuchung und Beherrschung einer thermischen Strecke. Die Austrittstemperatur am Rohrende soll schnell, robust und ohne bleibende Regelabweichung auf vorgegebene Sollwerte eingestellt sowie gegen Versorgungsstörungen stabilisiert werden.
 
 \subsection{Versuchsaufbau und Blockschaltbild}
-Die Versuchsstrecke besteht aus einem modifizierten Haartrockner (Heizleistung bis ca. $375\,\text{W}$ bei max. $25\,\text{V} / 15\,\text{A}$, separates Gebläse mit $12\,\text{V}$), welcher Luft durch ein Rohr einbläst. Am Rohrende erfasst ein \textbf{Temperatursensor} die Austrittstemperatur $T$. Es handelt sich hierbei um \textbf{keinen PT100-Sensor}, sondern um einen Temperatursensor mit \textbf{nichtlinearer Kennlinie}, dessen Signal über den Industrie-Kompaktregler \textbf{TROVIS 6493} verarbeitet und linearisiert wird.
+Die Versuchsstrecke besteht aus einem modifizierten Haartrockner (Heizleistung bis ca. $375\,\text{W}$ bei max. $25\,\text{V} / 15\,\text{A}$, separates Gebläse mit $12\,\text{V}$), welcher Luft durch ein Rohr einbläst. Am Rohrende erfasst ein \textbf{Temperatursensor} die Austrittstemperatur $T$.
 
 Das Reglerausgangssignal ($0\dots 10\,\text{V}$) wird über einen Umsetzer in ein PWM-Signal ($0\dots 100\,\%$) gewandelt, welches einen Leistungs-FET ansteuert. Die PWM-Ansteuerung gewährleistet einen Wirkungsgrad von nahezu $100\,\%$, da der FET rein schaltend arbeitet und keine Verlustwärme erzeugt.
 
@@ -233,7 +233,7 @@ Das Reglerausgangssignal ($0\dots 10\,\text{V}$) wird über einen Umsetzer in ei
 % ##############################################################################
 \section{Untersuchung des ungeregelten Systems (Steuerung)}
 \subsection{Sprungantwort und Störungsaufschaltung}
-Zur Streckenidentifikation wurde die Heizung bei konstanter Gebläsespannung sprungförmig mit $U = 20\,\text{V}$ beaufschlagt ($T_{\text{UV}} = 21{,}9\,^\circ\text{C}$). Nach $t = 600\,\text{s}$ stellte sich ein Quasigleichgewicht bei $T_{20\text{V}} = 41{,}9\,^\circ\text{C}$ ein. Anschließend wurde eine Störung durch Absenkung der Heizspannung um $10\,\%$ auf $18\,\text{V}$ aufgeschaltet ($T_{18\text{V}} = 38{,}8\,^\circ\text{C}$).
+Zur Streckenidentifikation wurde die Heizung bei konstanter Gebläsespannung sprungförmig mit $U = 20\,\text{V}$ beaufschlagt ($T_{\text{UV}} = 21{,}9\,^\circ\text{C}$). Nach $t = 600\,\text{s}$ stellte sich ein Quasigleichgewicht (bei längerem Warten würde sich die Temperatur noch geringfügig erhöhen) bei $T_{20\text{V}} = 41{,}9\,^\circ\text{C}$ ein. Anschließend wurde eine Störung durch Absenkung der Heizspannung um $10\,\%$ auf $18\,\text{V}$ aufgeschaltet ($T_{18\text{V}} = 38{,}8\,^\circ\text{C}$).
 
 \begin{figure}[H]
 \centering
