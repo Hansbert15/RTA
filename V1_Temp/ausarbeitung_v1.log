@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.21.0 (MiKTeX 25.3) (format=lualatex 2026.10.19)  2 NOV 2026 10:16
+This is LuaHBTeX, Version 1.21.0 (MiKTeX 25.3) (format=lualatex 2026.10.19)  3 NOV 2026 17:13
  restricted system commands enabled.
 **ausarbeitung_v1.tex
 (./ausarbeitung_v1.tex
@@ -39,8 +39,109 @@ Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
 Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
 Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
-Inserting `tracingstacklevels' in `input_level_string'. (C:/Users/johan/Lokal/l
-ocaltexmf/tex/latex/othr-ci/OTHRartcl.cls
+Inserting `tracingstacklevels' in `input_level_string'. (C:/Users/johan/AppData
+/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2024/11/05 v2.17t AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+
+(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen145
+))
+(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen146
+)
+(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count195
+LaTeX Info: Redefining \frac on input line 235.
+\uproot@=\count196
+\leftroot@=\count197
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count198
+\DOTSCASE@=\count199
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen147
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count266
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count267
+\dotsspace@=\muskip17
+\c@parentequation=\count268
+\dspbrk@lvl=\count269
+\tag@help=\toks18
+\row@=\count270
+\column@=\count271
+\maxfields@=\count272
+\andhelp@=\toks19
+\eqnshift@=\dimen148
+\alignsep@=\dimen149
+\tagshift@=\dimen150
+\tagwidth@=\dimen151
+\totwidth@=\dimen152
+\lineht@=\dimen153
+\@envbody=\toks20
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+)
+(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2024/10/04 v1.31 mathematical typesetting tools
+(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks22
+)
+(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/tools/calc.sty
+Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count273
+\calc@Bcount=\count274
+\calc@Adimen=\dimen154
+\calc@Bdimen=\dimen155
+\calc@Askip=\skip52
+\calc@Bskip=\skip53
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count275
+\calc@Cskip=\skip54
+)
+(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
+)
+\g_MT_multlinerow_int=\count276
+\l_MT_multwidth_dim=\dimen156
+\origjot=\skip55
+\l_MT_shortvdotswithinadjustabove_dim=\dimen157
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen158
+\l_MT_above_intertext_sep=\dimen159
+\l_MT_below_intertext_sep=\dimen160
+\l_MT_above_shortintertext_sep=\dimen161
+\l_MT_below_shortintertext_sep=\dimen162
+\xmathstrut@box=\box55
+\xmathstrut@dim=\dimen163
+) (C:/Users/johan/Lokal/localtexmf/tex/latex/othr-ci/OTHRartcl.cls
 Document Class: OTHRartcl 
 
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/koma-script/scrartcl.cl
@@ -68,10 +169,7 @@ s)
 
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/koma-script/scrlogo.sty
 Package: scrlogo 2026/02/02 v3.49.2 KOMA-Script package (logo)
-))) (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks17
-)
+)))
 Applying: [2021/05/01] Usage of raw or classic option list on input line 254.
 Already applied: [0000/00/00] Usage of raw or classic option list on input line
  370.
@@ -79,8 +177,8 @@ Already applied: [0000/00/00] Usage of raw or classic option list on input line
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/koma-script/tocbasic.st
 y
 Package: tocbasic 2026/02/02 v3.49.2 KOMA-Script package (handling toc-files)
-\scr@dte@tocline@numberwidth=\skip49
-\scr@dte@tocline@numbox=\box53
+\scr@dte@tocline@numberwidth=\skip56
+\scr@dte@tocline@numbox=\box56
 )
 Package tocbasic Info: omitting babel extension for `toc'
 (tocbasic)             because of feature `nobabel' available
@@ -103,18 +201,18 @@ iKTeX/luatex-cache/generic/names/luaotfload-names.luc.gz)
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/koma-script/typearea.st
 y
 Package: typearea 2026/02/02 v3.49.2 KOMA-Script package (type area)
-\ta@bcor=\skip50
-\ta@div=\count195
+\ta@bcor=\skip57
+\ta@div=\count277
 Package typearea Info: You've used standard option `a4paper'.
 (typearea)             This is correct!
 (typearea)             Internally I'm using `paper=a4'.
 (typearea)             If you'd like to set the option with \KOMAoptions,
 (typearea)             you'd have to use `paper=a4' there
 (typearea)             instead of `a4paper', too.
-\ta@hblk=\skip51
-\ta@vblk=\skip52
-\ta@temp=\skip53
-\footheight=\skip54
+\ta@hblk=\skip58
+\ta@vblk=\skip59
+\ta@temp=\skip60
+\footheight=\skip61
 Package typearea Info: These are the values describing the layout:
 (typearea)             DIV  = 8
 (typearea)             BCOR = 0.0pt
@@ -134,55 +232,55 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              on input line 1810.
 )
 \c_scrartcl_cmdhook_cctab=\catcodetable14
-\c@part=\count196
-\c@section=\count197
-\c@subsection=\count198
-\c@subsubsection=\count199
-\c@paragraph=\count266
-\c@subparagraph=\count267
-\scr@dte@section@maxnumwidth=\skip55
+\c@part=\count278
+\c@section=\count279
+\c@subsection=\count280
+\c@subsubsection=\count281
+\c@paragraph=\count282
+\c@subparagraph=\count283
+\scr@dte@section@maxnumwidth=\skip62
 Class scrartcl Info: using compatibility default `runin=bysign'
 (scrartcl)           for `\section on input line 5015.
 Class scrartcl Info: using compatibility default `afterindent=bysign'
 (scrartcl)           for `\section on input line 5015.
-\scr@dte@part@maxnumwidth=\skip56
+\scr@dte@part@maxnumwidth=\skip63
 Class scrartcl Info: using compatibility default `afterindent=false'
 (scrartcl)           for `\part on input line 5023.
-\scr@dte@subsection@maxnumwidth=\skip57
+\scr@dte@subsection@maxnumwidth=\skip64
 Class scrartcl Info: using compatibility default `runin=bysign'
 (scrartcl)           for `\subsection on input line 5033.
 Class scrartcl Info: using compatibility default `afterindent=bysign'
 (scrartcl)           for `\subsection on input line 5033.
-\scr@dte@subsubsection@maxnumwidth=\skip58
+\scr@dte@subsubsection@maxnumwidth=\skip65
 Class scrartcl Info: using compatibility default `runin=bysign'
 (scrartcl)           for `\subsubsection on input line 5043.
 Class scrartcl Info: using compatibility default `afterindent=bysign'
 (scrartcl)           for `\subsubsection on input line 5043.
-\scr@dte@paragraph@maxnumwidth=\skip59
+\scr@dte@paragraph@maxnumwidth=\skip66
 Class scrartcl Info: using compatibility default `runin=bysign'
 (scrartcl)           for `\paragraph on input line 5054.
 Class scrartcl Info: using compatibility default `afterindent=bysign'
 (scrartcl)           for `\paragraph on input line 5054.
-\scr@dte@subparagraph@maxnumwidth=\skip60
+\scr@dte@subparagraph@maxnumwidth=\skip67
 Class scrartcl Info: using compatibility default `runin=bysign'
 (scrartcl)           for `\subparagraph on input line 5064.
 Class scrartcl Info: using compatibility default `afterindent=bysign'
 (scrartcl)           for `\subparagraph on input line 5064.
-\abovecaptionskip=\skip61
-\belowcaptionskip=\skip62
-\c@pti@nb@sid@b@x=\box54
+\abovecaptionskip=\skip68
+\belowcaptionskip=\skip69
+\c@pti@nb@sid@b@x=\box57
 Package tocbasic Info: omitting babel extension for `lof'
 (tocbasic)             because of feature `nobabel' available
 (tocbasic)             for `lof' on input line 6287.
-\scr@dte@figure@maxnumwidth=\skip63
-\c@figure=\count268
+\scr@dte@figure@maxnumwidth=\skip70
+\c@figure=\count284
 Package tocbasic Info: omitting babel extension for `lot'
 (tocbasic)             because of feature `nobabel' available
 (tocbasic)             for `lot' on input line 6299.
-\scr@dte@table@maxnumwidth=\skip64
-\c@table=\count269
+\scr@dte@table@maxnumwidth=\skip71
+\c@table=\count285
 Class scrartcl Info: Redefining `\numberline' on input line 6469.
-\bibindent=\dimen145
+\bibindent=\dimen164
 ) (C:/Users/johan/Lokal/localtexmf/tex/latex/othr-ci/OTHR.sty
 Package: OTHR 2025-10-20 v0.02-dev Fundamental configuration for OTHR-CI – La
 TeX using the Coporate Design of OTH Regensburg
@@ -222,10 +320,10 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkeyval.tex
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks18
-\XKV@tempa@toks=\toks19
+\XKV@toks=\toks23
+\XKV@tempa@toks=\toks24
 )
-\XKV@depth=\count270
+\XKV@depth=\count286
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphicx.sty
@@ -243,8 +341,8 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: luatex.def on input line 106.
 )
-\Gin@req@height=\dimen146
-\Gin@req@width=\dimen147
+\Gin@req@height=\dimen165
+\Gin@req@width=\dimen166
 )
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/generic/pdftexcmds/pdftexcmds
 .sty
@@ -263,10 +361,10 @@ Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-\pdftexcmds@toks=\toks20
+\pdftexcmds@toks=\toks25
 )
-\l__ptxcd_logoheight_dim=\dimen148
-\l__ptxcd_logowidth_dim=\dimen149
+\l__ptxcd_logoheight_dim=\dimen167
+\l__ptxcd_logowidth_dim=\dimen168
 ) (C:/Users/johan/Lokal/localtexmf/tex/latex/othr-ci/othr-fonts.sty
 Package: othr-fonts 2025-10-20 v0.02-dev Font Setup for the CI of OTH Regensbur
 g
@@ -280,7 +378,7 @@ Package: expl3 2025-03-26 L3 programming layer (loader)
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-lua
 tex.def
 File: l3backend-luatex.def 2025-03-14 L3 backend support: PDF output (LuaTeX)
-\l__color_backend_stack_int=\count271
+\l__color_backend_stack_int=\count287
 Inserting `l3color' in `luaotfload.parse_color'.))
 Package: xparse 2024-08-16 L3 Experimental document command parser
 )
@@ -290,20 +388,20 @@ Lua module: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
 x.sty
 Package: fontspec-luatex 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaT
 eX
-\l__fontspec_script_int=\count272
-\l__fontspec_language_int=\count273
-\l__fontspec_strnum_int=\count274
-\l__fontspec_tmp_int=\count275
-\l__fontspec_tmpa_int=\count276
-\l__fontspec_tmpb_int=\count277
-\l__fontspec_tmpc_int=\count278
-\l__fontspec_em_int=\count279
-\l__fontspec_emdef_int=\count280
-\l__fontspec_strong_int=\count281
-\l__fontspec_strongdef_int=\count282
-\l__fontspec_tmpa_dim=\dimen150
-\l__fontspec_tmpb_dim=\dimen151
-\l__fontspec_tmpc_dim=\dimen152
+\l__fontspec_script_int=\count288
+\l__fontspec_language_int=\count289
+\l__fontspec_strnum_int=\count290
+\l__fontspec_tmp_int=\count291
+\l__fontspec_tmpa_int=\count292
+\l__fontspec_tmpb_int=\count293
+\l__fontspec_tmpc_int=\count294
+\l__fontspec_em_int=\count295
+\l__fontspec_emdef_int=\count296
+\l__fontspec_strong_int=\count297
+\l__fontspec_strongdef_int=\count298
+\l__fontspec_tmpa_dim=\dimen169
+\l__fontspec_tmpb_dim=\dimen170
+\l__fontspec_tmpc_dim=\dimen171
  (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 ) (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/fontspec/fontspec.cfg
@@ -339,74 +437,6 @@ Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
 ))
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2024/11/05 v2.17t AMS math features
-\@mathmargin=\skip65
-
-For additional information on amsmath, use the `?' option.
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amstext.sty
-Package: amstext 2021/08/26 v2.01 AMS text
-
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsgen.sty
-File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks21
-\ex@=\dimen153
-))
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsbsy.sty
-Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen154
-)
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/amsmath/amsopn.sty
-Package: amsopn 2022/04/08 v2.04 operator names
-)
-\inf@bad=\count283
-LaTeX Info: Redefining \frac on input line 235.
-\uproot@=\count284
-\leftroot@=\count285
-LaTeX Info: Redefining \overline on input line 398.
-LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count286
-\DOTSCASE@=\count287
-LaTeX Info: Redefining \ldots on input line 495.
-LaTeX Info: Redefining \dots on input line 498.
-LaTeX Info: Redefining \cdots on input line 619.
-\Mathstrutbox@=\box55
-\strutbox@=\box56
-LaTeX Info: Redefining \big on input line 721.
-LaTeX Info: Redefining \Big on input line 722.
-LaTeX Info: Redefining \bigg on input line 723.
-LaTeX Info: Redefining \Bigg on input line 724.
-\big@size=\dimen155
-LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count288
-LaTeX Info: Redefining \bmod on input line 904.
-LaTeX Info: Redefining \pmod on input line 909.
-LaTeX Info: Redefining \smash on input line 939.
-LaTeX Info: Redefining \relbar on input line 969.
-LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count289
-\dotsspace@=\muskip17
-\c@parentequation=\count290
-\dspbrk@lvl=\count291
-\tag@help=\toks22
-\row@=\count292
-\column@=\count293
-\maxfields@=\count294
-\andhelp@=\toks23
-\eqnshift@=\dimen156
-\alignsep@=\dimen157
-\tagshift@=\dimen158
-\tagwidth@=\dimen159
-\totwidth@=\dimen160
-\lineht@=\dimen161
-\@envbody=\toks24
-\multlinegap=\skip66
-\multlinetaggap=\skip67
-\mathdisplay@stack=\toks25
-LaTeX Info: Redefining \[ on input line 2953.
-LaTeX Info: Redefining \] on input line 2954.
-)
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/lualatex/lualatex-math/lualat
 ex-math.sty
 Package: lualatex-math 2022/01/01 v1.12 Patches for mathematics typesetting wit
@@ -414,13 +444,13 @@ h LuaLaTeX
 
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count295
+\etb@tempcnta=\count299
 )
 Lua module: lualatex-math 2013/08/03 v1.3 Patches for mathematics typesetting wi
 th LuaLaTeX)
-\g__um_fam_int=\count296
-\g__um_fonts_used_int=\count297
-\l__um_primecount_int=\count298
+\g__um_fam_int=\count300
+\g__um_fonts_used_int=\count301
+\l__um_primecount_int=\count302
 \g__um_primekern_muskip=\muskip18
 
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/unicode-math/unicode-ma
@@ -1362,31 +1392,8 @@ Package: OTHR_clscommons
 Package: iflang 2018/01/21 v1.7 Checks for the current language (HO)
 Package iflang Info: Naming convention for patterns: babel.
 )
-\tlimagewidth=\skip68
-\trboxwidth=\skip69
-) (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/base/inputenc.sty
-Package: inputenc 2024/02/08 v1.3d Input encoding file
-\inpenc@prehook=\toks26
-\inpenc@posthook=\toks27
-
-
-Package inputenc Warning: inputenc package ignored with utf8 based engines.
-
-) (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc.sty
-Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-LaTeX Font Info:    Trying to load font information for T1+DejaVuSans(0) on inp
-ut line 116.
-LaTeX Font Info:    No file T1DejaVuSans(0).fd. on input line 116.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
-6.
-
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/lm/t1lmr.fd
-File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-
-LaTeX Font Warning: Font shape `T1/DejaVuSans(0)/m/n' undefined
-(Font)              using `T1/lmr/m/n' instead on input line 116.
-
+\tlimagewidth=\skip72
+\trboxwidth=\skip73
 ) (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty
 Package: babel 2025/03/27 v25.6 The multilingual framework for pdfLaTeX, LuaLaT
 eX and XeLaTeX
@@ -1471,8 +1478,8 @@ Package babel Info: Non-standard hyphenation setup on input line 118.
 \babelcatcodetablenum=\catcodetable15
 \bbl@pattcodes=\catcodetable16
 )
-\babel@savecnt=\count299
-\U@D=\dimen162
+\babel@savecnt=\count303
+\U@D=\dimen172
 \l@unhyphenated=\language76
 
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/generic/babel/luababel.def
@@ -1507,158 +1514,9 @@ German Hyphenation Patterns (Reformed Orthography, 2006) `dehyphn-x' 2024-02-28
 Package babel Info: Importing font and identification data for ngerman
 (babel)             from babel-de.ini. Reported on input line 11.
 )
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/lm/lmodern.sty
-Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
-LaTeX Font Info:    Encoding `TU' has changed to `OT1' for symbol font
-(Font)              `operators' in the math version `normal' on input line 22.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/FiraMath(1)/m/n --> OT1/lmr/m/n on input line 22.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
-(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
-LaTeX Font Info:    Encoding `TU' has changed to `OMS' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 24.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  TU/FiraMath(2)/m/n --> OMS/lmsy/m/n on input line 24.
-LaTeX Font Info:    Encoding `TU' has changed to `OMX' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 2
-5.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  TU/FiraMath(3)/m/n --> OMX/lmex/m/n on input line 25.
-LaTeX Font Info:    Encoding `TU' has changed to `OT1' for symbol font
-(Font)              `operators' in the math version `bold' on input line 26.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/FiraMath(1)/b/n --> OT1/lmr/bx/n on input line 26.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
-(Font)                  OML/cmm/m/it --> OML/lmm/b/it on input line 27.
-LaTeX Font Info:    Encoding `TU' has changed to `OMS' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 28.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  TU/FiraMath(2)/b/n --> OMS/lmsy/b/n on input line 28.
-LaTeX Font Info:    Encoding `TU' has changed to `OMX' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 29.
-
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  TU/FiraMath(3)/b/n --> OMX/lmex/m/n on input line 29.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  TU/DejaVuSans(2)/b/n --> OT1/lmr/bx/n on input line 31.
-
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  TU/DejaVuSans(2)/m/it --> OT1/lmr/m/it on input line 33
-.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/lmss/bx/n on input line 36.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/m/it --> OT1/lmr/bx/it on input line 37.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
-)
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
-
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/amsfonts.sty
-Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\symAMSa=\mathgroup5
-\symAMSb=\mathgroup6
-LaTeX Font Info:    Redeclaring math delimiter \ulcorner on input line 74.
-LaTeX Font Info:    Redeclaring math delimiter \urcorner on input line 75.
-LaTeX Font Info:    Redeclaring math delimiter \llcorner on input line 76.
-LaTeX Font Info:    Redeclaring math delimiter \lrcorner on input line 77.
-LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
-)
-
-! LaTeX Error: Command `\eth' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.240 ...ol{\eth}            {\mathord}{AMSb}{"67}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command `\smallsetminus' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.251 ...ol{\smallsetminus}  {\mathbin}{AMSb}{"72}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command `\digamma' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.259 ...ol{\digamma}        {\mathord}{AMSb}{"7A}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Command `\backepsilon' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.265 ...ol{\backepsilon}    {\mathrel}{AMSb}{"7F}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-)
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/mathtools/mathtools.sty
-Package: mathtools 2024/10/04 v1.31 mathematical typesetting tools
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/tools/calc.sty
-Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count300
-\calc@Bcount=\count301
-\calc@Adimen=\dimen163
-\calc@Bdimen=\dimen164
-\calc@Askip=\skip70
-\calc@Bskip=\skip71
-LaTeX Info: Redefining \setlength on input line 80.
-LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count302
-\calc@Cskip=\skip72
-)
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/mathtools/mhsetup.sty
-Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
-)
-
-Package mathtools Warning: For best results, please load mathtools *before* 
-(mathtools)                unicode-math on input line 127.
-
-\g_MT_multlinerow_int=\count303
-\l_MT_multwidth_dim=\dimen165
-\origjot=\skip73
-\l_MT_shortvdotswithinadjustabove_dim=\dimen166
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen167
-\l_MT_above_intertext_sep=\dimen168
-\l_MT_below_intertext_sep=\dimen169
-\l_MT_above_shortintertext_sep=\dimen170
-\l_MT_below_shortintertext_sep=\dimen171
-\xmathstrut@box=\box57
-\xmathstrut@dim=\dimen172
-) (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty
+(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
+
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
@@ -1673,7 +1531,7 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutheight=\dimen178
 \Gm@layouthoffset=\dimen179
 \Gm@layoutvoffset=\dimen180
-\Gm@dimlist=\toks28
+\Gm@dimlist=\toks26
 
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg)) (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
@@ -1702,7 +1560,7 @@ Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
 \col@sep=\dimen194
 \ar@mcellbox=\box58
 \extrarowheight=\dimen195
-\NC@list=\toks29
+\NC@list=\toks27
 \extratabsurround=\skip74
 \backup@length=\skip75
 \ar@cellbox=\box59
@@ -1713,14 +1571,14 @@ Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
 \TX@target=\dimen199
 \TX@delta=\dimen256
 \TX@cols=\count311
-\TX@ftn=\toks30
+\TX@ftn=\toks28
 )
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count312
-\float@exts=\toks31
+\float@exts=\toks29
 \float@box=\box60
-\@float@everytoks=\toks32
+\@float@everytoks=\toks30
 \@floatcapt=\box61
 )
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/tcolorbox/tcolorbox.sty
@@ -1733,7 +1591,7 @@ sty
 y
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfutil
 -common.tex
-\pgfutil@everybye=\toks33
+\pgfutil@everybye=\toks31
 \pgfutil@tempdima=\dimen257
 \pgfutil@tempdimb=\dimen258
 )
@@ -1758,12 +1616,12 @@ Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
 .code.tex
-\pgfkeys@pathtoks=\toks34
-\pgfkeys@temptoks=\toks35
+\pgfkeys@pathtoks=\toks32
+\pgfkeys@temptoks=\toks33
 
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/generic/pgf/utilities/pgfkeys
 libraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks36
+\pgfkeys@tmptoks=\toks34
 ))
 \pgf@x=\dimen259
 \pgf@y=\dimen260
@@ -1781,9 +1639,9 @@ libraryfiltered.code.tex
 \c@pgf@countb=\count314
 \c@pgf@countc=\count315
 \c@pgf@countd=\count316
-\t@pgf@toka=\toks37
-\t@pgf@tokb=\toks38
-\t@pgf@tokc=\toks39
+\t@pgf@toka=\toks35
+\t@pgf@tokb=\toks36
+\t@pgf@tokc=\toks37
 \pgf@sys@id@count=\count317
 
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/generic/pgf/systemlayer/pgf.c
@@ -1823,9 +1681,9 @@ r.code.tex
 \pgfmath@dimen=\dimen269
 \pgfmath@count=\count320
 \pgfmath@box=\box63
-\pgfmath@toks=\toks40
-\pgfmath@stack@operand=\toks41
-\pgfmath@stack@operation=\toks42
+\pgfmath@toks=\toks38
+\pgfmath@stack@operand=\toks39
+\pgfmath@stack@operation=\toks40
 )
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/generic/pgf/math/pgfmathfunct
 ions.code.tex)
@@ -1985,8 +1843,8 @@ code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
 \pgffor@iter=\dimen296
 \pgffor@skip=\dimen297
-\pgffor@stack=\toks43
-\pgffor@toks=\toks44
+\pgffor@stack=\toks41
+\pgffor@toks=\toks42
 ))
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/generic/pgf/frontendlayer/tik
 z/tikz.code.tex
@@ -2030,8 +1888,8 @@ File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )))
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/tools/verbatim.sty
 Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks45
-\verbatim@line=\toks46
+\every@verbatim=\toks43
+\verbatim@line=\toks44
 \verbatim@in@stream=\read4
 )
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/environ/environ.sty
@@ -2324,7 +2182,7 @@ Package scrlayer Info: patching LaTeX kernel macro \pagestyle on input line 217
 Package scrlayer-scrpage Info: Makeing stand-alone element `pagehead' from
 (scrlayer-scrpage)             alias to `pageheadfoot' on input line 1106.
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 52.
+Package hyperref Info: Option `colorlinks' set `true' on input line 56.
 
 
 Package scrlayer-scrpage Warning: Command deprecated!
@@ -2338,7 +2196,7 @@ Package scrlayer-scrpage Warning: Command deprecated!
 (scrlayer-scrpage)                `<line thickness>:<line length>' to setup
 (scrlayer-scrpage)                the line length and thickness, and
 (scrlayer-scrpage)                `\setkomafont' or `\addtokomafont' to
-(scrlayer-scrpage)                setup the colour on input line 80.
+(scrlayer-scrpage)                setup the colour on input line 84.
 
 
 Package scrlayer-scrpage Warning: Command deprecated!
@@ -2352,7 +2210,7 @@ Package scrlayer-scrpage Warning: Command deprecated!
 (scrlayer-scrpage)                `<line thickness>:<line length>' to setup
 (scrlayer-scrpage)                the line length and thickness, and
 (scrlayer-scrpage)                `\setkomafont' or `\addtokomafont' to
-(scrlayer-scrpage)                setup the colour on input line 81.
+(scrlayer-scrpage)                setup the colour on input line 85.
 
 Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           Using `bookmark' together with `hyperref' is recommended,
@@ -2361,7 +2219,7 @@ Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           `bookmarkpackage=false' before \begin{document} and
 (scrartcl)           you can avoid this message adding:
 (scrartcl)             \usepackage{bookmark}
-(scrartcl)           before \begin{document} on input line 112.
+(scrartcl)           before \begin{document} on input line 116.
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2026-05-21 v1.32 PDF bookmarks (HO)
 
@@ -2369,37 +2227,34 @@ Package: bookmark 2026-05-21 v1.32 PDF bookmarks (HO)
 File: bkm-luatex.def 2026-05-21 v1.32 bookmark driver for luaTeX (HO)
 \BKM@id=\count350
 ))
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 1
-12.
- (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/lm/t1lmss.fd
-File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-(./ausarbeitung_v1.aux
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
+(Font)              scaled to size 9.10004pt on input line 116.
+ (./ausarbeitung_v1.aux
 Package babel Info: 'ngerman' activates 'ngerman' shorthands.
 (babel)             Reported  on input line 10.
 )
 \openout1 = ausarbeitung_v1.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
 
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mk
 ii
@@ -2409,12 +2264,12 @@ ii
 \scratchbox=\box106
 \nofMPsegments=\count352
 \nofMParguments=\count353
-\everyMPshowfont=\toks47
+\everyMPshowfont=\toks45
 \MPscratchCnt=\count354
 \MPscratchDim=\dimen327
 \MPnumerator=\count355
 \makeMPintoPDFobject=\count356
-\everyMPtoPDFconversion=\toks48
+\everyMPtoPDFconversion=\toks46
 )
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
 ase.sty
@@ -2489,525 +2344,131 @@ Package unicode-math Warning: I'm going to overwrite the following commands
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 112.
+Package hyperref Info: Link coloring ON on input line 116.
 \g__cctab_next_cctab=\catcodetable17
 <othr-logo_flat.pdf, id=6, 1116.17pt x 189.70876pt>
 File: othr-logo_flat.pdf Graphic file (type pdf)
 <use othr-logo_flat.pdf>
-Package luatex.def Info: othr-logo_flat.pdf  used on input line 123.
+Package luatex.def Info: othr-logo_flat.pdf  used on input line 126.
 (luatex.def)             Requested size: 267.83517pt x 45.5244pt.
-
-Overfull \hbox (20.29619pt too wide) in paragraph at lines 123--123
-[][] 
- []
-
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-23.
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/lm/ot1lmr.fd
-File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-23.
-
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/lm/omllmm.fd
-File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-123.
-
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/lm/omslmsy.fd
-File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-123.
-
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/lm/omxlmex.fd
-File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 123.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.2> on input line 123.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.8> on input line 123.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 123
-.
-
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 123
-.
-
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <13> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 126.
-LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <18> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 133.
-LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 148.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.5> on input line 148.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.34996> on input line 148.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.25> on input line 148.
-LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <10.5> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 148.
-LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <14.4> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 174.
-
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
+(Font)              scaled to size 11.83005pt on input line 129.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
+(Font)              scaled to size 11.83005pt on input line 129.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
+(Font)              scaled to size 16.38007pt on input line 136.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
+(Font)              scaled to size 16.38007pt on input line 136.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
+(Font)              scaled to size 9.55504pt on input line 148.
+LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 150.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
+(Font)              scaled to size 9.55504pt on input line 150.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
+(Font)              scaled to size 13.10403pt on input line 175.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
+(Font)              scaled to size 13.10403pt on input line 175.
 (./ausarbeitung_v1.toc
-LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <10> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
+(Font)              scaled to size 9.10004pt on input line 2.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
+(Font)              scaled to size 6.55202pt on input line 8.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
+(Font)              scaled to size 5.27802pt on input line 8.
 )
 \tf@toc=\write4
 
 \openout4 = ausarbeitung_v1.toc
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
+(Font)              scaled to size 7.28003pt on input line 181.
 
 
 [1
 
 {C:/Users/johan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}<C:/Users/johan
 /Lokal/localtexmf/tex/latex/othr-ci/othr-logo_flat.pdf>]
-LaTeX Font Info:    Font shape `TU/lmss/b/n' in size <10> not available
-(Font)              Font shape `TU/lmss/bx/n' tried instead on input line 187.
-LaTeX Font Info:    Font shape `TU/lmss/b/n' in size <14.4> not available
-(Font)              Font shape `TU/lmss/bx/n' tried instead on input line 187.
-LaTeX Font Info:    Font shape `TU/lmss/b/n' in size <12> not available
-(Font)              Font shape `TU/lmss/bx/n' tried instead on input line 188.
-
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no … (U+2026) in font rm-lmr10!
-Missing character: There is no … (U+2026) in font rm-lmr10!
-Missing character: There is no 𝑊 (U+1D44A) in font rm-lmr10!
-Missing character: There is no 𝑋 (U+1D44B) in font rm-lmr10!
-Missing character: There is no 𝑋 (U+1D44B) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝑍 (U+1D44D) in font rm-lmr10!
-Missing character: There is no Δ (U+0394) in font rm-lmr10!
-Missing character: There is no Δ (U+0394) in font rm-lmr10!
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr10!
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 215.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 215.
-Missing character: There is no 𝑋 (U+1D44B) in font rm-lmr7!
-Missing character: There is no 𝑑 (U+1D451) in font rm-lmr5!
-Missing character: There is no 𝑌 (U+1D44C) in font rm-lmr7!
-LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <9> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 225.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
+(Font)              scaled to size 10.92004pt on input line 189.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
+(Font)              scaled to size 6.37003pt on input line 216.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
+(Font)              scaled to size 8.19003pt on input line 226.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
+(Font)              scaled to size 8.19003pt on input line 226.
 
 
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 229.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 229.
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr9!
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/sl' in size <10> not availab
+le
+(Font)              Font shape `TU/DejaVuSans(0)/m/it' tried instead on input l
+ine 230.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/it' will be
+(Font)              scaled to size 9.10004pt on input line 230.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/sl' in size <9> not availabl
+e
+(Font)              Font shape `TU/DejaVuSans(0)/m/it' tried instead on input l
+ine 230.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/it' will be
+(Font)              scaled to size 8.19003pt on input line 230.
 [2
 
 ]
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr10!
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr10!
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-<sprungantwort_auswertung.png, id=73, 785.8158pt x 441.5697pt>
+<sprungantwort_auswertung.png, id=71, 785.8158pt x 441.5697pt>
 File: sprungantwort_auswertung.png Graphic file (type png)
 <use sprungantwort_auswertung.png>
-Package luatex.def Info: sprungantwort_auswertung.png  used on input line 240.
+Package luatex.def Info: sprungantwort_auswertung.png  used on input line 241.
 (luatex.def)             Requested size: 495.07857pt x 278.19711pt.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
+(Font)              scaled to size 5.46002pt on input line 242.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
+(Font)              scaled to size 4.55002pt on input line 242.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
+(Font)              scaled to size 6.37003pt on input line 255.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
+(Font)              scaled to size 4.55002pt on input line 261.
 
 
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr9!
 [3
 
 <./sprungantwort_auswertung.png>]
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr9!
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr9!
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr9!
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr9!
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr9!
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr9!
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr9!
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr9!
-LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <7> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 258.
-Missing character: There is no ∘ (U+2218) in font rm-lmr5!
-Missing character: There is no ∘ (U+2218) in font rm-lmr5!
-LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <5> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 264.
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr7!
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr7!
-Missing character: There is no Δ (U+0394) in font rm-lmr7!
-Missing character: There is no Δ (U+0394) in font rm-lmr7!
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr7!
-Missing character: There is no ∘ (U+2218) in font rm-lmr5!
-Missing character: There is no 𝜏 (U+1D70F) in font rm-lmr10!
-Missing character: There is no 𝜏 (U+1D70F) in font rm-lmr10!
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr10!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr10!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no 𝑚 (U+1D45A) in font rm-lmr10!
-Missing character: There is no 𝑚 (U+1D45A) in font rm-lmr10!
-Missing character: There is no − (U+2212) in font rm-lmr7!
-Missing character: There is no − (U+2212) in font rm-lmr7!
-Missing character: There is no Δ (U+0394) in font rm-lmr10!
-Missing character: There is no Δ (U+0394) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no ∞ (U+221E) in font rm-lmr7!
-Missing character: There is no − (U+2212) in font rm-lmr10!
-Missing character: There is no 𝜏 (U+1D70F) in font rm-lmr10!
-Missing character: There is no Δ (U+0394) in font rm-lmr10!
-Missing character: There is no Δ (U+0394) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no ∞ (U+221E) in font rm-lmr7!
-Missing character: There is no 𝑚 (U+1D45A) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no 𝜏 (U+1D70F) in font rm-lmbx10!
-Missing character: There is no ≈ (U+2248) in font rm-lmr10!
-Missing character: There is no 𝛥 (U+1D6E5) in font rm-lmbx10!
-Missing character: There is no 𝛥 (U+1D6E5) in font rm-lmbx10!
-Missing character: There is no 𝜏 (U+1D70F) in font rm-lmbx10!
-Missing character: There is no ≈ (U+2248) in font rm-lmr10!
-LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <7.2> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 281.
-LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <5.8> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 281.
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr7!
-Missing character: There is no 𝐺 (U+1D43A) in font rm-lmr10!
-Missing character: There is no 𝑆 (U+1D446) in font rm-lmr7!
-Missing character: There is no 𝑠 (U+1D460) in font rm-lmr10!
-Missing character: There is no 𝑠 (U+1D460) in font rm-lmr10!
-Missing character: There is no ≈ (U+2248) in font rm-lmr10!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr10!
-Missing character: There is no 𝑆 (U+1D446) in font rm-lmr7!
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr10!
-Missing character: There is no − (U+2212) in font rm-lmr10!
-Missing character: There is no − (U+2212) in font rm-lmr7!
-Missing character: There is no − (U+2212) in font rm-lmr7!
-Missing character: There is no 𝑠 (U+1D460) in font rm-lmr7!
-Missing character: There is no 𝑠 (U+1D460) in font rm-lmr7!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr7!
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr6!
-Missing character: There is no 𝑠 (U+1D460) in font rm-lmr10!
-Missing character: There is no 𝑠 (U+1D460) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝑠 (U+1D460) in font rm-lmr10!
-Missing character: There is no 𝑠 (U+1D460) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr10!
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr10!
-Missing character: There is no ≈ (U+2248) in font rm-lmr10!
-Missing character: There is no … (U+2026) in font rm-lmr10!
-Missing character: There is no 𝑚 (U+1D45A) in font rm-lmr10!
-Missing character: There is no 𝑊 (U+1D44A) in font rm-lmr7!
-Missing character: There is no ≈ (U+2248) in font rm-lmr10!
-LaTeX Font Info:    Trying to load font information for TS1+lmss on input line 
-289.
-(C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/lm/ts1lmss.fd
-File: ts1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝑢 (U+1D462) in font rm-lmr7!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝑔 (U+1D454) in font rm-lmr7!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no ∞ (U+221E) in font rm-lmr7!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no 𝐹 (U+1D439) in font rm-lmr10!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no − (U+2212) in font rm-lmr10!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no 𝐹 (U+1D439) in font rm-lmr10!
-Missing character: There is no 𝐹 (U+1D439) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no − (U+2212) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no − (U+2212) in font rm-lmr10!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no 𝑊 (U+1D44A) in font rm-lmr10!
-Missing character: There is no 𝑊 (U+1D44A) in font rm-lmr10!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
+(Font)              scaled to size 7.28003pt on input line 273.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
+(Font)              scaled to size 5.46002pt on input line 273.
 
 
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr9!
 [4
 
 ]
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr10!
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr10!
-Missing character: There is no 𝑊 (U+1D44A) in font rm-lmr10!
-Missing character: There is no 𝑊 (U+1D44A) in font rm-lmr10!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr10!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no 𝑊 (U+1D44A) in font rm-lmr9!
-Missing character: There is no 𝑊 (U+1D44A) in font rm-lmr9!
-Missing character: There is no ∘ (U+2218) in font rm-lmr6!
-Missing character: There is no 𝑊 (U+1D44A) in font rm-lmr9!
-Missing character: There is no 𝑊 (U+1D44A) in font rm-lmr9!
-Missing character: There is no ∘ (U+2218) in font rm-lmr6!
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 328.
-LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <8> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 330.
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr8!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr6!
-Missing character: There is no ∘ (U+2218) in font rm-lmr6!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr10!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no … (U+2026) in font rm-lmr10!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr10!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr10!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no ≥ (U+2265) in font rm-lmr10!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr10!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr9!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr6!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr9!
-Missing character: There is no 𝑁 (U+1D441) in font rm-lmr6!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr9!
-Missing character: There is no 𝑉 (U+1D449) in font rm-lmr6!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr9!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr6!
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr9!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr9!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr6!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr6!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr9!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr6!
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr9!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr9!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr6!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr6!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr9!
-Missing character: There is no 𝑁 (U+1D441) in font rm-lmr6!
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr9!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr9!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr9!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr6!
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr9!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr9!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr6!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr6!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr9!
-Missing character: There is no 𝑁 (U+1D441) in font rm-lmr6!
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr9!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr9!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr9!
-Missing character: There is no 𝑉 (U+1D449) in font rm-lmr6!
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr9!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr9!
-Missing character: There is no 𝑊 (U+1D44A) in font rm-lmr10!
-Missing character: There is no 𝐿 (U+1D43F) in font rm-lmr7!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no 𝑊 (U+1D44A) in font rm-lmr10!
-Missing character: There is no 𝐻 (U+1D43B) in font rm-lmr7!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr10!
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr9!
-Missing character: There is no 𝐻 (U+1D43B) in font rm-lmr6!
-Missing character: There is no 𝐻 (U+1D43B) in font rm-lmr6!
-LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <6> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 370.
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr9!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr9!
-Missing character: There is no 𝐻 (U+1D43B) in font rm-lmr6!
-Missing character: There is no 𝐻 (U+1D43B) in font rm-lmr6!
-Missing character: There is no 𝐹 (U+1D439) in font rm-lmr9!
-Missing character: There is no 𝐹 (U+1D439) in font rm-lmr9!
-Missing character: There is no ∘ (U+2218) in font rm-lmr6!
-Missing character: There is no ∘ (U+2218) in font rm-lmr6!
-Missing character: There is no ∘ (U+2218) in font rm-lmr6!
-Missing character: There is no ∘ (U+2218) in font rm-lmr6!
-Missing character: There is no ∘ (U+2218) in font rm-lmr6!
-Missing character: There is no ∘ (U+2218) in font rm-lmr6!
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr10!
-Missing character: There is no 𝑒 (U+1D452) in font rm-lmr10!
-Missing character: There is no ∞ (U+221E) in font rm-lmr7!
-Missing character: There is no 𝑊 (U+1D44A) in font rm-lmr10!
-Missing character: There is no 𝐻 (U+1D43B) in font rm-lmr7!
-Missing character: There is no − (U+2212) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝐻 (U+1D43B) in font rm-lmr7!
-Missing character: There is no 𝐻 (U+1D43B) in font rm-lmr7!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no − (U+2212) in font rm-lmr10!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no 𝐹 (U+1D439) in font rm-lmr10!
-Missing character: There is no 𝑒 (U+1D452) in font rm-lmr10!
-Missing character: There is no 𝑒 (U+1D452) in font rm-lmr10!
-Missing character: There is no ≠ (U+2260) in font rm-lmr10!
-Missing character: There is no 𝑌 (U+1D44C) in font rm-lmr10!
-Missing character: There is no 𝑌 (U+1D44C) in font rm-lmr10!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr10!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr10!
-Missing character: There is no 𝑒 (U+1D452) in font rm-lmr10!
-Missing character: There is no 𝑒 (U+1D452) in font rm-lmr10!
-Missing character: There is no 𝑒 (U+1D452) in font rm-lmr10!
-Missing character: There is no ∞ (U+221E) in font rm-lmr7!
-Missing character: There is no 𝑒 (U+1D452) in font rm-lmr10!
-Missing character: There is no ∞ (U+221E) in font rm-lmr7!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
 
-
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr9!
 [5
 
 ]
-<reglervergleich.png, id=113, 674.52pt x 345.2097pt>
+<reglervergleich.png, id=98, 674.52pt x 345.2097pt>
 File: reglervergleich.png Graphic file (type png)
 <use reglervergleich.png>
-Package luatex.def Info: reglervergleich.png  used on input line 403.
-(luatex.def)             Requested size: 400.28941pt x 204.8624pt.
-
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr10!
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr10!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr10!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr10!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no ∘ (U+2218) in font rm-lmr7!
-Missing character: There is no − (U+2212) in font rm-lmr8!
-Missing character: There is no − (U+2212) in font rm-lmr8!
-Missing character: There is no 𝐹 (U+1D439) in font rm-lmr8!
-Missing character: There is no 𝐹 (U+1D439) in font rm-lmr8!
+Package luatex.def Info: reglervergleich.png  used on input line 382.
+(luatex.def)             Requested size: 389.1634pt x 199.16826pt.
 
 
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr9!
 [6
 
 <./reglervergleich.png>]
-Missing character: There is no 𝑠 (U+1D460) in font rm-lmr10!
-<wok_analyse.png, id=126, 681.0243pt x 336.5373pt>
+<wok_analyse.png, id=108, 820.5054pt x 302.3295pt>
 File: wok_analyse.png Graphic file (type png)
 <use wok_analyse.png>
-Package luatex.def Info: wok_analyse.png  used on input line 448.
-(luatex.def)             Requested size: 328.1973pt x 162.18309pt.
-Missing character: There is no 𝑠 (U+1D460) in font rm-lmr9!
-Missing character: There is no 𝜎 (U+1D70E) in font rm-lmr9!
-Missing character: There is no 𝜎 (U+1D70E) in font rm-lmr9!
-Missing character: There is no − (U+2212) in font rm-lmr9!
-Missing character: There is no − (U+2212) in font rm-lmr9!
-Missing character: There is no − (U+2212) in font rm-lmr6!
-Missing character: There is no − (U+2212) in font rm-lmr6!
-Missing character: There is no 𝜏 (U+1D70F) in font rm-lmr9!
-Missing character: There is no 𝜏 (U+1D70F) in font rm-lmr9!
-Missing character: There is no ∼ (U+223C) in font rm-lmr9!
-Missing character: There is no 𝜎 (U+1D70E) in font rm-lmr9!
-Missing character: There is no 𝜎 (U+1D70E) in font rm-lmr9!
-Missing character: There is no 𝑠 (U+1D460) in font rm-lmr9!
-Missing character: There is no 𝜎 (U+1D70E) in font rm-lmr9!
-Missing character: There is no 𝜎 (U+1D70E) in font rm-lmr9!
-Missing character: There is no − (U+2212) in font rm-lmr9!
-Missing character: There is no − (U+2212) in font rm-lmr9!
-Missing character: There is no − (U+2212) in font rm-lmr6!
-Missing character: There is no − (U+2212) in font rm-lmr6!
-Missing character: There is no 𝜏 (U+1D70F) in font rm-lmr9!
-Missing character: There is no 𝜏 (U+1D70F) in font rm-lmr9!
-Missing character: There is no ∼ (U+223C) in font rm-lmr9!
-Missing character: There is no 𝜎 (U+1D70E) in font rm-lmr9!
-Missing character: There is no 𝜎 (U+1D70E) in font rm-lmr9!
-Missing character: There is no 𝑠 (U+1D460) in font rm-lmr10!
-Missing character: There is no 𝑠 (U+1D460) in font rm-lmr10!
-Missing character: There is no 𝑒 (U+1D452) in font rm-lmr10!
-Missing character: There is no ∞ (U+221E) in font rm-lmr7!
-Missing character: There is no 𝑠 (U+1D460) in font rm-lmr10!
-Missing character: There is no 𝑠 (U+1D460) in font rm-lmr10!
-Missing character: There is no − (U+2212) in font rm-lmr10!
-Missing character: There is no − (U+2212) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝑁 (U+1D441) in font rm-lmr7!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝑉 (U+1D449) in font rm-lmr7!
-Missing character: There is no 𝜎 (U+1D70E) in font rm-lmr10!
-Missing character: There is no 𝜎 (U+1D70E) in font rm-lmr10!
-Missing character: There is no − (U+2212) in font rm-lmr7!
-Missing character: There is no − (U+2212) in font rm-lmr7!
-Missing character: There is no 𝜏 (U+1D70F) in font rm-lmr10!
-Missing character: There is no 𝜏 (U+1D70F) in font rm-lmr10!
-Missing character: There is no ≈ (U+2248) in font rm-lmr10!
-Missing character: There is no 𝜎 (U+1D70E) in font rm-lmr10!
-Missing character: There is no 𝜎 (U+1D70E) in font rm-lmr10!
-Missing character: There is no 𝜔 (U+1D714) in font rm-lmr10!
-Missing character: There is no 𝜔 (U+1D714) in font rm-lmr10!
-Missing character: There is no 𝐺 (U+1D43A) in font rm-lmr10!
-Missing character: There is no 𝐼 (U+1D43C) in font rm-lmr7!
-Missing character: There is no → (U+2192) in font rm-lmr10!
-Missing character: There is no ∞ (U+221E) in font rm-lmr10!
-Missing character: There is no 𝑒 (U+1D452) in font rm-lmr10!
-Missing character: There is no ∞ (U+221E) in font rm-lmr7!
-Missing character: There is no 𝑒 (U+1D452) in font rm-lmr10!
-Missing character: There is no 𝑒 (U+1D452) in font rm-lmr10!
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝑁 (U+1D441) in font rm-lmr7!
-Missing character: There is no → (U+2192) in font rm-lmr10!
-Missing character: There is no ∞ (U+221E) in font rm-lmr10!
-Missing character: There is no ∞ (U+221E) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝑉 (U+1D449) in font rm-lmr7!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr10!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr10!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr10!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr10!
-Missing character: There is no 𝐾 (U+1D43E) in font rm-lmr10!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr7!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝑁 (U+1D441) in font rm-lmr7!
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr10!
-Missing character: There is no 𝑇 (U+1D447) in font rm-lmr10!
-Missing character: There is no 𝑃 (U+1D443) in font rm-lmr10!
-Missing character: There is no 𝑉 (U+1D449) in font rm-lmr7!
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr10!
-Missing character: There is no − (U+2212) in font rm-lmr10!
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr10!
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr10!
-Missing character: There is no 𝐼 (U+1D43C) in font rm-lmr10!
-Missing character: There is no 𝐼 (U+1D43C) in font rm-lmr10!
-Missing character: There is no 𝐼 (U+1D43C) in font rm-lmr10!
-Missing character: There is no 𝑈 (U+1D448) in font rm-lmr10!
-Missing character: There is no 𝐷 (U+1D437) in font rm-lmr7!
-Missing character: There is no 𝐷 (U+1D437) in font rm-lmr7!
-Missing character: There is no 𝑆 (U+1D446) in font rm-lmr7!
-Missing character: There is no ≈ (U+2248) in font rm-lmr10!
-Missing character: There is no ⟹ (U+27F9) in font rm-lmr10!
-Missing character: There is no 𝑡 (U+1D461) in font rm-lmr10!
+Package luatex.def Info: wok_analyse.png  used on input line 423.
+(luatex.def)             Requested size: 494.19754pt x 182.09567pt.
+LaTeX Font Info:    Font shape `TU/DejaVuSansMono(0)/m/n' will be
+(Font)              scaled to size 8.19003pt on input line 424.
+
+Underfull \hbox (badness 1248) in paragraph at lines 424--424
+[][]|\TU/DejaVuSans(0)/m/n/9 Mit MAT-LAB (\TU/DejaVuSansMono(0)/m/n/9 rlocus\TU
+/DejaVuSans(0)/m/n/9 ) be-rech-ne-te Wur-zel-orts-kur-ven für PI- und PID-Regel
+ung am do-mi-nan-ten $[][]$-
+ []
 
 
-Missing character: There is no ⋅ (U+22C5) in font rm-lmr9!
+
 [7
 
 <./wok_analyse.png>] (./ausarbeitung_v1.aux)
@@ -3015,46 +2476,31 @@ Missing character: There is no ⋅ (U+22C5) in font rm-lmr9!
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-03-26>
  ***********
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
 )
 
 Here is how much of LuaTeX's memory you used:
- 43612 strings out of 471941
- 125007,1977958 words of node,token memory allocated
- 657 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 30 attribute, 66 glue_spec
-, 17 attribute_list, 2 write nodes
-   avail lists: 2:2257,3:791,4:265,5:403,6:133,7:9850,8:102,9:1225,10:13,11:811
- 69113 multiletter control sequences out of 65536+600000
- 226 fonts using 78933631 bytes
- 156i,22n,154p,11239b,2768s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/U
-sers/johan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}<C:/Users
-/johan/AppData/Local/Programs/MiKTeX/fonts/truetype/public/dejavu/dejavusans.ttf
->{C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}<c:/
-users/johan/appdata/local/programs/miktex/fonts/opentype/public/lm/lmsans10-obli
-que.otf><c:/users/johan/appdata/local/programs/miktex/fonts/opentype/public/lm/l
-msans10-bold.otf><c:/users/johan/appdata/local/programs/miktex/fonts/opentype/pu
-blic/lm/lmsans9-oblique.otf><c:/users/johan/appdata/local/programs/miktex/fonts/
-opentype/public/lm/lmsans8-regular.otf><C:/Users/johan/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/johan/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/lm/lmbx7.pfb><C:/Users/johan/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/lm/lmbx9.pfb><C:/Users/johan/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/lm/lmr10.pfb><C:/Users/johan/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/lm/lmr6.pfb><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/lm/lmr7.pfb><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/lm/lmr8.pfb><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/lm/lmr9.pfb><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/type1/pu
-blic/lm/lmss10.pfb><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/lm/lmss8.pfb><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/lm/lmss9.pfb><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-lm/lmssbx10.pfb>
-Output written on ausarbeitung_v1.pdf (7 pages, 805924 bytes).
+ 42976 strings out of 471941
+ 100000,1977958 words of node,token memory allocated
+ 645 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 26 attribute, 66 glue_spec
+, 15 attribute_list, 2 write nodes
+   avail lists: 2:2275,3:789,4:265,5:474,6:133,7:7641,8:100,9:1035,10:13,11:642
+ 68549 multiletter control sequences out of 65536+600000
+ 192 fonts using 108243747 bytes
+ 141i,22n,154p,11239b,2768s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/truetype/public/dejavu/dejav
+usansmono.ttf><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/truetype/publi
+c/dejavu/dejavusans.ttf><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/open
+type/public/firamath/firamath-regular.otf><C:/Users/johan/AppData/Local/Programs
+/MiKTeX/fonts/opentype/public/firamath/firamath-regular.otf><C:/Users/johan/AppD
+ata/Local/Programs/MiKTeX/fonts/truetype/public/dejavu/dejavusans-oblique.ttf><C
+:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/opentype/public/firamath/firam
+ath-regular.otf><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/truetype/pub
+lic/dejavu/dejavusans.ttf><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/tr
+uetype/public/dejavu/dejavusans-bold.ttf>
+Output written on ausarbeitung_v1.pdf (7 pages, 608493 bytes).
 
-PDF statistics: 279 PDF objects out of 1000 (max. 8388607)
- 52 named destinations out of 1000 (max. 131072)
+PDF statistics: 240 PDF objects out of 1000 (max. 8388607)
+ 50 named destinations out of 1000 (max. 131072)
  192 words of extra memory for PDF output out of 10000 (max. 100000000)
 

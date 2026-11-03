@@ -1,13 +1,17 @@
+\RequirePackage{amsmath,mathtools}
 \documentclass[a4paper,10pt,department=FakEI]{OTHRartcl}
 
 % ==============================================================================
 % PAKETE & EINSTELLUNGEN
 % ==============================================================================
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+\usepackage{iftex}
+\ifTUTeX
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage{amssymb}
+\fi
 \usepackage[ngerman]{babel}
-\usepackage{lmodern}
-\usepackage{amsmath,amssymb,amsfonts,mathtools}
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{booktabs}
@@ -23,7 +27,7 @@
 \usepackage{hyperref}
 \usepackage[headsepline,footsepline]{scrlayer-scrpage}
 
-% Seitengeometrie: Exakt kalkuliert für 6 harmonische Einzelseiten
+% Seitengeometrie
 \geometry{
     a4paper,
     top=18mm,
@@ -59,7 +63,7 @@
     skip=3pt
 }
 
-% Tabellenabstände & Spaltentypen
+% Tabellenabstände
 \renewcommand{\arraystretch}{1.12}
 
 % Boxen-Design
@@ -76,16 +80,16 @@
 \clearpairofpagestyles
 \ihead{\textsf{\small Regelungstechnik Anwendungen $\cdot$ Versuch V1: Temperaturregelung}}
 \ohead{\textsf{\small Gruppe 5}}
-\cfoot{\textsf{\thepage\ von 7}}
+\cfoot{\textsf{\thepage\ von \pageref*{doc:lastpage}}}
 \setheadsepline{0.4pt}
 \setfootsepline{0.4pt}
 \pagestyle{scrheadings}
 
 % Absatzformatierung
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{2pt}
+\setlength{\parskip}{2.5pt}
 
-% Inhaltsverzeichnis Konfiguration (automatisch via LaTeX)
+% Inhaltsverzeichnis Konfiguration
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
 \addto\captionsngerman{\renewcommand*{\contentsname}{Inhalt}}
@@ -116,12 +120,11 @@
 % ##############################################################################
 \thispagestyle{empty}
 
-% Kopfzeile mit OTH-Logo und Fachangabe
 \noindent
-\begin{minipage}[c]{0.50\textwidth}
+\begin{minipage}[c]{0.55\textwidth}
     \TheLogo
 \end{minipage}%
-\begin{minipage}[c]{0.50\textwidth}
+\begin{minipage}[c]{0.45\textwidth}
     \raggedleft
     {\fontsize{13}{16}\selectfont\bfseries Regelungstechnik Anwendungen}\\[1.5mm]
     {\normalsize Prof. Dr. Brüdigam}
@@ -135,7 +138,6 @@
 
 \vspace{4mm}
 
-% Rahmenbox exakt wie in der Versuchsanleitung mit eingetragenen Antworten/Namen
 \begin{tcolorbox}[
     sharp corners,
     colback=white,
@@ -168,7 +170,6 @@ Teilnehmer:\,\underline{\makebox[5.6cm][l]{\strut\hspace{1.5mm}\textbf{Johannes 
 
 \vspace{5mm}
 
-% Inhaltsverzeichnis automatisch von LaTeX generiert
 \begingroup
 \hypersetup{linkcolor=black}
 \tableofcontents
@@ -177,21 +178,21 @@ Teilnehmer:\,\underline{\makebox[5.6cm][l]{\strut\hspace{1.5mm}\textbf{Johannes 
 \vfill
 \noindent
 \rule{\textwidth}{0.4pt}\\[1mm]
-{\footnotesize\textsf{PRTA\_V1 Temperaturregelung.doc} \hfill \textsf{C. Brüdigam / Ausarbeitung Gruppe 5} \hfill \textsf{Seite 1 / 7}}
+{\footnotesize\textsf{PRTA\_V1 Temperaturregelung.doc} \hfill \textsf{C. Brüdigam / Ausarbeitung Gruppe 5} \hfill \textsf{Seite 1 / \pageref*{doc:lastpage}}}
 
 \clearpage
 
 % ##############################################################################
-% SEITE 2: GRUNDLAGEN, AUFBAU & UNGEREGELTE SPRUNGANTWORT (GROSSES MAT-BILD)
+% SEITE 2: GRUNDLAGEN & VERSUCHSAUFBAU
 % ##############################################################################
 \section{Grundlagen und Versuchsaufbau}
 \subsection{Ziel des Versuchs}
-Ziel des Versuchs ist die regelungstechnische Untersuchung und Beherrschung einer thermischen Strecke. Die Austrittstemperatur am Rohrende soll schnell, robust und ohne bleibende Regelabweichung auf vorgegebene Sollwerte eingestellt sowie gegen Versorgungsstörungen stabilisiert werden.
+Ziel ist die Auslegung einer Temperaturregelung für eine thermische Rohrstrecke mit Zeitkonstante und Totzeit. Die Austrittstemperatur $T$ am Rohrende soll schnell, überschwingarm und ohne bleibende Regelabweichung auf Sollwerte geführt sowie gegen Störungen stabilisiert werden.
 
 \subsection{Versuchsaufbau und Blockschaltbild}
-Die Versuchsstrecke besteht aus einem modifizierten Haartrockner (Heizleistung bis ca. $375\,\text{W}$ bei max. $25\,\text{V} / 15\,\text{A}$, separates Gebläse mit $12\,\text{V}$), welcher Luft durch ein Rohr einbläst. Am Rohrende erfasst ein \textbf{Temperatursensor} die Austrittstemperatur $T$.
+Ein modifizierter Haartrockner (Heizleistung bis ca. $375\,\text{W}$ bei max. $25\,\text{V} / 15\,\text{A}$, Gebläse konstant $12\,\text{V}$) bläst erwärmte Luft durch ein Rohr, an dessen Ende ein \textbf{Temperatursensor} die Austrittstemperatur $T$ erfasst.
 
-Das Reglerausgangssignal ($0\dots 10\,\text{V}$) wird über einen Umsetzer in ein PWM-Signal ($0\dots 100\,\%$) gewandelt, welches einen Leistungs-FET ansteuert. Die PWM-Ansteuerung gewährleistet einen Wirkungsgrad von nahezu $100\,\%$, da der FET rein schaltend arbeitet und keine Verlustwärme erzeugt.
+Das Stellsignal des Kompaktreglers \textbf{TROVIS 6493} ($0\dots 10\,\text{V}$) wird in ein PWM-Signal ($0\dots 100\,\%$ Einschaltdauer) umgesetzt, das einen Leistungs-FET taktet. Da der FET rein schaltend arbeitet, entsteht kaum Verlustwärme am Stellglied (Wirkungsgrad nahe $100\,\%$).
 
 \begin{figure}[H]
 \centering
@@ -202,10 +203,10 @@ Das Reglerausgangssignal ($0\dots 10\,\text{V}$) wird über einen Umsetzer in ei
     node distance=7mm and 7mm
 ]
     \node (input) at (0,0) {$W$};
-    \node[sum, right=5mm of input] (sum1) {}; 
+    \node[sum, right=5mm of input] (sum1) {};
     \node[block, right=7mm of sum1] (regler) {Kompaktregler\\TROVIS 6493};
     \node[block, right=7mm of regler] (pwm) {PWM / FET\\Stellglied};
-    \node[sum, right=7mm of pwm] (sum2) {}; 
+    \node[sum, right=7mm of pwm] (sum2) {};
     \node[block, right=7mm of sum2] (strecke) {Strecke\\(Rohr \& Fön)};
     \node[right=8mm of strecke] (output) {$X = T$};
     \node[above=4.5mm of sum2] (dist) {Störung $Z$ ($\Delta U$)};
@@ -221,37 +222,33 @@ Das Reglerausgangssignal ($0\dots 10\,\text{V}$) wird über einen Umsetzer in ei
     \draw[arrow] ($(strecke)!0.5!(output)$) |- (sensor);
     \draw[arrow] (sensor) -| (sum1);
 \end{tikzpicture}
-\vspace{4.5mm}
-\caption{Wirkungsplan des Temperaturregelkreises mit leerer Additionsstelle, Stellglied und Sensorrückführung.}
+\vspace{3mm}
+\caption{Wirkungsplan des Temperaturregelkreises mit Kompaktregler, PWM-Stellglied und Sensorrückführung.}
 \label{fig:blockschaltbild}
 \end{figure}
 
 \clearpage
 
 % ##############################################################################
-% SEITE 3: UNGEREGELTES SYSTEM (GROSSES DIAGRAMM & MESSDATEN)
+% SEITE 3: UNGEREGELTES SYSTEM (DIAGRAMM & MESSDATEN)
 % ##############################################################################
 \section{Untersuchung des ungeregelten Systems (Steuerung)}
 \subsection{Sprungantwort und Störungsaufschaltung}
-Zur Streckenidentifikation wurde die Heizung bei konstanter Gebläsespannung sprungförmig mit $U = 20\,\text{V}$ beaufschlagt ($T_{\text{UV}} = 21{,}9\,^\circ\text{C}$). Nach $t = 600\,\text{s}$ stellte sich ein Quasigleichgewicht (bei längerem Warten würde sich die Temperatur noch geringfügig erhöhen) bei $T_{20\text{V}} = 41{,}9\,^\circ\text{C}$ ein. Anschließend wurde eine Störung durch Absenkung der Heizspannung um $10\,\%$ auf $18\,\text{V}$ aufgeschaltet ($T_{18\text{V}} = 38{,}8\,^\circ\text{C}$).
+Die Heizung wurde bei konstanter Gebläsespannung sprungförmig mit $U = 20\,\text{V}$ eingeschaltet ($T_{\text{UV}} = 21{,}9\,^\circ\text{C}$). Nach $t = 600\,\text{s}$ stellte sich ein Quasigleichgewicht bei $T_{20\text{V}} = 41{,}9\,^\circ\text{C}$ ein (der exakte stationäre Endwert würde erst nach ca. $30\,\text{min}$ erreicht). Anschließend wurde die Heizspannung als Störung um $10\,\%$ auf $18\,\text{V}$ abgesenkt ($T_{18\text{V}} = 38{,}8\,^\circ\text{C}$).
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth,height=12.2cm,keepaspectratio]{sprungantwort_auswertung.png}
-\caption{Gemessene Sprungantwort ($20\,\text{V}$) mit Tangente (gelegt zwischen 2. und 3. Messpunkt), $63{,}2\,\%$-Kennwert und Störsprung ($18\,\text{V}$).}
+\includegraphics[width=\textwidth,height=10.5cm,keepaspectratio]{sprungantwort_auswertung.png}
+\caption{Gemessene Sprungantwort ($20\,\text{V}$) mit Tangente (zwischen 2. und 3. Messpunkt), $63{,}2\,\%$-Kennwert und Störsprung ($18\,\text{V}$).}
 \label{fig:sprungantwort}
 \end{figure}
 
-\clearpage
-
 \subsection{Messdaten des ungeregelten Betriebs}
-Tabelle~\ref{tab:messdaten_sprung} dokumentiert die Messwerte des Aufheiz- und Störvorgangs.
-
 \begin{table}[H]
 \centering
 \scriptsize
 \setlength{\tabcolsep}{3.5pt}
-\caption{Messreihe der Sprungantwort bei $U = 20\,\text{V}$ sowie Störung bei $U = 18\,\text{V}$.}
+\caption{Messreihe der Sprungantwort bei $U = 20\,\text{V}$ sowie der Störungsaufschaltung auf $U = 18\,\text{V}$.}
 \label{tab:messdaten_sprung}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}r *{13}{c}@{}}
 \toprule
@@ -268,97 +265,88 @@ Tabelle~\ref{tab:messdaten_sprung} dokumentiert die Messwerte des Aufheiz- und S
 \end{tabular*}
 \end{table}
 
-\vspace{-2mm}
-\subsection{Streckenidentifikation: Tangente vs. Wendetangente}
-{\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
-\begin{enumerate}\setlength{\itemsep}{1.5pt}\setlength{\topsep}{1.5pt}\setlength{\parsep}{0pt}
-    \item \textbf{Idee der Tangente und Berechnung von $\tau$:}
-    Eigentlich war die Idee, wie bei einem idealen $\text{PT}_1$-Glied die Zeitkonstante $\tau$ über eine Tangente an den Anstieg zu bestimmen. Legt man die Tangente zwischen den 2. und 3. Messpunkt ($t_2 = 2\,\text{s}$ mit $22{,}3\,^\circ\text{C}$ sowie $t_3 = 4\,\text{s}$ mit $24{,}3\,^\circ\text{C}$), ergibt sich eine Steigung von $m = \frac{24{,}3 - 22{,}3}{4 - 2} = 1{,}0\,\text{K/s}$. Der Schnittpunkt mit dem stationären Endwertsprung $\Delta T_{\infty} = 41{,}9 - 21{,}9 = 20{,}0\,\text{K}$ liefert:
+\clearpage
+
+% ##############################################################################
+% SEITE 4: STRECKENIDENTIFIKATION, RELATIVER FEHLER & MANUELLE REGELUNG
+% ##############################################################################
+\subsection{Streckenidentifikation unter \texorpdfstring{$\text{PT}_1$}{PT1}-Annahme}
+Zur Bestimmung der Zeitkonstanten $\tau$ eines $\text{PT}_1$-Systems stehen das \textbf{Tangentenverfahren} und das \textbf{$63{,}2\,\%$-Kennwertverfahren} zur Verfügung:
+\begin{enumerate}
+    \item \textbf{Tangente vs. $63{,}2\,\%$-Wert:}
+    Legt man die Tangente durch den 2. und 3. Messpunkt ($t_2 = 2\,\text{s}$ mit $22{,}3\,^\circ\text{C}$; $t_3 = 4\,\text{s}$ mit $24{,}3\,^\circ\text{C}$), folgt die Steigung $m = \frac{24{,}3 - 22{,}3}{4 - 2} = 1{,}0\,\text{K/s}$. Mit dem Temperatursprung $\Delta T_{\infty} = 41{,}9 - 21{,}9 = 20{,}0\,\text{K}$ ergibt sich:
     \begin{equation}
-        \tau_{\text{Tangente}} = \frac{\Delta T_{\infty}}{m} = \frac{20{,}0\,\text{K}}{1{,}0\,\text{K/s}} = \mathbf{20{,}0\,\text{s}}
+        \tau_{\text{Tangente}} = \frac{\Delta T_{\infty}}{m} = \frac{20{,}0\,\text{K}}{1{,}0\,\text{K/s}} = \textbf{20,0\,s}
     \end{equation}
-    Vergleicht man dies mit dem real gemessenen $63{,}2\,\%$-Kennwert ($T_{63\%} = 34{,}54\,^\circ\text{C}$ bei $\mathbf{\tau_{63\%} \approx 30\,\text{s}}$), verbleibt eine deutliche Differenz von $\mathbf{\Delta\tau \approx 10\,\text{s}}$.
-    \item \textbf{Systemtheoretische Ursache ($\text{PT}_2$-Glied mit Totzeit):}
-    Die Diskrepanz beweist, dass die thermische Strecke \textbf{kein reines $\text{PT}_1$-Glied} ist. Der anfänglich verzögerte S-förmige Verlauf resultiert aus der Reihenschaltung von Heizwendel ($\text{PT}_1$), Fluid-Laufzeit der Heißluft im Rohr (Totzeit $T_t$) und thermischer Speichermasse von Rohrwand und Sensor ($\text{PT}_1$). Die Strecke verhält sich daher wie ein $\mathbf{\text{PT}_2\text{-Glied mit Totzeit}}$:
+    Das $63{,}2\,\%$-Verfahren ($T_{63\%} = 21{,}9\,^\circ\text{C} + 0{,}632 \cdot 20{,}0\,\text{K} = 34{,}54\,^\circ\text{C}$) liefert hingegen $\tau_{63\%} \approx \textbf{30\,s}$ (Differenz $\Delta\tau \approx 10\,\text{s}$). $90\,\%$ der Temperaturänderung ($T_{90\%} = 39{,}9\,^\circ\text{C}$) werden erst nach $t_{90\%} = \textbf{180\,s}$ erreicht.
+    \item \textbf{Systemtheoretische Ursache ($\text{PT}_n$-Glied mit Totzeit):}
+    Die Abweichung $\Delta\tau \approx 10\,\text{s}$ und der S-förmige Anfangsverzug zeigen, dass \textbf{kein ideales $\text{PT}_1$-Glied} vorliegt. Heizwendel, Rohrwandung und Temperatursensor wirken jeweils als verzögernde $\text{PT}_1$-Speicher, hinzu kommt die Laufzeit der Luft im Rohr als Totzeit $T_t$:
     \begin{equation}
-        G_S(s) \approx \frac{K_S \cdot \mathrm{e}^{-s T_t}}{(1 + s T_1)(1 + s T_2)}
+        G_S(s) \approx \frac{K_S \cdot \mathrm{e}^{-s T_t}}{\prod_{i=1}^{n} (1 + s T_i)}
     \end{equation}
-    \item \textbf{Wendetangentenverfahren (Bedeutung von Verzugs- und Ausgleichszeit):}
-    Für Strecken höherer Ordnung mit Totzeit ist das Wendetangentenverfahren anzuwenden (Tangente im Wendebereich $t \approx 4\dots 10\,\text{s}$, $m_W \approx 0{,}85\,\text{K/s}$):
-    \begin{itemize}\setlength{\itemsep}{1pt}\setlength{\topsep}{1pt}
-        \item \textbf{Verzugszeit $T_u$ ($1{,}2\,\text{s}$):} Zeitspanne vom Sprungbeginn bis zum Schnittpunkt der Wendetangente mit der Grundlinie ($T_{\text{UV}}$). Sie beschreibt die Verzögerung durch reine Transporttotzeit im Luftstrom sowie die thermische Trägheit der Heizwendel, bis die Temperaturänderung am Rohrende mit maximaler Rate wirksam wird.
-        \item \textbf{Ausgleichszeit $T_g$ ($23{,}8\,\text{s}$):} Zeitspanne vom Schnittpunkt mit der Grundlinie bis zum Schnittpunkt mit der Endwertasymptote ($T_{\infty} = 41{,}9\,^\circ\text{C}$). Sie kennzeichnet die effektive Trägheit und Speicherfähigkeit der dominierenden thermischen Massen (Rohrwandung, Wärmeübergang, Sensor).
-    \end{itemize}
+    Da ein solches $\text{PT}_n$-Totzeitmodell analytisch schwer zu parametrieren ist, erfolgt die Reglereinstellung empirisch nach Ziegler/Nichols.
 \end{enumerate}
-}
 
-\vspace{-2mm}
 \subsection{Berechnung des relativen Temperaturfehlers}
-Bei Spannungsabsenkung um $10\,\%$ sinkt die Temperatur um $F_{\text{abs}} = 41{,}9\,^\circ\text{C} - 38{,}8\,^\circ\text{C} = 3{,}1\,\text{K}$.
-Da die Celsius-Skala einen willkürlich gewählten Nullpunkt besitzt ($0\,^\circ\text{C}$), liefert ein Bezug auf den Absolutwert in $^\circ\text{C}$ physikalisch falsche Ergebnisse. Der relative Fehler muss zwingend auf die \textbf{tatsächlich erzeugte Temperaturüberhöhung gegenüber der Umgebung} bezogen werden:
-{\setlength{\abovedisplayskip}{2pt}\setlength{\belowdisplayskip}{2pt}
+Die Spannungsabsenkung um $10\,\%$ verursacht einen absoluten Fehler von $F_{\text{abs}} = 41{,}9\,^\circ\text{C} - 38{,}8\,^\circ\text{C} = 3{,}1\,\text{K}$. Wegen des willkürlichen Nullpunkts der Celsius-Skala ($0\,^\circ\text{C}$) muss der relative Fehler auf die \textbf{erzeugte Temperaturüberhöhung gegenüber der Raumtemperatur} bezogen werden:
 \begin{equation}
-    F_{\text{rel}} = \frac{F_{\text{abs}}}{T_{20\text{V}} - T_{\text{UV}}} = \frac{3{,}1\,\text{K}}{41{,}9\,^\circ\text{C} - 21{,}9\,^\circ\text{C}} = \frac{3{,}1\,\text{K}}{20{,}0\,\text{K}} = \mathbf{15{,}5\,\%}
+    F_{\text{rel}} = \frac{F_{\text{abs}}}{T_{20\text{V}} - T_{\text{UV}}} = \frac{3{,}1\,\text{K}}{41{,}9\,^\circ\text{C} - 21{,}9\,^\circ\text{C}} = \frac{3{,}1\,\text{K}}{20{,}0\,\text{K}} = \textbf{15,5\,\%}
 \end{equation}
-}
 
-\vspace{-2mm}
 \section{Manuelle Regelung}
-Im manuellen Betrieb sollte die Temperatur über das Stellrad am Netzteil auf $W = 45{,}0\,^\circ\text{C}$ eingestellt und für 2 Minuten innerhalb eines Toleranzbands von $\pm 0{,}2\,^\circ\text{C}$ stabil gehalten werden.
-\begin{itemize}\setlength{\itemsep}{1pt}\setlength{\topsep}{1pt}
-    \item \textbf{Benötigte Einregelzeit bis zum dauerhaften Halten:} $\mathbf{t_{\text{manuell}} = 65\,\text{s}}$.
-    \item \textbf{Beobachtung:} Wegen der Verzugs- und Totzeit reagiert der Temperatursensor stark verzögert. Bei der Handeinstellung führt dies zu erheblichem Überschwingen ($>46\,^\circ\text{C}$) und oszillierenden Gegenkorrekturen, bevor der Toleranzbereich dauerhaft gehalten werden kann.
+Über den Spannungseinsteller am Netzteil sollte $W = 45{,}0\,^\circ\text{C}$ erreicht und für $2\,\text{min}$ innerhalb von $\pm 0{,}2\,^\circ\text{C}$ gehalten werden.
+\begin{itemize}
+    \item \textbf{Einregelzeit bis zum dauerhaften Halten:} $t_{\text{manuell}} = \textbf{65\,s}$.
+    \item \textbf{Beobachtung:} Durch Totzeit und thermische Trägheit reagiert die Anzeige verzögert, was bei Handsteuerung zu deutlichem Überschwingen ($>46\,^\circ\text{C}$) und mehrfachen Gegenkorrekturen führt.
 \end{itemize}
 
 \clearpage
 
 % ##############################################################################
-% SEITE 4: ZIEGLER-NICHOLS & GEREGELTER BETRIEB
+% SEITE 5: ZIEGLER-NICHOLS & GEREGELTER BETRIEB
 % ##############################################################################
 \section{Reglereinstellung nach Ziegler/Nichols}
 \subsection{Schwingungsversuch und grenzstabiler Bereich}
-Bei $U = 25\,\text{V}$ und Sollwert $W = 45\,^\circ\text{C}$ wurde das System im geschlossenen Regelkreis als reiner P-Regler betrieben und die Verstärkung $K_P$ sukzessive gesteigert (Tabelle~\ref{tab:zn_schwingung}).
+Bei $U = 25\,\text{V}$ und $W = 45\,^\circ\text{C}$ wurde im geschlossenen Kreis mit reinem P-Regler die Verstärkung $K_P$ schrittweise erhöht (Tabelle~\ref{tab:zn_schwingung}).
 
 \begin{table}[H]
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3pt}
-\caption{Ermittlung des Verhaltens an der Stabilitätsgrenze am reinen P-Regler ($W = 45\,^\circ\text{C}$).}
+\caption{Verhalten des P-geregelten Systems bei Annäherung an die Stabilitätsgrenze ($W = 45\,^\circ\text{C}$).}
 \label{tab:zn_schwingung}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l *{9}{c}@{}}
 \toprule
 \textbf{Einstellung $K_P$} & 1 & 2 & 4 & 8 & 16 & 32 & \textbf{40} & 50 & 64 \\
 \midrule
-\textbf{Temperatur [$^\circ$C]} & 28,3 & 31,0 & 34,5 & 38,1 & 41,1 & 43,0 & - & - & - \\
-\textbf{Systemverhalten} & stabil & stabil & stabil & stabil & Einschwingen & langes Einschwingen & Instabil (Dauerschwingung) & Instabil & Instabil \\
+\textbf{Temperatur [$^\circ$C]} & 28,3 & 31,0 & 34,5 & 38,1 & 41,1 & 43,0 & -- & -- & -- \\
+\textbf{Systemverhalten} & stabil & stabil & stabil & stabil & Einschwingen & langes Einschw. & Dauerschwingung & instabil & instabil \\
 \bottomrule
 \end{tabular*}
 \end{table}
 
-\textbf{Erklärung zum grenzstabilen Bereich:} In der realen Praxis lässt sich die kritische Verstärkung $K_{P,\text{krit}}$ nicht auf eine einzige mathematisch exakte Zahl festlegen, da die Strecke Nichtlinearitäten aufweist (Stellgrößenbegrenzung des PWM-FETs auf $0\dots 100\,\%$, nichtlineare Wärmeabstrahlung). Es existiert daher ein \textbf{grenzstabiler Übergangsbereich}: Bei $K_P = 40$ stellt sich eine stabile Dauerschwingung mit der Periodendauer $\mathbf{T_{\text{krit}} = 8{,}3\,\text{s}}$ ein. Bei $K_P \ge 50$ schlägt das System in dauerhafte Schwingungen an den Aussteuerungsgrenzen (ROT, Instabil) um.
+Durch Nichtlinearitäten der realen Strecke (Stellgrößenbegrenzung $0\dots 100\,\%$, nichtlineare Wärmeabgabe) entsteht ein \textbf{grenzstabiler Übergangsbereich} statt eines scharfen Punktes: Bei $K_{P,\text{krit}} = \textbf{40}$ stellt sich eine gleichmäßige Dauerschwingung mit $T_{\text{krit}} = \textbf{8,3\,s}$ ein; ab $K_P \ge 50$ schwingt der Regler bis an die Stellgrenzen.
 
 \subsection{Berechnete Reglerparameter nach Ziegler/Nichols}
-Unter Verwendung von $K_{P,\text{krit}} = 40$ und $T_{\text{krit}} = 8{,}3\,\text{s}$ wurden die Reglerparameter berechnet (Tabelle~\ref{tab:zn_parameter}).
-
 \begin{table}[H]
 \centering
 \small
-\caption{Berechnete Reglerparameter nach Ziegler/Nichols (Formeln und Werte mit = zusammengefasst).}
+\caption{Reglerparameter nach Ziegler/Nichols für $K_{P,\text{krit}} = 40$ und $T_{\text{krit}} = 8{,}3\,\text{s}$.}
 \label{tab:zn_parameter}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccc@{}}
 \toprule
 \textbf{Reglertyp} & \textbf{Proportionalbeiwert $K_P$} & \textbf{Nachstellzeit $T_N$} & \textbf{Vorhaltezeit $T_V$} \\
 \midrule
-\textbf{P-Regler}   & $K_P = 0{,}5 \cdot K_{P,\text{krit}} = \mathbf{20}$  & -- & -- \\
-\textbf{PI-Regler}  & $K_P = 0{,}45 \cdot K_{P,\text{krit}} = \mathbf{18}$ & $T_N = 0{,}85 \cdot T_{\text{krit}} = \mathbf{7{,}1\,\text{s}}$ & -- \\
-\textbf{PID-Regler} & $K_P = 0{,}6 \cdot K_{P,\text{krit}} = \mathbf{24}$  & $T_N = 0{,}5 \cdot T_{\text{krit}} = \mathbf{4{,}2\,\text{s}}$  & $T_V = 0{,}12 \cdot T_{\text{krit}} = \mathbf{1{,}0\,\text{s}}$ \\
+\textbf{P-Regler}   & $K_P = 0{,}5 \cdot K_{P,\text{krit}} = \textbf{20}$  & -- & -- \\
+\textbf{PI-Regler}  & $K_P = 0{,}45 \cdot K_{P,\text{krit}} = \textbf{18}$ & $T_N = 0{,}85 \cdot T_{\text{krit}} = \textbf{7,1\,s}$ & -- \\
+\textbf{PID-Regler} & $K_P = 0{,}6 \cdot K_{P,\text{krit}} = \textbf{24}$  & $T_N = 0{,}5 \cdot T_{\text{krit}} = \textbf{4,2\,s}$  & $T_V = 0{,}12 \cdot T_{\text{krit}} = \textbf{1,0\,s}$ \\
 \bottomrule
 \end{tabular*}
 \end{table}
 
 \section{Geregelter Betrieb im experimentellen Vergleich}
 \subsection{Messergebnisse des Führungs- und Störverhaltens}
-Untersucht wurden ein Sollwertsprung von $W_L = 35\,^\circ\text{C}$ auf $W_H = 45\,^\circ\text{C}$ ($U = 25\,\text{V}$) sowie eine Störung durch Absenkung der Heizspannung um $10\,\%$ auf $22{,}5\,\text{V}$.
+Untersucht wurden der Sollwertsprung von $W_L = 35\,^\circ\text{C}$ auf $W_H = 45\,^\circ\text{C}$ ($U = 25\,\text{V}$) sowie eine anschließende Spannungsreduktion um $10\,\%$ auf $22{,}5\,\text{V}$ (Tabelle~\ref{tab:reglervergleich}).
 
 \begin{table}[H]
 \centering
@@ -370,7 +358,7 @@ Untersucht wurden ein Sollwertsprung von $W_L = 35\,^\circ\text{C}$ auf $W_H = 4
 \textbf{Reglertyp} & \textbf{Endtemp. $T_{H25}$} & \textbf{Einschwingzeit $t_{\text{ein}}$} & \textbf{Temp. $T_{H22{,}5}$} & \textbf{Störfehler $F_{\text{abs}}$} & \textbf{Störfehler $F_{\text{rel}}$} \\
 \midrule
 \textbf{P-Regler}   & $42{,}3\,^\circ\text{C}$ & $25\,\text{s}$ & $41{,}5\,^\circ\text{C}$ & $0{,}8\,\text{K}$ & \textbf{3,9\,\%} \\
-\textbf{PI-Regler}  & $45{,}0\,^\circ\text{C}$ & $\mathbf{20\,\text{s}}$ & $45{,}0\,^\circ\text{C}$ & $0{,}0\,\text{K}$ & \textbf{0,0\,\%} \\
+\textbf{PI-Regler}  & $45{,}0\,^\circ\text{C}$ & \textbf{20\,s} & $45{,}0\,^\circ\text{C}$ & $0{,}0\,\text{K}$ & \textbf{0,0\,\%} \\
 \textbf{PID-Regler} & $45{,}0\,^\circ\text{C}$ & $22\,\text{s}$ & $45{,}0\,^\circ\text{C}$ & $0{,}0\,\text{K}$ & \textbf{0,0\,\%} \\
 \bottomrule
 \end{tabular*}
@@ -378,56 +366,45 @@ Untersucht wurden ein Sollwertsprung von $W_L = 35\,^\circ\text{C}$ auf $W_H = 4
 
 \subsection{Vergleichende Analyse der Reglerstrukturen}
 \begin{itemize}
-    \item \textbf{P-Regler:}
-    Zeigt stabiles Einschwingen ohne Überschwingen ($t_{\text{ein}} = 25\,\text{s}$), besitzt jedoch eine prinzipbedingte \textbf{bleibende Regelabweichung}:
-    \begin{equation}
-        e_{\infty} = W_H - T_{H25} = 45{,}0\,^\circ\text{C} - 42{,}3\,^\circ\text{C} = \mathbf{2{,}7\,\text{K}}
-    \end{equation}
-    Unter Störung sinkt die Temperatur weiter auf $41{,}5\,^\circ\text{C}$ ab ($F_{\text{rel}} = 3{,}9\,\%$). Ein reiner P-Regler benötigt zwingend eine Regelabweichung $e \neq 0$, um eine Stellgröße $Y = K_P \cdot e > 0$ aufrechtzuerhalten.
-    \item \textbf{PI-Regler:}
-    Der I-Anteil integriert die Regelabweichung auf, bis diese vollständig verschwindet ($e_{\infty} = 0$). Sowohl Führungsgröße als auch Störung werden \textbf{exakt ($0{,}0\,\text{K}$ Abweichung, $0{,}0\,\%$ Störfehler)} ausgeregelt. Mit $\mathbf{t_{\text{ein}} = 20\,\text{s}}$ ist der PI-Regler der dynamisch schnellste und robusteste Regler.
-    \item \textbf{PID-Regler:}
-    Erzielt ebenfalls stationäre Genauigkeit ($e_{\infty} = 0$). Allerdings tritt beim Sollwertsprung ein größeres Überschwingen auf, weshalb das finale Einregeln in das schmale Toleranzband von $\pm 0{,}2\,^\circ\text{C}$ mit $\mathbf{t_{\text{ein}} = 22\,\text{s}}$ etwas länger dauert. Bei besserer Einstellung, sollte der D-Anteil jedoch zu schnellerem Einschwingen führen.
+    \item \textbf{P-Regler:} Schwingt überschwingfrei ein ($t_{\text{ein}} = 25\,\text{s}$), weist jedoch eine prinzipbedingte \textbf{bleibende Regelabweichung} $e_{\infty} = W_H - T_{H25} = 45{,}0\,^\circ\text{C} - 42{,}3\,^\circ\text{C} = \textbf{2,7\,K}$ auf, da für eine Stellgröße $Y = K_P \cdot e > 0$ stets $e \neq 0$ gelten muss. Bei Störung sinkt die Temperatur auf $41{,}5\,^\circ\text{C}$ ($F_{\text{rel}} = 3{,}9\,\%$).
+    \item \textbf{PI-Regler:} Der I-Anteil integriert die Abweichung auf, bis $e_{\infty} = 0$ erreicht ist. Führungsgröße und Spannungsstörung werden \textbf{stationär exakt ($0{,}0\,\%$ Fehler)} ausgeregelt; mit $t_{\text{ein}} = \textbf{20\,s}$ erzielt er die kürzeste Einschwingzeit.
+    \item \textbf{PID-Regler:} Regelt stationär ebenfalls exakt ($e_{\infty} = 0$), zeigt beim Sollwertsprung jedoch deutliches Überschwingen, was den Verbleib im $\pm 0{,}2\,^\circ\text{C}$-Band auf $t_{\text{ein}} = \textbf{22\,s}$ verzögert. Bei angepasster Parametrierung ermöglicht der D-Anteil grundsätzlich ein schnelleres Einschwingen.
 \end{itemize}
 
 \clearpage
 
 % ##############################################################################
-% SEITE 5: GRAFISCHER REGLERVERGLEICH (GROSS) & DISKUSSION
+% SEITE 6: GRAFISCHER REGLERVERGLEICH & DISKUSSION
 % ##############################################################################
 \subsection{Grafischer Reglervergleich}
-Abbildung~\ref{fig:reglervergleich} zeigt die Gegenüberstellung der Einschwingzeiten und der stationären Störabweichungen.
-
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth,height=7.2cm,keepaspectratio]{reglervergleich.png}
-\caption{Vergleichsanalyse der Einschwingzeiten (Diagramm A) und der stationären Störabweichung (Diagramm B).}
+\includegraphics[width=\textwidth,height=7.0cm,keepaspectratio]{reglervergleich.png}
+\caption{Gegenüberstellung der Einschwingzeiten (Diagramm A) und der stationären Störabweichung (Diagramm B).}
 \label{fig:reglervergleich}
 \end{figure}
 
-\subsection{Kritische Reflexion: Warum ist der PI-Regler hier schneller als der PID-Regler?}
-In der linearen Regelungstheorie gilt die Faustformel, dass ein D-Anteil über Phasenvorhalt schnelleres Einschwingen ermöglicht. Die im Versuch dokumentierte Umkehrung ($t_{\text{ein, PI}} = 20\,\text{s} < t_{\text{ein, PID}} = 22\,\text{s}$) basiert auf zwei systemischen Faktoren:
+\subsection{Kritische Reflexion: Warum war der PI-Regler schneller als der PID-Regler?}
+Theoretisch beschleunigt ein D-Anteil über seinen Phasenvorhalt den Regelkreis. Dass im Versuch $t_{\text{ein,PI}} = 20\,\text{s} < t_{\text{ein,PID}} = 22\,\text{s}$ gemessen wurde, hat zwei Ursachen:
 \begin{enumerate}
-    \item \textbf{Aggressivität der Ziegler-Nichols-Parametrierung:} Ziegler-Nichols strebt klassisch ein Einschwingverhalten mit ca. $20\,\%$ Überschwingen an. Beim PID-Regler führt die Kombination aus höherem $K_P = 24$ (vs. $K_{P,\text{PI}} = 18$) und dem differenzierenden Anteil zu einem massiven anfänglichen Stellgrößenstoß, der die Temperatur über das Ziel schießen lässt.
-    \item \textbf{Kriterium des schmalen Toleranzbands ($\pm 0{,}2\,^\circ\text{C}$):} Der PI-Regler nähert sich aperiodisch von unten an und verbleibt sofort dauerhaft im Band. Der PID-Regler erreicht die $45\,^\circ\text{C}$ zwar früher, verlässt den engen Korridor aber durch das Überschwingen wieder und benötigt Nachschwingzeit zum Wiedereintritt.
+    \item \textbf{Aggressive Ziegler/Nichols-Einstellung:} Die Einstellregeln sind auf geringe Dämpfung (ca. $20\,\%$ Überschwingen) ausgelegt. Das höhere $K_P = 24$ (statt $18$ beim PI) samt D-Stoß beim Sollwertsprung führt zu kräftigem Überschwingen.
+    \item \textbf{Enges Toleranzband ($\pm 0{,}2\,^\circ\text{C}$):} Der PI-Regler läuft aperiodisch von unten in das Band ein und verlässt es nicht mehr. Der PID-Regler erreicht $45\,^\circ\text{C}$ zwar früher, durchschreitet das schmale Band jedoch nach oben und benötigt Zusatzzeit zum Abklingen.
 \end{enumerate}
 
-\subsection{Gegenüberstellung: Steuerung vs. Manuell vs. Regelungsalgorithmus}
-Tabelle~\ref{tab:systemvergleich} stellt die Gesamtergebnisse des Experiments vergleichend gegenüber.
-
+\subsection{Gegenüberstellung: Steuerung, Handbetrieb und Regelung}
 \begin{table}[H]
 \centering
 \footnotesize
-\caption{Systemvergleich zwischen ungeregeltem, manuellem und geregeltem Betrieb.}
+\caption{Gesamtvergleich zwischen ungeregeltem, manuellem und geregeltem Betrieb.}
 \label{tab:systemvergleich}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}p{3.2cm}cccc@{}}
 \toprule
 \textbf{Kriterium} & \textbf{Ungeregelt (Steuerung)} & \textbf{Manuelle Regelung} & \textbf{P-Regler} & \textbf{PI-Regler (Optimum)} \\
 \midrule
-\textbf{Führungsfehler} & Groß (Arbeitspunkt) & $\pm 0{,}2\,\text{K}$ (nach Einregeln) & $2{,}7\,\text{K}$ bleibend & \textbf{0,0 K} \\
-\textbf{Einschwingzeit} & $>180\,\text{s}$ ($90\,\%$) & $65\,\text{s}$ & $25\,\text{s}$ & \textbf{20 s} \\
+\textbf{Führungsfehler} & Arbeitspunktabhängig & $\pm 0{,}2\,\text{K}$ (nach Einregeln) & $2{,}7\,\text{K}$ bleibend & \textbf{0,0 K} \\
+\textbf{Einschwingzeit} & $t_{90\%} = 180\,\text{s}$ & $65\,\text{s}$ & $25\,\text{s}$ & \textbf{20 s} \\
 \textbf{Störfehler ($-10\,\%$)} & $F_{\text{rel}} = 15{,}5\,\%$ & Manuelles Nachstellen & $F_{\text{rel}} = 3{,}9\,\%$ & \textbf{0,0 \%} \\
-\textbf{Stabilität / Dynamik} & Aperiodisch träge & Hohe Oszillationen & Aperiodisch stabil & \textbf{Aperiodisch optimal} \\
+\textbf{Dynamik} & Aperiodisch träge & Stark schwingend & Aperiodisch stabil & \textbf{Aperiodisch schnell} \\
 \bottomrule
 \end{tabular*}
 \end{table}
@@ -435,37 +412,34 @@ Tabelle~\ref{tab:systemvergleich} stellt die Gesamtergebnisse des Experiments ve
 \clearpage
 
 % ##############################################################################
-% SEITE 6: SYNTHESE UND WISSENSCHAFTLICHER ERKENNTNISGEWINN (KOMPAKT & PRÄGNANT)
+% SEITE 7: SYNTHESE, WOK-ANALYSE & TESTFRAGEN
 % ##############################################################################
 \section{Synthese und wissenschaftlicher Erkenntnisgewinn}
-Dieser Abschnitt bündelt die zentralen wissenschaftlichen Erkenntnisse des Versuchs V1 und beantwortet die regelungstechnischen Testfragen prägnant.
-
 \subsection{Systemtheoretische Pol-Nullstellen-Analyse (PI vs. PID)}
-Die Ursache für die dynamischen Unterschiede zwischen PI- und PID-Regelung lässt sich anhand der getrennten Pol-Nullstellen-Diagramme in der komplexen $s$-Ebene deuten (Abbildung~\ref{fig:wok_analyse}):
+Anhand des dominanten $\text{PT}_1$-Streckenmodells (Pol $p_S < 0$) veranschaulichen die mittels MATLAB berechneten Wurzelortskurven den strukturellen Dynamikunterschied (Abbildung~\ref{fig:wok_analyse}):
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth,height=5.7cm,keepaspectratio]{wok_analyse.png}
-\caption{Getrennte Pol-Nullstellen-Diagramme und Wurzelortskurven für PI- und PID-Regelung im direkten Vergleich. Der D-Vorhalt zieht die dominanten Pole weit in die linke $s$-Halbebene ($\sigma < -0{,}7\,\text{s}^{-1}$), was das System theoretisch beschleunigt ($\tau \sim 1/|\sigma|$).}
+\includegraphics[width=\textwidth,height=6.4cm,keepaspectratio]{wok_analyse.png}
+\caption{Mit MATLAB (\texttt{rlocus}) berechnete Wurzelortskurven für PI- und PID-Regelung am dominanten $\text{PT}_1$-Streckenmodell.}
 \label{fig:wok_analyse}
 \end{figure}
 
-\begin{itemize}\setlength{\itemsep}{1.5pt}\setlength{\topsep}{1.5pt}
-    \item \textbf{PI-Regler (Aperiodisch):} Der Integratorpol im Ursprung ($s = 0$) eliminiert die stationäre Regelabweichung vollständig ($e_{\infty} = 0$). Die Regler-Nullstelle bei $s = -1/T_N$ kompensiert die Streckendynamik so, dass die dominanten Pole rein reell bleiben. Die Folge ist ein \textbf{aperiodisches Einschwingen ohne jegliches Überschwingen}, allerdings bleibt die Dynamik an die reelle Achse gebunden.
-    \item \textbf{PID-Regler (D-Anteil macht schneller!):} Der Vorhalt $T_V$ schaltet zwei Nullstellen auf. Diese ziehen die Wurzelortskurve und die dominanten geschlossenen Pole \textbf{wesentlich weiter nach links} ($|\sigma| > 0{,}7\,\text{s}^{-1}$). Da die Abklingzeitkonstante umgekehrt proportional zum Betrag des Realteils ist ($\tau \approx 1/|\sigma|$), \textbf{reagiert der PID-Regler theoretisch deutlich schneller} als der PI-Regler. Zugleich erzeugen die konjugiert-komplexen Pole das bei Ziegler/Nichols beobachtete Überschwingen.
+\begin{itemize}\setlength{\itemsep}{2pt}
+    \item \textbf{PI-Regler (Aperiodisch, begrenzte Dynamik):} Der Reglerpol bei $s = 0$ sichert $e_{\infty} = 0$. Beide WOK-Äste ($0 \to z_{\text{PI}}$ sowie $p_S \to -\infty$) verlaufen rein reell, was ein \textbf{überschwingfreies, aperiodisches Einschwingen} bewirkt. Da jedoch ein Polast zwischen $0$ und $z_{\text{PI}} = -1/T_N$ gebunden bleibt ($|\sigma| \le |z_{\text{PI}}|$), ist der PI-Regler theoretisch langsamer als ein hochverstärkter P-Regler ($s < p_S$, jedoch $e_{\infty} \neq 0$).
+    \item \textbf{PID-Regler (D-Vorhalt beschleunigt):} Der Vorhalt $T_V$ fügt zwei reelle Nullstellen $z_{\text{PID1,2}} < p_S$ hinzu. Die Pole verzweigen auf eine komplexe Kreisbahn und münden weit links zwischen $z_{\text{PID1}}$ und $z_{\text{PID2}}$ wieder auf die reelle Achse ein. Durch den deutlich größeren Betrag $|\sigma|$ sinkt die Abklingzeitkonstante ($\tau \approx 1/|\sigma|$), sodass der \textbf{PID-Regler theoretisch schneller} einschwingt; die konjugiert-komplexen Pole auf dem Kreisbogen bewirken zugleich die Schwingneigung bei Ziegler/Nichols.
 \end{itemize}
 
-\subsection{Beantwortung der Test- und Kolloquiumsfragen}
-\begin{enumerate}
-    \item \textbf{Einsatzgrund für einen I-Anteil:} Besitzt bei Gleichgrößen ($\omega = 0$) unendliche Verstärkung ($G_I(0) \rightarrow \infty$). Beseitigt bleibende Regelabweichungen bei Führungs- und Störgrößensprüngen vollständig ($e_{\infty} = 0$).
-    \item \textbf{Einsatzgrund für einen D-Anteil:} Reagiert proportional zur Änderungsgeschwindigkeit $\mathrm{d}e/\mathrm{d}t$. Wirkt dämpfend und prädiktiv (Phasenvorhalt) und stabilisiert träge Strecken.
-    \item \textbf{Vorgehen bei Ziegler-Nichols (Schwingungsmethode):}
-    1.~Reinen P-Betrieb wählen ($T_N \rightarrow \infty, T_V = 0$). 2.~$K_P$ steigern bis zur Dauerschwingung ($K_{P,\text{krit}}$). 3.~Periodendauer $T_{\text{krit}}$ messen. 4.~Parameter nach Einstellregeln berechnen ($K_P = 0{,}45 \cdot K_{P,\text{krit}}$, $T_N = 0{,}85 \cdot T_{\text{krit}}$).
-    \item \textbf{Vorteil der PWM gegenüber linearer Stellgliedsteuerung:}
-    Bei analoger Längsregelung entsteht extreme thermische Verlustleistung $P_V = (U_{\text{Netz}} - U_{\text{Last}}) \cdot I$. Bei PWM arbeitet der FET rein als Schalter (voll gesperrt $I=0$ oder voll durchgeschaltet $U_{DS} \approx 0$) $\implies$ Wirkungsgrad nahe $100\,\%$, minimale Verlustwärme.
+\subsection{Beantwortung der Testfragen}
+\begin{enumerate}\setlength{\itemsep}{2pt}
+    \item \textbf{Grund für einen I-Anteil:} Besitzt für $\omega = 0$ unendliche Verstärkung ($|G_I(0)| \to \infty$) und beseitigt bleibende Regelabweichungen bei Führungs- und Störgrößensprüngen vollständig ($e_{\infty} = 0$).
+    \item \textbf{Grund für einen D-Anteil:} Reagiert proportional zur Änderungsrate $\mathrm{d}e/\mathrm{d}t$, erzeugt Phasenvorhalt, wirkt dämpfend und beschleunigt träge Strecken.
+    \item \textbf{PI-Auslegung nach Ziegler/Nichols:} 1.~Reinen P-Betrieb wählen ($T_N \to \infty, T_V = 0$). 2.~$K_P$ erhöhen bis zur Dauerschwingung an der Stabilitätsgrenze ($K_{P,\text{krit}}$). 3.~Periodendauer $T_{\text{krit}}$ messen. 4.~Parameter einstellen: $K_P = 0{,}45 \cdot K_{P,\text{krit}}$, $T_N = 0{,}85 \cdot T_{\text{krit}}$.
+    \item \textbf{Prinzip und Vorteil der PWM:} Die Heizleistung wird über das Tastverhältnis ($0\dots 100\,\%$) eines schnell schaltenden FETs gestellt. Im Gegensatz zum Linearbetrieb ($P_V = (U_{\text{Netz}} - U_{\text{Last}}) \cdot I$) ist der FET stets gesperrt ($I = 0$) oder voll leitend ($U_{DS} \approx 0$), was minimale Verlustwärme und nahezu $100\,\%$ Wirkungsgrad ergibt.
 \end{enumerate}
 
-\subsection{Zusammenfassendes Fazit}
-Der Versuch belegt die deutliche Überlegenheit des automatischen Regelkreises gegenüber manueller Steuerung ($65\,\text{s}$ Einregelzeit bei Handbetrieb). Für die thermische Rohrstrecke erwies sich der \textbf{PI-Regler} mit $t_{\text{ein}} = 20\,\text{s}$, aperiodischer Dämpfung und $0\,\%$ stationärer Abweichung als das praktische Optimum.
+\subsection{Erkenntnisgewinn (Fazit)}
+Gegenüber Steuerung ($F_{\text{rel}} = 15{,}5\,\%$) und manuellem Eingriff ($t_{\text{manuell}} = 65\,\text{s}$) regelt der geschlossene Kreis die Totzeitstrecke dreimal schneller und störungsunempfindlich ein. Während der P-Regler eine bleibende Abweichung ($2{,}7\,\text{K}$) hinterlässt und der nach Ziegler/Nichols parametrierte PID-Regler überschwingt ($22\,\text{s}$), stellt der \textbf{PI-Regler} mit $t_{\text{ein}} = 20\,\text{s}$ und $0{,}0\,\%$ stationärem Fehler das praktische Optimum dar.
 
+\label{doc:lastpage}
 \end{document}

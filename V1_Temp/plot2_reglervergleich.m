@@ -62,7 +62,8 @@ b2.CData = farben_stoer;
 
 for i = 1:length(fehler_stoer_rel)
     if fehler_stoer_rel(i) > 0
-        text(i, fehler_stoer_rel(i) + 0.6, sprintf('%.1f %%', fehler_stoer_rel(i)), ...
+        lbl_str = strrep(sprintf('%.1f %%', fehler_stoer_rel(i)), '.', ',');
+        text(i, fehler_stoer_rel(i) + 0.6, lbl_str, ...
              'HorizontalAlignment', 'center', 'FontSize', 11, 'FontWeight', 'bold', 'Color', 'k');
     else
         text(i, 0.9, '0,0 %', ...
