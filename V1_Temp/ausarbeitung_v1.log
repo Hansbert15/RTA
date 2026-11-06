@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.21.0 (MiKTeX 25.3) (format=lualatex 2026.10.19)  3 NOV 2026 17:13
+This is LuaHBTeX, Version 1.21.0 (MiKTeX 25.3) (format=lualatex 2026.10.19)  6 NOV 2026 14:41
  restricted system commands enabled.
 **ausarbeitung_v1.tex
 (./ausarbeitung_v1.tex
@@ -2182,36 +2182,7 @@ Package scrlayer Info: patching LaTeX kernel macro \pagestyle on input line 217
 Package scrlayer-scrpage Info: Makeing stand-alone element `pagehead' from
 (scrlayer-scrpage)             alias to `pageheadfoot' on input line 1106.
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 56.
-
-
-Package scrlayer-scrpage Warning: Command deprecated!
-(scrlayer-scrpage)                Usage of `\setheadtopline', `\setheadsepline'
-,
-(scrlayer-scrpage)                `\setfootsepline', and `\setfootbotline'
-(scrlayer-scrpage)                became deprecated with scrlayer-scrpage.
-(scrlayer-scrpage)                You should use KOMA-Script options
-(scrlayer-scrpage)                `headsepline', `headtopline', `footsepline',
-(scrlayer-scrpage)                or `footbotline' with values
-(scrlayer-scrpage)                `<line thickness>:<line length>' to setup
-(scrlayer-scrpage)                the line length and thickness, and
-(scrlayer-scrpage)                `\setkomafont' or `\addtokomafont' to
-(scrlayer-scrpage)                setup the colour on input line 84.
-
-
-Package scrlayer-scrpage Warning: Command deprecated!
-(scrlayer-scrpage)                Usage of `\setheadtopline', `\setheadsepline'
-,
-(scrlayer-scrpage)                `\setfootsepline', and `\setfootbotline'
-(scrlayer-scrpage)                became deprecated with scrlayer-scrpage.
-(scrlayer-scrpage)                You should use KOMA-Script options
-(scrlayer-scrpage)                `headsepline', `headtopline', `footsepline',
-(scrlayer-scrpage)                or `footbotline' with values
-(scrlayer-scrpage)                `<line thickness>:<line length>' to setup
-(scrlayer-scrpage)                the line length and thickness, and
-(scrlayer-scrpage)                `\setkomafont' or `\addtokomafont' to
-(scrlayer-scrpage)                setup the colour on input line 85.
-
+Package hyperref Info: Option `colorlinks' set `true' on input line 61.
 Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           Using `bookmark' together with `hyperref' is recommended,
 (scrartcl)           because of handling of possible bookmark level gaps.
@@ -2219,7 +2190,8 @@ Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           `bookmarkpackage=false' before \begin{document} and
 (scrartcl)           you can avoid this message adding:
 (scrartcl)             \usepackage{bookmark}
-(scrartcl)           before \begin{document} on input line 116.
+(scrartcl)           before \begin{document} on input line 119.
+
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2026-05-21 v1.32 PDF bookmarks (HO)
 
@@ -2228,33 +2200,33 @@ File: bkm-luatex.def 2026-05-21 v1.32 bookmark driver for luaTeX (HO)
 \BKM@id=\count350
 ))
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
-(Font)              scaled to size 9.10004pt on input line 116.
+(Font)              scaled to size 9.10004pt on input line 119.
  (./ausarbeitung_v1.aux
 Package babel Info: 'ngerman' activates 'ngerman' shorthands.
 (babel)             Reported  on input line 10.
 )
 \openout1 = ausarbeitung_v1.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 116.
-LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 119.
+LaTeX Font Info:    ... okay on input line 119.
 
 (C:/Users/johan/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mk
 ii
@@ -2344,30 +2316,30 @@ Package unicode-math Warning: I'm going to overwrite the following commands
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 116.
+Package hyperref Info: Link coloring ON on input line 119.
 \g__cctab_next_cctab=\catcodetable17
 <othr-logo_flat.pdf, id=6, 1116.17pt x 189.70876pt>
 File: othr-logo_flat.pdf Graphic file (type pdf)
 <use othr-logo_flat.pdf>
-Package luatex.def Info: othr-logo_flat.pdf  used on input line 126.
+Package luatex.def Info: othr-logo_flat.pdf  used on input line 129.
 (luatex.def)             Requested size: 267.83517pt x 45.5244pt.
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
-(Font)              scaled to size 11.83005pt on input line 129.
+(Font)              scaled to size 11.83005pt on input line 132.
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
-(Font)              scaled to size 11.83005pt on input line 129.
+(Font)              scaled to size 11.83005pt on input line 132.
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
-(Font)              scaled to size 16.38007pt on input line 136.
+(Font)              scaled to size 16.38007pt on input line 139.
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
-(Font)              scaled to size 16.38007pt on input line 136.
+(Font)              scaled to size 16.38007pt on input line 139.
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
-(Font)              scaled to size 9.55504pt on input line 148.
-LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 150.
+(Font)              scaled to size 9.55504pt on input line 151.
+LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 153.
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
-(Font)              scaled to size 9.55504pt on input line 150.
+(Font)              scaled to size 9.55504pt on input line 153.
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
-(Font)              scaled to size 13.10403pt on input line 175.
+(Font)              scaled to size 13.10403pt on input line 178.
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
-(Font)              scaled to size 13.10403pt on input line 175.
+(Font)              scaled to size 13.10403pt on input line 178.
 (./ausarbeitung_v1.toc
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
 (Font)              scaled to size 9.10004pt on input line 2.
@@ -2379,61 +2351,61 @@ LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
 \tf@toc=\write4
 
 \openout4 = ausarbeitung_v1.toc
-LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
-(Font)              scaled to size 7.28003pt on input line 181.
-
-
-[1
-
-{C:/Users/johan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}<C:/Users/johan
-/Lokal/localtexmf/tex/latex/othr-ci/othr-logo_flat.pdf>]
-LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
-(Font)              scaled to size 10.92004pt on input line 189.
-LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
-(Font)              scaled to size 6.37003pt on input line 216.
-LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
-(Font)              scaled to size 8.19003pt on input line 226.
-LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
-(Font)              scaled to size 8.19003pt on input line 226.
 
 
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/sl' in size <10> not availab
 le
 (Font)              Font shape `TU/DejaVuSans(0)/m/it' tried instead on input l
-ine 230.
+ine 181.
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/it' will be
-(Font)              scaled to size 9.10004pt on input line 230.
+(Font)              scaled to size 9.10004pt on input line 181.
+[1
+
+{C:/Users/johan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}<C:/Users/johan
+/Lokal/localtexmf/tex/latex/othr-ci/othr-logo_flat.pdf>]
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
+(Font)              scaled to size 10.92004pt on input line 187.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
+(Font)              scaled to size 7.28003pt on input line 205.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
+(Font)              scaled to size 6.37003pt on input line 214.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
+(Font)              scaled to size 8.19003pt on input line 224.
+LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
+(Font)              scaled to size 8.19003pt on input line 224.
+
+
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/sl' in size <9> not availabl
 e
 (Font)              Font shape `TU/DejaVuSans(0)/m/it' tried instead on input l
-ine 230.
+ine 228.
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/it' will be
-(Font)              scaled to size 8.19003pt on input line 230.
+(Font)              scaled to size 8.19003pt on input line 228.
 [2
 
 ]
 <sprungantwort_auswertung.png, id=71, 785.8158pt x 441.5697pt>
 File: sprungantwort_auswertung.png Graphic file (type png)
 <use sprungantwort_auswertung.png>
-Package luatex.def Info: sprungantwort_auswertung.png  used on input line 241.
+Package luatex.def Info: sprungantwort_auswertung.png  used on input line 239.
 (luatex.def)             Requested size: 495.07857pt x 278.19711pt.
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
-(Font)              scaled to size 5.46002pt on input line 242.
+(Font)              scaled to size 5.46002pt on input line 240.
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/m/n' will be
-(Font)              scaled to size 4.55002pt on input line 242.
+(Font)              scaled to size 4.55002pt on input line 240.
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
-(Font)              scaled to size 6.37003pt on input line 255.
+(Font)              scaled to size 6.37003pt on input line 253.
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
-(Font)              scaled to size 4.55002pt on input line 261.
+(Font)              scaled to size 4.55002pt on input line 259.
 
 
 [3
 
 <./sprungantwort_auswertung.png>]
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
-(Font)              scaled to size 7.28003pt on input line 273.
+(Font)              scaled to size 7.28003pt on input line 271.
 LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
-(Font)              scaled to size 5.46002pt on input line 273.
+(Font)              scaled to size 5.46002pt on input line 271.
 
 
 [4
@@ -2446,7 +2418,7 @@ LaTeX Font Info:    Font shape `TU/DejaVuSans(0)/b/n' will be
 <reglervergleich.png, id=98, 674.52pt x 345.2097pt>
 File: reglervergleich.png Graphic file (type png)
 <use reglervergleich.png>
-Package luatex.def Info: reglervergleich.png  used on input line 382.
+Package luatex.def Info: reglervergleich.png  used on input line 380.
 (luatex.def)             Requested size: 389.1634pt x 199.16826pt.
 
 
@@ -2456,12 +2428,12 @@ Package luatex.def Info: reglervergleich.png  used on input line 382.
 <wok_analyse.png, id=108, 820.5054pt x 302.3295pt>
 File: wok_analyse.png Graphic file (type png)
 <use wok_analyse.png>
-Package luatex.def Info: wok_analyse.png  used on input line 423.
+Package luatex.def Info: wok_analyse.png  used on input line 421.
 (luatex.def)             Requested size: 494.19754pt x 182.09567pt.
 LaTeX Font Info:    Font shape `TU/DejaVuSansMono(0)/m/n' will be
-(Font)              scaled to size 8.19003pt on input line 424.
+(Font)              scaled to size 8.19003pt on input line 422.
 
-Underfull \hbox (badness 1248) in paragraph at lines 424--424
+Underfull \hbox (badness 1248) in paragraph at lines 422--422
 [][]|\TU/DejaVuSans(0)/m/n/9 Mit MAT-LAB (\TU/DejaVuSansMono(0)/m/n/9 rlocus\TU
 /DejaVuSans(0)/m/n/9 ) be-rech-ne-te Wur-zel-orts-kur-ven für PI- und PID-Regel
 ung am do-mi-nan-ten $[][]$-
@@ -2479,13 +2451,13 @@ L3 programming layer <2025-03-26>
 )
 
 Here is how much of LuaTeX's memory you used:
- 42976 strings out of 471941
+ 42989 strings out of 471941
  100000,1977958 words of node,token memory allocated
  645 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 26 attribute, 66 glue_spec
 , 15 attribute_list, 2 write nodes
-   avail lists: 2:2275,3:789,4:265,5:474,6:133,7:7641,8:100,9:1035,10:13,11:642
- 68549 multiletter control sequences out of 65536+600000
+   avail lists: 2:2278,3:789,4:301,5:453,6:202,7:7641,8:100,9:1238,10:13,11:620
+ 68562 multiletter control sequences out of 65536+600000
  192 fonts using 108243747 bytes
  141i,22n,154p,11239b,2768s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/truetype/public/dejavu/dejav
@@ -2498,7 +2470,7 @@ ata/Local/Programs/MiKTeX/fonts/truetype/public/dejavu/dejavusans-oblique.ttf><C
 ath-regular.otf><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/truetype/pub
 lic/dejavu/dejavusans.ttf><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/tr
 uetype/public/dejavu/dejavusans-bold.ttf>
-Output written on ausarbeitung_v1.pdf (7 pages, 608493 bytes).
+Output written on ausarbeitung_v1.pdf (7 pages, 607947 bytes).
 
 PDF statistics: 240 PDF objects out of 1000 (max. 8388607)
  50 named destinations out of 1000 (max. 131072)

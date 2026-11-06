@@ -17,8 +17,8 @@
 \contentsline {subsection}{\numberline {5.3}Grafischer Reglervergleich}{6}{subsection.5.3}%
 \contentsline {subsection}{\numberline {5.4}Kritische Reflexion: Warum war der PI-Regler schneller als der PID-Regler?}{6}{subsection.5.4}%
 \contentsline {subsection}{\numberline {5.5}Gegenüberstellung: Steuerung, Handbetrieb und Regelung}{6}{subsection.5.5}%
-\contentsline {section}{\numberline {6}Synthese und wissenschaftlicher Erkenntnisgewinn}{7}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Systemtheoretische Pol-Nullstellen-Analyse (PI vs. PID)}{7}{subsection.6.1}%
+\contentsline {section}{\numberline {6}Synthese und Erkenntnisgewinn}{7}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Wurzelortskurven (PI vs. PID)}{7}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Beantwortung der Testfragen}{7}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Erkenntnisgewinn (Fazit)}{7}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.3}Fazit}{7}{subsection.6.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

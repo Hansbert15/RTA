@@ -25,7 +25,11 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows.meta,positioning,calc}
 \usepackage{hyperref}
-\usepackage[headsepline,footsepline]{scrlayer-scrpage}
+\usepackage[
+    headsepline=0.4pt,
+    footsepline=0.4pt,
+    plainfootsepline=true
+]{scrlayer-scrpage}
 
 % Seitengeometrie
 \geometry{
@@ -38,6 +42,7 @@
     headsep=5mm,
     footskip=8mm
 }
+\setlength{\footheight}{20pt}
 
 % OTH-Farben
 \definecolor{primaryBlue}{RGB}{0, 75, 135}
@@ -80,9 +85,7 @@
 \clearpairofpagestyles
 \ihead{\textsf{\small Regelungstechnik Anwendungen $\cdot$ Versuch V1: Temperaturregelung}}
 \ohead{\textsf{\small Gruppe 5}}
-\cfoot{\textsf{\thepage\ von \pageref*{doc:lastpage}}}
-\setheadsepline{0.4pt}
-\setfootsepline{0.4pt}
+\cfoot[\raisebox{-2.5mm}{\textsf{\thepage\ von \pageref*{doc:lastpage}}}]{\raisebox{-2.5mm}{\textsf{\thepage\ von \pageref*{doc:lastpage}}}}
 \pagestyle{scrheadings}
 
 % Absatzformatierung
@@ -118,7 +121,7 @@
 % ##############################################################################
 % SEITE 1: DECKBLATT NACH VORLAGE DER VERSUCHSANLEITUNG
 % ##############################################################################
-\thispagestyle{empty}
+\thispagestyle{plain}
 
 \noindent
 \begin{minipage}[c]{0.55\textwidth}
@@ -174,11 +177,6 @@ Teilnehmer:\,\underline{\makebox[5.6cm][l]{\strut\hspace{1.5mm}\textbf{Johannes 
 \hypersetup{linkcolor=black}
 \tableofcontents
 \endgroup
-
-\vfill
-\noindent
-\rule{\textwidth}{0.4pt}\\[1mm]
-{\footnotesize\textsf{PRTA\_V1 Temperaturregelung.doc} \hfill \textsf{C. Brüdigam / Ausarbeitung Gruppe 5} \hfill \textsf{Seite 1 / \pageref*{doc:lastpage}}}
 
 \clearpage
 
@@ -388,7 +386,7 @@ Untersucht wurden der Sollwertsprung von $W_L = 35\,^\circ\text{C}$ auf $W_H = 4
 Theoretisch beschleunigt ein D-Anteil über seinen Phasenvorhalt den Regelkreis. Dass im Versuch $t_{\text{ein,PI}} = 20\,\text{s} < t_{\text{ein,PID}} = 22\,\text{s}$ gemessen wurde, hat zwei Ursachen:
 \begin{enumerate}
     \item \textbf{Aggressive Ziegler/Nichols-Einstellung:} Die Einstellregeln sind auf geringe Dämpfung (ca. $20\,\%$ Überschwingen) ausgelegt. Das höhere $K_P = 24$ (statt $18$ beim PI) samt D-Stoß beim Sollwertsprung führt zu kräftigem Überschwingen.
-    \item \textbf{Enges Toleranzband ($\pm 0{,}2\,^\circ\text{C}$):} Der PI-Regler läuft aperiodisch von unten in das Band ein und verlässt es nicht mehr. Der PID-Regler erreicht $45\,^\circ\text{C}$ zwar früher, durchschreitet das schmale Band jedoch nach oben und benötigt Zusatzzeit zum Abklingen.
+    \item \textbf{Enges Toleranzband ($\pm 0{,}2\,^\circ\text{C}$):} Der PI-Regler läuft aperiodisch von unten in das Band ein und schwingt nur minimal über. Der PID-Regler erreicht $45\,^\circ\text{C}$ zwar früher, durchschreitet das schmale Band jedoch nach oben und benötigt Zusatzzeit zum Abklingen.
 \end{enumerate}
 
 \subsection{Gegenüberstellung: Steuerung, Handbetrieb und Regelung}
@@ -414,8 +412,8 @@ Theoretisch beschleunigt ein D-Anteil über seinen Phasenvorhalt den Regelkreis.
 % ##############################################################################
 % SEITE 7: SYNTHESE, WOK-ANALYSE & TESTFRAGEN
 % ##############################################################################
-\section{Synthese und wissenschaftlicher Erkenntnisgewinn}
-\subsection{Systemtheoretische Pol-Nullstellen-Analyse (PI vs. PID)}
+\section{Synthese und Erkenntnisgewinn}
+\subsection{Wurzelortskurven (PI vs. PID)}
 Anhand des dominanten $\text{PT}_1$-Streckenmodells (Pol $p_S < 0$) veranschaulichen die mittels MATLAB berechneten Wurzelortskurven den strukturellen Dynamikunterschied (Abbildung~\ref{fig:wok_analyse}):
 
 \begin{figure}[H]
@@ -438,7 +436,7 @@ Anhand des dominanten $\text{PT}_1$-Streckenmodells (Pol $p_S < 0$) veranschauli
     \item \textbf{Prinzip und Vorteil der PWM:} Die Heizleistung wird über das Tastverhältnis ($0\dots 100\,\%$) eines schnell schaltenden FETs gestellt. Im Gegensatz zum Linearbetrieb ($P_V = (U_{\text{Netz}} - U_{\text{Last}}) \cdot I$) ist der FET stets gesperrt ($I = 0$) oder voll leitend ($U_{DS} \approx 0$), was minimale Verlustwärme und nahezu $100\,\%$ Wirkungsgrad ergibt.
 \end{enumerate}
 
-\subsection{Erkenntnisgewinn (Fazit)}
+\subsection{Fazit}
 Gegenüber Steuerung ($F_{\text{rel}} = 15{,}5\,\%$) und manuellem Eingriff ($t_{\text{manuell}} = 65\,\text{s}$) regelt der geschlossene Kreis die Totzeitstrecke dreimal schneller und störungsunempfindlich ein. Während der P-Regler eine bleibende Abweichung ($2{,}7\,\text{K}$) hinterlässt und der nach Ziegler/Nichols parametrierte PID-Regler überschwingt ($22\,\text{s}$), stellt der \textbf{PI-Regler} mit $t_{\text{ein}} = 20\,\text{s}$ und $0{,}0\,\%$ stationärem Fehler das praktische Optimum dar.
 
 \label{doc:lastpage}
