@@ -1,7 +1,10 @@
 %% Build clean DK_V3.slx with manual orthogonal line routing, export block diagram image, and run PIDT1 simulations
 clear; close all; clc;
 
-script_dir = 'c:\Users\johan\Lokal\RTA\RTA\V3_Lagerregelung';
+script_dir = fileparts(mfilename('fullpath'));
+if isempty(script_dir)
+    script_dir = pwd;
+end
 cd(script_dir);
 
 if isfile('DK_V3.slx.autosave'), delete('DK_V3.slx.autosave'); end

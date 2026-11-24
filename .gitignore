@@ -1,2 +1,11 @@
 *.synctex.gz
 *.synctex(busy)
+*.aux
+*.log
+*.out
+*.toc
+*.asv
+*.bak
+*.autosave
+*.slxc
+slprj/
