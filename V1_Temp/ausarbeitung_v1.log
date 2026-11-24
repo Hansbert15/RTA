@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.21.0 (MiKTeX 25.3) (format=lualatex 2026.10.19)  6 NOV 2026 14:41
+This is LuaHBTeX, Version 1.21.0 (MiKTeX 25.3) (format=lualatex 2026.10.19)  8 NOV 2026 21:08
  restricted system commands enabled.
 **ausarbeitung_v1.tex
 (./ausarbeitung_v1.tex
@@ -2458,7 +2458,7 @@ Here is how much of LuaTeX's memory you used:
 , 15 attribute_list, 2 write nodes
    avail lists: 2:2278,3:789,4:301,5:453,6:202,7:7641,8:100,9:1238,10:13,11:620
  68562 multiletter control sequences out of 65536+600000
- 192 fonts using 108243747 bytes
+ 192 fonts using 108244011 bytes
  141i,22n,154p,11239b,2768s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/truetype/public/dejavu/dejav
 usansmono.ttf><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/truetype/publi
@@ -2470,7 +2470,7 @@ ata/Local/Programs/MiKTeX/fonts/truetype/public/dejavu/dejavusans-oblique.ttf><C
 ath-regular.otf><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/truetype/pub
 lic/dejavu/dejavusans.ttf><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/tr
 uetype/public/dejavu/dejavusans-bold.ttf>
-Output written on ausarbeitung_v1.pdf (7 pages, 607947 bytes).
+Output written on ausarbeitung_v1.pdf (7 pages, 607939 bytes).
 
 PDF statistics: 240 PDF objects out of 1000 (max. 8388607)
  50 named destinations out of 1000 (max. 131072)
