@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2026.10.19)  21 NOV 2026 09:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2026.10.19)  24 NOV 2026 10:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1254,7 +1254,7 @@ LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
 LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/b/n' will be
 (Font)              scaled to size 6.37003pt on input line 220.
 
-Overfull \hbox (18.02196pt too wide) in alignment at lines 218--228
+Overfull \hbox (9.28407pt too wide) in alignment at lines 218--228
 [] [] [] [] 
  []
 
@@ -1277,16 +1277,16 @@ LaTeX Font Info:    Font shape `T1/DejaVuSansCondensed-TLF/m/it' will be
 
 {C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/dejavu/dejavusans
 _ts1.enc}]
-<plot_v3_wok_p_regler.png, id=76, 809.1831pt x 334.1283pt>
+<plot_v3_wok_p_regler.png, id=76, 866.9991pt x 347.3778pt>
 File: plot_v3_wok_p_regler.png Graphic file (type png)
 <use plot_v3_wok_p_regler.png>
 Package pdftex.def Info: plot_v3_wok_p_regler.png  used on input line 263.
-(pdftex.def)             Requested size: 406.54141pt x 167.86928pt.
-<plot_v3_sim_p_regler.png, id=77, 800.7516pt x 320.397pt>
+(pdftex.def)             Requested size: 418.97269pt x 167.86847pt.
+<plot_v3_sim_p_regler.png, id=77, 866.9991pt x 332.2011pt>
 File: plot_v3_sim_p_regler.png Graphic file (type png)
 <use plot_v3_sim_p_regler.png>
 Package pdftex.def Info: plot_v3_sim_p_regler.png  used on input line 271.
-(pdftex.def)             Requested size: 419.55782pt x 167.87361pt.
+(pdftex.def)             Requested size: 438.12875pt x 167.87427pt.
 
 
 [3
@@ -1297,18 +1297,18 @@ LaTeX Font Info:    Font shape `T1/DejaVuSansCondensed-TLF/b/n' will be
 (Font)              scaled to size 7.28003pt on input line 289.
 LaTeX Font Info:    Font shape `T1/DejaVuSansCondensed-TLF/b/n' will be
 (Font)              scaled to size 5.46002pt on input line 289.
-<plot_v3_wok_pidt1_regler.png, id=91, 809.1831pt x 334.1283pt>
+<plot_v3_wok_pidt1_regler.png, id=91, 809.6649pt x 336.7782pt>
 File: plot_v3_wok_pidt1_regler.png Graphic file (type png)
 <use plot_v3_wok_pidt1_regler.png>
 Package pdftex.def Info: plot_v3_wok_pidt1_regler.png  used on input line 298.
-(pdftex.def)             Requested size: 275.62485pt x 113.81114pt.
+(pdftex.def)             Requested size: 273.61456pt x 113.80933pt.
 LaTeX Font Info:    Font shape `T1/DejaVuSansCondensed-TLF/m/n' will be
 (Font)              scaled to size 5.46002pt on input line 299.
-<plot_v3_sim_pidt1_regler.png, id=92, 800.7516pt x 320.397pt>
+<plot_v3_sim_pidt1_regler.png, id=92, 843.3909pt x 456.0237pt>
 File: plot_v3_sim_pidt1_regler.png Graphic file (type png)
 <use plot_v3_sim_pidt1_regler.png>
 Package pdftex.def Info: plot_v3_sim_pidt1_regler.png  used on input line 306.
-(pdftex.def)             Requested size: 284.44597pt x 113.8126pt.
+(pdftex.def)             Requested size: 210.48686pt x 113.8108pt.
 LaTeX Font Info:    Font shape `T1/DejaVuSansCondensed-TLF/m/n' will be
 (Font)              scaled to size 7.28003pt on input line 321.
 
@@ -1317,16 +1317,18 @@ LaTeX Font Info:    Font shape `T1/DejaVuSansCondensed-TLF/m/n' will be
 
  <./plot_v3_wok_pidt1_regler.png (PNG copy)> <./plot_v3_sim_pidt1_regler.png (P
 NG copy)>]
+
+[5]
 LaTeX Font Info:    Font shape `TS1/DejaVuSansCondensed-TLF/m/n' will be
 (Font)              scaled to size 7.28003pt on input line 336.
 LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
 (Font)              scaled to size 7.28003pt on input line 340.
-<plot_v3_testfrage_wok.png, id=105, 426.6339pt x 327.1422pt>
+<plot_v3_testfrage_wok.png, id=109, 426.6339pt x 327.1422pt>
 File: plot_v3_testfrage_wok.png Graphic file (type png)
 <use plot_v3_testfrage_wok.png>
 Package pdftex.def Info: plot_v3_testfrage_wok.png  used on input line 348.
 (pdftex.def)             Requested size: 133.57664pt x 102.42636pt.
-<plot_v3_testfrage_glieder.png, id=106, 825.8052pt x 410.7345pt>
+<plot_v3_testfrage_glieder.png, id=110, 825.8052pt x 410.7345pt>
 File: plot_v3_testfrage_glieder.png Graphic file (type png)
 <use plot_v3_testfrage_glieder.png>
 Package pdftex.def Info: plot_v3_testfrage_glieder.png  used on input line 366.
@@ -1334,7 +1336,7 @@ Package pdftex.def Info: plot_v3_testfrage_glieder.png  used on input line 366.
 (pdftex.def)             Requested size: 200.21341pt x 99.58105pt.
 
 
-[5
+[6
 
  <./plot_v3_testfrage_wok.png (PNG copy)> <./plot_v3_testfrage_glieder.png (PNG
  copy)>] (ausarbeitung_v3.aux)
@@ -1344,10 +1346,10 @@ L3 programming layer <2025-03-26>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 36233 strings out of 470173
- 745988 string characters out of 5473635
- 1597303 words of memory out of 5000000
- 62404 multiletter control sequences out of 15000+600000
+ 36236 strings out of 470173
+ 746046 string characters out of 5473635
+ 1597389 words of memory out of 5000000
+ 62406 multiletter control sequences out of 15000+600000
  706403 words of font info for 164 fonts, out of 8000000 for 9000
  956 hyphenation exceptions out of 8191
  122i,22n,121p,11242b,1795s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1383,9 +1385,9 @@ s/cm/cmsy5.pfb><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/type1/public
 1/public/amsfonts/cm/cmsy7.pfb><C:/Users/johan/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/johan/AppData/Local/Programs/M
 iKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on ausarbeitung_v3.pdf (5 pages, 1606670 bytes).
+Output written on ausarbeitung_v3.pdf (6 pages, 1325570 bytes).
 PDF statistics:
- 296 PDF objects out of 1000 (max. 8388607)
- 44 named destinations out of 1000 (max. 500000)
+ 300 PDF objects out of 1000 (max. 8388607)
+ 45 named destinations out of 1000 (max. 500000)
  168 words of extra memory for PDF output out of 10000 (max. 10000000)
 

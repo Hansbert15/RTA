@@ -26,17 +26,20 @@ clear; close all; clc;
 %    - Hinweis: Fuer die lineare Uebertragungsfunktion der Strecke (Aufgabe 1.3)
 %      werden die Nichtlinearitaeten Feder und Reibung vernachlaessigt!
 %
-% 2) Elektrische & dynamische Streckenparameter:
+% 2) Elektrische & dynamische Streckenparameter (Vergleich V3-Vorlage vs. finale V2-Ausarbeitung):
 %    - MODUS 1 ('V3_Vorlage'): Offizielle Zahlenwerte der Vorlage TF_DK_Stud.m
 %      und des Labor-Simulinkmodells DK_V3.slx (aus Kap. 2.3 / 2.3.2):
 %        R_A = 2,5 Ohm (1/R_A = 0,4 A/V), T_el = L_A/R_A = 0,0006 s (L_A = 1,5 mH)
 %        k_Mot = k_EMK = 0,03 Nm/A (bzw. Vs/rad), J = 8e-6 kg*m^2
 %        Getriebe K_Gr = 1/20 = 0,05, Umrechnung rad -> deg: 180/pi
-%    - MODUS 2 ('V2_Modell'): Parameter aus unserem V2-Simulink-Modell EI7_V2.slx:
-%        R_A = 10 Ohm (1/R_A = 0,1 A/V), T_el = L_A/R_A = 0,0005 s (L_A = 5 mH)
-%        k_Mot = k_EMK = 0,045 Nm/A, J = 2,5e-5 kg*m^2, K_Gr = 1/20 = 0,05
+%    - MODUS 2 ('V2_Ausarbeitung'): Final bestimmte Parameter aus unserer V2-Ausarbeitung
+%      (siehe V2_Modellbildung/init_parameters.m & ausarbeitung_v2.pdf):
+%        R_A = 2,5 Ohm (1/R_A = 0,4 A/V), T_el = 0,625 ms (L_A = 1,56 mH; im Modell 0,7 ms)
+%        k_Mot = 0,027 Nm/A, k_EMK = 0,030 Vs/rad, J = 7,2e-6 kg*m^2, K_Gr = 1/20 = 0,05
+%        Notlauffeder an Motorwelle: M_F(7,5 deg) = 0,015 Nm, M_F(90 deg) = 0,022 Nm (c_F = 8,48e-5 Nm/deg)
+%        Reibmoment an Motorwelle:   M_R = 0,008 Nm
 
-PARAMETER_MODUS = 'V3_Vorlage'; % 'V3_Vorlage' (Standard fuer V3) oder 'V2_Modell'
+PARAMETER_MODUS = 'V3_Vorlage'; % 'V3_Vorlage' (Standard fuer V3) oder 'V2_Ausarbeitung'
 
 %% 1. UEBERTRAGUNGSFUNKTION DER STRECKE (OHNE FEDER & REIBUNG)
 if strcmpi(PARAMETER_MODUS, 'V3_Vorlage')
@@ -49,14 +52,14 @@ if strcmpi(PARAMETER_MODUS, 'V3_Vorlage')
     F4  = 0.03;                  % TF (= Verstaerkung) EMK (k_EMK = k_Mot [Vs/rad])
     K_Gr = 0.05;                 % Getriebeuebersetzung 1/i = 1/20 = 0.05
 else
-    % --- Werte aus eigenem V2-Simulink-Modell (EI7_V2.slx) ---
-    z_1 = [0.1];                 % 1/R_A = 1/10 Ohm = 0.1 A/V
-    n_1 = [0.0005 1];            % T_el = L_A/R_A = 5mH / 10Ohm = 0.0005 s
-    F2  = 0.045;                 % k1_Motormoment = 0.045 Nm/A
+    % --- Finale Werte aus eigener V2-Ausarbeitung (init_parameters.m / EI7_V2.slx) ---
+    z_1 = [0.4];                 % 1/R_A = 1/2.5 Ohm = 0.4 A/V
+    n_1 = [0.000625 1];          % T_el = L_A/R_A = 1.56mH / 2.5Ohm = 0.000625 s (bzw. 0.0007 s)
+    F2  = 0.027;                 % k_Mot = 0.027 Nm/A
     z_3 = [1];                   % 1
-    n_3 = [2.5e-5 0];            % J*s mit J = 2.5e-5 kg*m^2
-    F4  = 0.045;                 % k2_EMK = 0.045 Vs/rad
-    K_Gr = 1/20;                 % Getriebe_1_durch_i = 0.05
+    n_3 = [7.2e-6 0];            % J*s mit J = 7.2e-6 kg*m^2
+    F4  = 0.030;                 % k_EMK = 0.030 Vs/rad
+    K_Gr = 1/20;                 % k_Gr = 0.05
 end
 
 % 1.1 Ankerkreis: U_eff(s) -> I_Mot(s)

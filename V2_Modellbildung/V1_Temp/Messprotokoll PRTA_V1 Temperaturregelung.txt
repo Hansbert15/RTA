@@ -1,0 +1,216 @@
+﻿Messprotokoll PRTA_V1 Temperaturregelung
+Datum: Date
+Gruppen-Nr.: ___________
+Teilnehmer: Person
+4.2.1 Ungeregeltes System
+Startbedingungen: Netzteil auf U = 20 V, Heizung aus.
+
+
+* Umgebungstemperatur T_UV: ___21,9_____ °C
+
+
+Messreihe (Aufheizen auf 20 V):
+
+
+Zeit
+	2s
+	4s
+	6s
+	8s
+	10s
+	20s
+	30s
+	60s
+	90s
+	120s
+	150s
+	180s
+	210s
+	T [°C]
+	22,3
+	24,3
+	26,5
+	28,2
+	29,4
+	32,6
+	34,5
+	37,3
+	38,4
+	38,9
+	39,5
+	39,9
+	40,2
+	
+
+Zeit
+	240s
+	270s
+	300s
+	330s
+	360s
+	390s
+	420s
+	450s
+	480s
+	510s
+	540s
+	570s
+	600s (10 min)
+	T [°C]
+	40,4
+	40,8
+	40,9
+	41,0
+	41,1
+	41,3
+	41,4
+	41,5
+	41,6
+	41,6
+	41,7
+	41,7
+	41,9
+	
+
+2
+	4
+	6
+	8
+	10
+	20
+	30
+	60
+	90
+	120
+	150
+	180
+	
+
+	
+
+	
+
+	41,8
+	41,7
+	41,3
+	41
+	40,8
+	40,1
+	39,8
+	39,1
+	38,9
+	38,9
+	38,8
+	38,8
+	
+
+	
+
+	
+
+	
+
+
+
+* Endtemperatur T_20V (nach 10 Min): __41,9______ °C
+
+
+Störung aufschalten (Reduktion auf 18 V):
+
+
+* Endtemperatur T_18V (nach ca. 3 Min): ___38,8_____ °C
+4.2.2 Manueller Betrieb
+Ziel: Temperatur von T = 45 °C erreichen und 2 Minuten mit max. Abweichung von ±0,2 °C halten.
+
+
+* Benötigte Zeit bis zum ersten dauerhaften Erreichen: 65 s
+4.2.3 Reglereinstellung nach Ziegler/Nichols
+
+
+K_p
+	1
+	2
+	4
+	8
+	16
+	32
+	64
+	50
+	40
+	T
+	Temperatur
+	28,3
+	31
+	34,5
+	38,1
+	41,1 
+	43+-0,2
+	ROT
+	ROT
+	Dauerschwingungen
+	8,3s
+	
+
+Bedingungen: U = 25 V, Sollwert W = 45 °C, reiner P-Regler.
+
+
+* Kritische Reglerverstärkung K_P,krit: 40
+* Periodendauer T_krit: 8,3 s
+
+
+Berechnete Parameter nach Z/N:
+
+
+Reglertyp
+	K_P
+	T_N
+	T_V
+	P
+	20
+	-
+	-
+	PI
+	18
+	7,1
+	-
+	PID
+	24
+	4,2
+	1
+	4.2.4 Geregelter Betrieb
+Bedingungen: U = 25 V, W_L = 35 °C, W_H = 45 °C. Störung: Reduktion auf 22,5 V.
+
+
+Reglertyp
+	Endtemp. T_H25
+	Einschwingzeit (±0,2 °C Band)
+	Max. Überschwingen
+	Temp. nach Störung (T_H22,5)
+	Absoluter Fehler [°C]
+	Stationärer Fehler (%)
+	P
+	42,3
+	25s
+	-
+	41,5
+	0,8
+	3,9%
+	PI
+	45
+	20s
+	-
+	45
+	0
+	0%
+	PID
+	45
+	22s
+	Überschwinger vorhanden
+	45
+	0
+	0%
+	Für Fehler Absoluter Fehler / Sollwert-Raumtemperatur
+
+
+Eigentlich P schneller als PI 
+PID  D anteil macht PI schneller

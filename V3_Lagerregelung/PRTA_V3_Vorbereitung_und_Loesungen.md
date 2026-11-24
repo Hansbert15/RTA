@@ -31,10 +31,10 @@ In Versuch V2 (*Modellbildung Drosselklappe*) wurden die physikalischen Paramete
      - $\bar{M}_{R,\mathrm{DK}} = 9{,}67\,\mathrm{N} \cdot 29{,}34\,\mathrm{mm} = 283{,}62\,\mathrm{mN\,m} \approx 0{,}284\,\mathrm{N\,m}$
        *(Auf die Motorwelle reduziert mit $K_{\mathrm{Gr}} = 0{,}05$: $M_{R,\mathrm{mot}} = 0{,}05 \cdot 0{,}284\,\mathrm{N\,m} \approx 0{,}0142\,\mathrm{N\,m}$; vgl. V3-Laborwert $0{,}01\,\mathrm{N\,m}$)*
 
-3. **Motorkonstante und elektrische Parameter:**
+3. **Motorkonstante und elektrische Parameter (aus `ausarbeitung_v2.pdf` & `init_parameters.m`):**
    - Aus Halteversuch bei $45^\circ$ (`v2.docx`): $I = 0{,}44\,\mathrm{A}$ bei $F = 3\,\mathrm{N} \implies k_{m,\mathrm{DK}} = 0{,}20\,\mathrm{N\,m/A}$ (bzw. $0{,}3\,\mathrm{N\,m/A}$ in `Mappe1.xlsx`).
-   - Im eigenen V2-Simulink-Modell (`EI7_V2.slx`):
-     $R_A = 10\,\Omega$ ($1/R_A = 0{,}1\,\mathrm{A/V}$), $T_{\mathrm{el}} = \frac{L_A}{R_A} = 0{,}0005\,\mathrm{s}$ ($L_A = 5\,\mathrm{mH}$), $k_{\mathrm{Mot}} = k_{\mathrm{EMK}} = 0{,}045\,\mathrm{N\,m/A}$, $J = 2{,}5 \cdot 10^{-5}\,\mathrm{kg\,m^2}$, $K_{\mathrm{Gr}} = \frac{1}{20} = 0{,}05$.
+   - Im finalen V2-Simulink-Modell (`EI7_V2.slx` / `ausarbeitung_v2.pdf`):
+     $R_A = 2{,}5\,\Omega$ ($1/R_A = 0{,}4\,\mathrm{A/V}$), $T_{\mathrm{el}} = \frac{L_A}{R_A} = 0{,}625\,\mathrm{ms}$ ($L_A = 1{,}56\,\mathrm{mH}$, im Simulink-Block $0{,}7\,\mathrm{ms}$), $k_{\mathrm{Mot}} = 0{,}027\,\mathrm{N\,m/A}$, $k_{\mathrm{EMK}} = 0{,}030\,\mathrm{V\,s/rad}$, $J \approx J_{\mathrm{Rotor}} = 7{,}2 \cdot 10^{-6}\,\mathrm{kg\,m^2}$, $K_{\mathrm{Gr}} = \frac{1}{20} = 0{,}05$, $M_{R,\mathrm{Mot}} = 0{,}008\,\mathrm{N\,m}$, $M_{F,\mathrm{Mot}} = 0{,}015\dots 0{,}022\,\mathrm{N\,m}$ ($\phi_{\mathrm{NLP}} = 7{,}5^\circ$).
    - In der V3-Musterdatei (`TF_DK_Stud.m` / `DK_V3.slx`):
      $R_A = 2{,}5\,\Omega$ ($1/R_A = 0{,}4\,\mathrm{A/V}$), $T_{\mathrm{el}} = \frac{L_A}{R_A} = 0{,}0006\,\mathrm{s}$ ($L_A = 1{,}5\,\mathrm{mH}$), $k_{\mathrm{Mot}} = k_{\mathrm{EMK}} = 0{,}03\,\mathrm{N\,m/A}$, $J = 8 \cdot 10^{-6}\,\mathrm{kg\,m^2}$, $K_{\mathrm{Gr}} = 0{,}05$.
 

@@ -1,0 +1,17 @@
+\babel@toc {ngerman}{}\relax 
+\contentsline {section}{\numberline {1}Grundlagen und Systembeschreibung}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Ziel des Versuchs}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Systemaufbau und Nichtlinearitäten der elektrischen Drosselklappe}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Mathematische Modellbildung und Simulink-Struktur}{2}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Experimentelle Parameterbestimmung}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Messverfahren zur Bestimmung der Modellparameter}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Bestimmung der EMK-Konstante $k_{\text {EMK}}$ auf zwei Wegen}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Zusammenfassung und gegenseitige Plausibilisierung der Parameter}{4}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Simulation und Modellverifikation}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Vergleich des Öffnungsvorgangs bei $U = 6\,\text {V}$ (Simulation vs. Messung)}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Schwächen der Modellierung und Ursachen der Abweichungen}{6}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Beantwortung der Testfragen und Erkenntnisgewinn}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Leitfragen zur Modellbildung und Induktivitätsbestimmung (Kap. 1.4 \& 4)}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Simulink-Testsystem mit $F(s) = \frac {5}{2s^2 + 8}$ bei Sprung ($0 \to 5$)}{7}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Fazit}{7}{subsection.4.3}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

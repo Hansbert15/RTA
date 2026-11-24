@@ -209,21 +209,21 @@ Für die elektrisch betätigte Drosselklappe (E-Gas) eines Ottomotors gelten fol
 \end{itemize}
 
 \subsection{Übernahme der Messwerte und Mitschriften aus Versuch V2}
-In Versuch V2 wurden an der realen Drosselklappe (Hebelarm $r = 29{,}35\,\text{mm}$, Getriebe $i = 20 \Rightarrow K_{\text{Gr}} = 0{,}05$, Notlaufposition $\phi_0 = 7{,}5^\circ$ bzw.\ $5^\circ$ im V3-Muster) die nichtlinearen Kennlinien bestimmt:
+In Versuch V2 wurden an der realen Drosselklappe (Hebelarm $r = 29{,}35\,\text{mm}$, Getriebe $i = 20 \Rightarrow K_{\text{Gr}} = 0{,}05$, Notlaufposition $\phi_0 = 7{,}5^\circ$ bzw.\ $5^\circ$ im V3-Muster) die Systemparameter und nichtlinearen Kennlinien bestimmt:
 \begin{table}[H]
 \centering
 \scriptsize
-\caption{Zusammenfassung der Messwerte aus Versuch V2 (\texttt{v2.docx}, \texttt{Mappe1.xlsx}, \texttt{EI7\_V2.slx}) und der V3-Musterparameter.}
+\caption{Zusammenfassung der Messwerte aus Versuch V2 (\texttt{ausarbeitung\_v2.pdf}, \texttt{EI7\_V2.slx}) und der V3-Musterparameter.}
 \label{tab:v2_parameter}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llll@{}}
 \toprule
-\textbf{Teilmodell / Größe} & \textbf{Messwerte aus V2 (bezogen auf Klappe)} & \textbf{Eigenes V2-Modell (\texttt{EI7\_V2.slx})} & \textbf{V3-Laborvorlage (\texttt{TF\_DK\_Stud.m})} \\
+\textbf{Teilmodell / Größe} & \textbf{Rohmessung Klappe (\texttt{Mappe1.xlsx})} & \textbf{Finales V2-Modell (\texttt{EI7\_V2.slx})} & \textbf{V3-Laborvorlage (\texttt{TF\_DK\_Stud.m})} \\
 \midrule
-\textbf{Ankerkreis ($R_A, T_{\text{el}}$)} & $R_A \approx 10\,\Omega$ (Schätzwert Vorber.) & $1/R_A = 0{,}1\,\text{A/V}$, $T_{\text{el}} = 0{,}5\,\text{ms}$ & $1/R_A = 0{,}4\,\text{A/V}$ ($2{,}5\,\Omega$), $T_{\text{el}} = 0{,}6\,\text{ms}$ \\
-\textbf{Motorkonstante $k_{\text{Mot}}$} & $0{,}44\,\text{A}$ bei $3\,\text{N} \Rightarrow k_{m,\text{DK}} = 0{,}20\dots 0{,}30\,\text{Nm/A}$ & $k_1 = k_2 = 0{,}045\,\text{Nm/A}$ (Motor) & $F_2 = F_4 = 0{,}03\,\text{Nm/A}$ (Motor) \\
-\textbf{Trägheit \& Getriebe} & Untersetzung $i = 20$ ($K_{\text{Gr}} = 0{,}05$) & $J = 2{,}5\cdot 10^{-5}\,\text{kg\,m}^2$, $K_{\text{Gr}} = 0{,}05$ & $J = 8\cdot 10^{-6}\,\text{kg\,m}^2$, $K_{\text{Gr}} = 0{,}05$ \\
-\textbf{Notlauffeder $M_F(\phi)$} & $F_F(7{,}5^\circ)=4{,}5\,\text{N}$ ($132\,\text{mNm}$); $c_F = 1{,}24\,\text{mNm/}^\circ$ & $\phi_0 = 7^\circ$, $k_4 = 0{,}0018\,\text{Nm/}^\circ$ & $\phi_0 = 5^\circ$, Sprung $\pm 0{,}025\,\text{Nm}$ am Motor \\
-\textbf{Reibmoment $M_R$} & $F_R = F_{\text{ges}}-F_F \approx 9{,}67\,\text{N} \Rightarrow M_{R,\text{DK}} = 283{,}6\,\text{mNm}$ & $k_3 = 0{,}002\,\text{Nm}\cdot\operatorname{sign}(\omega)$ & Coulomb-Lookup: $\pm 0{,}01\,\text{Nm}$ am Motor \\
+\textbf{Ankerkreis ($R_A, T_{\text{el}}$)} & $R_A = 2{,}5\,\Omega$ (aus $1\,\text{A}$-Messung) & $1/R_A = 0{,}4\,\text{A/V}$, $T_{\text{el}} = 0{,}625\,\text{ms}$ ($1{,}56\,\text{mH}$) & $1/R_A = 0{,}4\,\text{A/V}$ ($2{,}5\,\Omega$), $T_{\text{el}} = 0{,}6\,\text{ms}$ \\
+\textbf{Motorkonstante / EMK} & $0{,}44\,\text{A}$ bei $3\,\text{N}$ ($\Delta F\cdot r\cdot K_{\text{Gr}}/\Delta I$) & $k_{\text{Mot}} = 0{,}027\,\text{Nm/A}$, $k_{\text{EMK}} = 0{,}030\,\text{Vs/rad}$ & $F_2 = F_4 = 0{,}03\,\text{Nm/A}$ (bzw.\ $\text{Vs/rad}$) \\
+\textbf{Trägheit \& Getriebe} & Zähne gezählt: $i = 20$ ($K_{\text{Gr}} = 0{,}05$) & $J \approx J_{\text{Rotor}} = 7{,}2\cdot 10^{-6}\,\text{kg\,m}^2$, $K_{\text{Gr}} = 0{,}05$ & $J = 8\cdot 10^{-6}\,\text{kg\,m}^2$, $K_{\text{Gr}} = 0{,}05$ \\
+\textbf{Notlauffeder $M_F(\phi)$} & $F_F(7{,}5^\circ)=4{,}5\,\text{N}$; $c_{F,\text{DK}} = 1{,}24\,\text{mNm/}^\circ$ & $\phi_0 = 7{,}5^\circ$, $M_{F,\text{Mot}} = 0{,}015\dots 0{,}022\,\text{Nm}$ & $\phi_0 = 5^\circ$, Sprung $\pm 0{,}025\dots 0{,}029\,\text{Nm}$ \\
+\textbf{Reibmoment $M_R$} & $F_{\text{auf/zu}} = F_F \pm F_R \Rightarrow \bar{F}_R \approx 9{,}67\,\text{N}$ & $M_{R,\text{Mot}} = \pm 0{,}008\,\text{Nm}\cdot\operatorname{sign}(\omega)$ & Coulomb-Lookup: $\pm 0{,}01\,\text{Nm}$ am Motor \\
 \bottomrule
 \end{tabular*}
 \end{table}
