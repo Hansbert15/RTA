@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2026.10.19)  24 NOV 2026 10:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2026.10.19)  24 NOV 2026 10:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1308,7 +1308,7 @@ LaTeX Font Info:    Font shape `T1/DejaVuSansCondensed-TLF/m/n' will be
 File: plot_v3_sim_pidt1_regler.png Graphic file (type png)
 <use plot_v3_sim_pidt1_regler.png>
 Package pdftex.def Info: plot_v3_sim_pidt1_regler.png  used on input line 306.
-(pdftex.def)             Requested size: 210.48686pt x 113.8108pt.
+(pdftex.def)             Requested size: 192.0712pt x 103.85341pt.
 LaTeX Font Info:    Font shape `T1/DejaVuSansCondensed-TLF/m/n' will be
 (Font)              scaled to size 7.28003pt on input line 320.
 
@@ -1348,7 +1348,7 @@ L3 programming layer <2025-03-26>
 Here is how much of TeX's memory you used:
  36236 strings out of 470173
  746046 string characters out of 5473635
- 1599600 words of memory out of 5000000
+ 1599584 words of memory out of 5000000
  62406 multiletter control sequences out of 15000+600000
  706403 words of font info for 164 fonts, out of 8000000 for 9000
  956 hyphenation exceptions out of 8191
@@ -1385,7 +1385,7 @@ s/cm/cmsy5.pfb><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/type1/public
 1/public/amsfonts/cm/cmsy7.pfb><C:/Users/johan/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/johan/AppData/Local/Programs/M
 iKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on ausarbeitung_v3.pdf (6 pages, 1324857 bytes).
+Output written on ausarbeitung_v3.pdf (6 pages, 1324696 bytes).
 PDF statistics:
  300 PDF objects out of 1000 (max. 8388607)
  45 named destinations out of 1000 (max. 500000)
