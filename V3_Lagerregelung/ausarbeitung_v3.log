@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2026.10.19)  24 NOV 2026 10:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2026.10.19)  24 NOV 2026 10:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1310,7 +1310,7 @@ File: plot_v3_sim_pidt1_regler.png Graphic file (type png)
 Package pdftex.def Info: plot_v3_sim_pidt1_regler.png  used on input line 306.
 (pdftex.def)             Requested size: 210.48686pt x 113.8108pt.
 LaTeX Font Info:    Font shape `T1/DejaVuSansCondensed-TLF/m/n' will be
-(Font)              scaled to size 7.28003pt on input line 321.
+(Font)              scaled to size 7.28003pt on input line 320.
 
 
 [4
@@ -1320,18 +1320,18 @@ NG copy)>]
 
 [5]
 LaTeX Font Info:    Font shape `TS1/DejaVuSansCondensed-TLF/m/n' will be
-(Font)              scaled to size 7.28003pt on input line 336.
+(Font)              scaled to size 7.28003pt on input line 335.
 LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
-(Font)              scaled to size 7.28003pt on input line 340.
+(Font)              scaled to size 7.28003pt on input line 339.
 <plot_v3_testfrage_wok.png, id=109, 426.6339pt x 327.1422pt>
 File: plot_v3_testfrage_wok.png Graphic file (type png)
 <use plot_v3_testfrage_wok.png>
-Package pdftex.def Info: plot_v3_testfrage_wok.png  used on input line 348.
+Package pdftex.def Info: plot_v3_testfrage_wok.png  used on input line 347.
 (pdftex.def)             Requested size: 133.57664pt x 102.42636pt.
 <plot_v3_testfrage_glieder.png, id=110, 825.8052pt x 410.7345pt>
 File: plot_v3_testfrage_glieder.png Graphic file (type png)
 <use plot_v3_testfrage_glieder.png>
-Package pdftex.def Info: plot_v3_testfrage_glieder.png  used on input line 366.
+Package pdftex.def Info: plot_v3_testfrage_glieder.png  used on input line 365.
 
 (pdftex.def)             Requested size: 200.21341pt x 99.58105pt.
 
@@ -1348,7 +1348,7 @@ L3 programming layer <2025-03-26>
 Here is how much of TeX's memory you used:
  36236 strings out of 470173
  746046 string characters out of 5473635
- 1597389 words of memory out of 5000000
+ 1599600 words of memory out of 5000000
  62406 multiletter control sequences out of 15000+600000
  706403 words of font info for 164 fonts, out of 8000000 for 9000
  956 hyphenation exceptions out of 8191
@@ -1385,7 +1385,7 @@ s/cm/cmsy5.pfb><C:/Users/johan/AppData/Local/Programs/MiKTeX/fonts/type1/public
 1/public/amsfonts/cm/cmsy7.pfb><C:/Users/johan/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/johan/AppData/Local/Programs/M
 iKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on ausarbeitung_v3.pdf (6 pages, 1325570 bytes).
+Output written on ausarbeitung_v3.pdf (6 pages, 1324857 bytes).
 PDF statistics:
  300 PDF objects out of 1000 (max. 8388607)
  45 named destinations out of 1000 (max. 500000)
